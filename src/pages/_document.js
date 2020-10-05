@@ -7,7 +7,7 @@ class MyDocument extends Document {
                 <Head>
                     <meta charSet="utf-8" />
                     <link rel="shortcut icon" href="/favicon.ico" />
-                    <link rel="manifest" href="/manifest.json"></link>
+                    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
                 </Head>
                 <body>
                     <Main />

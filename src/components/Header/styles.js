@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled from '@emotion/styled';
 
 const PageHeader = styled.header`
-    border: 1px solid red;
+
 `;
 
 export default PageHeader;
