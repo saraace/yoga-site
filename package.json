@@ -1,0 +1,15 @@
+{
+  "name": "yoga-joint-website",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3500",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "9.5.3",
+    "react": "16.13.1",
+    "react-dom": "16.13.1"
+  }
+}
