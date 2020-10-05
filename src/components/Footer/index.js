@@ -1,6 +1,8 @@
+import PageFooter from "./styles";
+
 const Footer = () => {
     return (
-      <footer>Footer</footer>
+      <PageFooter>footer</PageFooter>
     )
   }
   

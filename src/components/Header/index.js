@@ -1,6 +1,10 @@
+import PageHeader from "./styles";
+
 const Header = () => {
     return (
-      <header>Header</header>
+      <PageHeader>
+        header
+      </PageHeader>
     )
   }
   
