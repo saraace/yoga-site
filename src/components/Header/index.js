@@ -1,9 +1,20 @@
 import PageHeader from "./styles";
+import YogaJointLogo from "../../svgs/yoga-joint.svg";
+import Navigation from "./Navigation";
+import Buttons from "./Buttons";
 
 const Header = () => {
     return (
       <PageHeader>
-        header
+        <div>
+          <YogaJointLogo />
+        </div>
+        <div>
+          <Navigation />
+        </div>
+        <div>
+          <Buttons />
+        </div>
       </PageHeader>
     )
   }
