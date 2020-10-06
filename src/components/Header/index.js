@@ -1,20 +1,24 @@
-import PageHeader from "./styles";
+import PageHeader, { LogoCol, NavCol, ButtonCol, MobileNavCol } from "./styles";
 import YogaJointLogo from "../../svgs/yoga-joint.svg";
 import Navigation from "./Navigation";
 import Buttons from "./Buttons";
+import MobileNav from "./Navigation/MobileNav";
 
 const Header = () => {
     return (
       <PageHeader>
-        <div>
+        <LogoCol>
           <YogaJointLogo />
-        </div>
-        <div>
+        </LogoCol>
+        <NavCol>
           <Navigation />
-        </div>
-        <div>
+        </NavCol>
+        <ButtonCol>
           <Buttons />
-        </div>
+        </ButtonCol>
+        <MobileNavCol>  
+          <MobileNav />
+        </MobileNavCol>
       </PageHeader>
     )
   }

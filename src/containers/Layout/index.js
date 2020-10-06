@@ -1,17 +1,18 @@
 import Head from "next/head";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import ContentWrapper from "./styles";
 
 const Layout = ({ children }) => {
   return (
-    <div id="wrapper">
+    <ContentWrapper>
       <Head>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <Header />
-      {children}
+      <div>{children}</div>
       <Footer />
-    </div>
+    </ContentWrapper>
   )
 }
 

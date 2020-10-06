@@ -10,8 +10,9 @@ const button = {
   outline: 'none', 
   transition: '0.3s all ease'
 };
+
 export default {
-  breakpoints: [576, 768, 992, 1200],
+  breakpoints: [ '576px', '768px', '992px', '1200px' ],
   fontSizes: [12, 14, 16, 20, 40, 42],
   colors: {
     text: "#fff",
