@@ -1,21 +1,32 @@
+const button = {
+  fontFamily: 'body', 
+  textTransform: 'uppercase', 
+  borderWidth: '2px', 
+  borderStyle: 'solid', 
+  borderRadius: 32, 
+  fontSize: '14px', 
+  lineHeight: 1, 
+  p: '15px 30px', 
+  outline: 'none', 
+  transition: '0.3s all ease'
+};
 export default {
+  breakpoints: [576, 768, 992, 1200],
+  fontSizes: [12, 14, 16, 20, 40, 42],
   colors: {
     text: "#fff",
     background: "#0b1525",
-    primary: "#FFD215", 
-    secondary: "#FF4BD0", 
-    accent: "#FB5E5E", 
-    highlight: "#3CBCEB", 
+    dark: "#132A4D",
     muted: "rgba(255, 255, 255, 0.4)",
+    primary: "#FFD215", 
+    secondary: "#fff",
+    accent: "#FF4BD0", 
+    highlight: "#FB5E5E", 
+    cyan: "#3CBCEB", 
     green: "#41BC3F", 
     indigo: "#7F63F1", 
-    purple: "#C081FC",
-    white: "#fff"
+    purple: "#C081FC"
   },
-  breakpoints: [
-    576, 768, 992, 1200
-  ],
-  fontSizes: [12, 14, 16, 20, 40, 42],
   fonts: {
     body: '"Montserrat", sans-serif',
     heading: 'inherit',
@@ -67,7 +78,56 @@ export default {
       code: {
         fontFamily: 'monospace',
         fontSize: 'inherit',
-      },
+      }
     },
+  }, 
+  buttons: {
+    block: {
+      width: '100%'
+    },
+    primary: {
+      color: 'dark', 
+      bg: 'primary', 
+      borderColor: 'primary',
+      boxShadow: '0 0 24px 0 rgba(255, 239, 169, 0.5), rgba(255, 255, 255, 0.4) 0 0 12px 0 inset',
+      ... button,
+      '&:hover': {
+        bg: 'transparent', 
+        color: 'primary', 
+        boxShadow: '0 0 24px 0 rgba(255, 239, 169, 0.5)'
+      }
+    },
+    'primary-outline': {
+      color: 'primary', 
+      bg: 'transparent', 
+      borderColor: 'primary',
+      boxShadow: '0 0 24px 0 rgba(255, 239, 169, 0.5)',
+      ... button,
+      '&:hover': {
+        bg: 'primary', 
+        color: 'dark', 
+        boxShadow: '0 0 24px 0 rgba(255, 239, 169, 0.5)'
+      }
+    },
+    secondary: {
+      color: 'dark', 
+      bg: 'secondary',
+      borderColor: 'secondary',
+      ... button,
+      '&:hover': {
+        bg: 'transparent', 
+        color: 'secondary'
+      }
+    },
+    'secondary-outline': {
+      color: 'secondary', 
+      bg: 'transparent', 
+      borderColor: 'secondary',
+      ... button,
+      '&:hover': {
+        bg: 'secondary', 
+        color: 'dark' 
+      }
+    }
   }
 };
