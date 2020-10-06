@@ -15,13 +15,12 @@ export const NavItem = styled.li`
 
 export const NavLink = styled.a`
     text-decoration: none; 
-    color: ${({ theme }) => theme.colors.secondary};
+    color: ${({ theme }) => theme.colors.text};
     padding: 10px 25px; 
     font-size: ${({ theme }) => theme.fontSizes[0]+'px'};
     text-transform: uppercase;
     letter-spacing: 0.045em;
     position: relative;
-    transition: 0.3s all ease;
 
     &:after{
         content: "";
@@ -37,7 +36,6 @@ export const NavLink = styled.a`
     }
 
     &:hover{
-        opacity: 0.6;
         &:after{
             transform: scaleX(1);
         }
