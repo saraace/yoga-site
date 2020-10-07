@@ -2,8 +2,15 @@ import styled from '@emotion/styled';
 
 const Links = styled.div`
     display: flex; 
-    align-items: center;
-    padding: 0 0 21px;
+    align-items: start;
+    padding: 0 0 27px;
+    flex-direction: column;
+
+    @media (min-width: ${({ theme }) => theme.breakpoints[1]}){
+        flex-direction: row;
+        align-items: center;
+        padding: 0 0 21px;
+    }
 `;
 
 export const LinkList = styled.ul`
@@ -14,7 +21,11 @@ export const LinkList = styled.ul`
 `;
 
 export const LinkItem = styled.li`
-    padding: 6px 0;
+    padding: 0 0 26px;
+
+    @media (min-width: ${({ theme }) => theme.breakpoints[1]}){
+        padding: 6px 0;
+    }
 `;
 
 export const Link = styled.a`
