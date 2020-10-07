@@ -15,10 +15,10 @@ export const FooterFlex = styled.div`
 `;
 
 export const LogoWrapper = styled.div`
-    max-width: 328px;
     margin: 0 0 53px 0;
 
-    @media (min-width: ${({ theme }) => theme.breakpoints[1]}){
+    @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
+        width: 328px;
         margin: 0;
     }
 `; 
