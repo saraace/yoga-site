@@ -19,6 +19,7 @@ const MobileNav = () => {
         }, 
         open: {
             top: '11px', 
+            left: '3px',
             rotate: 45
         }, 
         closed: {
@@ -36,6 +37,7 @@ const MobileNav = () => {
         }, 
         open: {
             top: '11px', 
+            left: '3px',
             rotate: -45
         }, 
         closed: {
@@ -62,7 +64,7 @@ const MobileNav = () => {
                 <motion.div animate={toggleAnimation} variants={topLineVariants}></motion.div>
                 <motion.div animate={toggleAnimation} variants={bottomLineVariants}></motion.div>
             </ToggleButton>
-            <MobileNavWrapper animate={ open? 'open' : 'closed' } variants={menuVariants}>
+            <MobileNavWrapper initial="closed" animate={ open? 'open' : 'closed' } variants={menuVariants}>
                 <NavMenu>
                     {navigationLinks.map(navItem => {
                         return (

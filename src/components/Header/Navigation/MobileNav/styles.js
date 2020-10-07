@@ -16,7 +16,7 @@ export const ToggleButton = styled(motion.div)`
     height: 24px;
     position: relative;
     cursor: pointer;
-    z-index: 1;
+    z-index: 100;
 
     & > div:first-child, 
     & > div:last-child{

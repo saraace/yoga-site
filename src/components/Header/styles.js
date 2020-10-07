@@ -5,6 +5,7 @@ const PageHeader = styled.header`
     justify-content: space-between; 
     align-items: center;
     padding: 40px 24px;
+    z-index: 200;
     
     @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
         padding: 44px 64px;

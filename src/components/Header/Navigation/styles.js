@@ -16,7 +16,7 @@ export const NavItem = styled.li`
 export const NavLink = styled.a`
     text-decoration: none; 
     color: ${({ theme }) => theme.colors.text};
-    padding: 10px 25px; 
+    padding: 10px 10px; 
     font-size: ${({ theme }) => theme.fontSizes[0]+'px'};
     text-transform: uppercase;
     letter-spacing: 0.045em;
@@ -39,6 +39,10 @@ export const NavLink = styled.a`
         &:after{
             transform: scaleX(1);
         }
+    }
+
+    @media (min-width: ${({ theme }) => theme.breakpoints[3]}){
+        padding: 10px 25px;         
     }
 `;
 
