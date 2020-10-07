@@ -7,23 +7,25 @@ import Arrow from "../../../svgs/chevron-down.svg";
 import LocationMarker from "../../../svgs/location-pin.svg";
 import Validation from "../Validation";
 
-const FormSelect = ({ value, className, options = [], label, validate, locationIcon, ...rest }) => (
-    <FormSelectWrapper> 
-        {label && <Label>{label}</Label>}
-        <SelectWrapper>
-            {locationIcon && <LocationMarker className="marker" />}
-            <Select {...rest} {...{value}} className={locationIcon? 'icon-included' : ''}>
-            {options.map((option) => (
-                <option key={option.value} value={option.value}>
-                    {option.displayValue ? option.displayValue.replace(/_/g, " ") : ""}
-                </option>
-            ))}
-            </Select>
-            <Arrow className="arrow" />
-        </SelectWrapper>
-        {validate && <Validation>{validate}</Validation>}
-    </FormSelectWrapper>
-);
+const FormSelect = ({ value, className, options = [], label, validate, locationIcon, ...rest }) => {
+    return (
+        <FormSelectWrapper> 
+            {label && <Label>{label}</Label>}
+            <SelectWrapper>
+                {locationIcon && <LocationMarker className="marker" />}
+                <Select {...rest} {...{value}} className={locationIcon? 'icon-included' : ''}>
+                {options.map((option) => (
+                    <option key={option.value} value={option.value}>
+                        {option.displayValue ? option.displayValue.replace(/_/g, " ") : ""}
+                    </option>
+                ))}
+                </Select>
+                <Arrow className="arrow" />
+            </SelectWrapper>
+            {validate && <Validation>{validate}</Validation>}
+        </FormSelectWrapper>
+    )
+}
 
 FormSelect.defaultProps = {
   className: "",

@@ -1,17 +1,19 @@
-import React, { forwardRef } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 /** @jsx jsx */
 import { jsx, Input, Label } from 'theme-ui';
 import FormInputWrapper from "./styles";
 import Validation from "../Validation";
 
-const FormInput = forwardRef(({ label, required, className, validate, value, ...rest } , ref) => (
-    <FormInputWrapper>
-        {label && <Label>{label}</Label>}
-        <Input {...rest} {...{value, ref}} />
-        {validate && <Validation>{validate}</Validation>}
-    </FormInputWrapper>
-));
+const FormInput = ({ label, required, className, validate, value, ...rest }) => {
+    return(
+        <FormInputWrapper>
+            {label && <Label>{label}</Label>}
+            <Input {...rest} {...{value}} />
+            {validate && <Validation>{validate}</Validation>}
+        </FormInputWrapper>
+    )
+}
 
 FormInput.defaultProps = {
     className: '', 

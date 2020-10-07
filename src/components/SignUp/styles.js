@@ -9,10 +9,26 @@ const SignUpPage = styled.div`
 export const SignUpForm = styled.form`
     display: flex;
     width: 100%;
+    justify-content: center;
 `; 
 
 export const PlanOptions = styled.div`
     flex: 1 0 0px;
+    max-width: 435px;
+`; 
+
+export const Plans = styled.div`
+    margin: 24px 0 0;
+`; 
+
+
+export const RadioGroup = styled.div`
+    .freq{
+        display: flex;
+        & > *{ 
+            margin: 0 24px 0 0;
+        }
+    }
 `; 
 
 export const FormFields = styled.div`
