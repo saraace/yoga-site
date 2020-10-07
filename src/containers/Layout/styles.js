@@ -5,6 +5,9 @@ const ContentWrapper = styled.div`
     flex-direction: column; 
     justify-content: flex-start;
     height: 100%;
+    background-position: top center; 
+    background-size: 100%; 
+    background-repeat: no-repeat;
 
     header, 
     footer, 

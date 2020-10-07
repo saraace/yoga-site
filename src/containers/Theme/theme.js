@@ -1,15 +1,21 @@
 const button = {
+  cursor: 'pointer',
   fontFamily: 'body', 
+  fontWeight: 700,
   textTransform: 'uppercase', 
   borderWidth: '2px', 
   borderStyle: 'solid', 
   borderRadius: 32, 
-  fontSize: '14px', 
+  fontSize: 1, 
   lineHeight: 1, 
   p: '15px 30px', 
   outline: 'none', 
   transition: '0.3s all ease'
 };
+const buttonBlock = {
+  width: '100%', 
+  display: 'block'
+}
 
 export default {
   breakpoints: [ '576px', '768px', '992px', '1200px' ],
@@ -23,10 +29,12 @@ export default {
     secondary: "#fff",
     accent: "#FF4BD0", 
     highlight: "#FB5E5E", 
+    danger: "#FB5E5E", 
     cyan: "#3CBCEB", 
     green: "#41BC3F", 
+    success: "#41BC3F", 
     indigo: "#7F63F1", 
-    purple: "#C081FC"
+    purple: "#C081FC", 
   },
   fonts: {
     body: '"Montserrat", sans-serif',
@@ -79,24 +87,25 @@ export default {
       code: {
         fontFamily: 'monospace',
         fontSize: 'inherit',
-      }
+      }, 
     },
   }, 
   buttons: {
-    block: {
-      width: '100%'
-    },
     primary: {
       color: 'dark', 
       bg: 'primary', 
       borderColor: 'primary',
       boxShadow: '0 0 24px 0 rgba(255, 239, 169, 0.5), rgba(255, 255, 255, 0.4) 0 0 12px 0 inset',
       ... button,
-      '&:hover': {
+      '&:focus, &:hover': {
         bg: 'transparent', 
         color: 'primary', 
         boxShadow: '0 0 24px 0 rgba(255, 239, 169, 0.5)'
       }
+    },
+    'primary-block': {
+      variant: 'buttons.primary',
+      ... buttonBlock
     },
     'primary-outline': {
       color: 'primary', 
@@ -104,18 +113,22 @@ export default {
       borderColor: 'primary',
       boxShadow: '0 0 24px 0 rgba(255, 239, 169, 0.5)',
       ... button,
-      '&:hover': {
+      '&:focus, &:hover': {
         bg: 'primary', 
         color: 'dark', 
         boxShadow: '0 0 24px 0 rgba(255, 239, 169, 0.5)'
       }
+    },
+    'primary-outline-block': {
+      variant: 'buttons.primary-outline',
+      ... buttonBlock
     },
     secondary: {
       color: 'dark', 
       bg: 'secondary',
       borderColor: 'secondary',
       ... button,
-      '&:hover': {
+      '&:focus, &:hover': {
         bg: 'transparent', 
         color: 'secondary'
       }
@@ -125,9 +138,48 @@ export default {
       bg: 'transparent', 
       borderColor: 'secondary',
       ... button,
-      '&:hover': {
+      '&:focus, &:hover': {
         bg: 'secondary', 
         color: 'dark' 
+      }
+    }
+  },
+  forms: {
+    input: {
+      fontFamily: 'body',
+      fontWeight: 400,
+      fontSize: 1,
+      lineHeight: '18px',
+      border: '2px solid #fff;',
+      borderRadius: 24,
+      p: '13px 24px', 
+      outline: 'none', 
+      transition: '0.3s all ease',
+      '&::placeholder': {
+        color: 'text', 
+        opacity: '0.8'
+      },
+      '&:focus': {
+        borderColor: 'primary', 
+        boxShadow: '0 0 10px 0 rgba(255, 239, 169, 0.5)'
+      }
+    },
+    select: {
+      fontFamily: 'body',
+      fontWeight: 400,
+      fontSize: 1,
+      lineHeight: '18px',
+      border: '2px solid #fff;',
+      borderRadius: 24,
+      p: '13px 24px', 
+      outline: 'none', 
+      transition: '0.3s all ease',
+      '&:focus': {
+        borderColor: 'primary', 
+        boxShadow: '0 0 10px 0 rgba(255, 239, 169, 0.5)'
+      },
+      '& + svg': {
+        display: 'none'
       }
     }
   }

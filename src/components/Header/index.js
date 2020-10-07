@@ -1,3 +1,4 @@
+import Link from "next/link";
 import PageHeader, { LogoCol, NavCol, ButtonCol, MobileNavCol } from "./styles";
 import YogaJointLogo from "../../svgs/yoga-joint.svg";
 import Navigation from "./Navigation";
@@ -8,7 +9,11 @@ const Header = () => {
     return (
       <PageHeader>
         <LogoCol>
-          <YogaJointLogo />
+          <Link href="/">
+            <a>
+              <YogaJointLogo />
+            </a>
+          </Link>
         </LogoCol>
         <NavCol>
           <Navigation />

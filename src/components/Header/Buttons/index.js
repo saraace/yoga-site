@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { jsx, Button } from 'theme-ui';
+import Link from "next/link";
 import ButtonRow, { RowItem } from "./styles";
 import { NavLink } from "../Navigation/styles";
 
@@ -10,7 +11,9 @@ const Buttons = () => {
                 <NavLink href="#">Login</NavLink>
             </RowItem>
             <RowItem>
-                <Button variant="primary">Sign Up</Button>
+                <Link href="/sign-up">
+                    <a sx={{ variant: 'buttons.primary-block' }}>Sign Up</a>
+                </Link>
             </RowItem>
         </ButtonRow>
     )
