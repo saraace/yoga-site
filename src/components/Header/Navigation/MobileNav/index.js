@@ -24,6 +24,8 @@ const MobileNav = () => {
         }, 
         closed: {
             top: '8px',
+            left: 'auto',
+            right: '0px',
             rotate: 0
         }
     };
@@ -42,6 +44,7 @@ const MobileNav = () => {
         }, 
         closed: {
             top: '15px',
+            left: '0px',
             rotate: 0
         }
     };
