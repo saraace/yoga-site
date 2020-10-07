@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx, Container, Heading, Flex, Box, Button } from 'theme-ui';
-import theme from "../utils/theme";
+import theme from "../containers/Theme/theme";
 
 export default function Theme(){
     return (

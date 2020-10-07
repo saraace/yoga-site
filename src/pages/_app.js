@@ -1,17 +1,16 @@
 import App from "next/app";
-import { ThemeProvider } from "theme-ui"; 
-import theme from "../utils/theme";
+import Theme from "../containers/Theme";
 import Layout from "../containers/Layout";
 
 class MyApp extends App {
   render(){
     const { Component, pageProps } = this.props;
     return (
-      <ThemeProvider theme={theme}>
+      <Theme>
         <Layout>
           <Component {...pageProps} />
         </Layout>
-      </ThemeProvider>
+      </Theme>
     )
   }
 }
