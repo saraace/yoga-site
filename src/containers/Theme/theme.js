@@ -43,7 +43,7 @@ export default {
   },
   fontWeights: {
     body: 400,
-    heading: 700,
+    heading: 600,
     bold: 700,
   },
   lineHeights: {
@@ -61,21 +61,27 @@ export default {
       fontSize: 2,
       h1: {
         fontSize: 5,
+        fontWeight: 'heading'
       },
       h2: {
         fontSize: 4,
+        fontWeight: 'heading'
       },
       h3: {
         fontSize: 3,
+        fontWeight: 'heading'
       },
       h4: {
         fontSize: 2,
+        fontWeight: 'heading'
       },
       h5: {
         fontSize: 1,
+        fontWeight: 'heading'
       },
       h6: {
         fontSize: 0,
+        fontWeight: 'heading'
       },
       pre: {
         fontFamily: 'monospace',
@@ -88,8 +94,16 @@ export default {
         fontFamily: 'monospace',
         fontSize: 'inherit',
       }, 
+      container: {
+        p: '0px 24px'
+      }
     },
   }, 
+  layout: {
+    container: {
+      p: '0px 24px'
+    }
+  },
   buttons: {
     primary: {
       color: 'dark', 

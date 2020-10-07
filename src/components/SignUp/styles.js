@@ -2,7 +2,11 @@ import styled from '@emotion/styled';
 
 const SignUpPage = styled.div`
     h1{
-        text-align: center;
+        text-align: left;
+
+        @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
+            text-align: center;
+        }
     }
 `; 
 
@@ -10,6 +14,13 @@ export const SignUpForm = styled.form`
     display: flex;
     width: 100%;
     justify-content: center;
+    flex-direction: column; 
+    align-items: center;
+
+    @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
+        flex-direction: row;    
+        align-items: flex-start;
+    }
 `; 
 
 export const PlanOptions = styled.div`
@@ -25,8 +36,15 @@ export const Plans = styled.div`
 export const RadioGroup = styled.div`
     .freq{
         display: flex;
+        align-items: center;
+        justify-content: center;
+
         & > *{ 
             margin: 0 24px 0 0;
+        }
+
+        @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
+            justify-content: flex-start;
         }
     }
 `; 

@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 const PageFooter = styled.footer`
-    padding: 84px 24px 100px;
+    padding: 84px 0 100px;
 `;
 
 export const FooterFlex = styled.div`
