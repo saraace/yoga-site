@@ -46,6 +46,7 @@ export const RadioControl = styled.div`
         position: absolute; 
         top: 2px;
         left: 2px;
+        transition: 0.3s all ease;
     }
 `; 
 
