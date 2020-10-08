@@ -51,12 +51,21 @@ export default {
   sizes: {
     container: 1200
   },
+  layout: {
+    container: {
+      p: '0 24px'
+    }, 
+    fluid: {
+      maxWidth: '100%', 
+      p: '0 0 0 136px'
+    }
+  },
   styles: {
     root: {
       fontFamily: 'body',
       lineHeight: 'body',
       fontWeight: 'body',
-      fontSize: 2,
+      fontSize: 1,
       h1: {
         fontSize: 5,
         fontWeight: 'heading'
@@ -67,7 +76,9 @@ export default {
       },
       h3: {
         fontSize: 3,
-        fontWeight: 'heading'
+        fontWeight: 'heading', 
+        lineHeight: '1.33',
+        m: '0 0 0.5rem 0'
       },
       h4: {
         fontSize: 2,
@@ -92,16 +103,8 @@ export default {
         fontFamily: 'monospace',
         fontSize: 'inherit',
       }, 
-      container: {
-        p: '0px 24px'
-      }
     },
   }, 
-  layout: {
-    container: {
-      p: '0px 24px'
-    }
-  },
   buttons: {
     primary: {
       color: 'dark', 
@@ -162,7 +165,7 @@ export default {
       fontWeight: 400,
       fontSize: 1,
       lineHeight: '18px',
-      border: '2px solid #fff;',
+      border: '2px solid #fff',
       borderRadius: 24,
       p: '13px 24px', 
       outline: 'none', 
@@ -181,7 +184,7 @@ export default {
       fontWeight: 400,
       fontSize: 1,
       lineHeight: '18px',
-      border: '2px solid #fff;',
+      border: '2px solid #fff',
       borderRadius: 24,
       p: '13px 24px', 
       outline: 'none', 
