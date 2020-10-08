@@ -13,7 +13,7 @@ export const SocialLink = styled.li`
 
 export const SocialButton = styled.a`
     display: block;
-    border: 2px solid ${({ theme }) => theme.colors.cyan};
+    border: 2px solid ${({ theme }) => theme.colors.highlight};
     line-height: 1;
     display: flex;
     justify-content: center; 
@@ -22,11 +22,12 @@ export const SocialButton = styled.a`
     transition: 0.3s all ease;
 
     svg path{
+        fill: ${({ theme }) => theme.colors.highlight};
         transition: 0.3s all ease;
     }
 
     &:hover{
-        background: ${({ theme }) => theme.colors.cyan};
+        background: ${({ theme }) => theme.colors.highlight};
         svg path{
             fill: ${({ theme }) => theme.colors.dark};
         }
