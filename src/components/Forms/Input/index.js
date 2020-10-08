@@ -1,23 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-/** @jsx jsx */
-import { jsx, Input, Label } from 'theme-ui';
+import { Input, Label } from 'theme-ui';
 import FormInputWrapper from "./styles";
-import Validation from "../Validation";
+import ValidationLabel from "../Validation/ValidationLabel";
 
 const FormInput = ({ label, required, className, validate, value, ...rest }) => {
     return(
-        <FormInputWrapper>
-            {label && <Label>{label}</Label>}
+        <FormInputWrapper className={validate? 'invalid' : 'valid'}>
+            {label && <Label>{label}{required ? ' *' : ''}</Label>}
             <Input {...rest} {...{value}} />
-            {validate && <Validation>{validate}</Validation>}
+            {validate && <ValidationLabel>{validate}</ValidationLabel>}
         </FormInputWrapper>
     )
 }
 
 FormInput.defaultProps = {
-    className: '', 
-    type: 'text'
+    label: "", 
+    required: false, 
+    className: "",
+    validate: "", 
+    value: ""
 };
 
 FormInput.propTypes = {

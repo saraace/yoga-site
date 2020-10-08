@@ -1,11 +1,6 @@
 import styled from '@emotion/styled';
 
-const FormRadioWrapper = styled.label`
-    display: block;
-    position: relative;
-`; 
-
-export const RadioWrapper = styled.div`
+const RadioWrapper = styled.label`
     display: flex;
     flex-direction: row-reverse;
     align-items: center; 
@@ -54,10 +49,10 @@ export const RadioControl = styled.div`
     }
 `; 
 
-export const LabelSpan = styled.div`
+export const Label = styled.div`
     text-transform: uppercase;
     font-size: ${({ theme }) => theme.fontSizes[1]+'px'};
     line-height: ${({ theme }) => theme.fontSizes[1]+'px'};
 `; 
 
-export default FormRadioWrapper;
+export default RadioWrapper;

@@ -40,30 +40,30 @@ const PasswordRequirements = ({ children, password, confirm, checkMatch }) => {
       </div>
       <Requirements>
         <ReqCol>
-          <Req className={requirements.lowercaseReq? 'valid' : 'invalid'}>
+          <Req className={password.length? (requirements.lowercaseReq? 'valid' : 'invalid') : ''}>
             <div className="icon"></div>
             One lowercase character
           </Req>
-          <Req className={requirements.uppercaseReq? 'valid' : 'invalid'}>
+          <Req className={password.length? (requirements.uppercaseReq? 'valid' : 'invalid') : ''}>
             <div className="icon"></div>
             One uppercase character
           </Req>
-          <Req className={requirements.numberReq? 'valid' : 'invalid'}>
+          <Req className={password.length? (requirements.numberReq? 'valid' : 'invalid') : ''}>
             <div className="icon"></div>
             One number
           </Req>
         </ReqCol>
         <ReqCol>
-          <Req className={requirements.specialCharReq? 'valid' : 'invalid'}>
+          <Req className={password.length? (requirements.specialCharReq? 'valid' : 'invalid') : ''}>
             <div className="icon"></div>
             One special character
           </Req>
-          <Req className={requirements.lengthReq? 'valid' : 'invalid'}>
+          <Req className={password.length? (requirements.lengthReq? 'valid' : 'invalid') : ''}>
             <div className="icon"></div>
             8 characters minimum
           </Req>
           { checkMatch && 
-          <Req className={requirements.confirmMatch? 'valid' : 'invalid'}>
+          <Req className={confirm.length? (requirements.confirmMatch? 'valid' : 'invalid') : ''}>
             <div className="icon"></div>
             Passwords Match
           </Req>
@@ -79,10 +79,12 @@ PasswordRequirements.defaultProps = {
   password: "", 
   confirm: ""
 };
+
 PasswordRequirements.propTypes = {
   children: PropTypes.node.isRequired,
   password: PropTypes.string.isRequired,
   checkMatch: PropTypes.bool,
   confirm: PropTypes.string
 };
+
 export default PasswordRequirements;

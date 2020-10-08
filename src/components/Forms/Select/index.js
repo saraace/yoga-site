@@ -1,15 +1,14 @@
 import React  from "react";
 import PropTypes from "prop-types";
-/** @jsx jsx */
-import { jsx, Select, Label } from 'theme-ui';
+import { Select, Label } from 'theme-ui';
 import FormSelectWrapper, { SelectWrapper } from "./styles";
 import Arrow from "../../../svgs/chevron-down.svg";
 import LocationMarker from "../../../svgs/location-pin.svg";
-import Validation from "../Validation";
+import ValidationLabel from "../Validation/ValidationLabel";
 
-const FormSelect = ({ value, className, options = [], label, validate, locationIcon, ...rest }) => {
+const FormSelect = ({ value, className, options, label, validate, locationIcon, ...rest }) => {
     return (
-        <FormSelectWrapper> 
+        <FormSelectWrapper className={validate? 'invalid' : 'valid'}> 
             {label && <Label>{label}</Label>}
             <SelectWrapper>
                 {locationIcon && <LocationMarker className="marker" />}
@@ -22,15 +21,18 @@ const FormSelect = ({ value, className, options = [], label, validate, locationI
                 </Select>
                 <Arrow className="arrow" />
             </SelectWrapper>
-            {validate && <Validation>{validate}</Validation>}
+            {validate && <ValidationLabel>{validate}</ValidationLabel>}
         </FormSelectWrapper>
     )
 }
 
 FormSelect.defaultProps = {
-  className: "",
-  value: "", 
-  locationIcon: false
+    value: "", 
+    className: "",
+    options: [],
+    label: "", 
+    validate: "",
+    locationIcon: false
 };
 
 FormSelect.propTypes = {

@@ -2,6 +2,10 @@ import styled from '@emotion/styled';
 
 const FormSelectWrapper = styled.div`
     margin: 0 0 48px 0;
+
+    &.invalid select{
+        border-color: ${({ theme }) => theme.colors.danger};
+    }
 `;
 
 export const SelectWrapper = styled.div`

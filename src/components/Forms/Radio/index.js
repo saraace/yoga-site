@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import FormRadioWrapper, { RadioWrapper, RadioControl, LabelSpan } from "./styles";
-import Validation from "../Validation";
+import RadioWrapper, { RadioControl, Label } from "./styles";
 
 const FormRadio = ({ label, required, className, value, ...rest }) => {
     return (
         <RadioWrapper>
-            {label && <LabelSpan>{label}</LabelSpan>}
+            {label && <Label>{label}</Label>}
             <input type="radio" {...rest} {...{value}} />
             <RadioControl />
         </RadioWrapper>
@@ -14,7 +13,10 @@ const FormRadio = ({ label, required, className, value, ...rest }) => {
 }
 
 FormRadio.defaultProps = {
-    className: ''
+    label: "", 
+    required: false, 
+    className: "", 
+    value: ""
 };
 
 FormRadio.propTypes = {

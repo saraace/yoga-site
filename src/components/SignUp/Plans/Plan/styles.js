@@ -7,7 +7,6 @@ const PlanWrapper = styled.label`
     border-radius: 12px;
     padding: 12px 12px 12px 20px;
     max-width: 344px;
-    margin: 0 0 24px;
 `; 
 
 export const PlanFlex = styled.div`

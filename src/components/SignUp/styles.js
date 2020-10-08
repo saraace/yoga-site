@@ -28,23 +28,22 @@ export const PlanOptions = styled.div`
     max-width: 435px;
 `; 
 
-export const Plans = styled.div`
-    margin: 24px 0 0;
-`; 
-
-
 export const RadioGroup = styled.div`
     .freq{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        & > *{ 
-            margin: 0 24px 0 0;
-        }
-
-        @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
-            justify-content: flex-start;
+        width: 370px;
+        
+        .wrapper{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+    
+            & > *{ 
+                margin: 0 24px 0 0;
+            }
+    
+            @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
+                justify-content: flex-start;
+            }
         }
     }
 `; 

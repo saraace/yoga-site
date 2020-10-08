@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import PlanWrapper, { PlanFlex, PlanTitle, PlanSelect, PlanPrice } from "./styles";
-import Radio from "../../Forms/Radio";
+import Radio from "../../../Forms/Radio";
 
-const Plan = ({ name, title, price, value, features }) => {
+const Plan = ({ name, title, price, value, features, selectedPlan, ...rest }) => {
     return (
         <PlanWrapper>
             <PlanFlex>
@@ -11,7 +11,7 @@ const Plan = ({ name, title, price, value, features }) => {
                 <PlanSelect>
                     <PlanPrice>{price}</PlanPrice>
                     <div>
-                        <Radio {...{name}} {...{value}} />
+                        <Radio {...rest} {...{name}} {...{value}} checked={value === selectedPlan}/>
                     </div>
                 </PlanSelect>
             </PlanFlex>
@@ -27,5 +27,23 @@ const Plan = ({ name, title, price, value, features }) => {
         </PlanWrapper>
     )
 }
+
+Plan.defaultProps = {
+    name: "", 
+    title: "", 
+    price: "", 
+    value: "", 
+    features: [], 
+    selectedPlan: ""
+};
+
+Plan.propTypes = {
+    name: PropTypes.string.isRequired, 
+    title: PropTypes.string.isRequired, 
+    price: PropTypes.string.isRequired, 
+    value: PropTypes.string.isRequired,
+    features: PropTypes.arrayOf(PropTypes.string),
+    selectedPlan: PropTypes.string
+};
 
 export default Plan;
