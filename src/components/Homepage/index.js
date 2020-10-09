@@ -129,23 +129,23 @@ const Homepage = () => {
     return (
         <>
             <SlidingSection title={`My programs & scheduled classes`}>
-                {classes1.map(c => {
+                {classes1.map((c, i) => {
                     return (
-                        <LargeClassCard {...c} />
+                        <LargeClassCard key={i} {...c} />
                     )
                 })}
             </SlidingSection>
             <SlidingSection title={`New classes to discover`}>
-                {classes2.map(c => {
+                {classes2.map((c, i) => {
                     return (
-                        <SmallClassCard {...c} />
+                        <SmallClassCard key={i} {...c} />
                     )
                 })}
             </SlidingSection>
             <SlidingSection title={`Classes by instructor`}>
-                {instructors.map(instructor => {
+                {instructors.map((instructor, i) => {
                     return(
-                        <InstructorCard {...instructor} />
+                        <InstructorCard key={i} {...instructor} />
                     )
                 })}
             </SlidingSection>

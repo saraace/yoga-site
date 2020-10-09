@@ -69,16 +69,16 @@ const MobileNav = () => {
             </ToggleButton>
             <MobileNavWrapper initial="closed" animate={ open? 'open' : 'closed' } variants={menuVariants}>
                 <NavMenu>
-                    {navigationLinks.map(navItem => {
+                    {navigationLinks.map((navItem, i) => {
                         return (
-                            <NavItem>
+                            <NavItem key={i}>
                                 <NavLink href={navItem.link}>{navItem.text}</NavLink>
                                 {navItem.hasOwnProperty('children') && (
                                 <Dropdown>
                                     <ul>
-                                        {navItem.children.map(childItem => {
+                                        {navItem.children.map((childItem, idx) => {
                                             return(
-                                                <NavItem>
+                                                <NavItem key={idx}>
                                                     <NavLink href={childItem.link}>{childItem.text}</NavLink>
                                                 </NavItem>
                                             )
