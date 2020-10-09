@@ -1,4 +1,15 @@
 import styled from '@emotion/styled';
+import Card from "../index";
+
+export const CardWrapper = styled(Card)`
+    width: 182px; 
+    height: 300px;
+
+    @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
+        width: 280px; 
+        height: 460px;
+    }
+`;
 
 export const Name = styled.h4`
     font-weight: 700;

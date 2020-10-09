@@ -132,24 +132,24 @@ const Homepage = () => {
 
     return (
         <>
-            <SlidingSection title={`My programs & scheduled classes`} height="300px">
+            <SlidingSection title={`My programs & scheduled classes`}>
                 {classes1.map((c, i) => {
                     return (
                         <LargeClassCard key={i} {...c} />
                     )
                 })}
             </SlidingSection>
-            <SlidingSection title={`New classes to discover`} height="266px">
+            <SlidingSection title={`New classes to discover`}>
                 {classes2.map((c, i) => {
                     return (
                         <SmallClassCard key={i} {...c} />
                     )
                 })}
             </SlidingSection>
-            <Container>
+            <Container variant="no-gutters">
                 <FeaturedClass>
                     <FeaturedClassCard>
-                        <SmallClassCard width="674px" height="395px" teacher="Teacher" difficulty="Advanced" duration="20 mins" date="Mon, Jul 25th" time="10:15pm" type="follow" image="/images/homepage/image-01.png" />
+                        <SmallClassCard teacher="Teacher" difficulty="Advanced" duration="20 mins" date="Mon, Jul 25th" time="10:15pm" type="follow" image="/images/homepage/image-01.png" />
                     </FeaturedClassCard>
                     <FeaturedClassContent>
                         <h2>Hips and Legs: Finding Freedom through Foundation</h2>
@@ -165,14 +165,14 @@ const Homepage = () => {
                     </FeaturedClassContent>
                 </FeaturedClass>
             </Container>
-            <SlidingSection title={`Upcoming live classes`} height="266px">
+            <SlidingSection title={`Upcoming live classes`}>
                 {classes2.map((c, i) => {
                     return (
                         <SmallClassCard key={i} {...c} />
                     )
                 })}
             </SlidingSection>
-            <SlidingSection title={`Classes by instructor`} height="460px">
+            <SlidingSection title={`Classes by instructor`}>
                 {instructors.map((instructor, i) => {
                     return(
                         <InstructorCard key={i} {...instructor} />

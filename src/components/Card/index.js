@@ -5,8 +5,8 @@ import { CardContainer, Image, CardContent } from "./styles";
 const Card = ({ link, title, image, width, height, children, ...rest }) => {
     return(
         <Link href={link}>
-            <CardContainer {...{title}} style={{ width: width, height: height }}>
-                <Image src={image} {...rest} />
+            <CardContainer {...{title}} {...rest}>
+                <Image src={image} alt={title} />
                 <CardContent>
                     {children}
                 </CardContent>

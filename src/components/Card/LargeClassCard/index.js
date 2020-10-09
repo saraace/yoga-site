@@ -1,10 +1,9 @@
 import PropTypes from 'prop-types';
-import { CardHeader, CardFooter, ClassType, Details } from "./styles";
-import Card from "../index";
+import { CardWrapper, CardHeader, CardFooter, ClassType, Details } from "./styles";
 
-const LargeClassCard = ({ title, link, teacher, difficulty, duration, type, date, time, image, width, height }) => {
+const LargeClassCard = ({ title, link, teacher, difficulty, duration, type, date, time, image}) => {
     return(
-        <Card {...{title}} {...{image}} {...{link}} alt={title} {...{width}} {...{height}} >
+        <CardWrapper {...{title}} {...{image}} {...{link}} alt={title}>
             <CardHeader>
                 <div>
                     <div>{date}</div>
@@ -22,7 +21,7 @@ const LargeClassCard = ({ title, link, teacher, difficulty, duration, type, date
                     <span>{duration}</span>
                 </Details>
             </CardFooter>
-        </Card>
+        </CardWrapper>
     )
 }
 
@@ -35,9 +34,7 @@ LargeClassCard.defaultProps = {
     type: "follow",
     date: "",
     time: "",
-    image: "", 
-    width: "512px", 
-    height: "300px"
+    image: ""
 };
 
 LargeClassCard.propTypes = {
@@ -50,8 +47,6 @@ LargeClassCard.propTypes = {
     date: PropTypes.string,
     time: PropTypes.string,
     image: PropTypes.string.isRequired, 
-    width: PropTypes.string,
-    height: PropTypes.string
 }
 
 export default LargeClassCard;

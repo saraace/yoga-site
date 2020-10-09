@@ -1,4 +1,15 @@
 import styled from '@emotion/styled';
+import Card from "../index";
+
+export const CardWrapper = styled(Card)`
+    width: 327px; 
+    height: 192px;
+
+    @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
+        width: 512px; 
+        height: 300px;
+    }
+`;
 
 export const CardHeader = styled.div`
     display: flex; 

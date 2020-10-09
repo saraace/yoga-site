@@ -3,21 +3,23 @@ import { useRef, useEffect, useState } from "react";
 import { Section, SectionTitle, Slider, SliderContents } from "./styles";
 //import ChevronRight from "../../svgs/chevron-right.svg";
 
-const SlidingSection = ({ title, height, children }) => {
+const SlidingSection = ({ title, children, ...rest }) => {
 
     const [leftConstraint, setLeftConstraint] = useState(0);
+    const [sliderHeight, setSliderHeight] = useState(0);
     
     const sectionContainer = useRef(null);
     const slidingContainer = useRef(null);
 
     useEffect(() => {
         setLeftConstraint((slidingContainer.current.offsetWidth - sectionContainer.current.offsetWidth) * -1);
+        setSliderHeight(slidingContainer.current.offsetHeight);
     }, [sectionContainer.current, slidingContainer.current]);
 
     return(
-        <Section>
+        <Section {...rest} >
             {title && <SectionTitle>{title}</SectionTitle>}
-            <Slider ref={sectionContainer} style={{ height: height }}>
+            <Slider ref={sectionContainer} style={{height: sliderHeight}}>
                 <SliderContents 
                     ref={slidingContainer}
                     drag="x"
@@ -29,13 +31,8 @@ const SlidingSection = ({ title, height, children }) => {
     );
 }
 
-SlidingSection.defaultProps = {
-    height: "300px"
-}
-
 SlidingSection.propTypes = {
-    title: PropTypes.string, 
-    height: PropTypes.string.isRequired
+    title: PropTypes.string
 }
 
 export default SlidingSection;
