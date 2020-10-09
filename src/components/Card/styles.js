@@ -6,6 +6,7 @@ export const CardContainer = styled.a`
     padding: 20px 24px 24px;
     position: relative;
     cursor: pointer;
+    display: block;
 
     &:after{
         content: "";

@@ -11,6 +11,7 @@ export const Page = styled.div`
     width: 100%;
     position: relative;
     z-index: 1;
+    overflow: hidden;
 `; 
 
 export default ContentWrapper;

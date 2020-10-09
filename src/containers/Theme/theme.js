@@ -12,12 +12,24 @@ const button = {
   outline: 'none', 
   transition: '0.3s all ease'
 };
+
 const buttonBlock = {
   width: '100%', 
   display: 'block'
+};
+
+const iconButton = {
+  display: 'flex',
+  p: '12px 30px',
+  alignItems: 'center',
+  'svg': {
+    height: '20px',
+    m: '0 10px 0 0', 
+    transition: '0.3s all ease', 
+  }
 }
 
-export default {
+const theme = {
   breakpoints: [ '576px', '768px', '992px', '1200px' ],
   fontSizes: [12, 14, 16, 20, 40, 42],
   colors: {
@@ -45,7 +57,7 @@ export default {
     bold: 700,
   },
   lineHeights: {
-    body: 1.5,
+    body: 1.4,
     heading: 1.125,
   },
   sizes: {
@@ -72,7 +84,9 @@ export default {
       },
       h2: {
         fontSize: 4,
-        fontWeight: 'heading'
+        fontWeight: 'heading', 
+        lineHeight: '1.255',
+        m: '0 0 1.875rem 0'
       },
       h3: {
         fontSize: 3,
@@ -124,6 +138,21 @@ export default {
       variant: 'buttons.primary',
       ... buttonBlock
     },
+    'primary-icon':{
+      variant: 'buttons.primary',
+      ... iconButton,
+      'svg': {
+        ... iconButton.svg, 
+        fill: 'dark'
+      },
+      '&:focus, &:hover': {
+        variant: 'buttons.primary',
+        ... iconButton,
+        'svg': {
+          fill: 'primary'
+        }
+      }
+    },
     'primary-outline': {
       color: 'primary', 
       bg: 'transparent', 
@@ -150,6 +179,25 @@ export default {
         color: 'secondary'
       }
     },
+    'secondary-block': {
+      variant: 'buttons.secondary',
+      ... buttonBlock
+    },
+    'secondary-icon':{
+      variant: 'buttons.secondary',
+      ... iconButton,
+      'svg': {
+        ... iconButton.svg, 
+        fill: 'dark'
+      },
+      '&:focus, &:hover': {
+        variant: 'buttons.secondary',
+        ... iconButton,
+        'svg': {
+          fill: 'secondary'
+        }
+      }
+    },
     'secondary-outline': {
       color: 'secondary', 
       bg: 'transparent', 
@@ -159,6 +207,10 @@ export default {
         bg: 'secondary', 
         color: 'dark' 
       }
+    },
+    'secondary-outline-block': {
+      variant: 'buttons.secondary-outline',
+      ... buttonBlock
     }
   },
   forms: {
@@ -201,3 +253,5 @@ export default {
     }
   }
 };
+
+export default theme;

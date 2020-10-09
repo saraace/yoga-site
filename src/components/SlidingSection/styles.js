@@ -1,6 +1,9 @@
 import styled from '@emotion/styled';
+import { motion } from 'framer-motion';
 
-export const Section = styled.div``;
+export const Section = styled.div`
+    padding: 0 0 0 136px;
+`;
 
 export const SectionTitle = styled.h2`
     font-size: ${({ theme }) => theme.fontSizes[2]+'px'};
@@ -9,10 +12,14 @@ export const SectionTitle = styled.h2`
 `;
 
 export const Slider = styled.div`
+    position: relative; 
+`; 
+
+export const SliderContents = styled(motion.div)`
+    position: absolute;
     display: flex; 
-    flex-wrap: wrap;
-     
-    & > *{
-        margin-bottom: 16px !important;
+
+    & > *:last-child{
+        margin-right: 136px !important;
     }
 `; 
