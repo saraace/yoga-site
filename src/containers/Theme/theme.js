@@ -82,7 +82,9 @@ export default {
       },
       h4: {
         fontSize: 2,
-        fontWeight: 'heading'
+        fontWeight: 'heading', 
+        lineHeight: '1.4',
+        m: '0 0 0.25rem 0'
       },
       h5: {
         fontSize: 1,

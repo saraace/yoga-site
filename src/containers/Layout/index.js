@@ -12,6 +12,10 @@ const Layout = ({ children }) => {
     style = {
       backgroundImage: 'url(/images/sign-up/bg.png)'
     }
+  } else {
+    style = {
+      backgroundImage: 'url(/images/homepage/bg.png)'
+    }
   }
   
   return (
