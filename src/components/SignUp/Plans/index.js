@@ -8,9 +8,9 @@ const Plans = ({ plans, name, value, validate, ...rest }) => {
     return(
         <PlanGroup>
             <ValidationWrapper {...{validate}}>
-                {plans.map(plan => {
+                {plans.map((plan, i) => {
                     return(
-                        <Plan {...rest} selectedPlan={value} {...plan} {...{name}} />
+                        <Plan key={i} {...rest} selectedPlan={value} {...plan} {...{name}} />
                     )
                 })}
             </ValidationWrapper>
@@ -26,7 +26,7 @@ Plans.defaultProps = {
     validate: ""
 };
 
-Plans.PropTypes = {
+Plans.propTypes = {
     plans: PropTypes.arrayOf(PropTypes.object).isRequired, 
     name: PropTypes.string.isRequired,
     value: PropTypes.string,

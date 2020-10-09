@@ -11,8 +11,8 @@ const FormOption = ({ name, options, multiple, label, value, required, className
         <FormOptionGroup {...{className}}>
             <ValidationWrapper {...{validate}}>
                 {label && <Label>{label}</Label>}
-                {!multiple && options.map(option => (
-                    <Radio {...rest} name={name} value={option.value} label={option.displayValue} checked={option.value === value} />
+                {!multiple && options.map((option, i) => (
+                    <Radio key={i} {...rest} name={name} value={option.value} label={option.displayValue} checked={option.value === value} />
                 ))}
             </ValidationWrapper>
             {validate && <ValidationLabel>{validate}</ValidationLabel>}
@@ -33,7 +33,7 @@ FormOption.defaultProps = {
 
 FormOption.propTypes = {
     name: PropTypes.string.isRequired,
-    options: PropTypes.object.isRequired,
+    options: PropTypes.array.isRequired,
     multiple: PropTypes.bool,
     label: PropTypes.string, 
     value: PropTypes.string,

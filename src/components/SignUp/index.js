@@ -7,7 +7,7 @@ import Input from "../Forms/Input";
 import OptionGroup from "../Forms/OptionGroup";
 import Plans from "./Plans";
 import PasswordRequirements from "../Forms/PasswordRequirements";
-import {passwordRequirements} from "../../services/validation";
+import { passwordRequirements } from "../../services/validation";
 
 const SignUp = () => {
 

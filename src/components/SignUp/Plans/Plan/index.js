@@ -18,8 +18,8 @@ const Plan = ({ name, title, price, best, value, features, selectedPlan, ...rest
             </Row>
             {features.length > 0 && (
                 <FeaturesList>
-                    {features.map(feature => (
-                        <Feature><Checkmark />{feature}</Feature>
+                    {features.map((feature, i) => (
+                        <Feature key={i}><Checkmark />{feature}</Feature>
                     ))}
                 </FeaturesList>
             )}
