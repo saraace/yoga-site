@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import { CardWrapper, CardHeader, CardFooter, ClassType, Details } from "./styles";
 
-const SmallClassCard = ({ title, link, instructor, difficulty, duration, type, date, time, image, ...rest }) => {
+const SmallClassCard = ({ title, link, instructor, difficulty, duration, type, date, time, image, variant,...rest }) => {
     return(
-        <CardWrapper {...{title}} {...{image}} {...{link}} alt={title} {...rest} >
+        <CardWrapper {...{title}} {...{image}} {...{link}} alt={title} className={variant ? variant : 'default'} {...rest} >
             <CardHeader>
                 <div>
                     <div>{date}</div>

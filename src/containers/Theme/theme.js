@@ -22,6 +22,7 @@ const iconButton = {
   display: 'flex',
   p: '12px 30px',
   alignItems: 'center',
+  justifyContent: 'center',
   'svg': {
     height: '20px',
     m: '0 10px 0 0', 

@@ -2,12 +2,45 @@ import styled from '@emotion/styled';
 import Card from "../index";
 
 export const CardWrapper = styled(Card)`
-    width: 266px; 
-    height: 192px;
+    &.default{
+        width: 266px; 
+        height: 192px;
 
-    @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
+        @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
+            width: 368px; 
+            height: 266px;
+        }
+    }
+
+    &.tall{
         width: 368px; 
-        height: 266px;
+        height: 436px;
+        margin: 0;
+    }
+
+    &.featured{
+        width: 100%;
+        height: 220px;
+        margin: 0;
+        border-radius: 0px;
+
+        img,
+        &:after{
+            border-radius: 0px;
+        }
+
+        @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
+            width: 674px;
+            height: 395px;
+            margin: 0;
+            border-radius: 12px;
+
+            img,
+            &:after{
+                border-radius: 12px;
+            }
+        }
+        
     }
 `;
 

@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import ClassCard from "../Cards/ClassCard";
 
 export const ClassWrapper = styled.div`
     display: flex;
@@ -13,44 +12,10 @@ export const ClassWrapper = styled.div`
 
 export const CardWrapper = styled.div`
     wdith: 100%;
-    height: 220px;
-
-    & > *{
-        margin: 0;
-        border-radius: 0px;
-
-        &:after{
-            border-radius: 0px !important;
-        }
-
-        img{
-            border-radius: 0px;
-        }
-    }
 
     @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
-        width: 674px;
-        height: 395px;
         margin-right: 40px;
-
-        & > *{
-            margin: 0;
-            border-radius: 12px;
-
-            &:after{
-                border-radius: 12px;
-            }
-
-            img{
-                border-radius: 12px;
-            }
-        }
     }
-`;
-
-export const Card = styled(ClassCard)`
-    width: 100% !important;
-    height: 100% !important;
 `;
 
 export const Content = styled.div`

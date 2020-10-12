@@ -3,14 +3,15 @@ import { jsx } from 'theme-ui';
 import PropTypes from 'prop-types';
 import Link from 'next/link'; 
 import { ClassWrapper, CardWrapper, Card, Content, ButtonRow } from "./styles";
-import PlayIcon from "../../svgs/play-icon.svg"; 
-import InfoIcon from "../../svgs/info-icon.svg"; 
+import ClassCard from "../Cards/ClassCard";
+import PlayIcon from "../../assets/svgs/play-icon.svg"; 
+import InfoIcon from "../../assets/svgs/info-icon.svg"; 
 
 const FeaturedClass = ({ card, title, watchLink, infoLink, description }) => {
     return(
         <ClassWrapper>
             <CardWrapper>
-                <Card {...card} />
+                <ClassCard {...card} variant="featured" />
             </CardWrapper>
             <Content>
                 <h2>{title}</h2>
