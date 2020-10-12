@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { CardWrapper, CardHeader, CardFooter, ClassType, Details } from "./styles";
 
-const LargeClassCard = ({ title, link, teacher, difficulty, duration, type, date, time, image}) => {
+const FeaturedClassCard = ({ title, link, instructor, difficulty, duration, type, date, time, image}) => {
     return(
         <CardWrapper {...{title}} {...{image}} {...{link}} alt={title}>
             <CardHeader>
@@ -16,7 +16,7 @@ const LargeClassCard = ({ title, link, teacher, difficulty, duration, type, date
             <CardFooter>
                 <h3>{title}</h3>
                 <Details>
-                    <span>{teacher}</span>
+                    <span>{instructor}</span>
                     <span>{difficulty}</span>
                     <span>{duration}</span>
                 </Details>
@@ -25,10 +25,10 @@ const LargeClassCard = ({ title, link, teacher, difficulty, duration, type, date
     )
 }
 
-LargeClassCard.defaultProps = {
+FeaturedClassCard.defaultProps = {
     title: "",
     link: "/",
-    teacher: "",
+    instructor: "",
     difficulty: "",
     duration: "",
     type: "follow",
@@ -37,10 +37,10 @@ LargeClassCard.defaultProps = {
     image: ""
 };
 
-LargeClassCard.propTypes = {
+FeaturedClassCard.propTypes = {
     title: PropTypes.string.isRequired,
     link: PropTypes.string.isRequired,
-    teacher: PropTypes.string,
+    instructor: PropTypes.string,
     difficulty: PropTypes.string,
     duration: PropTypes.string,
     type: PropTypes.oneOf(['follow', 'fiit', 'restore']),
@@ -49,4 +49,4 @@ LargeClassCard.propTypes = {
     image: PropTypes.string.isRequired, 
 }
 
-export default LargeClassCard;
+export default FeaturedClassCard;

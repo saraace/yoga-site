@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Button } from 'theme-ui';
+import { jsx } from 'theme-ui';
 import Link from "next/link";
 import ButtonRow, { RowItem } from "./styles";
 import { NavLink } from "../Navigation/styles";

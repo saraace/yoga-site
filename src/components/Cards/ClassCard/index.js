@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import { CardWrapper, CardHeader, CardFooter, ClassType, Details } from "./styles";
 
-const SmallClassCard = ({ title, link, teacher, difficulty, duration, type, date, time, image }) => {
+const SmallClassCard = ({ title, link, instructor, difficulty, duration, type, date, time, image, ...rest }) => {
     return(
-        <CardWrapper {...{title}} {...{image}} {...{link}} alt={title} >
+        <CardWrapper {...{title}} {...{image}} {...{link}} alt={title} {...rest} >
             <CardHeader>
                 <div>
                     <div>{date}</div>
@@ -16,7 +16,7 @@ const SmallClassCard = ({ title, link, teacher, difficulty, duration, type, date
             <CardFooter>
                 <h3>{title}</h3>
                 <Details>
-                    <span>{teacher}</span>
+                    <span>{instructor}</span>
                     <span>{difficulty}</span>
                     <span>{duration}</span>
                 </Details>
@@ -28,7 +28,7 @@ const SmallClassCard = ({ title, link, teacher, difficulty, duration, type, date
 SmallClassCard.defaultProps = {
     title: "",
     link: "/",
-    teacher: "",
+    instructor: "",
     difficulty: "",
     duration: "",
     type: "follow",
@@ -40,7 +40,7 @@ SmallClassCard.defaultProps = {
 SmallClassCard.propTypes = {
     title: PropTypes.string.isRequired,
     link: PropTypes.string.isRequired,
-    teacher: PropTypes.string,
+    instructor: PropTypes.string,
     difficulty: PropTypes.string,
     duration: PropTypes.string,
     type: PropTypes.oneOf(['follow', 'fiit', 'restore']),

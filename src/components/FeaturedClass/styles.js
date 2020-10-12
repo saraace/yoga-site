@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
+import ClassCard from "../Cards/ClassCard";
 
-export const FeaturedClass = styled.div`
+export const ClassWrapper = styled.div`
     display: flex;
     margin: 80px 0;
     flex-direction: column;
@@ -10,7 +11,7 @@ export const FeaturedClass = styled.div`
     }
 `;
 
-export const FeaturedClassCard = styled.div`
+export const CardWrapper = styled.div`
     wdith: 100%;
     height: 220px;
 
@@ -19,7 +20,7 @@ export const FeaturedClassCard = styled.div`
         border-radius: 0px;
 
         &:after{
-            border-radius: 0px;
+            border-radius: 0px !important;
         }
 
         img{
@@ -47,7 +48,12 @@ export const FeaturedClassCard = styled.div`
     }
 `;
 
-export const FeaturedClassContent = styled.div`
+export const Card = styled(ClassCard)`
+    width: 100% !important;
+    height: 100% !important;
+`;
+
+export const Content = styled.div`
     padding: 18px 24px 0;
 
     h2{
@@ -76,7 +82,7 @@ export const ButtonRow = styled.div`
     margin: 0 0 15px 0;
     flex-direction: column; 
 
-    & > div:first-child{
+    & > div:first-of-type{
         margin: 0 0 8px 0;
     }
 
@@ -89,7 +95,7 @@ export const ButtonRow = styled.div`
         flex-direction: row; 
         margin: 0 0 44px 0;
 
-        & > div:first-child{
+        & > div:first-of-type{
             margin: 0 16px 0 0;
         }
     }
