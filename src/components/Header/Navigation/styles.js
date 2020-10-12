@@ -21,6 +21,7 @@ export const NavLink = styled.a`
     text-transform: uppercase;
     letter-spacing: 0.045em;
     position: relative;
+    cursor: pointer;
 
     &:after{
         content: "";

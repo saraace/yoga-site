@@ -1,3 +1,4 @@
+import Link from 'next/link'; 
 import NavMenu, { NavItem, NavLink, Dropdown } from "./styles"; 
 import navigationLinks from "./nav-items";
 
@@ -7,7 +8,9 @@ const Navigation = () => {
             {navigationLinks.map((navItem, i) => {
                 return (
                     <NavItem key={i}>
-                        <NavLink href={navItem.link}>{navItem.text}</NavLink>
+                        <Link href={navItem.link}>
+                            <NavLink>{navItem.text}</NavLink>
+                        </Link>
                         {navItem.hasOwnProperty('children') && (
                         <Dropdown>
                             <ul>

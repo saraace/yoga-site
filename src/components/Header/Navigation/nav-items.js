@@ -1,15 +1,15 @@
 const navigationLinks = [
     {
         text: "Shift", 
-        link: "#" 
+        link: "/shift" 
     }, 
     {
         text: "Classes", 
-        link: "#"
+        link: "/classes"
     }, 
     {
         text: "Locations", 
-        link: "#", 
+        link: "/locations", 
         children: [
             {
                 text: "Single Location 1", 
@@ -19,11 +19,11 @@ const navigationLinks = [
     }, 
     {
         text: "Teachers", 
-        link: "#"
+        link: "/teachers"
     }, 
     { 
         text: "Store", 
-        link: "#"
+        link: "/store"
     }
 ];
 
