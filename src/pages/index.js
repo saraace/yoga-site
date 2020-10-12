@@ -1,5 +1,5 @@
 import { Container } from "theme-ui";
-import SlidingSection from "../containers/SlidingSection"; 
+import SlidingLayout from "../containers/CardLayouts/SlidingLayout"; 
 import FeaturedClassCard from "../components/Cards/FeaturedClassCard";
 import ClassCard from "../components/Cards/ClassCard";
 import FeaturedClass from "../components/FeaturedClass"; 
@@ -146,37 +146,37 @@ export default function Home() {
 
   return (
     <>
-      <SlidingSection title={`My programs & scheduled classes`}>
+      <SlidingLayout title={`My programs & scheduled classes`}>
           {classes1.map((c, i) => {
               return (
                   <FeaturedClassCard key={i} {...c} />
               )
           })}
-      </SlidingSection>
-      <SlidingSection title={`New classes to discover`}>
+      </SlidingLayout>
+      <SlidingLayout title={`New classes to discover`}>
           {classes2.map((c, i) => {
               return (
                   <ClassCard key={i} {...c} />
               )
           })}
-      </SlidingSection>
+      </SlidingLayout>
       <Container variant="no-gutters">
           <FeaturedClass {...featuredClass} />
       </Container>
-      <SlidingSection title={`Upcoming live classes`}>
+      <SlidingLayout title={`Upcoming live classes`}>
           {classes2.map((c, i) => {
               return (
                   <ClassCard key={i} {...c} />
               )
           })}
-      </SlidingSection>
-      <SlidingSection title={`Classes by instructor`}>
+      </SlidingLayout>
+      <SlidingLayout title={`Classes by instructor`}>
           {instructors.map((instructor, i) => {
               return(
                   <InstructorCard key={i} {...instructor} />
               )
           })}
-      </SlidingSection>
+      </SlidingLayout>
     </>
   )
 }

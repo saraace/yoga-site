@@ -8,7 +8,7 @@ export const CardWrapper = styled(Card)`
 
         @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
             width: 368px; 
-            height: 266px;
+            height: 264px;
         }
     }
 
@@ -16,6 +16,12 @@ export const CardWrapper = styled(Card)`
         width: 368px; 
         height: 436px;
         margin: 0;
+    }
+
+    &.large{
+        width: 512px; 
+        height: 300px;
+        margin: 0 16px 0 0;
     }
 
     &.featured{

@@ -8,7 +8,7 @@ const LibraryTopRow = ({ tabs, activeTab, onTabClick, subTabs, activeSubTab, onS
         <TopRow>
             <div>
                 <Tabs {...{tabs}} active={activeTab} {...{onTabClick}} />
-                <Tabs tabs={Array.isArray(subTabs) ? subTabs : subTabs[activeTab]} active={activeSubTab} variant='sub-tab' onTabClick={onSubTabClick} />
+                {subTabs && <Tabs tabs={Array.isArray(subTabs) ? subTabs : subTabs[activeTab]} active={activeSubTab} variant='sub-tab' onTabClick={onSubTabClick} />}
             </div>
             {filters && (
                 <Filters />

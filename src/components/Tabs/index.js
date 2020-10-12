@@ -3,7 +3,7 @@ import { TabMenu, Tab } from "./styles";
 const Tabs = ({ tabs, active, variant, onTabClick }) => {
     return(
         <TabMenu>
-            {tabs.map((tab, i) => (
+            {tabs && tabs.map((tab, i) => (
                 <Tab 
                 key={i} 
                 className={

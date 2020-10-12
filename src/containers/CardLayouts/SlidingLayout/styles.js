@@ -7,13 +7,12 @@ export const Section = styled.div`
 
     @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
         margin: 0 0 40px 0;
-        padding: 0 0 0 136px;
     }
 `;
 
 export const SectionTitle = styled.h2`
     font-size: ${({ theme }) => theme.fontSizes[2]+'px'};
-    margin-bottom: ${({ theme }) => theme.fontSizes[0]+'px'};
+    margin-bottom: 12px;
     font-weight: 400;
 `;
 
