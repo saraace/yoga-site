@@ -12,7 +12,7 @@ const Layout = ({ children }) => {
     style = {
       backgroundImage: 'url(/images/sign-up/bg.png)'
     }
-  } else {
+  } else if(router.pathname === '/') {
     style = {
       backgroundImage: 'url(/images/homepage/bg.png)'
     }
