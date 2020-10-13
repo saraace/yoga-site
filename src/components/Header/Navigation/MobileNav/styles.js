@@ -19,7 +19,7 @@ export const ToggleButton = styled(motion.div)`
     cursor: pointer;
     z-index: 100;
 
-    & > div:first-child, 
+    & > div:first-of-type, 
     & > div:last-child{
         position: absolute; 
         height: 2px; 
@@ -28,7 +28,7 @@ export const ToggleButton = styled(motion.div)`
         border-radius: 1px;
     }
 
-    & > div:first-child{
+    & > div:first-of-type{
         top: 8px;
         right: 0;
     }

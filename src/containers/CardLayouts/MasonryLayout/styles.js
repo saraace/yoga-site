@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { motion } from "framer-motion";
 
 export const Section = styled.div`
-    padding: 0 0 0 24px;
+    padding: 0 24px;
     margin: 40px 0 0 0;
 
     @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
@@ -19,17 +19,22 @@ export const SectionTitle = styled.h2`
 export const MasonryGrid = styled.div`
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-between;
+    justify-content: center;
     margin-bottom: 16px;
-    margin-top: 98px;
 
-    &.push-up{
-        margin-top: 127px;
-    }
-
-    .card:nth-of-type(3n),
-    .card:nth-of-type(3n+1){
-        margin-top: -86px;
-        margin-bottom: 118px;
+    @media (min-width: 1161px){
+        margin-top: 98px;
+        flex-flow: row wrap;
+        justify-content: space-between;
+    
+        &.push-up{
+            margin-top: 127px;
+        }
+        
+        .card:nth-of-type(3n),
+        .card:nth-of-type(3n+1){
+            margin-top: -86px;
+            margin-bottom: 118px;
+        }
     }
 `; 

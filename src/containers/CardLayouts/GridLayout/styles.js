@@ -18,10 +18,15 @@ export const SectionTitle = styled.h2`
 export const Grid = styled.div`
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-between;
+    justify-content: center;
     margin-bottom: 16px;
 
     & > *{
         margin-bottom: 32px !important;
+    }
+
+    @media (min-width: 1161px){
+        flex-flow: row wrap;
+        justify-content: space-between;
     }
 `; 

@@ -1,25 +1,40 @@
 import PropTypes from 'prop-types';
-import { CardWrapper, CardHeader, CardFooter, ClassType, Details } from "./styles";
+import { CardWrapper, CardHeader, DesktopHeader, MobileHeader, CardFooter, DesktopFooter, MobileFooter, Details } from "./styles";
+import ClassTypeBadge from '../../ClassTypeBadge';
 
 const FeaturedClassCard = ({ title, link, instructor, difficulty, duration, type, date, time, image, ...rest }) => {
     return(
         <CardWrapper {...{title}} {...{image}} {...{link}} alt={title} {...rest}>
             <CardHeader>
-                <div>
-                    <div>{date}</div>
-                    <div>{time}</div>
-                </div>
-                <div>
-                    <ClassType className={type}>{type === "follow"? "Yoga Follow" : type}</ClassType>
-                </div>
+                <DesktopHeader>
+                    <div>
+                        <div>{date}</div>
+                        <div>{time}</div>
+                    </div>
+                    <div>
+                        <ClassTypeBadge {...{type}} />
+                    </div>
+                </DesktopHeader>
+                <MobileHeader>
+                    <Details>
+                        <span>Strength</span>
+                        <span>{difficulty}</span>
+                    </Details>
+                </MobileHeader>
             </CardHeader>
             <CardFooter>
-                <h3>{title}</h3>
-                <Details>
-                    <span>{instructor}</span>
-                    <span>{difficulty}</span>
-                    <span>{duration}</span>
-                </Details>
+                <DesktopFooter>
+                    <h3>{title}</h3>
+                    <Details>
+                        <span>{instructor}</span>
+                        <span>{difficulty}</span>
+                        <span>{duration}</span>
+                    </Details>
+                </DesktopFooter>
+                <MobileFooter>
+                    <h3>Hips and Legs: Finding Freedom through Foundation</h3>
+                    <span>With {instructor}</span>
+                </MobileFooter>
             </CardFooter>
         </CardWrapper>
     )

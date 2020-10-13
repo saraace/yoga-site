@@ -1,20 +1,21 @@
 import PropTypes from 'prop-types';
-import { CardWrapper, CardHeader, CardFooter, ClassType, Details } from "./styles";
+import { CardWrapper, CardHeader, DateTime, CardFooter, Title, Details } from "./styles";
+import ClassTypeBadge from '../../ClassTypeBadge';
 
 const SmallClassCard = ({ title, link, instructor, difficulty, duration, type, date, time, image, variant,...rest }) => {
     return(
         <CardWrapper {...{title}} {...{image}} {...{link}} alt={title} className={variant ? variant : 'default'} {...rest} >
             <CardHeader>
-                <div>
+                <DateTime>
                     <div>{date}</div>
                     <div>{time}</div>
-                </div>
+                </DateTime>
                 <div>
-                    <ClassType className={type}>{type === "follow"? "Yoga Follow" : type}</ClassType>
+                    <ClassTypeBadge {...{type}} />
                 </div>
             </CardHeader>
             <CardFooter>
-                <h3>{title}</h3>
+                <Title>{title}</Title>
                 <Details>
                     <span>{instructor}</span>
                     <span>{difficulty}</span>
