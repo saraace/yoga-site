@@ -6,7 +6,7 @@ import GridLayout from "../containers/CardLayouts/GridLayout";
 import SlidingLayout from "../containers/CardLayouts/SlidingLayout"; 
 import ClassCard from "../components/Cards/ClassCard";
 
-export default function ClassPage() {
+const Classes = () => {
 
     const tabs = ["On-Demand", "Live", "Local"];
     const subTabs = {
@@ -41,7 +41,7 @@ export default function ClassPage() {
             date: "Mon, July 25th", 
             time: "10:15pm", 
             image: "/images/classes/image-01.png", 
-            link: "/sign-up"
+            link: "/classes/1"
         }, 
         {
             title: "Cardio", 
@@ -52,7 +52,7 @@ export default function ClassPage() {
             date: "Mon, July 25th", 
             time: "10:15pm", 
             image: "/images/classes/image-02.png", 
-            link: "/sign-up"
+            link: "/classes/1"
         }, 
         {
             title: "Workout Name", 
@@ -63,7 +63,7 @@ export default function ClassPage() {
             date: "Mon, July 25th", 
             time: "10:15pm", 
             image: "/images/classes/image-03.png", 
-            link: "/sign-up"
+            link: "/classes/1"
         }, 
         {
             title: "Workout Name", 
@@ -74,7 +74,7 @@ export default function ClassPage() {
             date: "Mon, July 25th", 
             time: "10:15pm", 
             image: "/images/classes/image-01.png", 
-            link: "/sign-up"
+            link: "/classes/1"
         }, 
         {
             title: "Cardio", 
@@ -85,7 +85,7 @@ export default function ClassPage() {
             date: "Mon, July 25th", 
             time: "10:15pm", 
             image: "/images/classes/image-02.png", 
-            link: "/sign-up"
+            link: "/classes/1"
         }, 
         {
             title: "Workout Name", 
@@ -96,7 +96,7 @@ export default function ClassPage() {
             date: "Mon, July 25th", 
             time: "10:15pm", 
             image: "/images/classes/image-03.png", 
-            link: "/sign-up"
+            link: "/classes/1"
         }, 
         {
             title: "Cardio", 
@@ -107,7 +107,7 @@ export default function ClassPage() {
             date: "Mon, July 25th", 
             time: "10:15pm", 
             image: "/images/classes/image-02.png", 
-            link: "/sign-up"
+            link: "/classes/1"
         }, 
         {
             title: "Workout Name", 
@@ -118,7 +118,7 @@ export default function ClassPage() {
             date: "Mon, July 25th", 
             time: "10:15pm", 
             image: "/images/classes/image-03.png", 
-            link: "/sign-up"
+            link: "/classes/1"
         }, 
         {
             title: "Cardio", 
@@ -129,7 +129,7 @@ export default function ClassPage() {
             date: "Mon, July 25th", 
             time: "10:15pm", 
             image: "/images/classes/image-02.png", 
-            link: "/sign-up"
+            link: "/classes/1"
         }, 
         {
             title: "Workout Name", 
@@ -140,7 +140,7 @@ export default function ClassPage() {
             date: "Mon, July 25th", 
             time: "10:15pm", 
             image: "/images/classes/image-03.png", 
-            link: "/sign-up"
+            link: "/classes/1"
         }, 
         {
             title: "Cardio", 
@@ -151,7 +151,7 @@ export default function ClassPage() {
             date: "Mon, July 25th", 
             time: "10:15pm", 
             image: "/images/classes/image-02.png", 
-            link: "/sign-up"
+            link: "/classes/1"
         }, 
         {
             title: "Workout Name", 
@@ -162,7 +162,7 @@ export default function ClassPage() {
             date: "Mon, July 25th", 
             time: "10:15pm", 
             image: "/images/classes/image-03.png", 
-            link: "/sign-up"
+            link: "/classes/1"
         }
     ]
 
@@ -238,3 +238,5 @@ export default function ClassPage() {
         </Container>
     )
 }
+
+export default Classes;

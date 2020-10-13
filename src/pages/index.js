@@ -5,7 +5,7 @@ import ClassCard from "../components/Cards/ClassCard";
 import FeaturedClass from "../components/FeaturedClass"; 
 import InstructorCard from "../components/Cards/InstructorCard";
 
-export default function Home() {
+const Home = () => {
 
   const classes1 = [
       {
@@ -180,3 +180,5 @@ export default function Home() {
     </>
   )
 }
+
+export default Home;
