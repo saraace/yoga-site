@@ -7,21 +7,26 @@ const LibraryTopRow = ({ tabs, activeTab, onTabClick, subTabs, activeSubTab, onS
     return(
         <TopRow>
             <div>
-                <Tabs {...{tabs}} active={activeTab} {...{onTabClick}} />
+                {tabs && <Tabs {...{tabs}} active={activeTab} {...{onTabClick}} />}
                 {subTabs && <Tabs tabs={Array.isArray(subTabs) ? subTabs : subTabs[activeTab]} active={activeSubTab} variant='sub-tab' onTabClick={onSubTabClick} />}
             </div>
-            {filters && (
-                <Filters />
-            )}
+            {filters && <Filters />}
         </TopRow>
     )
 }
 
 LibraryTopRow.defaultProps = {
-    tabs: [], 
-    activeTab: "", 
-    subTabs: [], 
     filters: false
+}
+
+LibraryTopRow.propTypes = {
+    tabs: PropTypes.array,
+    activeTab: PropTypes.string, 
+    onTabClick: PropTypes.func,
+    subTabs: PropTypes.oneOfType(PropTypes.array, PropTypes.object), 
+    activeSubTab: PropTypes.string, 
+    onSubTabClick: PropTypes.func,
+    filters: PropTypes.bool
 }
 
 export default LibraryTopRow;

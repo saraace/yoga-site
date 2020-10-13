@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { TabMenu, Tab } from "./styles";
 
 const Tabs = ({ tabs, active, variant, onTabClick }) => {
@@ -16,5 +17,19 @@ const Tabs = ({ tabs, active, variant, onTabClick }) => {
         </TabMenu>
     )
 }
+
+Tabs.defaultProps = {
+    tabs: [], 
+    active: "", 
+    variant: "", 
+    onTabClick: () => {}
+}; 
+
+Tabs.propTypes = {
+    tabs: PropTypes.arrayOf(PropTypes.string).isRequired,
+    active: PropTypes.string, 
+    variant: PropTypes.string, 
+    onTabClick: PropTypes.func
+};
 
 export default Tabs;

@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { cloneElement } from 'react';
 import { Section, SectionTitle, Grid } from "./styles";
 
@@ -16,6 +17,11 @@ const GridLayout = ({ title, children, ...rest}) => {
             </Grid>
         </Section>
     )
+}
+
+GridLayout.propTypes = {
+    title: PropTypes.string, 
+    children: PropTypes.node.isRequired
 }
 
 export default GridLayout;

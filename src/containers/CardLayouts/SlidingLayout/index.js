@@ -4,7 +4,7 @@ import { useRef, useEffect, useState } from "react";
 import { Section, SectionTitle, Slider, SliderContents } from "./styles";
 //import ChevronRight from "../../svgs/chevron-right.svg";
 
-const SlidingSection = ({ title, children, ...rest }) => {
+const SlidingLayout = ({ title, children, ...rest }) => {
 
     const [leftConstraint, setLeftConstraint] = useState(0);
     const [sliderHeight, setSliderHeight] = useState(0);
@@ -38,8 +38,9 @@ const SlidingSection = ({ title, children, ...rest }) => {
     );
 }
 
-SlidingSection.propTypes = {
-    title: PropTypes.string
+SlidingLayout.propTypes = {
+    title: PropTypes.string, 
+    children: PropTypes.node.isRequired
 }
 
-export default SlidingSection;
+export default SlidingLayout;

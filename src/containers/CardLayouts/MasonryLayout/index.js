@@ -1,7 +1,8 @@
+import PropTypes from "prop-types";
 import { cloneElement } from 'react';
 import { Section, SectionTitle, MasonryGrid } from "./styles";
 
-const MasonrySection = ({ title, children, ...rest }) => {
+const MasonryLayout = ({ title, children, ...rest }) => {
     return(
         <Section {...rest}>
             {title && <SectionTitle>{title}</SectionTitle>}
@@ -19,4 +20,9 @@ const MasonrySection = ({ title, children, ...rest }) => {
     );
 }
 
-export default MasonrySection;
+MasonryLayout.propTypes = {
+    title: PropTypes.string, 
+    children: PropTypes.node.isRequired
+}
+
+export default MasonryLayout;

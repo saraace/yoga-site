@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import { CardWrapper, CardHeader, CardFooter, ClassType, Details } from "./styles";
 
-const FeaturedClassCard = ({ title, link, instructor, difficulty, duration, type, date, time, image}) => {
+const FeaturedClassCard = ({ title, link, instructor, difficulty, duration, type, date, time, image, ...rest }) => {
     return(
-        <CardWrapper {...{title}} {...{image}} {...{link}} alt={title}>
+        <CardWrapper {...{title}} {...{image}} {...{link}} alt={title} {...rest}>
             <CardHeader>
                 <div>
                     <div>{date}</div>
