@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { motion } from "framer-motion";
 
 const PageHeader = styled.header`
     display: flex; 
@@ -15,7 +16,17 @@ const PageHeader = styled.header`
 
 export const LogoCol = styled.div`
     z-index: 1;
+
+    a{
+        position: relative;
+    }
 `;
+
+export const LogoWrapper = styled(motion.div)`
+    position: absolute;
+    //top: 50%;
+    //transform: translateY(-50%);
+`; 
 
 export const NavCol = styled.div`
     display: none; 

@@ -1,4 +1,5 @@
-import { Container } from "theme-ui";
+/** @jsx jsx */
+import { jsx, Container, Button } from "theme-ui";
 import SlidingLayout from "../containers/CardLayouts/SlidingLayout"; 
 import FeaturedClassCard from "../components/Cards/FeaturedClassCard";
 import ClassCard from "../components/Cards/ClassCard";
@@ -146,37 +147,42 @@ const Home = () => {
 
   return (
     <>
-      <SlidingLayout title={`My programs & scheduled classes`}>
-          {classes1.map((c, i) => {
-              return (
-                  <FeaturedClassCard key={i} {...c} />
-              )
-          })}
-      </SlidingLayout>
-      <SlidingLayout title={`New classes to discover`}>
-          {classes2.map((c, i) => {
-              return (
-                  <ClassCard key={i} {...c} />
-              )
-          })}
-      </SlidingLayout>
-      <Container variant="no-gutters">
-          <FeaturedClass {...featuredClass} />
-      </Container>
-      <SlidingLayout title={`Upcoming live classes`}>
-          {classes2.map((c, i) => {
-              return (
-                  <ClassCard key={i} {...c} />
-              )
-          })}
-      </SlidingLayout>
-      <SlidingLayout title={`Classes by instructor`}>
-          {instructors.map((instructor, i) => {
-              return(
-                  <InstructorCard key={i} {...instructor} />
-              )
-          })}
-      </SlidingLayout>
+        <div sx={{ p: '0 24px', display: ['block', null, 'none', null] }}>
+            <h2 sx={{ mt: '43px' }}>Hips and Legs: Finding Freedom through Foundation</h2>
+            <p>Starting from the ground up, learn how to establish a stable foundation in the feet that will translate up the entire leg and pelvis.</p>
+            <Button variant='secondary-outline'>Continue Exercise</Button>
+        </div>
+        <SlidingLayout title={`My programs & scheduled classes`}>
+            {classes1.map((c, i) => {
+                return (
+                    <FeaturedClassCard key={i} {...c} />
+                )
+            })}
+        </SlidingLayout>
+        <SlidingLayout title={`New classes to discover`}>
+            {classes2.map((c, i) => {
+                return (
+                    <ClassCard key={i} {...c} />
+                )
+            })}
+        </SlidingLayout>
+        <Container variant="no-gutters">
+            <FeaturedClass {...featuredClass} />
+        </Container>
+        <SlidingLayout title={`Upcoming live classes`}>
+            {classes2.map((c, i) => {
+                return (
+                    <ClassCard key={i} {...c} />
+                )
+            })}
+        </SlidingLayout>
+        <SlidingLayout title={`Classes by instructor`}>
+            {instructors.map((instructor, i) => {
+                return(
+                    <InstructorCard key={i} {...instructor} />
+                )
+            })}
+        </SlidingLayout>
     </>
   )
 }

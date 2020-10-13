@@ -87,7 +87,7 @@ const theme = {
         fontSize: 4,
         fontWeight: 'heading', 
         lineHeight: '1.255',
-        m: '0 0 1.875rem 0'
+        m: '0 0 24px 0'
       },
       h3: {
         fontSize: 3,
