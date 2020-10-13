@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
+import { motion } from "framer-motion";
 
-export const CardContainer = styled.a`
+export const CardContainer = styled(motion.a)`
     border-radius: 12px;
     margin: 0 16px 0 0;
     padding: 20px 24px 24px;

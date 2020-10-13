@@ -1,3 +1,4 @@
+import { cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import { useRef, useEffect, useState } from "react";
 import { Section, SectionTitle, Slider, SliderContents } from "./styles";
@@ -24,7 +25,13 @@ const SlidingSection = ({ title, children, ...rest }) => {
                     ref={slidingContainer}
                     drag="x"
                     dragConstraints={{ right: 0, left: leftConstraint }}>
-                    {children}
+                    {children.map((child, idx) => {
+                        return cloneElement(child, {
+                            initial: { opacity: 0, left: '100px' },
+                            animate: { opacity: 1, left: 0 },
+                            transition: { ease: 'easeOut', delay: 0.03*idx, duration: 0.3 }
+                        })
+                    })}
                 </SliderContents>
             </Slider>
         </Section>

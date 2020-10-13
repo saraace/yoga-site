@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { motion } from "framer-motion";
 
 export const Section = styled.div`
     padding: 0 0 0 24px;
@@ -26,8 +27,8 @@ export const MasonryGrid = styled.div`
         margin-top: 127px;
     }
 
-    .tall:nth-of-type(3n),
-    .tall:nth-of-type(3n+1){
+    .card:nth-of-type(3n),
+    .card:nth-of-type(3n+1){
         margin-top: -86px;
         margin-bottom: 118px;
     }

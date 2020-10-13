@@ -169,32 +169,30 @@ export default function ClassPage() {
     return (
         <Container variant="no-gutters">
             <LibraryTopRow {...{tabs}} {...{activeTab}} {...{onTabClick}} {...{subTabs}} {...{activeSubTab}} {...{onSubTabClick}} filters="true" />
-            {activeTab === tabs[0] && (
+            {activeTab === tabs[0] && activeSubTab === subTabs[activeTab][0] && (
                 <>
-                {activeSubTab === subTabs[activeTab][0] && (
-                    <MasonryLayout>
+                    <MasonryLayout exit={{opacity: 0}}>
                         {classes.map((c, i) => (
                             <ClassCard key={i} {...c} className="tall" />
                         ))}
-                    </MasonryLayout>   
-                )}
-                {activeSubTab === subTabs[activeTab][1] && (
-                    <>
+                    </MasonryLayout>
+                </>   
+            )}
+            {activeTab === tabs[0] && activeSubTab === subTabs[activeTab][1] && (
+                <>
                     <SlidingLayout title={`My programs`}>
                         {classes.map((c, i) => {
                             return (
-                                <ClassCard key={i} {...c} className="large" />
+                                <ClassCard key={'card'+i} {...c} className="large" />
                             )
                         })}
                     </SlidingLayout>
                     <MasonryLayout title={`Available Programs`}>
                         {classes.map((c, i) => (
-                            <ClassCard key={i} {...c} className="tall" />
+                            <ClassCard key={'test'+i} {...c} className="tall" />
                         ))}
                     </MasonryLayout>
-                    </>   
-                )}
-                </>
+                </>  
             )}
             {activeTab === tabs[1] && (
                 <>
@@ -211,7 +209,7 @@ export default function ClassPage() {
                         ))}
                     </GridLayout>
                 </>
-            )}      
+            )}    
             {activeTab === tabs[2] && (
                 <>
                     <SlidingLayout title={`Monday, October 27th`}>
@@ -236,7 +234,7 @@ export default function ClassPage() {
                         })}
                     </SlidingLayout>
                 </>
-            )}   
+            )}      
         </Container>
     )
 }
