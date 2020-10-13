@@ -1,6 +1,6 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import { Input, Label } from 'theme-ui';
+import { AnimatePresence } from 'framer-motion';
 import FormInputWrapper from "./styles";
 import ValidationLabel from "../Validation/ValidationLabel";
 
@@ -9,7 +9,9 @@ const FormInput = ({ label, required, className, validate, value, ...rest }) => 
         <FormInputWrapper className={validate? 'invalid' : 'valid'}>
             {label && <Label>{label}{required ? ' *' : ''}</Label>}
             <Input {...rest} {...{value}} />
-            {validate && <ValidationLabel>{validate}</ValidationLabel>}
+            <AnimatePresence>
+                {validate && <ValidationLabel>{validate}</ValidationLabel>}
+            </AnimatePresence>
         </FormInputWrapper>
     )
 }

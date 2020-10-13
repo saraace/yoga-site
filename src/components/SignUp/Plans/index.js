@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { AnimatePresence } from 'framer-motion';
 import PlanGroup from "./styles"
 import Plan from "./Plan";
 import ValidationLabel from "../../Forms/Validation/ValidationLabel";
@@ -14,7 +15,9 @@ const Plans = ({ plans, name, value, validate, ...rest }) => {
                     )
                 })}
             </ValidationWrapper>
-            {validate && <ValidationLabel>{validate}</ValidationLabel>}
+            <AnimatePresence>
+                {validate && <ValidationLabel>{validate}</ValidationLabel>}
+            </AnimatePresence>
         </PlanGroup>
     );
 }

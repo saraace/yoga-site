@@ -1,9 +1,9 @@
-import React  from "react";
 import PropTypes from "prop-types";
 import { Select, Label } from 'theme-ui';
+import { AnimatePresence } from 'framer-motion';
 import FormSelectWrapper, { SelectWrapper } from "./styles";
-import Arrow from "../../../svgs/chevron-down.svg";
-import LocationMarker from "../../../svgs/location-pin.svg";
+import Arrow from "../../../assets/svgs/chevron-down.svg";
+import LocationMarker from "../../../assets/svgs/location-pin.svg";
 import ValidationLabel from "../Validation/ValidationLabel";
 
 const FormSelect = ({ value, className, options, label, validate, locationIcon, ...rest }) => {
@@ -21,7 +21,9 @@ const FormSelect = ({ value, className, options, label, validate, locationIcon, 
                 </Select>
                 <Arrow className="arrow" />
             </SelectWrapper>
-            {validate && <ValidationLabel>{validate}</ValidationLabel>}
+            <AnimatePresence>
+                {validate && <ValidationLabel>{validate}</ValidationLabel>}
+            </AnimatePresence>
         </FormSelectWrapper>
     )
 }

@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
+import { motion } from 'framer-motion';
 
-export const LabelContainer = styled.div`
+export const LabelContainer = styled(motion.div)`
     text-align: right; 
 `; 
 

@@ -122,7 +122,7 @@ const SignUp = () => {
                         <Input placeholder="Email" name="email" value={values.email} onChange={handleChange} validate={touched.email && errors.email} />
                         <PasswordRequirements password={values.password} confirm={values.confirmPassword} checkMatch={true}>
                             <Input placeholder="Password" type="password" name="password" value={values.password} onChange={handleChange} validate={touched.password && errors.password} />
-                            <Input placeholder="Confirm Password" type="password" name="confirmPassword" values={values.confirmPassword} onChange={handleChange} validate={touched.confirmPassword && errors.confirmPassword} />
+                            <Input placeholder="Confirm Password" type="password" name="confirmPassword" value={values.confirmPassword} onChange={handleChange} validate={touched.confirmPassword && errors.confirmPassword} />
                         </PasswordRequirements>
                         <Input placeholder="Name on the card" name="nameOnCard" value={values.nameOnCard} onChange={handleChange} validate={touched.nameOnCard && errors.nameOnCard} />
                         <Input placeholder="1111 1111 1111 1111" name="cardNumber" value={values.cardNumber} onChange={handleChange} validate={touched.cardNumber && errors.cardNumber} />

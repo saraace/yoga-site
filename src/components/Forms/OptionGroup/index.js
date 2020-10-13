@@ -1,6 +1,6 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import { Label } from 'theme-ui';
+import { AnimatePresence } from 'framer-motion';
 import FormOptionGroup from "./styles";
 import Radio from "../Radio";
 import ValidationLabel from "../Validation/ValidationLabel";
@@ -15,7 +15,9 @@ const FormOption = ({ name, options, multiple, label, value, required, className
                     <Radio key={i} {...rest} name={name} value={option.value} label={option.displayValue} checked={option.value === value} />
                 ))}
             </ValidationWrapper>
-            {validate && <ValidationLabel>{validate}</ValidationLabel>}
+            <AnimatePresence>
+                {validate && <ValidationLabel>{validate}</ValidationLabel>}
+            </AnimatePresence>
         </FormOptionGroup>
     )
 }
