@@ -36,19 +36,17 @@ export const FilterMenu = styled(motion.div)`
     background-color: #111b29;
     z-index: 1;
     overflow: hidden;
+    padding: 81px 0 0;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
 `; 
 
 export const FilterRow = styled.div`
     display: flex;
-    width: 100%;
-    justify-content: center;
+    width: 776px;
+    margin: 0 auto;
+    justify-content: space-between;
 `; 
-
-export const FilterCol = styled.div`
-    margin: 0 35px;
-`; 
-
-export const FilterGroup = styled.div``; 
 
 export const Filter = styled.div`
     display: flex;
@@ -80,6 +78,7 @@ export const FilterTitle = styled.div`
 
 export const ApplyButton = styled.div`
     text-align: center;
+    width: 100%;
     
     button{
         padding: 17px 73px;

@@ -5,7 +5,7 @@ import FollowIcon from '../../../assets/svgs/follow-icon.svg';
 import FiitIcon from '../../../assets/svgs/fiit-icon.svg'; 
 import RestoreIcon from '../../../assets/svgs/restore-icon.svg'; 
 
-const YogaTypeFilter = ({ label, value, selected, handleChange, ...rest }) => {
+const YogaTypeFilterOption = ({ label, value, selected, handleChange, ...rest }) => {
     return(
         <RadioButton className={value + (selected === value? ' selected' : '')}>
             <Icon className={value}>
@@ -24,4 +24,4 @@ const YogaTypeFilter = ({ label, value, selected, handleChange, ...rest }) => {
     )
 }
 
-export default YogaTypeFilter;
+export default YogaTypeFilterOption;
