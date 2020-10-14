@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Filter, LeftControl, RightControl, SliderWrap, Slider, Instructor, Image, SelectedIndicator, Overlay } from './styles'; 
 import Checkmark from '../../../assets/svgs/checkmark-2.svg';

@@ -4,6 +4,7 @@ import { Container, Button, Badge } from 'theme-ui';
 import { FilterButton, FilterMenu, FilterRow, Filter, ClassTypeFilter, DifficultyFilter, YogaType, FilterTitle, ApplyButton } from './styles';
 import InstructorFilter from './InstructorFilter';
 import RadioFilterOption from './RadioFilterOption';
+import DurationFilter from './DurationFilter';
 import YogaTypeFilterOption from './YogaTypeFilterOption';
 import FilterIcon from '../../assets/svgs/filter-icon.svg';
 
@@ -14,6 +15,8 @@ const Filters = () => {
         instructor: '', 
         classType: '', 
         difficulty: '',
+        durationMin: '', 
+        durationMax: '',
         yogaType : ''
     });
 
@@ -45,6 +48,8 @@ const Filters = () => {
             instructor: '', 
             classType: '', 
             difficulty: '',
+            durationMin: 0, 
+            durationMax: 40,
             yogaType : ''
         });
     } */
@@ -200,9 +205,10 @@ const Filters = () => {
                                         ))}
                                     </DifficultyFilter>
                                 </div>
-                                <Filter>
+                                <div>
                                     <FilterTitle>Duration <span className="muted">(Minutes)</span></FilterTitle>
-                                </Filter>
+                                    <DurationFilter handleChange={onSelect} />
+                                </div>
                             </div>
                             <div>
                                 <div>
