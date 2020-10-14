@@ -15,11 +15,16 @@ export const FilterButton = styled.div`
             fill: ${({ theme }) => theme.colors.primary};
         }
     }
-    span{
+    & > div{
+        display: flex;
         text-transform: uppercase; 
         color: ${({ theme }) => theme.colors.primary};
         line-height: 1;
         font-weight: 700;
+
+        & > div{
+            margin: 0 0 0 10px;
+        }
     }
 
     &:hover{

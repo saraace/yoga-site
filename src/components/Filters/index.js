@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { AnimatePresence } from 'framer-motion';
-import { Container, Button } from 'theme-ui';
+import { AnimatePresence, motion } from 'framer-motion';
+import { Container, Button, Badge } from 'theme-ui';
 import { FilterButton, FilterMenu, FilterRow, Filter, ClassTypeFilter, DifficultyFilter, YogaType, FilterTitle, ApplyButton } from './styles';
 import InstructorFilter from './InstructorFilter';
 import RadioFilterOption from './RadioFilterOption';
@@ -8,7 +8,8 @@ import YogaTypeFilterOption from './YogaTypeFilterOption';
 import FilterIcon from '../../assets/svgs/filter-icon.svg';
 
 const Filters = () => {
-    const [isOpen, setIsOpen] = useState(true);
+    const [isOpen, setIsOpen] = useState(false);
+    const [numberActive, setNumberActive] = useState(0);
     const [selected, setSelected] = useState({
         instructor: '', 
         classType: '', 
@@ -17,7 +18,11 @@ const Filters = () => {
     });
 
     useEffect(() => {
-        console.log(selected);
+        let number = 0; 
+        for(const ob of Object.entries(selected)){
+            number += (ob[1] !== '')? 1 : 0;
+        }
+        setNumberActive(number);
     }, [selected]);
 
     const onSelect = (name, value) => {
@@ -28,6 +33,21 @@ const Filters = () => {
             ...updatedSelected
         }));
     };
+
+    const onApply = () => {
+        setIsOpen(false);
+    }
+
+    /* const onClear = () => {
+        setIsOpen(false); 
+        setNumberActive(0);
+        setSelected({
+            instructor: '', 
+            classType: '', 
+            difficulty: '',
+            yogaType : ''
+        });
+    } */
 
     const instructors = [
         {
@@ -131,14 +151,26 @@ const Filters = () => {
         <>
             <FilterButton onClick={() => setIsOpen(isOpen => (!isOpen))}>
                 <FilterIcon />
-                <span>Filters</span>
+                <div>Filters 
+                    <AnimatePresence>
+                        {numberActive > 0 && 
+                            <motion.div
+                                initial={{ width: '0px' }}
+                                animate={{ width: 'auto' }}
+                                exit={{ width: '0px' }}
+                            >
+                                <Badge variant="danger">{numberActive}</Badge>
+                            </motion.div>
+                        }
+                    </AnimatePresence>
+                </div>
             </FilterButton>
             <AnimatePresence>
                 {isOpen && (
                 <FilterMenu
-                    initial={{ height: '0px' }}
-                    animate={{ height: 'auto' }}
-                    exit={{ height: '0px' }}
+                    initial={{ opacity: 0, height: '0px' }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={{ opacity: 0, height: '0px' }}
                     transition={{ ease: 'easeOut', duration: 0.3 }}
                 >
                     <Container>
@@ -185,7 +217,7 @@ const Filters = () => {
                         </FilterRow>
                         <FilterRow>
                             <ApplyButton>
-                                <Button type="submit" >Apply Filter</Button>
+                                <Button onClick={onApply} >Apply Filter</Button>
                             </ApplyButton>
                         </FilterRow>
                     </Container>
