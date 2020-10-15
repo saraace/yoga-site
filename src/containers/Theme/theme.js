@@ -70,7 +70,11 @@ const theme = {
     }, 
     fluid: {
       maxWidth: '100%', 
-      p: '0 0 0 136px'
+      p: '0 24px'
+    }, 
+    small: {
+      maxWidth: '938px', 
+      p: '0 24px'
     }
   },
   styles: {

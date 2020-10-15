@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 export const Video = styled.div`
     width: 100%; 
-    height: 600px;
+    height: 500px;
     background: #2c4263;
     margin: 0 auto;
 `; 
@@ -77,5 +77,5 @@ export const SectionTitle = styled.div`
 export const SectionContent = styled.div``;
 
 export const Description = styled.div`
-    width: 600px;
+    width: 410px;
 `;

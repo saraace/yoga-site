@@ -1,5 +1,5 @@
+import { Container } from 'theme-ui';
 import SingleClass from '../../components/SingleClass';
-
 
 const Class = () => {
 
@@ -21,7 +21,9 @@ const Class = () => {
     }
 
     return(
-        <SingleClass {...singleClass} />
+        <Container variant="small">
+            <SingleClass {...singleClass} />
+        </Container>
     )
 }
 

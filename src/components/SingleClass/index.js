@@ -1,4 +1,3 @@
-import { Container } from 'theme-ui';
 import { Video, ClassTitle, ClassDetails, Row, Col, Section, SectionTitle, SectionContent, Description } from './styles';
 import BoxIcon from '../../assets/svgs/box-icon.svg'; 
 import EquipIcon from '../../assets/svgs/equip-icon.svg'; 
@@ -6,7 +5,7 @@ import MuscleIcon from '../../assets/svgs/muscle-icon.svg';
 
 const SingleClass = ({ title, instructor, difficulty, duration, description, equipment, muscleGroups }) => {
     return(
-        <Container>
+        <>
             <Video />
             <ClassTitle>{title}</ClassTitle>
             <ClassDetails>
@@ -40,7 +39,7 @@ const SingleClass = ({ title, instructor, difficulty, duration, description, equ
                     </Section>
                 </Col>
             </Row>
-        </Container>
+        </>
     )
 }
 
