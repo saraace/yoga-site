@@ -1,30 +1,26 @@
 import { useState, useEffect } from 'react';
-import { AnimatePresence, motion, useAnimation } from 'framer-motion';
+import PropTypes from "prop-types";
 import { Filter, DragContainer, DragHandle, Labels, Label } from './styles';
 
-const DurationFilter = ({ handleChange }) => {
+const DurationFilter = ({ durationMin, durationMax, handleChange }) => {
 
     // Min and Max Positions for the drag handles
     const [ maxPos, setMaxPos ] = useState(234.75);
     const [ minPos, setMinPos ] = useState(70.5);
 
     // Min and Max values
-    const [ min, setMin ] = useState(0); 
-    const [ max, setMax ] = useState(40);
+    const [ min, setMin ] = useState(durationMin); 
+    const [ max, setMax ] = useState(durationMax);
 
     useEffect(() => {
         if(min > 0){
             handleChange('durationMin', min);
-        } else{
-            handleChange('durationMin', '');
         }
     }, [min]);
 
     useEffect(() => {
         if(max < 40){
             handleChange('durationMax', max);
-        } else{
-            handleChange('durationMax', '');
         }
     }, [max]);
 
@@ -37,7 +33,7 @@ const DurationFilter = ({ handleChange }) => {
                     dragElastic={0}
                     whileTap={{ scale: 0.9 }}
                     initial={{
-                        x: 0
+                        x: durationMin > 0? ((durationMin/10)*82.25)-12 : durationMin
                     }}
                     dragConstraints={{
                         left: 0, 
@@ -60,7 +56,7 @@ const DurationFilter = ({ handleChange }) => {
                     dragElastic={0}
                     whileTap={{ scale: 0.9 }}
                     initial={{
-                        x: 305
+                        x: durationMax < 40? ((durationMax/10)*82.25)-12 : 305
                     }}
                     dragConstraints={{
                         left: minPos, 
@@ -89,6 +85,18 @@ const DurationFilter = ({ handleChange }) => {
             </Labels>
         </Filter>
     )
+}
+
+DurationFilter.defaultProps = {
+    durationMin: 0, 
+    durationMax: 40,
+    handleChange: () => {}
+}
+
+DurationFilter.propTypes = {
+    durationMin: PropTypes.number, 
+    durationMax: PropTypes.number,
+    handleChange: PropTypes.func
 }
 
 export default DurationFilter;

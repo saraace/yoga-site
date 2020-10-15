@@ -1,49 +1,12 @@
 import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
 
-export const FilterButton = styled.div`
-    display: flex; 
-    align-items: center; 
-    cursor: pointer;
-    transition: 0.3s all ease;
-
-    svg{
-        width: 14px; 
-        margin: 0 13px 0 0;
-
-        path{
-            fill: ${({ theme }) => theme.colors.primary};
-        }
-    }
-    & > div{
-        display: flex;
-        text-transform: uppercase; 
-        color: ${({ theme }) => theme.colors.primary};
-        line-height: 1;
-        font-weight: 700;
-
-        & > div{
-            margin: 0 0 0 10px;
-        }
-    }
-
-    &:hover{
-        opacity: 0.5;
-    }
-`;
-
-export const FilterMenu = styled(motion.div)`
-    position: fixed;
-    top: 220px; 
-    bottom: 0; 
-    left: 0; 
-    right: 0;
+export const Menu = styled(motion.div)`
     background-color: #111b29;
     z-index: 1;
     overflow: hidden;
-    padding: 81px 0 0;
-    border-top-left-radius: 40px;
-    border-top-right-radius: 40px;
+    padding: 81px 0;
+    border-radius: 40px;
 `; 
 
 export const FilterRow = styled.div`

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PropTypes from "prop-types";
 import { AnimatePresence, motion } from 'framer-motion';
 import { Filter, LeftControl, RightControl, SliderWrap, Slider, Instructor, Image, SelectedIndicator, Overlay } from './styles'; 
 import Checkmark from '../../../assets/svgs/checkmark-2.svg';
@@ -68,6 +69,20 @@ const InstructorFilter = ({ instructors, name, selected, handleChange }) => {
             </SliderWrap>
         </Filter>
     )
+}
+
+InstructorFilter.defaultProps = {
+    instructors: [], 
+    name: 'instructor', 
+    selected: '', 
+    handleChange: () => {}
+}
+
+InstructorFilter.propTypes = {
+    instructors: PropTypes.arrayOf(PropTypes.object).isRequired, 
+    name: PropTypes.string, 
+    selected: PropTypes.string, 
+    handleChange: PropTypes.func
 }
 
 export default InstructorFilter;
