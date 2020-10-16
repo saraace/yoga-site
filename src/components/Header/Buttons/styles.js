@@ -6,7 +6,7 @@ const ButtonRow = styled.ul`
     list-style: none;
     display: flex;
     align-items: center; 
-    justify-content: center;
+    justify-content: flex-end;
 `;
 
 export const RowItem = styled.li``;

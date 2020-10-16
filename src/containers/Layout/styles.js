@@ -1,10 +1,28 @@
 import styled from '@emotion/styled';
+import { motion } from 'framer-motion';
 
-const ContentWrapper = styled.div`
+export const ContentWrapper = styled.div`
     height: 100%;
-    background-position: top center; 
-    background-size: 100%; 
-    background-repeat: no-repeat;
+    position: relative;
+`; 
+
+export const BackgroundGradient = styled(motion.div)`
+    height: 457px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: radial-gradient(170.46% 170.46% at 47.92% -70.46%, #456696 0%, #0B1525 100%);
+`;
+
+export const BackgroundImage = styled(motion.div)`
+    width: 100%; 
+    height: 100%;    
+    position: absolute;
+
+    img{
+        width: 100%; 
+    }
 `; 
 
 export const Page = styled.div`
@@ -13,5 +31,3 @@ export const Page = styled.div`
     z-index: 1;
     overflow: hidden;
 `; 
-
-export default ContentWrapper;

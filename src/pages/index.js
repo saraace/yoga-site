@@ -147,11 +147,6 @@ const Home = () => {
 
   return (
     <>
-        <div sx={{ p: '0 24px', display: ['block', null, 'none', null] }}>
-            <h2 sx={{ mt: '43px' }}>Hips and Legs: Finding Freedom through Foundation</h2>
-            <p>Starting from the ground up, learn how to establish a stable foundation in the feet that will translate up the entire leg and pelvis.</p>
-            <Button variant='secondary-outline'>Continue Exercise</Button>
-        </div>
         <SlidingLayout title={`My programs & scheduled classes`}>
             {classes1.map((c, i) => {
                 return (

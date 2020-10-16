@@ -16,6 +16,7 @@ const PageHeader = styled.header`
 
 export const LogoCol = styled.div`
     z-index: 1;
+    width: 250px;
 
     a{
         position: relative;
@@ -41,6 +42,7 @@ export const ButtonCol = styled.div`
 
     @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
         display: block;
+        width: 250px;
     }
 `;
 

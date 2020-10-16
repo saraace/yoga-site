@@ -1,5 +1,6 @@
 import Link from 'next/link'; 
-import NavMenu, { NavItem, NavLink, Dropdown } from "./styles"; 
+import { NavLink } from 'theme-ui';
+import NavMenu, { NavItem, Dropdown } from "./styles"; 
 import navigationLinks from "./nav-items";
 
 const Navigation = () => {
