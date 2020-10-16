@@ -1,5 +1,5 @@
 const button = {
-  display: 'block',
+  display: 'inline-block',
   cursor: 'pointer',
   fontFamily: 'body', 
   fontWeight: 700,
@@ -9,6 +9,19 @@ const button = {
   borderRadius: 32, 
   fontSize: 1, 
   lineHeight: 1, 
+  p: '15px 30px', 
+  outline: 'none', 
+  transition: '0.3s all ease'
+};
+
+const squareButton = {
+  display: 'inline-block',
+  cursor: 'pointer',
+  fontFamily: 'body', 
+  fontWeight: 500,
+  borderRadius: 8, 
+  fontSize: 1, 
+  lineHeight: 1.56, 
   p: '15px 30px', 
   outline: 'none', 
   transition: '0.3s all ease'
@@ -257,7 +270,38 @@ const theme = {
     'secondary-outline-block': {
       variant: 'buttons.secondary-outline',
       ... buttonBlock
-    }
+    },
+    'highlight-outline': {
+      color: 'text', 
+      'background': 'rgb(129,230,252)',
+      'background': '-moz-linear-gradient(180deg, rgba(129,230,252,1) 0%, rgba(60,188,235,1) 100%)',
+      'background': '-webkit-linear-gradient(180deg, rgba(129,230,252,1) 0%, rgba(60,188,235,1) 100%)',
+      'background': 'linear-gradient(180deg, rgba(129,230,252,1) 0%, rgba(60,188,235,1) 100%)',
+      'filter': 'progid:DXImageTransform.Microsoft.gradient(startColorstr="#81e6fc",endColorstr="#3cbceb",GradientType=1)',
+      position: 'relative',
+      ... squareButton,
+      '&:after': {
+        content: 'attr(title)',
+        position: 'absolute', 
+        top: '2px', 
+        left: '2px',
+        bottom: '2px', 
+        right: '2px',
+        bg: 'background', 
+        borderRadius: 6, 
+        display: 'flex', 
+        justifyContent: 'center',
+        alignItems: 'center',
+        p: '11px 26px', 
+        transition: '0.3s all ease'
+      },
+      '&:focus, &:hover': {
+        color: 'text', 
+        '&:after': {
+          bg: 'transparent'
+        }
+      }
+    },
   },
   forms: {
     input: {

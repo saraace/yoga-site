@@ -64,6 +64,7 @@ export const SectionTitle = styled.div`
     position: relative; 
     font-size: ${({ theme }) => theme.fontSizes[3]+'px'};
     line-height: 1.33;
+    font-weight: 600;
     margin-bottom: 3px;
 
     svg{
@@ -78,4 +79,5 @@ export const SectionContent = styled.div``;
 
 export const Description = styled.div`
     width: 410px;
+    margin-bottom: 80px;
 `;
