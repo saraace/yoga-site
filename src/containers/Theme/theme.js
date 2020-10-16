@@ -127,6 +127,13 @@ const theme = {
         fontSize: 0,
         fontWeight: 'heading'
       },
+      a: {
+        color: 'text',
+        transition: '0.3s all ease',
+        '&:hover': {
+          opacity: 0.7
+        }
+      },
       pre: {
         fontFamily: 'monospace',
         overflowX: 'auto',

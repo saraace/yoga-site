@@ -15,10 +15,13 @@ const Layout = ({ children }) => {
   const exit = { opacity: 0 };
 
   useEffect(() => {
+    console.log(router.pathname);
     if(router.pathname === "/sign-up"){
       setBackground('/images/sign-up/bg.png');
     } else if(router.pathname === '/') {
       setBackground('/images/homepage/bg.png');
+    } else if(router.pathname === '/instructors/[id]'){
+      setBackground('/images/instructors/bg-instructor.jpg');
     } else{
       setBackground('gradient');
     }
