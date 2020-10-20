@@ -22,6 +22,8 @@ const Layout = ({ children }) => {
       setBackground('/images/homepage/bg.png');
     } else if(router.pathname === '/instructors/[id]'){
       setBackground('/images/instructors/bg-instructor.jpg');
+    } else if(router.pathname === '/locations/[id]'){
+      setBackground('/images/locations/bg-location.png');
     } else{
       setBackground('gradient');
     }

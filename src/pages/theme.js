@@ -36,6 +36,9 @@ export default function Theme(){
                         <Box key={idx} sx={{ mr: 2 }}>
                             <Button variant={key+'-outline'}>{key}</Button>
                         </Box>
+                        <Box key={idx} sx={{ mr: 2 }}>
+                            <Button variant={key+'-outline-square'}>{key}</Button>
+                        </Box>
                     </Flex>
                     );
                 }

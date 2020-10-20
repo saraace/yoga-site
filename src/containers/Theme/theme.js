@@ -22,6 +22,7 @@ const squareButton = {
   borderRadius: 8, 
   fontSize: 1, 
   lineHeight: 1.56, 
+  textTransform: 'none',
   p: '15px 30px', 
   outline: 'none', 
   transition: '0.3s all ease'
@@ -34,19 +35,19 @@ const buttonBlock = {
 
 const iconButton = {
   display: 'flex',
-  p: '12px 30px',
+  p: '13px 24px',
   alignItems: 'center',
   justifyContent: 'center',
   'svg': {
-    height: '20px',
-    m: '0 10px 0 0', 
-    transition: '0.3s all ease', 
+    height: '16px',
+    m: '0 10px 0 0',
+    transition: '0.3s all ease'
   }
 }
 
 const theme = {
   breakpoints: [ '576px', '768px', '992px', '1200px' ],
-  fontSizes: [12, 14, 16, 20, 40, 42],
+  fontSizes: [12, 14, 16, 20, 40, 42, 60, 78],
   colors: {
     text: "#fff",
     background: "#0b1525",
@@ -111,7 +112,7 @@ const theme = {
         fontSize: 3,
         fontWeight: 'heading', 
         lineHeight: '1.33',
-        m: '0 0 0.5rem 0'
+        m: '0 0 1rem 0'
       },
       h4: {
         fontSize: 2,
@@ -130,9 +131,6 @@ const theme = {
       a: {
         color: 'text',
         transition: '0.3s all ease',
-        '&:hover': {
-          opacity: 0.7
-        }
       },
       pre: {
         fontFamily: 'monospace',
@@ -235,6 +233,11 @@ const theme = {
       variant: 'buttons.primary-outline',
       ... buttonBlock
     },
+    'primary-outline-square': {
+      variant: 'buttons.primary-outline',
+      ...squareButton,
+      ...iconButton
+    },
     secondary: {
       color: 'dark', 
       bg: 'secondary',
@@ -268,46 +271,77 @@ const theme = {
       color: 'secondary', 
       bg: 'transparent', 
       borderColor: 'secondary',
+      'svg, path, polygon': {
+        fill: 'secondary'
+      },
       ... button,
       '&:focus, &:hover': {
         bg: 'secondary', 
-        color: 'dark' 
+        color: 'dark',
+        'svg, path, polygon': {
+          fill: 'dark'
+        } 
       }
     },
     'secondary-outline-block': {
       variant: 'buttons.secondary-outline',
       ... buttonBlock
     },
-    'highlight-outline': {
-      color: 'text', 
-      'background': 'rgb(129,230,252)',
-      'background': '-moz-linear-gradient(180deg, rgba(129,230,252,1) 0%, rgba(60,188,235,1) 100%)',
-      'background': '-webkit-linear-gradient(180deg, rgba(129,230,252,1) 0%, rgba(60,188,235,1) 100%)',
-      'background': 'linear-gradient(180deg, rgba(129,230,252,1) 0%, rgba(60,188,235,1) 100%)',
-      'filter': 'progid:DXImageTransform.Microsoft.gradient(startColorstr="#81e6fc",endColorstr="#3cbceb",GradientType=1)',
-      position: 'relative',
-      ... squareButton,
-      '&:after': {
-        content: 'attr(title)',
-        position: 'absolute', 
-        top: '2px', 
-        left: '2px',
-        bottom: '2px', 
-        right: '2px',
-        bg: 'background', 
-        borderRadius: 6, 
-        display: 'flex', 
-        justifyContent: 'center',
-        alignItems: 'center',
-        p: '11px 26px', 
-        transition: '0.3s all ease'
+    'secondary-outline-square': {
+      variant: 'buttons.secondary-outline',
+      ...squareButton,
+      ...iconButton,
+    },
+    highlight: {
+      color: 'dark', 
+      bg: 'highlight',
+      borderColor: 'highlight',
+      ... button,
+      '&:focus, &:hover': {
+        bg: 'transparent', 
+        color: 'highlight'
+      }
+    },
+    'highlight-block': {
+      variant: 'buttons.highlight',
+      ... buttonBlock
+    },
+    'highlight-icon':{
+      variant: 'buttons.highlight',
+      ... iconButton,
+      'svg': {
+        ... iconButton.svg, 
+        fill: 'dark'
       },
       '&:focus, &:hover': {
-        color: 'text', 
-        '&:after': {
-          bg: 'transparent'
+        variant: 'buttons.highlight',
+        ... iconButton,
+        'svg': {
+          fill: 'highlight'
         }
       }
+    },
+    'highlight-outline': {
+      color: 'text', 
+      bg: 'transparent', 
+      borderColor: 'highlight',
+      'svg, path, polygon': {
+        fill: 'text'
+      }, 
+      ... button,
+      '&:focus, &:hover': {
+        bg: 'highlight', 
+        color: 'text' 
+      }
+    },
+    'highlight-outline-block': {
+      variant: 'buttons.highlight-outline',
+      ... buttonBlock
+    },
+    'highlight-outline-square': {
+      variant: 'buttons.highlight-outline',
+      ...squareButton,
+      ...iconButton
     },
   },
   forms: {

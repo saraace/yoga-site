@@ -23,7 +23,7 @@ export const Image = styled.div`
 export const Details = styled.div``; 
 
 export const Name = styled.h1`
-    font-size: 78.01px; 
+    font-size: ${({ theme }) => theme.fontSizes[7]+'px'}; 
     line-height: 1.114em;
     font-weight: 600;
     margin: 0 0 32px;
