@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { Wall, Grid, Tile } from './styles';
 
 const PhotoWall = ({ images }) => {
@@ -13,6 +14,10 @@ const PhotoWall = ({ images }) => {
             </Grid>
         </Wall>
     )
+}
+
+PhotoWall.propTypes = {
+    images: PropTypes.arrayOf(PropTypes.string)
 }
 
 export default PhotoWall;

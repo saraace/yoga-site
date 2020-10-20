@@ -7,18 +7,23 @@ export const Wall = styled.div`
 export const Grid = styled.div`
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-between;
+    justify-content: center;
 `;
 
 export const Tile = styled.div`
-    width: calc(100% / 4.25); 
-    height: 212px;
-    margin: 0 0 16px 0;
+    width: 150px; 
+    height: 150px;
+    margin: 0 8px 16px 8px;
     
     img{
         width: 100%; 
         height: 100%; 
         object-fit: cover;
         border-radius: 12px;
+    } 
+    @media (min-width: ${({ theme }) => theme.breakpoints[1]}){
+        width: 212px; 
+        height: 212px;        
     }
+    
 `;
