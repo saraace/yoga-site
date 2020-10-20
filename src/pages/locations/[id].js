@@ -9,8 +9,8 @@ const Location = () => {
         scheduleLink: '/locations/1/schedule',
         signUpLink: '#', 
         coordinates: {
-            lat: '', 
-            lng: ''
+            lat: 0, 
+            lng: 0
         },
         services: [
             'yoga', 

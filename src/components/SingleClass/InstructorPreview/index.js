@@ -14,33 +14,32 @@ const InstructorPreview = ({ name, bio, link, image }) => {
                         <img src={image} alt={name}/>
                         <div>{name}</div>
                     </Instructor>
-                    <Link href={link}>
-                        <a sx={{ variant: 'buttons.highlight-outline-square' }} title="See Her story">See Her story</a>
-                    </Link>
-                </InstructorWrapper>
-                <Bio>
-                    {bio}
-                    <MobileButton>
+                    {link && (
                         <Link href={link}>
                             <a sx={{ variant: 'buttons.highlight-outline-square' }} title="See Her story">See Her story</a>
                         </Link>
-                    </MobileButton>
-                </Bio>
+                    )}
+                </InstructorWrapper>
+                {bio && (
+                    <Bio>
+                        {bio}
+                        {link && (
+                            <MobileButton>
+                                <Link href={link}>
+                                    <a sx={{ variant: 'buttons.highlight-outline-square' }} title="See Her story">See Her story</a>
+                                </Link>
+                            </MobileButton>
+                        )}
+                    </Bio>
+                )}
             </Preview>
         </Section>
     )
 }
 
-InstructorPreview.defaultProps = {
-    name: '', 
-    bio: '', 
-    link: '', 
-    image: ''
-}
-
 InstructorPreview.propTypes = {
-    name: PropTypes.string, 
-    bio: PropTypes.string, 
+    name: PropTypes.string.isRequired, 
+    bio: PropTypes.string.isRequired, 
     link: PropTypes.string, 
     image: PropTypes.string
 }

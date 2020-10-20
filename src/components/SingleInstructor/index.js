@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui';
+import PropTypes from "prop-types";
 import Link from 'next/link';
 import { Instructor, Image, Details, Name, Title, Bio, Location, SectionTitle, Map } from './styles';
 
@@ -27,6 +28,19 @@ const SingleInstructor = ({ name, title, image, location, bio }) => {
             </Location>
         </>
     )
+}
+
+SingleInstructor.propTypes = {
+    name: PropTypes.string.isRequired, 
+    title: PropTypes.string.isRequired, 
+    image: PropTypes.string.isRequired, 
+    location: PropTypes.shape({
+        id: PropTypes.string, 
+        title: PropTypes.string, 
+        lat: PropTypes.number, 
+        lng: PropTypes.number
+    }).isRequired, 
+    bio: PropTypes.string.isRequired
 }
 
 export default SingleInstructor;

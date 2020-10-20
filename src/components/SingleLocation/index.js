@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { Button } from 'theme-ui';
 import { Location, Title, Address, ButtonRow, Row, Map, Services, Service } from './styles';
 import LeadInstructor from './LeadInstructor';
@@ -38,9 +39,35 @@ const SingleLocation = ({ title, address, scheduleLink, signUpLink, coordinates,
                     </Services>
                 </div>
             </Row>
-            <PhotoWall images={photoWallImages} />
-            <InstructorsGrid {...{instructors}} />
+            {photoWallImages && <PhotoWall images={photoWallImages} />}
+            {instructors && <InstructorsGrid {...{instructors}} />}
         </>
+    )
+}
+
+SingleLocation.propTypes = {
+    title: PropTypes.string.isRequired,
+    address: PropTypes.string.isRequired,
+    coordinates: PropTypes.shape({
+        lat: PropTypes.number.isRequired, 
+        lng: PropTypes.number.isRequired
+    }).isRequired,
+    services: PropTypes.arrayOf(PropTypes.string).isRequired,
+    instructor: PropTypes.shape({
+        name: PropTypes.string, 
+        title: PropTypes.string, 
+        image: PropTypes.string, 
+        bio: PropTypes.string, 
+        link: PropTypes.string, 
+        followLink: PropTypes.string
+    }).isRequired,
+    photoWallImages: PropTypes.arrayOf(PropTypes.string),
+    instructors: PropTypes.arrayOf(
+        PropTypes.shape({
+            slug: PropTypes.string, 
+            name: PropTypes.string, 
+            image: PropTypes.string
+        })
     )
 }
 

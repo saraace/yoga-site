@@ -342,6 +342,10 @@ const theme = {
       variant: 'buttons.highlight-outline',
       ...squareButton
     },
+    'highlight-outline-square-icon': {
+      variant: 'buttons.highlight-outline-square',
+      ...iconButton
+    },
   },
   forms: {
     input: {

@@ -13,7 +13,7 @@ const BackButton = ({ link, text }) => {
 
 BackButton.defaultProps = {
     link: '/classes', 
-    text: '', 
+    text: 'Back to classes', 
 }
 
 BackButton.propTypes = {
