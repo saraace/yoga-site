@@ -15,7 +15,6 @@ const Layout = ({ children }) => {
   const exit = { opacity: 0 };
 
   useEffect(() => {
-    console.log(router.pathname);
     if(router.pathname === "/sign-up"){
       setBackground('/images/sign-up/bg.png');
     } else if(router.pathname === '/') {

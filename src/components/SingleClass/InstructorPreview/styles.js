@@ -14,11 +14,29 @@ export const SectionTitle = styled.div`
 
 export const Preview = styled.div`
     display: flex; 
+    flex-direction: column;
     align-items: center;
+
+    @media (min-width: ${({ theme }) => theme.breakpoints[1]}){
+        flex-direction: row;        
+    }
 `; 
 
 export const InstructorWrapper = styled.div`
-    margin: 0 64px 0 0;
+    width: 100%;
+
+    a{
+        display: none;
+    }
+
+    @media (min-width: ${({ theme }) => theme.breakpoints[1]}){
+        margin: 0 64px 0 0;
+        width: auto;
+
+        a{
+            display: block;
+        }
+    }
 `;
 
 export const Instructor = styled.div`
@@ -42,5 +60,16 @@ export const Instructor = styled.div`
 `;
 
 export const Bio = styled.div`
-    width: 476px;
+    @media (min-width: ${({ theme }) => theme.breakpoints[1]}){
+        max-width: 476px;       
+    }
 `; 
+
+export const MobileButton = styled.div`
+    margin-top: 16px;
+    display: block;
+
+    @media (min-width: ${({ theme }) => theme.breakpoints[1]}){
+        display: none;      
+    }
+`;

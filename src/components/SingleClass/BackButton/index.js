@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import Link from 'next/link'; 
 import { BackLink } from './styles';
 import { BackArrow } from '../../../assets/svgs/left-arrow.svg';
@@ -8,6 +9,16 @@ const BackButton = ({ link, text }) => {
             <BackLink title={text} ><BackArrow />{text}</BackLink>
         </Link>
     )
+}
+
+BackButton.defaultProps = {
+    link: '/classes', 
+    text: '', 
+}
+
+BackButton.propTypes = {
+    link: PropTypes.string, 
+    text: PropTypes.string
 }
 
 export default BackButton;

@@ -23,7 +23,7 @@ const squareButton = {
   fontSize: 1, 
   lineHeight: 1.56, 
   textTransform: 'none',
-  p: '15px 30px', 
+  p: '12px 25px', 
   outline: 'none', 
   transition: '0.3s all ease'
 };
@@ -340,8 +340,7 @@ const theme = {
     },
     'highlight-outline-square': {
       variant: 'buttons.highlight-outline',
-      ...squareButton,
-      ...iconButton
+      ...squareButton
     },
   },
   forms: {

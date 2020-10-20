@@ -2,22 +2,28 @@ import styled from '@emotion/styled';
 
 export const Video = styled.div`
     width: 100%; 
-    height: 500px;
+    padding-bottom: 56.25%;
     background: #2c4263;
     margin: 0 auto;
 `; 
 
 export const ClassTitle = styled.h1`
-    font-size: 60px; 
+    font-size: 42px; 
     line-height: 1.14;
-    margin: 48px 0 29px;
+    margin: 20px 0 15px;
+
+    @media (min-width: ${({ theme }) => theme.breakpoints[1]}){
+        font-size: 60px; 
+        line-height: 1.14;
+        margin: 48px 0 29px;
+    }
 `;
 
 export const ClassDetails = styled.div`
     line-height: 1;
     font-size: ${({ theme }) => theme.fontSizes[0]+'px'};
     font-weight: 500;
-    margin-bottom: 80px;
+    margin-bottom: 30px;
 
     span{
         opacity: 0.8;
@@ -32,6 +38,10 @@ export const ClassDetails = styled.div`
                 display: none;
             }
         }
+    }
+
+    @media (min-width: ${({ theme }) => theme.breakpoints[1]}){
+        margin-bottom: 80px;
     }
 
     @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
@@ -50,6 +60,11 @@ export const ClassDetails = styled.div`
 export const Row = styled.div`
     display: flex;
     justify-content: space-between;
+    flex-direction: column;
+
+    @media (min-width: ${({ theme }) => theme.breakpoints[1]}){
+        flex-direction: row;         
+    }
 `;
 
 export const Col = styled.div`
@@ -78,6 +93,14 @@ export const SectionTitle = styled.div`
 export const SectionContent = styled.div``;
 
 export const Description = styled.div`
-    width: 410px;
-    margin-bottom: 80px;
+    width: 100%;
+
+    @media (min-width: ${({ theme }) => theme.breakpoints[1]}){
+        width: 350px;
+        margin-bottom: 80px;
+    }
+
+    @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
+        width: 410px;
+    }
 `;
