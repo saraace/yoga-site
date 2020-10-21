@@ -10,20 +10,27 @@ const Layout = ({ children }) => {
 
   const router = useRouter();
   const [ background, setBackground ] = useState('gradient'); 
+  const [ bgClass, setBgClass ] = useState('');
   const initial = { opacity: 0 }; 
   const animate = { opacity: 1 }; 
   const exit = { opacity: 0 };
 
   useEffect(() => {
+    console.log(router);
     if(router.pathname === "/sign-up"){
+      setBgClass('');
       setBackground('/images/sign-up/bg.png');
     } else if(router.pathname === '/') {
+      setBgClass('homepage');
       setBackground('/images/homepage/bg.png');
     } else if(router.pathname === '/instructors/[id]'){
+      setBgClass('');
       setBackground('/images/instructors/bg-instructor.jpg');
     } else if(router.pathname === '/locations/[id]'){
+      setBgClass('');
       setBackground('/images/locations/bg-location.png');
     } else{
+      setBgClass('');
       setBackground('gradient');
     }
   }, [router.pathname]);
@@ -34,7 +41,7 @@ const Layout = ({ children }) => {
         {background === 'gradient' && <BackgroundGradient {...{initial}} {...{animate}} {...{exit}} />}
       </AnimatePresence>
       <AnimatePresence>
-        {background !== 'gradient' && <BackgroundImage {...{initial}} {...{animate}} {...{exit}} ><img src={background} /></BackgroundImage>}
+        {background !== 'gradient' && <BackgroundImage className={bgClass} {...{initial}} {...{animate}} {...{exit}} ><img src={background} /></BackgroundImage>}
       </AnimatePresence>
       <Head>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />

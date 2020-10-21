@@ -22,11 +22,20 @@ export const Badge = styled.div`
         }
     }
 
-    &.follow{
+    &.follow, 
+    &.flow, 
+    &.yoga{
         &:after{
             background: ${({ theme }) => theme.colors.danger};
         }
     }
+
+    &.restore{
+        &:after{
+            background: ${({ theme }) => theme.colors.highlight};
+        }
+    }
+
 
     &.fiit{
         &:after{

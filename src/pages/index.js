@@ -9,86 +9,196 @@ import InstructorCard from "../components/Cards/InstructorCard";
 const Home = () => {
 
   const classes1 = [
-      {
-          title: "Workout Name", 
-          instructor: "Teacher", 
-          difficulty: "Advanced",  
-          duration: "20 mins", 
-          type: "follow",
-          date: "Mon, July 25th", 
-          time: "10:15pm", 
-          image: "/images/classes/image-01.png", 
-          link: "/classes/1"
-      }, 
-      {
-          title: "Cardio", 
-          instructor: "Teacher", 
-          difficulty: "Advanced", 
-          duration: "20 mins", 
-          type: "follow",
-          date: "Mon, July 25th", 
-          time: "10:15pm", 
-          image: "/images/classes/image-02.png", 
-          link: "/classes/1"
-      }, 
-      {
-          title: "Workout Name", 
-          instructor: "Teacher", 
-          difficulty: "Advanced", 
-          duration: "20 mins", 
-          type: "follow",
-          date: "Mon, July 25th", 
-          time: "10:15pm", 
-          image: "/images/classes/image-03.png", 
-          link: "/classes/1"
-      }
+    {
+        title: "Workout Name", 
+        instructor: "Teacher", 
+        difficulty: "Advanced",  
+        duration: "20 mins", 
+        type: "restore",
+        date: "Mon, July 25th", 
+        time: "10:15pm", 
+        image: "/images/classes/image-01.png", 
+        link: "/classes/1"
+    }, 
+    {
+        title: "Cardio", 
+        instructor: "Teacher", 
+        difficulty: "Advanced", 
+        duration: "20 mins", 
+        type: "yoga",
+        date: "Mon, July 25th", 
+        time: "10:15pm", 
+        image: "/images/classes/image-02.png", 
+        link: "/classes/1"
+    }, 
+    {
+        title: "Workout Name", 
+        instructor: "Teacher", 
+        difficulty: "Advanced", 
+        duration: "20 mins", 
+        type: "follow",
+        date: "Mon, July 25th", 
+        time: "10:15pm", 
+        image: "/images/classes/image-03.png", 
+        link: "/classes/1"
+    }, 
+    {
+        title: "Workout Name", 
+        instructor: "Teacher", 
+        difficulty: "Advanced",  
+        duration: "20 mins", 
+        type: "restore",
+        date: "Mon, July 25th", 
+        time: "10:15pm", 
+        image: "/images/classes/image-01.png", 
+        link: "/classes/1"
+    }, 
+    {
+        title: "Cardio", 
+        instructor: "Teacher", 
+        difficulty: "Advanced", 
+        duration: "20 mins", 
+        type: "yoga",
+        date: "Mon, July 25th", 
+        time: "10:15pm", 
+        image: "/images/classes/image-02.png", 
+        link: "/classes/1"
+    }, 
+    {
+        title: "Workout Name", 
+        instructor: "Teacher", 
+        difficulty: "Advanced", 
+        duration: "20 mins", 
+        type: "follow",
+        date: "Mon, July 25th", 
+        time: "10:15pm", 
+        image: "/images/classes/image-03.png", 
+        link: "/classes/1"
+    },
+    {
+        title: "Workout Name", 
+        instructor: "Teacher", 
+        difficulty: "Advanced",  
+        duration: "20 mins", 
+        type: "restore",
+        date: "Mon, July 25th", 
+        time: "10:15pm", 
+        image: "/images/classes/image-01.png", 
+        link: "/classes/1"
+    }, 
+    {
+        title: "Cardio", 
+        instructor: "Teacher", 
+        difficulty: "Advanced", 
+        duration: "20 mins", 
+        type: "yoga",
+        date: "Mon, July 25th", 
+        time: "10:15pm", 
+        image: "/images/classes/image-02.png", 
+        link: "/classes/1"
+    }, 
+    {
+        title: "Workout Name", 
+        instructor: "Teacher", 
+        difficulty: "Advanced", 
+        duration: "20 mins", 
+        type: "follow",
+        date: "Mon, July 25th", 
+        time: "10:15pm", 
+        image: "/images/classes/image-03.png", 
+        link: "/classes/1"
+    }
   ]
 
   const classes2 = [
-      {
-          title: "Strength", 
-          instructor: "Teacher", 
-          difficulty: "Advanced",  
-          duration: "20 mins", 
-          type: "fiit",
-          date: "Mon, July 25th", 
-          time: "10:15pm", 
-          image: "/images/classes/image-04.png", 
-          link: "/classes/1"
-      }, 
-      {
-          title: "Cardio", 
-          instructor: "Teacher", 
-          difficulty: "Advanced", 
-          duration: "20 mins", 
-          type: "follow",
-          date: "Mon, July 25th", 
-          time: "10:15pm", 
-          image: "/images/classes/image-02.png", 
-          link: "/classes/1"
-      }, 
-      {
-          title: "Relaxation", 
-          instructor: "Teacher", 
-          difficulty: "Advanced", 
-          duration: "20 mins", 
-          type: "follow",
-          date: "Mon, July 25th", 
-          time: "10:15pm", 
-          image: "/images/classes/image-05.png", 
-          link: "/classes/1"
-      }, 
-      {
-          title: "Relaxation", 
-          instructor: "Teacher", 
-          difficulty: "Advanced", 
-          duration: "20 mins", 
-          type: "follow",
-          date: "Mon, July 25th", 
-          time: "10:15pm", 
-          image: "/images/classes/image-01.png", 
-          link: "/classes/1"
-      }
+    {
+        title: "Strength", 
+        instructor: "Teacher", 
+        difficulty: "Advanced",  
+        duration: "20 mins", 
+        type: "fiit",
+        date: "Mon, July 25th", 
+        time: "10:15pm", 
+        image: "/images/classes/image-04.png", 
+        link: "/classes/1"
+    }, 
+    {
+        title: "Cardio", 
+        instructor: "Teacher", 
+        difficulty: "Advanced", 
+        duration: "20 mins", 
+        type: "follow",
+        date: "Mon, July 25th", 
+        time: "10:15pm", 
+        image: "/images/classes/image-02.png", 
+        link: "/classes/1"
+    }, 
+    {
+        title: "Relaxation", 
+        instructor: "Teacher", 
+        difficulty: "Advanced", 
+        duration: "20 mins", 
+        type: "follow",
+        date: "Mon, July 25th", 
+        time: "10:15pm", 
+        image: "/images/classes/image-05.png", 
+        link: "/classes/1"
+    }, 
+    {
+        title: "Relaxation", 
+        instructor: "Teacher", 
+        difficulty: "Advanced", 
+        duration: "20 mins", 
+        type: "follow",
+        date: "Mon, July 25th", 
+        time: "10:15pm", 
+        image: "/images/classes/image-01.png", 
+        link: "/classes/1"
+    }, 
+    {
+        title: "Strength", 
+        instructor: "Teacher", 
+        difficulty: "Advanced",  
+        duration: "20 mins", 
+        type: "fiit",
+        date: "Mon, July 25th", 
+        time: "10:15pm", 
+        image: "/images/classes/image-04.png", 
+        link: "/classes/1"
+    }, 
+    {
+        title: "Cardio", 
+        instructor: "Teacher", 
+        difficulty: "Advanced", 
+        duration: "20 mins", 
+        type: "follow",
+        date: "Mon, July 25th", 
+        time: "10:15pm", 
+        image: "/images/classes/image-02.png", 
+        link: "/classes/1"
+    }, 
+    {
+        title: "Relaxation", 
+        instructor: "Teacher", 
+        difficulty: "Advanced", 
+        duration: "20 mins", 
+        type: "follow",
+        date: "Mon, July 25th", 
+        time: "10:15pm", 
+        image: "/images/classes/image-05.png", 
+        link: "/classes/1"
+    }, 
+    {
+        title: "Relaxation", 
+        instructor: "Teacher", 
+        difficulty: "Advanced", 
+        duration: "20 mins", 
+        type: "follow",
+        date: "Mon, July 25th", 
+        time: "10:15pm", 
+        image: "/images/classes/image-01.png", 
+        link: "/classes/1"
+    }
   ]
 
   const instructors = [
@@ -146,8 +256,8 @@ const Home = () => {
   };
 
   return (
-    <>
-        <SlidingLayout title={`My programs & scheduled classes`}>
+    <Container variant="no-gutters">
+        <SlidingLayout title={`My programs & scheduled classes`} height={[192, null, null, 300]} cardWidth={[327, null, null, 327]} >
             {classes1.map((c, i) => {
                 return (
                     <FeaturedClassCard key={i} {...c} />
@@ -161,7 +271,7 @@ const Home = () => {
                 )
             })}
         </SlidingLayout>
-        <Container variant="no-gutters">
+        <Container>
             <FeaturedClass {...featuredClass} />
         </Container>
         <SlidingLayout title={`Upcoming live classes`}>
@@ -171,14 +281,14 @@ const Home = () => {
                 )
             })}
         </SlidingLayout>
-        <SlidingLayout title={`Classes by instructor`}>
+        <SlidingLayout title={`Classes by instructor`} height={[300, null, null, 460]}>
             {instructors.map((instructor, i) => {
                 return(
                     <InstructorCard key={i} {...instructor} />
                 )
             })}
         </SlidingLayout>
-    </>
+    </Container>
   )
 }
 

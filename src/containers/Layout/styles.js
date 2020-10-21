@@ -23,6 +23,15 @@ export const BackgroundImage = styled(motion.div)`
     img{
         width: 100%; 
     }
+
+    &.homepage{
+        height: 290px;
+
+        img{
+            height: 100%;
+            object-fit: cover;
+        }
+    }
 `; 
 
 export const Page = styled.div`
@@ -33,6 +42,6 @@ export const Page = styled.div`
     padding: 104px 0 0; 
 
     @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
-        padding: 138px 0 0;         
+        padding: 200px 0 0;         
     }    
 `; 

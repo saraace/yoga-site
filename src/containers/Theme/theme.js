@@ -81,7 +81,7 @@ const theme = {
   },
   layout: {
     container: {
-      p: '0 24px'
+      p: '0 24px', 
     }, 
     fluid: {
       maxWidth: '100%', 
@@ -90,6 +90,9 @@ const theme = {
     small: {
       maxWidth: '938px', 
       p: '0 24px'
+    }, 
+    'no-gutters': {
+      p: '0', 
     }
   },
   styles: {
