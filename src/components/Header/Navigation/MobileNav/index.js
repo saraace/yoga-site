@@ -1,5 +1,4 @@
-//import NavMenu, { NavItem, NavLink, Dropdown } from "./styles"; 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, useAnimation } from "framer-motion"
 import MobileNavWrapper, { ToggleButton, NavMenu, NavItem, NavLink, Dropdown } from "./styles";
 import navigationLinks from "../nav-items";
@@ -56,7 +55,8 @@ const MobileNav = () => {
         closed: {
             bottom: '100%'
         }
-    }
+    };
+
     return (
         <>
             <ToggleButton 

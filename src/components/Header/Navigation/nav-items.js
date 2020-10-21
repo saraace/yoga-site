@@ -12,8 +12,12 @@ const navigationLinks = [
         link: "/locations", 
         children: [
             {
-                text: "Single Location 1", 
-                link: "#"
+                text: "North Fort Lauderdale", 
+                link: "/locations/north-fort-lauderdale"
+            }, 
+            {
+                text: "West Boca Raton", 
+                link: "/locations/west-boca-raton"
             }
         ]
     }, 

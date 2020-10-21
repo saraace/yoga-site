@@ -6,9 +6,9 @@ const MobileNavWrapper = styled(motion.div)`
     top: 0; 
     left: 0; 
     right: 0; 
-    backdrop-filter: blur(16px); 
     -webkit-backdrop-filter: blur(16px);
-    background: rgba(14, 38, 73, 0.8);
+    backdrop-filter: blur(16px);  
+    background-color: rgba(14, 38, 73, 1);
     overflow: hidden;
 `;
 

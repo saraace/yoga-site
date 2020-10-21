@@ -1,7 +1,10 @@
 import styled from '@emotion/styled';
 import { motion } from "framer-motion";
 
-const PageHeader = styled.header`
+const PageHeader = styled(motion.header)`
+    top: 0;
+    left: 0; 
+    right: 0;
     display: flex; 
     justify-content: space-between; 
     align-items: center;
