@@ -1,5 +1,7 @@
+/** @jsx jsx */
+import { jsx, Button } from 'theme-ui';
 import PropTypes from "prop-types";
-import { Button } from 'theme-ui';
+import Link from 'next/link';
 import { Location, Title, Address, ButtonRow, Row, Map, Services, Service } from './styles';
 import LeadInstructor from './LeadInstructor';
 import PhotoWall from './PhotoWall'; 
@@ -15,7 +17,9 @@ const SingleLocation = ({ title, address, scheduleLink, signUpLink, coordinates,
                 <Title>{title}</Title>
                 <Address>{address}</Address>
                 <ButtonRow>
-                    <Button variant="secondary-outline">View Class Schedule</Button>
+                    <Link href={scheduleLink}>
+                        <a sx={{ variant:"buttons.secondary-outline" }}>View Class Schedule</a>
+                    </Link>
                     <Button variant="primary">Sign Up to this location</Button>
                 </ButtonRow>
             </Location>
