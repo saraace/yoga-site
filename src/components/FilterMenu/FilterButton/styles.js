@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
 
 export const Link = styled.div`
-    display: flex; 
     align-items: center; 
     cursor: pointer;
     transition: 0.3s all ease;
@@ -33,7 +32,7 @@ export const Link = styled.div`
     }
 
     @media (min-width: ${({ theme }) => theme.breakpoints[1]}){
-        display: block;
+        display: flex; 
     }
 `;
 

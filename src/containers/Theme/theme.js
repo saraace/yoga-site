@@ -264,14 +264,13 @@ const theme = {
     'secondary-icon':{
       variant: 'buttons.secondary',
       ... iconButton,
-      'svg': {
-        ... iconButton.svg, 
+      'svg, path': {
         fill: 'dark'
       },
       '&:focus, &:hover': {
         variant: 'buttons.secondary',
         ... iconButton,
-        'svg': {
+        'svg, path': {
           fill: 'secondary'
         }
       }

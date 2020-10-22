@@ -11,6 +11,7 @@ export const BackLink = styled.a`
 
     svg{
         width: 22px;
+        height: 22px;
         margin: 0 13.5px 0 0; 
     }
 

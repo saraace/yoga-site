@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { AnimatePresence, useViewportScroll, useTransform } from "framer-motion";
+import { AnimatePresence, useViewportScroll } from "framer-motion";
 import PageHeader, { LogoCol, LogoWrapper, NavCol, ButtonCol, MobileNavCol } from "./styles";
 import YogaJointLogo from "../../assets/svgs/yoga-joint.svg";
 import ShiftLogo from "../../assets/svgs/shift.svg";
@@ -16,12 +16,6 @@ const Header = () => {
   const [ scrollTop, setScrollTop ] = useState(0);
   const { scrollY } = useViewportScroll();
 
-  const padding = useTransform(
-    scrollY, 
-    [0, 150], 
-    ['40px 24px', '10px 24px']
-  )
-
   useEffect(() => {
       const onScroll = e => {
           setScrollTop(e.target.documentElement.scrollTop);
@@ -32,10 +26,6 @@ const Header = () => {
       return () => window.removeEventListener("scroll", onScroll);
   }, [scrollTop]);
 
-  useEffect(() => {
-      console.log(scrollingUp);
-  }, [scrollingUp]);
-
   const headerVariants = {
     'static': {
       position: 'absolute',
@@ -45,12 +35,12 @@ const Header = () => {
     'sticky': {
       position: 'fixed', 
       background: 'rgba(11, 21, 37, 1)', 
-      boxShadow: '0 0 24px 0 rgba(11, 21, 37, 1)'
+      boxShadow: '0 0 24px 0 rgba(0, 0, 0, 0.5)'
     }
   }
 
   return (
-    <PageHeader animate={scrollingUp? 'sticky' : 'static'} variants={headerVariants}>
+    <PageHeader className={scrollingUp? 'sticky' : 'static'} animate={scrollingUp? 'sticky' : 'static'} variants={headerVariants}>
       <LogoCol>
         <Link href="/">
           <a>

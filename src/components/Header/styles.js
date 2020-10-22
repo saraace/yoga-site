@@ -15,6 +15,10 @@ const PageHeader = styled(motion.header)`
     @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
         padding: 44px 64px;
     }
+
+    &.sticky{
+        padding: 20px 24px;
+    }
 `;
 
 export const LogoCol = styled.div`

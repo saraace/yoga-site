@@ -11,8 +11,8 @@ export const Grid = styled.div`
 `;
 
 export const Tile = styled.div`
-    width: 150px; 
-    height: 150px;
+    width: 120px; 
+    height: 120px;
     margin: 0 8px 16px 8px;
     
     img{
@@ -22,8 +22,8 @@ export const Tile = styled.div`
         border-radius: 12px;
     } 
     @media (min-width: ${({ theme }) => theme.breakpoints[1]}){
-        width: 212px; 
-        height: 212px;        
+        width: 206px; 
+        height: 206px;        
     }
     
 `;
