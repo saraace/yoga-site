@@ -19,6 +19,18 @@ export const SectionTitle = styled.h2`
 export const Slider = styled.div`
     position: relative; 
     
+    /* &:before{
+        content: ""; 
+        position: absolute; 
+        top: 0; 
+        bottom: 0; 
+        width: 100%; 
+        right: 100%;
+        margin-right: 50px;
+        z-index: 10;
+        background: ${({ theme }) => theme.colors.background};
+    } */
+    
     &:after{
         content: ""; 
         position: absolute; 
@@ -27,37 +39,62 @@ export const Slider = styled.div`
         width: 100%; 
         left: 100%;
         margin-left: 50px;
+        z-index: 10;
         background: ${({ theme }) => theme.colors.background};
     }
 `; 
 
-export const Control = styled.div`
+export const Control = styled(motion.div)`
     position: absolute; 
     top: 0; 
     bottom: 0; 
     width: 200px;
     z-index: 100;
     display: flex;  
-    justify-content: flex-end;
     align-items: center;
-    padding: 0 74px 0 0;
     cursor: pointer; 
+    display: none;
 
-    svg{
-        width: 27px;
-        opacity: 0.5;
-        transition: 0.3s all ease;
+    div{
+        line-height: 1;
+        padding: 10px;
+
+        svg{
+            width: 27px;
+            opacity: 0.5;
+            transition: 0.3s all ease;
+        }
+    
+        &:hover{
+            svg{
+                opacity: 1;
+            }
+        }
     }
 
-    &:hover{
-        svg{
-            opacity: 1;
-        }
+    @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
+        display: flex;
     }
 `; 
 
+export const PrevControl = styled(Control)`
+    left: -50px;
+    justify-content: flex-start;
+    padding: 0 0 0 50px;
+
+    /* background: rgb(11,21,37);
+    background: -moz-linear-gradient(90deg, rgba(11,21,37,1) 0%, rgba(11,21,37,0) 95%);
+    background: -webkit-linear-gradient(90deg, rgba(11,21,37,1) 0%, rgba(11,21,37,0) 95%);
+    background: linear-gradient(90deg, rgba(11,21,37,1) 0%, rgba(11,21,37,0) 95%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#0b1525",endColorstr="#0b1525",GradientType=1); */
+`;
+
+
 export const NextControl = styled(Control)`
     right: -50px;
+    justify-content: flex-end;
+    padding: 0 74px 0 0;
+
     background: rgb(11,21,37);
     background: -moz-linear-gradient(90deg, rgba(11,21,37,0) 0%, rgba(11,21,37,1) 95%);
     background: -webkit-linear-gradient(90deg, rgba(11,21,37,0) 0%, rgba(11,21,37,1) 95%);
@@ -73,7 +110,7 @@ export const SliderContents = styled(motion.div)`
         margin-right: 24px;
 
         @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
-            margin-right: 136px;
+            margin-right: 150px;
         }
     }
 `; 

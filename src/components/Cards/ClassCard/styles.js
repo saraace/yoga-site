@@ -76,6 +76,18 @@ export const CardWrapper = styled(Card)`
         }
 
         @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
+            width: 500px;
+            height: 310px;
+            margin: 0;
+            border-radius: 12px;
+
+            img,
+            &:after{
+                border-radius: 12px;
+            }
+        }
+
+        @media (min-width: ${({ theme }) => theme.breakpoints[3]}){
             width: 674px;
             height: 395px;
             margin: 0;

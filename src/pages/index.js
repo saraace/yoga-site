@@ -257,7 +257,7 @@ const Home = () => {
 
   return (
     <Container variant="no-gutters">
-        <SlidingLayout title={`My programs & scheduled classes`} height={[192, null, null, 300]} cardWidth={[327, null, null, 327]} >
+        <SlidingLayout title={`My programs & scheduled classes`} height={[192, null, null, 300]} stepWidth={528} >
             {classes1.map((c, i) => {
                 return (
                     <FeaturedClassCard key={i} {...c} />
@@ -271,7 +271,7 @@ const Home = () => {
                 )
             })}
         </SlidingLayout>
-        <Container>
+        <Container variant="no-mobile-gutters">
             <FeaturedClass {...featuredClass} />
         </Container>
         <SlidingLayout title={`Upcoming live classes`}>
@@ -281,7 +281,7 @@ const Home = () => {
                 )
             })}
         </SlidingLayout>
-        <SlidingLayout title={`Classes by instructor`} height={[300, null, null, 460]}>
+        <SlidingLayout title={`Classes by instructor`} height={[300, null, null, 460]} stepWidth={296} >
             {instructors.map((instructor, i) => {
                 return(
                     <InstructorCard key={i} {...instructor} />

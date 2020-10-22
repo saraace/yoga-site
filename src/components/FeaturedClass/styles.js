@@ -7,6 +7,11 @@ export const ClassWrapper = styled.div`
 
     @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
         flex-direction: row;
+        align-items: center;
+    }
+
+    @media (min-width: ${({ theme }) => theme.breakpoints[3]}){
+        align-items: flex-start;
     }
 `;
 
