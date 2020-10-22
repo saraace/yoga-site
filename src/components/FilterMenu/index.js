@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import PropTypes from "prop-types";
-import { Container, Button } from 'theme-ui';
-import { Menu, FilterRow, ClassTypeFilter, DifficultyFilter, YogaType, FilterTitle, ApplyButton } from './styles';
+import { Button } from 'theme-ui';
+import { Menu, Contain, Row, FilterRow, ClassTypeFilter, DifficultyFilter, YogaType, FilterTitle, ApplyButton } from './styles';
 import InstructorFilter from './InstructorFilter';
 import RadioFilterOption from './RadioFilterOption';
 import DurationFilter from './DurationFilter';
@@ -146,8 +146,8 @@ const FilterMenu = ({ filters, onClose, onApply, onChange }) => {
     
     return(
         <Menu>
-            <Container>
-                <FilterRow>
+            <Contain>
+                <Row>
                     <div>
                         <div>
                             <FilterTitle>Instructor</FilterTitle>
@@ -159,69 +159,65 @@ const FilterMenu = ({ filters, onClose, onApply, onChange }) => {
                             />
                         </div>
                     </div>
-                </FilterRow>
+                </Row>
                 <FilterRow>
                     <div>
-                        <div>
-                            <FilterTitle>Class Type</FilterTitle>
-                            <ClassTypeFilter>
-                                {classTypes.map((ct, i) => (
-                                    <RadioFilterOption 
-                                        key={i} 
-                                        {...ct} 
-                                        selected={selected.classType} 
-                                        name="classType" 
-                                        handleChange={() => { onSelect('classType', ct.value) }} 
-                                    />
-                                ))}
-                            </ClassTypeFilter>
-                        </div>
-                        <div>
-                            <FilterTitle>Difficulty Settings</FilterTitle>
-                            <DifficultyFilter>
-                                {difficulties.map((difficulty, i) => (
-                                    <RadioFilterOption 
-                                        key={i} 
-                                        {...difficulty} 
-                                        selected={selected.difficulty} 
-                                        name="difficulty" 
-                                        handleChange={() => { onSelect('difficulty', difficulty.value) }} 
-                                    />
-                                ))}
-                            </DifficultyFilter>
-                        </div>
-                        <div>
-                            <FilterTitle>Duration <span className="muted">(Minutes)</span></FilterTitle>
-                            <DurationFilter 
-                                durationMin={selected.durationMin}
-                                durationMax={selected.durationMax}
-                                handleChange={onSelect} 
-                            />
-                        </div>
+                        <FilterTitle>Class Type</FilterTitle>
+                        <ClassTypeFilter>
+                            {classTypes.map((ct, i) => (
+                                <RadioFilterOption 
+                                    key={i} 
+                                    {...ct} 
+                                    selected={selected.classType} 
+                                    name="classType" 
+                                    handleChange={() => { onSelect('classType', ct.value) }} 
+                                />
+                            ))}
+                        </ClassTypeFilter>
                     </div>
                     <div>
-                        <div>
-                            <FilterTitle>Yoga Type</FilterTitle>
-                            <YogaType>
-                                {yogaTypes.map((yogaType, i) => (
-                                    <YogaTypeFilterOption 
-                                        key={i} 
-                                        {...yogaType} 
-                                        name="yogaType" 
-                                        selected={selected.yogaType} 
-                                        handleChange={() => { onSelect('yogaType', yogaType.value) }} 
-                                    />
-                                ))}
-                            </YogaType>
-                        </div>
+                        <FilterTitle>Difficulty Settings</FilterTitle>
+                        <DifficultyFilter>
+                            {difficulties.map((difficulty, i) => (
+                                <RadioFilterOption 
+                                    key={i} 
+                                    {...difficulty} 
+                                    selected={selected.difficulty} 
+                                    name="difficulty" 
+                                    handleChange={() => { onSelect('difficulty', difficulty.value) }} 
+                                />
+                            ))}
+                        </DifficultyFilter>
+                    </div>
+                    <div>
+                        <FilterTitle>Duration <span className="muted">(Minutes)</span></FilterTitle>
+                        <DurationFilter 
+                            durationMin={selected.durationMin}
+                            durationMax={selected.durationMax}
+                            handleChange={onSelect} 
+                        />
+                    </div>
+                    <div>
+                        <FilterTitle>Yoga Type</FilterTitle>
+                        <YogaType>
+                            {yogaTypes.map((yogaType, i) => (
+                                <YogaTypeFilterOption 
+                                    key={i} 
+                                    {...yogaType} 
+                                    name="yogaType" 
+                                    selected={selected.yogaType} 
+                                    handleChange={() => { onSelect('yogaType', yogaType.value) }} 
+                                />
+                            ))}
+                        </YogaType>
                     </div>
                 </FilterRow>
-                <FilterRow>
+                <Row>
                     <ApplyButton>
                         <Button onClick={applyFilters} >Apply Filter</Button>
                     </ApplyButton>
-                </FilterRow>
-            </Container>
+                </Row>
+            </Contain>
         </Menu>
     )
 }

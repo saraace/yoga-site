@@ -4,21 +4,26 @@ import ChevronLeft from '../../../assets/svgs/chevron-left.svg';
 import ChevronRight from '../../../assets/svgs/chevron-right.svg';
 
 export const Filter = styled.div`
-    width: 776px; 
+    width: 100%;
     margin: 0 0 58px;
     position: relative;
+
+    @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
+        width: 776px; 
+    }
 `;
 
 export const LeftControl = styled(ChevronLeft)`
     width: 27px; 
     height: 54px;
     position: absolute;
-    left: -102px;
+    left: -75px;
     top: 50px;
     z-index: 1;
     cursor: pointer;
     opacity: 0.5;
     transiton: 0.3s all ease;
+    display: none;
 
     polygon{
         fill: #fff;
@@ -26,6 +31,10 @@ export const LeftControl = styled(ChevronLeft)`
 
     &:hover{
         opacity: 1;
+    }
+
+    @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
+        display: block;
     }
 `; 
 
@@ -33,12 +42,13 @@ export const RightControl = styled(ChevronRight)`
     width: 27px; 
     height: 54px;
     position: absolute;
-    right: -102px;
+    right: -75px;
     top: 50px;
     z-index: 1;
     cursor: pointer;
     opacity: 0.5;
     transiton: 0.3s all ease;
+    display: none;
 
     polygon{
         fill: #fff;
@@ -46,6 +56,10 @@ export const RightControl = styled(ChevronRight)`
 
     &:hover{
         opacity: 1;
+    }
+
+    @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
+        display: block;
     }
 `;
 
@@ -62,7 +76,7 @@ export const Slider = styled(motion.div)`
 `; 
 
 export const Instructor = styled.label`
-    margin: 0 26px;
+    margin: 0 4px;
     width: 155px;
     height: 155px;
     opacity: 0.3;
@@ -70,12 +84,16 @@ export const Instructor = styled.label`
     transition: 0.3s all ease;
     position: relative;
 
-    &:hover{
+    &.selected{
         opacity: 1;
     }
 
-    &.selected{
-        opacity: 1;
+    @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
+        margin: 0 26px;
+
+        &:hover{
+            opacity: 1;
+        }
     }
 `; 
 

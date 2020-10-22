@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { Container } from 'theme-ui';
 import { motion } from 'framer-motion';
 
 export const Menu = styled(motion.div)`
@@ -9,16 +10,48 @@ export const Menu = styled(motion.div)`
     border-radius: 40px;
 `; 
 
-export const FilterRow = styled.div`
-    display: flex;
-    width: 776px;
+export const Contain = styled(Container)`
+    padding: 0;
+
+    @media (min-width: ${({ theme }) => theme.breakpoints[1]}){
+        padding: 0 24px;
+    }
+
+`;
+
+export const Row = styled.div`
+    display: flex; 
+    max-width: 776px;
     margin: 0 auto;
+
+    & > div{
+        width: 100%;
+    }
+`;
+
+export const FilterRow = styled(Row)`
     justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+    @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
+        height: 406px;
+    }
+
+    & > div{
+        width: 380px;
+    }
 `; 
 
 export const Filter = styled.div`
     display: flex;
     margin: 0 0 44px 0;
+    padding: 0 24px;
+
+    @media (min-width: ${({ theme }) => theme.breakpoints[1]}){
+        padding: 0;
+    }
 `; 
 
 export const ClassTypeFilter = styled(Filter)`
@@ -42,6 +75,11 @@ export const FilterTitle = styled.div`
     line-height: 1.4; 
     font-weight: 700;
     margin-bottom: 15px;
+    padding: 0 24px;
+
+    @media (min-width: ${({ theme }) => theme.breakpoints[1]}){
+        padding: 0;
+    }
 `; 
 
 export const ApplyButton = styled.div`

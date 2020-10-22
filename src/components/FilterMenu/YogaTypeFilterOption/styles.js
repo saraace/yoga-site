@@ -10,7 +10,7 @@ export const RadioButton = styled.label`
     margin: 0 0 16px 0;
     transition: 0.3s all ease;
     cursor: pointer;
-    width: 380px;
+    max-width: 380px;
     position: relative;
 
     input{

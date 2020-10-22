@@ -3,6 +3,11 @@ import { motion } from 'framer-motion';
 
 export const Filter = styled.div`
     width: 329px;
+    margin: 0 0 44px 24px;
+
+    @media (min-width: ${({ theme }) => theme.breakpoints[1]}){
+        margin: 0 0 44px 0px;
+    }
 `; 
 
 export const DragContainer = styled.div`

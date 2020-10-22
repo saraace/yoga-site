@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import PropTypes from "prop-types";
 import { AnimatePresence, motion } from 'framer-motion';
 import { Filter, LeftControl, RightControl, SliderWrap, Slider, Instructor, Image, SelectedIndicator, Overlay } from './styles'; 
@@ -6,8 +6,19 @@ import Checkmark from '../../../assets/svgs/checkmark-2.svg';
 
 const InstructorFilter = ({ instructors, name, selected, handleChange }) => {
 
+    // Pagination controls
     const [page, setPage] = useState(1);
     const maxPage = Math.ceil(instructors.length / 4);
+
+    // Drag Controls
+    const [leftConstraint, setLeftConstraint] = useState(0);
+    
+    const sectionContainer = useRef(null);
+    const slidingContainer = useRef(null);
+
+    useEffect(() => {
+        setLeftConstraint((slidingContainer.current.offsetWidth - sectionContainer.current.offsetWidth - 26) * -1);
+    }, [sectionContainer.current, slidingContainer.current]);
 
     const onPrevClick = () => {
         setPage(page => page-1);
@@ -43,11 +54,18 @@ const InstructorFilter = ({ instructors, name, selected, handleChange }) => {
                     </motion.div>
                 )}
             </AnimatePresence>
-            <SliderWrap>
+            <SliderWrap ref={sectionContainer} >
                 <Slider
                     initial={{ x: 0 }}
                     animate={{ x: -828*(page-1) }}
                     transition={{ ease: 'easeOut', duration: 0.3 }}
+                    ref={slidingContainer}
+                    drag="x"
+                    dragElastic={0}
+                    dragConstraints={{
+                        right: 26, 
+                        left: leftConstraint
+                    }}
                 >
                 {instructors.map((instructor, i) => {
                     return(
