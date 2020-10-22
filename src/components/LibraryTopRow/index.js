@@ -23,6 +23,7 @@ const LibraryTopRow = ({ tabs, activeTab, onTabClick, subTabs, activeSubTab, onS
                     {filters && (
                         <FilterButton 
                             numberActive={activeFilters} 
+                            menuOpen={filterMenuOpen}
                             onClick={() => setFilterMenuOpen(filterMenuOpen => (!filterMenuOpen))} 
                         />
                     )}

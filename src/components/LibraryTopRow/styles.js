@@ -7,4 +7,9 @@ export const TopRowWrapper = styled.div`
 export const TopRow = styled.div`
     display: flex; 
     justify-content: space-between;
+    flex-direction: column; 
+
+    @media (min-width: ${({ theme }) => theme.breakpoints[1]}){
+        flex-direction: row;
+    }
 `;
