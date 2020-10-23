@@ -46,7 +46,7 @@ const SingleLocationSchedule = ({ title, address, classes }) => {
                     </ButtonRow>
                 </Location>
             </Container>
-            <Container>
+            <Container variant="large">
                 <Schedule>
                     <UpcomingClasses>
                         {classes.map((c, i) => (

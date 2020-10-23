@@ -91,6 +91,10 @@ const theme = {
       maxWidth: '938px', 
       p: '0 24px'
     }, 
+    large: {
+      maxWidth: '1440px', 
+      p: '0 24px'
+    },
     'no-mobile-gutters': {
       p: '0', 
       '@media (min-width: 992px)':{

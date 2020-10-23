@@ -40,8 +40,10 @@ export const Schedule = styled.div`
 `;
 
 export const UpcomingClasses = styled.div`
-    width: 424px;
     margin-right: 51px;
+    flex-grow: 0; 
+    flex-shrink: 0; 
+    flex-basis: 424px;
 `;
 
 export const Preview = styled.div`

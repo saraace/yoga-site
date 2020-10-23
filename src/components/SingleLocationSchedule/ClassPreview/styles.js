@@ -3,8 +3,8 @@ import styled from '@emotion/styled';
 export const Preview = styled.div`
     padding: 128px 48px;
     background: #152339;
-    position: relative;
     border-radius: 12px;
+    position: relative;
 `;
 
 export const Image = styled.img`

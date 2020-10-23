@@ -17,6 +17,14 @@ export const Button = styled.div`
         svg, path, polygon{
             fill: ${({ theme }) => theme.colors.background};
         }
+
+        &:hover{
+            background: ${({ theme }) => theme.colors.primary};
+        }
+    }
+
+    &:hover{
+        background: #132A4D;
     }
 `; 
 
