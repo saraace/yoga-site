@@ -44,7 +44,7 @@ SmallClassCard.propTypes = {
     instructor: PropTypes.string,
     difficulty: PropTypes.string,
     duration: PropTypes.string,
-    type: PropTypes.oneOf(['follow', 'fiit', 'restore']),
+    type: PropTypes.string,
     date: PropTypes.string,
     time: PropTypes.string,
     image: PropTypes.string.isRequired
