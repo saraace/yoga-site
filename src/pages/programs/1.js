@@ -7,7 +7,7 @@ import ClassCard from '../../components/Cards/ClassCard';
 const SingleProgram = () => {
 
     const program = {
-        title: 'Hips and Legs : Fiding Freedom through Foundation',
+        title: 'Hips and Legs: Fiding Freedom through Foundation',
         description: 'Starting from the ground up, learn how to establish a stable foundation in the feet that will translate up the entire leg and pelvis.',
         date: 'Aug 17, 2020 - Aug 29, 2020',
         location: 'Yoga Joint Downtown Ft. Lauderdale', 
@@ -232,7 +232,7 @@ const SingleProgram = () => {
                 <LargeHeader {...program} />
             </Container>
             <Container>
-                <h2 sx={{ marginLeft: '24px' }}>Your Classes</h2>
+                <h2>Your Classes</h2>
                 {program.schedule.map((week, i) => (
                     <SlidingLayout key={i} title={week.title} subTitle={week.sub_title} height={[192, null, null, 436]} stepWidth={384} >
                         {week.classes.map((c, j) => (

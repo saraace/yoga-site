@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
 
 export const Section = styled.div`
-    padding: 0 0 0 24px;
     margin: 40px 0 0 0;
 
     @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
@@ -122,7 +121,14 @@ export const SliderContents = styled(motion.div)`
         margin-right: 24px;
 
         @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
-            margin-right: 150px;
+            //margin-right: 150px;
+            margin-right: 0;
         }
+    }
+
+    &.dashed{
+        border: 2px dashed rgba(0, 0, 0, 0.2);
+        border-radius: 52px;
+        padding: 24px;
     }
 `; 

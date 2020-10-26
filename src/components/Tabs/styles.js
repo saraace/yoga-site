@@ -47,6 +47,19 @@ export const Tab = styled.li`
         
     }
 
+    &.button{
+        padding: 8px 35px; 
+        text-transform: uppercase;
+        border-radius: 4px; 
+        border: 1px solid #fff;
+        margin: 0 16px 0 0;
+
+        &.active{
+            background: rgba(255, 255, 255, 0.16);
+            border-color: rgba(255, 255, 255, 0.16);
+        }
+    }
+
     &:hover{
         opacity: 1;
     }

@@ -51,12 +51,6 @@ export const CardWrapper = styled(Card)`
         }
     }
 
-    &.programClass{
-        width: 100%; 
-        min-width: 368px; 
-        height: 436px;
-    }
-
     &.large{
         width: 327px; 
         height: 192px;
@@ -104,7 +98,26 @@ export const CardWrapper = styled(Card)`
                 border-radius: 12px;
             }
         }
-        
+    }
+
+    &.programClass{
+        width: 100%; 
+        min-width: 368px; 
+        height: 436px;
+    }
+
+    &.scheduleOne{
+        width: 100%; 
+        min-width: 533px; 
+        height: 505px;
+        margin: 16px 0 0 0;
+    }
+
+    &.scheduleTwo{
+        width: 100%; 
+        min-width: 533px; 
+        height: 244px;
+        margin: 16px 0 0 0;
     }
 `;
 

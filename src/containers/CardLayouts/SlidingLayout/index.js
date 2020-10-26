@@ -7,7 +7,7 @@ import { Section, TitleRow, SectionTitle, SectionSubTitle, Slider, SliderContent
 import ChevronLeft from "../../../assets/svgs/chevron-left.svg";
 import ChevronRight from "../../../assets/svgs/chevron-right.svg";
 
-const SlidingLayout = ({ title, subTitle, height, stepWidth, children, ...rest }) => {
+const SlidingLayout = ({ title, subTitle, height, stepWidth, dashedBorder, children, ...rest }) => {
 
     // Pagination animation
     const [ animate, setAnimate ] = useState({ x: 0 });
@@ -64,6 +64,7 @@ const SlidingLayout = ({ title, subTitle, height, stepWidth, children, ...rest }
                     dragConstraints={{ right: 0, left: leftConstraint }}
                     transition={{ ease: 'easeOut', duration: 0.3 }}
                     {...{animate}}
+                    className={dashedBorder? 'dashed' : ''}
                     >
                     {children.map((child, idx) => {
                         return cloneElement(child, {
@@ -92,7 +93,8 @@ const SlidingLayout = ({ title, subTitle, height, stepWidth, children, ...rest }
 
 SlidingLayout.defaultProps = {
     height: [192, null, null, 264],
-    stepWidth: 384
+    stepWidth: 384, 
+    dashedBorder: false
 }
 
 SlidingLayout.propTypes = {
@@ -100,6 +102,7 @@ SlidingLayout.propTypes = {
     subTitle: PropTypes.string,
     height: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
     stepWidth: PropTypes.number, 
+    dashedBorder: PropTypes.bool,
     children: PropTypes.node.isRequired
 }
 
