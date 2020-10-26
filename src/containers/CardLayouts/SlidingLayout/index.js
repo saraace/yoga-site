@@ -3,11 +3,11 @@ import { cloneElement, useRef, useEffect, useState } from "react";
 import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types';
 import { AnimatePresence } from 'framer-motion';
-import { Section, SectionTitle, Slider, SliderContents, PrevControl, NextControl } from "./styles";
+import { Section, TitleRow, SectionTitle, SectionSubTitle, Slider, SliderContents, PrevControl, NextControl } from "./styles";
 import ChevronLeft from "../../../assets/svgs/chevron-left.svg";
 import ChevronRight from "../../../assets/svgs/chevron-right.svg";
 
-const SlidingLayout = ({ title, height, stepWidth, children, ...rest }) => {
+const SlidingLayout = ({ title, subTitle, height, stepWidth, children, ...rest }) => {
 
     // Pagination animation
     const [ animate, setAnimate ] = useState({ x: 0 });
@@ -41,7 +41,10 @@ const SlidingLayout = ({ title, height, stepWidth, children, ...rest }) => {
 
     return(
         <Section {...rest} >
-            {title && <SectionTitle>{title}</SectionTitle>}
+            <TitleRow>
+                {title && <SectionTitle>{title}</SectionTitle>}
+                {subTitle && <SectionSubTitle>{subTitle}</SectionSubTitle>}
+            </TitleRow>
             <Slider ref={sectionContainer} sx={{ height: height }}>
                 <AnimatePresence>
                     {0 < steps && (
@@ -94,6 +97,7 @@ SlidingLayout.defaultProps = {
 
 SlidingLayout.propTypes = {
     title: PropTypes.string, 
+    subTitle: PropTypes.string,
     height: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
     stepWidth: PropTypes.number, 
     children: PropTypes.node.isRequired

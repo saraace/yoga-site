@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import BackButton from './BackButton';
+import BackButton from '../BackButton';
 import { Video, ClassTitle, ClassDetails, Row, Col, Section, SectionTitle, SectionContent, Description } from './styles';
 import BoxIcon from '../../assets/svgs/box-icon.svg'; 
 import EquipIcon from '../../assets/svgs/equip-icon.svg'; 

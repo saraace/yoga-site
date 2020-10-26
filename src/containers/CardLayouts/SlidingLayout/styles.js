@@ -10,9 +10,21 @@ export const Section = styled.div`
     }
 `;
 
+export const TitleRow = styled.div`
+    display: flex;
+    align-items: center; 
+    justify-content: space-between;
+`; 
+
 export const SectionTitle = styled.h2`
     font-size: ${({ theme }) => theme.fontSizes[2]+'px'};
     margin-bottom: 12px;
+    font-weight: 700;
+`;
+
+export const SectionSubTitle = styled.h3`
+    font-size: ${({ theme }) => theme.fontSizes[2]+'px'};
+    line-height: 1.4; 
     font-weight: 400;
 `;
 

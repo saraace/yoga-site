@@ -51,6 +51,12 @@ export const CardWrapper = styled(Card)`
         }
     }
 
+    &.programClass{
+        width: 100%; 
+        min-width: 368px; 
+        height: 436px;
+    }
+
     &.large{
         width: 327px; 
         height: 192px;
