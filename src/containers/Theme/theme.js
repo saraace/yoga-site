@@ -199,6 +199,16 @@ const theme = {
     }
   },
   buttons: {
+    link: {
+      color: 'highlight', 
+      bg: 'transparent',
+      fontFamily: 'body',
+      outline: 'none', 
+      cursor: 'pointer', 
+      '&:hover': {
+        textDecoration: 'underline'
+      }
+    },
     primary: {
       color: 'dark', 
       bg: 'primary', 
