@@ -389,6 +389,29 @@ const theme = {
         boxShadow: '0 0 10px 0 rgba(255, 239, 169, 0.5)'
       }
     },
+    'underline-input': {
+      fontFamily: 'body',
+      fontWeight: 400,
+      fontSize: 2,
+      border: '0px',
+      borderBottom: '2px solid #fff', 
+      borderRadius: '0px', 
+      outline: 'none',
+      transition: '0.3s all ease',
+      '&:disabled': {
+        borderColor: 'transparent'
+      },
+      '&:focus': {
+        borderColor: 'primary'
+      }
+    },
+    'underline-label': {
+      fontFamily: 'body',
+      fontSize: '10px',
+      label: '10px',
+      fontWeight: 700,
+      p: '0 0 0 8px'
+    },
     select: {
       fontFamily: 'body',
       fontWeight: 400,

@@ -6,13 +6,13 @@ import Arrow from "../../../assets/svgs/chevron-down.svg";
 import LocationMarker from "../../../assets/svgs/location-pin.svg";
 import ValidationLabel from "../Validation/ValidationLabel";
 
-const FormSelect = ({ value, className, options, label, validate, locationIcon, ...rest }) => {
+const FormSelect = ({ value, className, options, label, required, validate, locationIcon, ...rest }) => {
     return (
         <FormSelectWrapper className={validate? 'invalid' : 'valid'}> 
-            {label && <Label>{label}</Label>}
+            {label && <Label variant={className? className+'-label' : ''}>{label}{required ? ' *' : ''}</Label>}
             <SelectWrapper>
                 {locationIcon && <LocationMarker className="marker" />}
-                <Select {...rest} {...{value}} className={locationIcon? 'icon-included' : ''}>
+                <Select {...rest} {...{value}} variant={className? className+'-input' : ''} className={(locationIcon? 'icon-included' : '')}>
                 {options.map((option) => (
                     <option key={option.value} value={option.value}>
                         {option.displayValue ? option.displayValue.replace(/_/g, " ") : ""}
@@ -33,6 +33,7 @@ FormSelect.defaultProps = {
     className: "",
     options: [],
     label: "", 
+    required: false,
     validate: "",
     locationIcon: false
 };
@@ -42,6 +43,7 @@ FormSelect.propTypes = {
     className: PropTypes.string,
     options: PropTypes.arrayOf(PropTypes.object).isRequired,
     label: PropTypes.string, 
+    required: PropTypes.bool,
     validate: PropTypes.string, 
     locationIcon: PropTypes.bool,
 };

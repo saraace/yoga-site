@@ -7,8 +7,8 @@ import ValidationLabel from "../Validation/ValidationLabel";
 const FormInput = ({ label, required, className, validate, value, ...rest }) => {
     return(
         <FormInputWrapper className={validate? 'invalid' : 'valid'}>
-            {label && <Label>{label}{required ? ' *' : ''}</Label>}
-            <Input {...rest} {...{value}} />
+            {label && <Label variant={className? className+'-label' : ''}>{label}{required ? ' *' : ''}</Label>}
+            <Input {...rest} variant={className? className+'-input' : ''} {...{value}} />
             <AnimatePresence>
                 {validate && <ValidationLabel>{validate}</ValidationLabel>}
             </AnimatePresence>
