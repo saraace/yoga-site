@@ -10,11 +10,11 @@ export const Buttons = styled.div`
     right: 0;
     display: flex;
 
-    a:first-child{
+    a:first-of-type{
         border-top-left-radius: 16px;
     }
 
-    a:last-child{
+    a:last-of-type{
         margin: 0 0 0 8px;
         border-bottom-right-radius: 6px;
     }
