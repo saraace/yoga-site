@@ -25,7 +25,14 @@ const SingleInstructor = ({ name, title, image, location, bio }) => {
             <Bio dangerouslySetInnerHTML={{ __html: bio }}></Bio>
             <Location>
                 <SectionTitle>Location</SectionTitle>
-                <Map lat={location.coordinates.lat} lng={location.coordinates.lng} width='100%' height={310}></Map>
+                <Map 
+                    lat={location.coordinates.lat} 
+                    lng={location.coordinates.lng} 
+                    width='100%' 
+                    height={310}
+                    directionsLink="#"
+                    locationLink="#"
+                ></Map>
             </Location>
         </>
     )

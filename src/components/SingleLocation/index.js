@@ -29,7 +29,12 @@ const SingleLocation = ({ title, address, scheduleLink, signUpLink, coordinates,
                 <div>
                     <h3>Location</h3>
                     <MapContainer>
-                        <Map {...coordinates} width={343} height={192} />
+                        <Map 
+                        {...coordinates} 
+                        width={343} 
+                        height={192}
+                        directionsLink="#"
+                    />
                     </MapContainer>
                 </div>
                 <div>
