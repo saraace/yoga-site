@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import PropTypes from "prop-types";
 import { Button } from 'theme-ui';
 import { Menu, Contain, Row, FilterRow, ClassTypeFilter, DifficultyFilter, YogaType, FilterTitle, ApplyButton } from './styles';
-import InstructorFilter from './InstructorFilter';
+//import InstructorFilter from './InstructorFilter';
 import RadioFilterOption from './RadioFilterOption';
 import DurationFilter from './DurationFilter';
 import YogaTypeFilterOption from './YogaTypeFilterOption';
@@ -126,10 +126,10 @@ const FilterMenu = ({ filters, onClose, onApply, onChange }) => {
     ];
 
     const yogaTypes = [
-        {
+        /* {
             value: 'flow', 
             label: 'Yoga Flow'
-        }, 
+        },  */
         {
             value: 'follow', 
             label: 'Yoga Follow'
@@ -147,7 +147,7 @@ const FilterMenu = ({ filters, onClose, onApply, onChange }) => {
     return(
         <Menu>
             <Contain>
-                <Row>
+                {/* <Row>
                     <div>
                         <div>
                             <FilterTitle>Instructor</FilterTitle>
@@ -159,9 +159,9 @@ const FilterMenu = ({ filters, onClose, onApply, onChange }) => {
                             />
                         </div>
                     </div>
-                </Row>
+                </Row> */}
                 <FilterRow>
-                    <div>
+                    {/* <div>
                         <FilterTitle>Class Type</FilterTitle>
                         <ClassTypeFilter>
                             {classTypes.map((ct, i) => (
@@ -174,7 +174,7 @@ const FilterMenu = ({ filters, onClose, onApply, onChange }) => {
                                 />
                             ))}
                         </ClassTypeFilter>
-                    </div>
+                    </div> */}
                     <div>
                         <FilterTitle>Difficulty Settings</FilterTitle>
                         <DifficultyFilter>

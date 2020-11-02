@@ -1,8 +1,7 @@
 import PropTypes from "prop-types";
 import { RadioButton, Icon, Label, Control } from './styles';
 import Radio from '../../Forms/Radio';
-import FlowIcon from '../../../assets/svgs/flow-icon.svg';
-import FollowIcon from '../../../assets/svgs/follow-icon.svg'; 
+import FollowIcon from '../../../assets/svgs/yoga-icon.svg'; 
 import FiitIcon from '../../../assets/svgs/fiit-icon.svg'; 
 import RestoreIcon from '../../../assets/svgs/restore-icon.svg'; 
 
@@ -10,7 +9,6 @@ const YogaTypeFilterOption = ({ label, value, name, selected, handleChange, ...r
     return(
         <RadioButton className={value + (selected === value? ' selected' : '')}>
             <Icon className={value}>
-                {value === 'flow' && <FlowIcon />}
                 {value === 'follow' && <FollowIcon />}
                 {value === 'fiit' && <FiitIcon />}
                 {value === 'restore' && <RestoreIcon />}

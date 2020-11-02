@@ -5,7 +5,7 @@ export const Filter = styled.div`
     width: 329px;
     margin: 0 0 44px 24px;
 
-    @media (min-width: ${({ theme }) => theme.breakpoints[1]}){
+    @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
         margin: 0 0 44px 0px;
     }
 `; 

@@ -13,7 +13,7 @@ export const Menu = styled(motion.div)`
 export const Contain = styled(Container)`
     padding: 0;
 
-    @media (min-width: ${({ theme }) => theme.breakpoints[1]}){
+    @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
         padding: 0 24px;
     }
 
@@ -30,13 +30,12 @@ export const Row = styled.div`
 `;
 
 export const FilterRow = styled(Row)`
-    justify-content: space-between;
     align-items: center;
     flex-direction: column;
     flex-wrap: wrap;
 
     @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
-        height: 406px;
+        height: 320px;
     }
 
     & > div{
@@ -49,7 +48,7 @@ export const Filter = styled.div`
     margin: 0 0 44px 0;
     padding: 0 24px;
 
-    @media (min-width: ${({ theme }) => theme.breakpoints[1]}){
+    @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
         padding: 0;
     }
 `; 
@@ -77,7 +76,7 @@ export const FilterTitle = styled.div`
     margin-bottom: 15px;
     padding: 0 24px;
 
-    @media (min-width: ${({ theme }) => theme.breakpoints[1]}){
+    @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
         padding: 0;
     }
 `; 
