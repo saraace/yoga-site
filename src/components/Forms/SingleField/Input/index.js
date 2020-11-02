@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 import { SingleFieldForm, Field } from './styles';
 import Input from '../../Input';
 
-const SingleFieldInput = ({ label, name, initial, validationSchema, onSave }) => {
+const SingleFieldInput = ({ label, name, initial, validationSchema, onSave, ...rest }) => {
 
     const [ editable, setEditable ] = useState(false);
 
@@ -36,11 +36,12 @@ const SingleFieldInput = ({ label, name, initial, validationSchema, onSave }) =>
                     value={values[name]}
                     validate={touched[name] && errors[name]}
                     disabled={!editable}
+                    {...rest}
                 /> 
             </Field>
             <div>
-                {!editable && <Button variant="link" onClick={() => setEditable(true)}>Edit</Button>}
-                {editable && <Button type="submit" variant="link">Save</Button>}
+                {!editable && <Button variant="small-link" onClick={() => setEditable(true)}>Edit</Button>}
+                {editable && <Button type="submit" variant="small-link">Save</Button>}
             </div>
         </SingleFieldForm>
     )

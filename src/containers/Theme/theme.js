@@ -209,6 +209,41 @@ const theme = {
         textDecoration: 'underline'
       }
     },
+    'link-secondary': {
+      color: 'secondary', 
+      bg: 'transparent',
+      fontFamily: 'body',
+      outline: 'none', 
+      cursor: 'pointer', 
+      p: 0,
+      textDecoration: 'underline',
+      '&:hover': {
+        textDecoration: 'none'
+      }
+    },
+    'link-danger': {
+      color: 'danger', 
+      bg: 'transparent',
+      fontFamily: 'body',
+      outline: 'none', 
+      cursor: 'pointer', 
+      p: 0,
+      '&:hover': {
+        textDecoration: 'underline'
+      }
+    },
+    'small-link': {
+      color: 'highlight', 
+      bg: 'transparent',
+      fontFamily: 'body',
+      fontSize: 0,
+      padding: '0 10px',
+      outline: 'none', 
+      cursor: 'pointer', 
+      '&:hover': {
+        textDecoration: 'underline'
+      }
+    },
     primary: {
       color: 'dark', 
       bg: 'primary', 
@@ -425,6 +460,26 @@ const theme = {
       '&:focus': {
         borderColor: 'primary', 
         boxShadow: '0 0 10px 0 rgba(255, 239, 169, 0.5)'
+      },
+      '& + svg': {
+        display: 'none'
+      }
+    }, 
+    'underline-select': {
+      fontFamily: 'body',
+      fontWeight: 400,
+      fontSize: 2,
+      border: '0px',
+      borderBottom: '2px solid #fff', 
+      borderRadius: '0px', 
+      p: '8px', 
+      outline: 'none',
+      transition: '0.3s all ease',
+      '&:disabled': {
+        borderColor: 'transparent'
+      },
+      '&:focus': {
+        borderColor: 'primary'
       },
       '& + svg': {
         display: 'none'

@@ -6,20 +6,20 @@ import Arrow from "../../../assets/svgs/chevron-down.svg";
 import LocationMarker from "../../../assets/svgs/location-pin.svg";
 import ValidationLabel from "../Validation/ValidationLabel";
 
-const FormSelect = ({ value, className, options, label, required, validate, locationIcon, ...rest }) => {
+const FormSelect = ({ value, className, options, label, required, validate, locationIcon, disabled, ...rest }) => {
     return (
         <FormSelectWrapper className={validate? 'invalid' : 'valid'}> 
-            {label && <Label variant={className? className+'-label' : ''}>{label}{required ? ' *' : ''}</Label>}
-            <SelectWrapper>
+            {label && <Label variant={className? className+'-label' : 'label'}>{label}{required ? ' *' : ''}</Label>}
+            <SelectWrapper className={className}>
                 {locationIcon && <LocationMarker className="marker" />}
-                <Select {...rest} {...{value}} variant={className? className+'-input' : ''} className={(locationIcon? 'icon-included' : '')}>
+                <Select {...rest} {...{ value, disabled }} variant={className? className+'-select' : 'select'} className={locationIcon? 'icon-included' : ''}>
                 {options.map((option) => (
                     <option key={option.value} value={option.value}>
                         {option.displayValue ? option.displayValue.replace(/_/g, " ") : ""}
                     </option>
                 ))}
                 </Select>
-                <Arrow className="arrow" />
+                <Arrow className={"arrow" + (disabled? " disabled" : "")} />
             </SelectWrapper>
             <AnimatePresence>
                 {validate && <ValidationLabel>{validate}</ValidationLabel>}

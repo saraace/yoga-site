@@ -40,8 +40,8 @@ const SingleFieldSelect = ({ label, name, initial, validationSchema, options, on
                 /> 
             </Field>
             <div>
-                {!editable && <Button variant="link" onClick={() => setEditable(true)}>Edit</Button>}
-                {editable && <Button type="submit" variant="link">Save</Button>}
+                {!editable && <Button variant="small-link" onClick={() => setEditable(true)}>Change</Button>}
+                {editable && <Button type="submit" variant="small-link">Save</Button>}
             </div>
         </SingleFieldForm>
     )
