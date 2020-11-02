@@ -2,8 +2,9 @@
 import { jsx, Button } from 'theme-ui';
 import PropTypes from "prop-types";
 import Link from 'next/link';
-import { Location, Title, Address, ButtonRow, Row, Map, Services, Service } from './styles';
+import { Location, Title, Address, ButtonRow, Row, MapContainer, Services, Service } from './styles';
 import LeadInstructor from './LeadInstructor';
+import Map from '../Map';
 import PhotoWall from './PhotoWall'; 
 import InstructorsGrid from './InstructorsGrid';
 import YogaIcon from '../../assets/svgs/yoga-icon.svg';
@@ -27,7 +28,9 @@ const SingleLocation = ({ title, address, scheduleLink, signUpLink, coordinates,
             <Row>
                 <div>
                     <h3>Location</h3>
-                    <Map {...coordinates} />
+                    <MapContainer>
+                        <Map {...coordinates} width={343} height={192} />
+                    </MapContainer>
                 </div>
                 <div>
                     <h3>Services</h3>

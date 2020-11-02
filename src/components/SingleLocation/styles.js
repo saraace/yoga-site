@@ -63,16 +63,8 @@ export const Row = styled.div`
     }
 `;
 
-export const Map = styled.div`
-    width: 100%; 
-    height: 192px;
-    border-radius: 8px;
-    background #2c4263;
+export const MapContainer = styled.div`
     margin: 0 100px 0 0;
-
-    @media (min-width: ${({ theme }) => theme.breakpoints[1]}){
-        width: 343px; 
-    }
 `;
 
 export const Services = styled.div`
