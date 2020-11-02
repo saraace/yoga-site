@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import PlanWrapper, { Row, Title, Select, Price, FeaturesList, Feature } from "./styles";
-import Checkmark from "../../../../svgs/checkmark.svg";
+import { PlanWrapper, Best, Row, Title, Select, Price, FeaturesList, Feature } from "./styles";
+import Checkmark from "../../../../assets/svgs/checkmark.svg";
 import Radio from "../../../Forms/Radio";
 
 const Plan = ({ name, title, price, best, value, features, selectedPlan, ...rest }) => {
     return (
-        <PlanWrapper className={(best? 'best' : '') + " " + (selectedPlan === value? 'selected' : '')}>
+        <PlanWrapper className={selectedPlan === value? 'selected' : ''}>
+            {best && <Best className={"best "+(selectedPlan === value? 'selected' : '')}>Best Value</Best>}
             <Row>
                 <Title>{title}</Title>
                 <Select>

@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-const PlanWrapper = styled.label`
+export const PlanWrapper = styled.label`
     display: block;
     border: 1px solid rgba(255, 255, 255, 0.24);
     background: #172234;
@@ -9,6 +9,7 @@ const PlanWrapper = styled.label`
     max-width: 344px;
     cursor: pointer;
     transition: 0.3s all ease;
+    position: relative;
 
     &.selected{
         background: ${({ theme }) => theme.colors.text}; 
@@ -28,8 +29,49 @@ const PlanWrapper = styled.label`
     &:not(.selected):hover{
         border-color: ${({ theme }) => theme.colors.primary}; 
         box-shadow: 0 0 24px 0 rgba(255, 239, 169, 0.2);       
+
+        .best{
+            border-color: ${({ theme }) => theme.colors.primary}; 
+        }
     }
 `; 
+
+export const Best = styled.div`
+    position: absolute; 
+    transform: rotate(-90deg);
+    transform-origin: 100% 0;
+    top: 28px;
+    left: -149px;
+    width: 120px;
+    padding: 5px 11px 3px;
+    text-align: center;
+    text-transform: uppercase;
+    background: #172234;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.24);
+    border-top: 1px solid rgba(255, 255, 255, 0.24);
+    border-left: 1px solid rgba(255, 255, 255, 0.24);
+    border-right: 1px solid rgba(255, 255, 255, 0.24);
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    transition: 0.3s all ease;
+
+    &:after{
+        content: "";
+        position: absolute; 
+        height: 3px; 
+        background: #172234;
+        bottom: -2px;
+        right: 0;
+        left: 0;
+        display: none;
+    }
+
+    &.selected{
+        background: ${({ theme }) => theme.colors.text}; 
+        border-color: ${({ theme }) => theme.colors.text}; 
+        border-bottom: 1px dashed #172234;
+    }
+`;
 
 export const Row = styled.div`
     display: flex;
@@ -81,5 +123,3 @@ export const Feature = styled.li`
         }
     }
 `;
-
-export default PlanWrapper;
