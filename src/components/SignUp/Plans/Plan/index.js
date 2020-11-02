@@ -6,7 +6,7 @@ import Radio from "../../../Forms/Radio";
 
 const Plan = ({ name, title, price, best, value, features, selectedPlan, ...rest }) => {
     return (
-        <PlanWrapper className={selectedPlan === value? 'selected' : ''}>
+        <PlanWrapper className={(best? 'best' : '') + " " + (selectedPlan === value? 'selected' : '')}>
             {best && <Best className={"best "+(selectedPlan === value? 'selected' : '')}>Best Value</Best>}
             <Row>
                 <Title>{title}</Title>

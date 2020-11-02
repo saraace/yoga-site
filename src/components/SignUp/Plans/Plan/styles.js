@@ -10,6 +10,7 @@ export const PlanWrapper = styled.label`
     cursor: pointer;
     transition: 0.3s all ease;
     position: relative;
+    margin: 0 0 24px;
 
     &.selected{
         background: ${({ theme }) => theme.colors.text}; 
@@ -34,14 +35,21 @@ export const PlanWrapper = styled.label`
             border-color: ${({ theme }) => theme.colors.primary}; 
         }
     }
+
+    &.best{
+        margin: 46px 0 24px 0;
+
+        @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
+            margin: 0 0 24px 0;
+        }
+    }
 `; 
 
 export const Best = styled.div`
     position: absolute; 
-    transform: rotate(-90deg);
-    transform-origin: 100% 0;
-    top: 28px;
-    left: -149px;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
     width: 120px;
     padding: 5px 11px 3px;
     text-align: center;
@@ -70,6 +78,14 @@ export const Best = styled.div`
         background: ${({ theme }) => theme.colors.text}; 
         border-color: ${({ theme }) => theme.colors.text}; 
         border-bottom: 1px dashed #172234;
+    }
+
+    @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
+        transform: rotate(-90deg);
+        transform-origin: 100% 0;
+        top: 28px;
+        bottom: auto;
+        left: -149px;
     }
 `;
 
