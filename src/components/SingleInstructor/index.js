@@ -17,7 +17,7 @@ const SingleInstructor = ({ name, title, image, location, bio }) => {
                     <Title>{title} @ <Link href={"/locations/"+location.id} ><a title={location.title}>{location.title}</a></Link></Title>
                     <div>
                         <Link href="/">
-                            <a sx={{ variant: 'buttons.highlight-outline' }} title="See Her story">See Her story</a>
+                            <a sx={{ variant: 'buttons.highlight-outline-square' }} title="See Her story">See Her story</a>
                         </Link>
                     </div>
                 </Details>

@@ -1,8 +1,10 @@
 /** @jsx jsx */
 import { jsx, Container, Heading, Flex, Box, Button } from 'theme-ui';
+import Icon from "../assets/svgs/play-icon.svg"
 import theme from "../containers/Theme/theme";
 
 export default function Theme(){
+    console.log(theme);
     return (
         <Container>
             <Heading>Colors</Heading>
@@ -29,17 +31,36 @@ export default function Theme(){
             {Object.keys(theme.colors).map((key, idx) =>{
                 if(theme.buttons.hasOwnProperty(key)){
                     return (
-                    <Flex sx={{ mt: 2, mb: 2 }}>
-                        <Box key={idx} sx={{ mr: 2 }}>
-                            <Button variant={key}>{key}</Button>
-                        </Box>
-                        <Box key={idx} sx={{ mr: 2 }}>
-                            <Button variant={key+'-outline'}>{key}</Button>
-                        </Box>
-                        <Box key={idx} sx={{ mr: 2 }}>
-                            <Button variant={key+'-outline-square'}>{key}</Button>
-                        </Box>
-                    </Flex>
+                    <>
+                        <Flex sx={{ mt: 2, mb: 2 }}>
+                            <Box key={idx} sx={{ mr: 2 }}>
+                                <Button variant={key}>{key}</Button>
+                            </Box>
+                            <Box key={idx} sx={{ mr: 2 }}>
+                                <Button variant={key+'-outline'}>{key}</Button>
+                            </Box>
+                            <Box key={idx} sx={{ mr: 2 }}>
+                                <Button variant={key+'-square'}>{key}</Button>
+                            </Box>
+                            <Box key={idx} sx={{ mr: 2 }}>
+                                <Button variant={key+'-outline-square'}>{key}</Button>
+                            </Box>
+                        </Flex>
+                        <Flex sx={{ mt: 2, mb: 2 }}>
+                            <Box key={idx} sx={{ mr: 2 }}>
+                                <Button variant={key+'-icon'}><Icon />{key}</Button>
+                            </Box>
+                            <Box key={idx} sx={{ mr: 2 }}>
+                                <Button variant={key+'-outline-icon'}><Icon />{key}</Button>
+                            </Box>
+                            <Box key={idx} sx={{ mr: 2 }}>
+                                <Button variant={key+'-square-icon'}><Icon />{key}</Button>
+                            </Box>
+                            <Box key={idx} sx={{ mr: 2 }}>
+                                <Button variant={key+'-outline-square-icon'}><Icon />{key}</Button>
+                            </Box>
+                        </Flex>
+                    </>
                     );
                 }
             })}

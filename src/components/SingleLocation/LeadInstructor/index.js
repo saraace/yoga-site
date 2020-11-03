@@ -19,7 +19,7 @@ const LeadInstructor = ({ name, title, image, bio, link, followLink }) => {
                     </div>}
                     {followLink && <div>
                         <Link href={followLink}>
-                            <a sx={{ variant: "buttons.secondary-outline-square" }}><HeartOutlineIcon />Follow</a>
+                            <a sx={{ variant: "buttons.secondary-outline-square-icon" }}><HeartOutlineIcon />Follow</a>
                         </Link>
                     </div>}
                 </ButtonRow>
