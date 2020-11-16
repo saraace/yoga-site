@@ -5,6 +5,7 @@ deploy-to-dev:
   stage: deploy
   image: daxter1987/ubuntu-deploy:1.0.11
   script:
+    - pwd
     - cp $SSH_PRIVATE_KEY $SSH_PRIVATE_KEY_NAME
     - chmod 600 $SSH_PRIVATE_KEY_NAME
     - npm install
