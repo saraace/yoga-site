@@ -5,12 +5,12 @@ deploy-to-dev:
   stage: deploy
   image: daxter1987/ubuntu-deploy:1.0.11
   script:
-    - cp $SSH_PRIVATE_KEY ~/.ssh/digitalplankton-dev.pem
-    - chmod 600 ~/.ssh/digitalplankton-dev.pem
+    - cp $SSH_PRIVATE_KEY ~/$SSH_PRIVATE_KEY_NAME
+    - chmod 600 ~/$SSH_PRIVATE_KEY_NAME
     - npm install
     - cp $ENV_FILE .env
     - npm run build
-    - rsync -rave "ssh -i ~/.ssh/digitalplankton-dev.pem -o StrictHostKeyChecking=no" out/ ubuntu@$AWS_SERVER_ADDRESS:/var/www/html -y --delete
+    - rsync -rave "ssh -i ~/$SSH_PRIVATE_KEY_NAME -o StrictHostKeyChecking=no" out/ ubuntu@$AWS_SERVER_ADDRESS:/var/www/html -y --delete
   environment:
     name: develop
   only:
