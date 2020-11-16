@@ -1,6 +1,6 @@
 import Links, { SocialLink, InstagramButton, FacebookButton } from "./styles";
-import InstagramIcon from "../../../svgs/instagram.svg";
-import FacebookIcon from "../../../svgs/facebook.svg";
+import InstagramIcon from "../../../assets/svgs/instagram.svg";
+import FacebookIcon from "../../../assets/svgs/facebook.svg";
 
 const SocialLinks = () => {
     return (

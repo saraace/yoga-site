@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, Container } from 'theme-ui';
 import PageFooter, { FooterFlex, LogoWrapper, FooterContent, CopyrightWrapper, Copyright } from "./styles";
-import YogaJointLogo from "../../svgs/yoga-joint.svg";
+import YogaJointLogo from "../../assets/svgs/yoga-joint.svg";
 import FooterLinks from "./FooterLinks";
 import SocialLinks from "./SocialLinks";
 
