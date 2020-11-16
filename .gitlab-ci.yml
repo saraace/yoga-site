@@ -10,7 +10,7 @@ deploy-to-dev:
     - npm install
     - cp $ENV_FILE .env
     - npm run build
-    - rsync -rave "ssh -i ~/.ssh/digitalplankton-dev.pem -o StrictHostKeyChecking=no" out/ ubuntu@ip-10-1-3-26.ec2.internal:/var/www/html -y --delete
+    - rsync -rave "ssh -i ~/.ssh/digitalplankton-dev.pem -o StrictHostKeyChecking=no" out/ ubuntu@$AWS_SERVER_ADDRESS:/var/www/html -y --delete
   environment:
     name: develop
   only:
