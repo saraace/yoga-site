@@ -27,6 +27,10 @@ const inputs = {
         borderRadius: '0px', 
         outline: 'none',
         transition: '0.3s all ease',
+        '&::placeholder': {
+            color: 'text', 
+            opacity: '0.8'
+        },
         '&:disabled': {
             borderColor: 'transparent'
         },

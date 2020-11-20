@@ -20,9 +20,9 @@ const Layout = ({ children }) => {
     if(router.pathname === "/sign-up"){
       setBgClass('');
       setBackground('/images/sign-up/bg.png');
-    } else if(router.pathname === '/') {
-      setBgClass('homepage');
-      setBackground('/images/homepage/bg.png');
+    } else if(router.pathname === '/dashboard') {
+      setBgClass('dashboard');
+      setBackground('/images/dashboard/bg.png');
     } else if(router.pathname === '/instructors/[id]'){
       setBgClass('');
       setBackground('/images/instructors/bg-instructor.jpg');

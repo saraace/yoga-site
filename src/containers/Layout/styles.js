@@ -24,7 +24,7 @@ export const BackgroundImage = styled(motion.div)`
         width: 100%; 
     }
 
-    &.homepage{
+    &.dashboard{
         height: 290px;
 
         img{
