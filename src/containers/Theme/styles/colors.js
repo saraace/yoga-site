@@ -11,6 +11,9 @@ const colors = {
     success: "#41BC3F", 
     indigo: "#7F63F1", 
     purple: "#C081FC", 
+    yoga: "#FB5E5E", 
+    fiit: "#C081FC", 
+    restore: "#3CBCEB"
 }
 
 export default colors;

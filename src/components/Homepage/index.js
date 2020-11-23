@@ -1,10 +1,14 @@
-
+// Restore
+import Scene11 from "./Scene11";
 // App Download Links & Form
 import Scene12 from "./Scene12";
 
 const Homepage = () => {
     return(
-        <Scene12 />
+        <>
+            <Scene11 />
+            <Scene12 />
+        </>
     )
 }
 

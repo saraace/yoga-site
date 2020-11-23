@@ -46,7 +46,7 @@ const Layout = ({ children }) => {
       <Head>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <Header />
+      {router.pathname !== "/" && <Header />}
       <Page>{children}</Page>
       <Footer />
     </ContentWrapper>

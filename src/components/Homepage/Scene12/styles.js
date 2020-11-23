@@ -1,5 +1,9 @@
 import styled from '@emotion/styled';
 
+export const FullScreen = styled.div`
+    padding: 150px 0 0;
+`;
+
 export const Row = styled.div`
     display: flex;
 `; 
