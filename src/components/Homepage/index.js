@@ -3,14 +3,17 @@ import { Controller, Scene } from "react-scrollmagic";
 import smoothscroll from 'smoothscroll-polyfill';
 
 import { SceneWrapper } from "./styles";
-
 import ProgressIndicators from "./ProgressIndicators";
 
 // Disciplines
 import Scene08 from "./Scene08"; 
+// Yoga
 import Scene09 from "./Scene09"; 
+// FIIT
 import Scene10 from "./Scene10"; 
+// Restore
 import Scene11 from "./Scene11"; 
+// App Links & Form
 import Scene12 from "./Scene12"; 
 
 const Homepage = () => {
@@ -49,7 +52,7 @@ const Homepage = () => {
                         return (
                             <SceneWrapper ref={scenes.current[0]}>
                                 {indicators && <ProgressIndicators {...{progress, startPos: sceneHeights[0], duration: sceneDurations[0]}} />}
-                                <Scene08 {...{ progress }} />
+                                <Scene08 />
                             </SceneWrapper>
                         )
                     }}
@@ -59,12 +62,12 @@ const Homepage = () => {
                             if(event.state === "AFTER"){
                                 window.scroll({ top: sceneHeights[2], left: 0, behavior: 'smooth' }); 
                             } else if(event.state === "BEFORE"){
-                                window.scroll({ top: 0, left: 0, behavior: 'smooth' }); 
+                                window.scroll({ top: sceneHeights[0] + sceneDurations[0], left: 0, behavior: 'smooth' }); 
                             }
                             return (
                                 <SceneWrapper ref={scenes.current[1]}>
                                     {indicators && <ProgressIndicators {...{progress, startPos: sceneHeights[1], duration: sceneDurations[1]}} />}
-                                    <Scene09 {...{ progress, startPos: sceneHeights[1], duration: sceneDurations[1] }} />
+                                    <Scene09 {...{ startPos: sceneHeights[1] }} />
                                 </SceneWrapper>
                             )
                         }}
@@ -74,12 +77,13 @@ const Homepage = () => {
                             if(event.state === "AFTER"){
                                 window.scroll({ top: sceneHeights[3], left: 0, behavior: 'smooth' }); 
                             } else if(event.state === "BEFORE"){
-                                window.scroll({ top: sceneHeights[1], left: 0, behavior: 'smooth' }); 
+                                window.scroll({ top: sceneHeights[1] + sceneDurations[1], left: 0, behavior: 'smooth' }); 
                             }
                             return (
-                                <div ref={scenes.current[2]}>
-                                    <Scene10 />
-                                </div>
+                                <SceneWrapper ref={scenes.current[2]}>
+                                    {indicators && <ProgressIndicators {...{progress, startPos: sceneHeights[0], duration: sceneDurations[0]}} />}
+                                    <Scene10 {...{ startPos: sceneHeights[2] }} />
+                                </SceneWrapper>
                             )
                         }}
                 </Scene>
@@ -88,26 +92,26 @@ const Homepage = () => {
                             if(event.state === "AFTER"){
                                 window.scroll({ top: sceneHeights[4], left: 0, behavior: 'smooth' }); 
                             } else if(event.state === "BEFORE"){
-                                window.scroll({ top: sceneHeights[2], left: 0, behavior: 'smooth' }); 
+                                window.scroll({ top: sceneHeights[2] + sceneDurations[2], left: 0, behavior: 'smooth' }); 
                             }
                             return (
-                                <div ref={scenes.current[3]}>
-                                    <Scene11 />
-                                </div>
+                                <SceneWrapper ref={scenes.current[3]}>
+                                    {indicators && <ProgressIndicators {...{progress, startPos: sceneHeights[0], duration: sceneDurations[0]}} />}
+                                    <Scene11 {...{ startPos: sceneHeights[3] }} />
+                                </SceneWrapper>
                             )
                         }}
                 </Scene>
                 <Scene {...{indicators}} triggerHook="onLeave" duration={sceneDurations[4]} pin>
                         {(progress, event) => {
-                            if(event.state === "AFTER"){
-
-                            } else if(event.state === "BEFORE"){
-                                window.scroll({ top: sceneHeights[3], left: 0, behavior: 'smooth' }); 
+                            if(event.state === "BEFORE"){
+                                window.scroll({ top: sceneHeights[3] + sceneDurations[3], left: 0, behavior: 'smooth' }); 
                             }
                             return (
-                                <div ref={scenes.current[4]}>
-                                    <Scene12 />
-                                </div>
+                                <SceneWrapper ref={scenes.current[4]}>
+                                    {indicators && <ProgressIndicators {...{progress, startPos: sceneHeights[0], duration: sceneDurations[0]}} />}
+                                    <Scene12 {...{ startPos: sceneHeights[4] }} />
+                                </SceneWrapper>
                             )
                         }}
                 </Scene>

@@ -4,6 +4,14 @@ const Table = styled.table`
     position: absolute; 
     top: 0; 
     left: 0;
+    z-index: 10;
+
+    tr{
+        td:first-child{
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+    }
 `;
 
 const ProgressIndicators = ({ progress, startPos, duration}) => {

@@ -2,17 +2,17 @@ import Icon from "../../../assets/svgs/yoga-icon.svg";
 import { FullScreen, ContentContainer, Intro, Benefits, List, ListItem } from "./styles";
 import { useViewportScroll, useTransform } from "framer-motion";
 
-const Scene09 = () => {
+const Scene09 = ({ startPos }) => {
 
     const { scrollY } = useViewportScroll();
 
     // intro content
-    const introY = useTransform(scrollY, [2200, 2700], ['300px', '0px']); 
-    const introOpacity = useTransform(scrollY, [2200, 2700], [0, 1]);
+    const introY = useTransform(scrollY, [startPos + 300, startPos + 1000], ['300px', '0px']); 
+    const introOpacity = useTransform(scrollY, [startPos + 300, startPos + 1000], [0, 1]);
 
     // benefits content
-    const benefitsY = useTransform(scrollY, [2800, 3500], ["300px", "0px"]);
-    const benefitsOpacity = useTransform(scrollY, [2800, 3500], [0, 1]);
+    const benefitsY = useTransform(scrollY, [startPos + 1200, startPos + 1900], ["300px", "0px"]);
+    const benefitsOpacity = useTransform(scrollY, [startPos + 1200, startPos + 1900], [0, 1]);
 
     return(
         <FullScreen>
