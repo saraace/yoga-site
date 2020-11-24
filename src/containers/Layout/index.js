@@ -16,7 +16,7 @@ const Layout = ({ children }) => {
   const exit = { opacity: 0 };
 
   useEffect(() => {
-    console.log(router);
+    //console.log(router);
     if(router.pathname === "/sign-up"){
       setBgClass('');
       setBackground('/images/sign-up/bg.png');
@@ -46,8 +46,8 @@ const Layout = ({ children }) => {
       <Head>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      {router.pathname !== "/" && <Header />}
-      <Page>{children}</Page>
+      { router.pathname !== "/" && <Header /> }
+      <Page className={ router.pathname === "/" ? "homepage" : "" }>{children}</Page>
       <Footer />
     </ContentWrapper>
   )

@@ -43,5 +43,9 @@ export const Page = styled.div`
 
     @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
         padding: 200px 0 0;         
-    }    
+    } 
+    
+    &.homepage{ 
+        padding: 0;
+    }
 `; 

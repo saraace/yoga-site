@@ -1,4 +1,5 @@
-import styled from '@emotion/styled';
+import styled from "@emotion/styled";
+import { motion } from "framer-motion";
 
 export const FullScreen = styled.div`
     height: 100vh; 
@@ -17,8 +18,9 @@ export const ContentContainer = styled.div`
     width: 100%;
 `; 
 
-export const Intro = styled.div`
+export const Intro = styled(motion.div)`
     width: 40%;
+    align-self: flex-end;
 
     svg{
         width: 60px; 
@@ -55,7 +57,7 @@ export const Intro = styled.div`
     }
 `; 
 
-export const Benefits = styled.div`
+export const Benefits = styled(motion.div)`
     width: 40%;
     align-self: flex-end;
 `; 

@@ -8,19 +8,23 @@
     "start": "next start"
   },
   "dependencies": {
+    "@emotion/core": "10.0.35",
+    "@emotion/styled": "10.0.27",
     "@react-google-maps/api": "^1.13.0",
     "@types/theme-ui": "^0.3.7",
     "dotenv": "^8.2.0",
-    "emotion": "^10.0.27",
     "formik": "^2.1.7",
     "framer-motion": "^2.7.7",
     "next": "9.5.3",
     "react": "16.13.1",
     "react-dom": "16.13.1",
+    "react-scrollmagic": "^2.2.0",
+    "smoothscroll-polyfill": "^0.4.4",
     "theme-ui": "^0.3.1",
     "yup": "^0.29.3"
   },
   "devDependencies": {
-    "babel-plugin-inline-react-svg": "^1.1.1"
+    "babel-plugin-inline-react-svg": "^1.1.1",
+    "@emotion/babel-preset-css-prop": "10.0.27"
   }
 }
