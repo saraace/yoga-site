@@ -1,8 +1,9 @@
+import { forwardRef, useState, useEffect } from "react";
 import Icon from "../../../assets/svgs/yoga-icon.svg";
-import { FullScreen, ContentContainer, Intro, Benefits, List, ListItem } from "./styles";
+import { FullScreen, VideoWrapper, ContentContainer, Intro, Benefits, List, ListItem } from "./styles";
 import { useViewportScroll, useTransform } from "framer-motion";
 
-const Scene09 = ({ startPos }) => {
+const Scene09 = forwardRef(({ active, startPos }, ref) => {
 
     const { scrollY } = useViewportScroll();
 
@@ -14,8 +15,28 @@ const Scene09 = ({ startPos }) => {
     const benefitsY = useTransform(scrollY, [startPos + 1200, startPos + 1900], ["300px", "0px"]);
     const benefitsOpacity = useTransform(scrollY, [startPos + 1200, startPos + 1900], [0, 1]);
 
+    // video background
+    const [ play, setPlay ] = useState(false);
+
+    useEffect(() => {
+        if(ref){
+            ref.current.addEventListener("loadeddata", () => {
+                setPlay(true);
+            });
+        }
+    }, [ref]);
+
+   useEffect(() => {
+        if(active && play){
+            ref.current.play();
+        }
+    }, [active, ref, play]);
+
     return(
         <FullScreen>
+            <VideoWrapper>
+                <video ref={ref} src="/images/homepage/scene-09-yoga/bg-yoga.mp4" muted loop/>
+            </VideoWrapper>
             <ContentContainer>
                 <Intro style={{ y: introY, opacity: introOpacity }}>
                     <Icon />
@@ -31,6 +52,6 @@ const Scene09 = ({ startPos }) => {
             </ContentContainer>
         </FullScreen>
     )
-}
+})
 
 export default Scene09;

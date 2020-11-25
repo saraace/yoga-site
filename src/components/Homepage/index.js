@@ -33,7 +33,11 @@ const Homepage = () => {
     const sceneDurations = [1000, 1000, 2500, 2500, 2500, 1000];
     const [sceneHeights, setSceneHeights] = useState([ 0, 0, 0, 0, 0, 0 ]);
 
-    const scene8VideoRef = useRef(null);
+    const scene8Ref = useRef(null);
+    const scene9Ref = useRef(null);
+    const scene10Ref = useRef(null);
+    const scene11Ref = useRef(null);
+    const scene12Ref = useRef(null);
 
     useEffect(() => {
         smoothscroll.polyfill();
@@ -72,7 +76,7 @@ const Homepage = () => {
                         return (
                             <SceneWrapper ref={scenes.current[1]}>
                                 {indicators && <ProgressIndicators {...{progress, startPos: sceneHeights[1], duration: sceneDurations[1]}} />}
-                                <Scene08 ref={scene8VideoRef} {...{ active: event.state === "DURING" }} />
+                                <Scene08 ref={scene8Ref} {...{ active: event.state === "DURING" }} />
                             </SceneWrapper>
                         )
                     }}
@@ -87,7 +91,7 @@ const Homepage = () => {
                             return (
                                 <SceneWrapper ref={scenes.current[2]}>
                                     {indicators && <ProgressIndicators {...{progress, startPos: sceneHeights[2], duration: sceneDurations[2]}} />}
-                                    <Scene09 {...{ startPos: sceneHeights[2] }} />
+                                    <Scene09 ref={scene9Ref} {...{ active: event.state === "DURING" , startPos: sceneHeights[2] }} />
                                 </SceneWrapper>
                             )
                         }}
