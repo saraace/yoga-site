@@ -46,6 +46,6 @@ export const Page = styled.div`
     } 
     
     &.homepage{ 
-        padding: 0;
+        padding: 0 !important;
     }
 `; 
