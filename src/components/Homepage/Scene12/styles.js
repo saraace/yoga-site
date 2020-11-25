@@ -1,7 +1,10 @@
 import styled from '@emotion/styled';
 
 export const FullScreen = styled.div`
-    padding: 200px 0 0;
+    height: 100vh;
+    display: flex; 
+    align-items:center;
+    padding: 50px 0 0;
 `;
 
 export const Row = styled.div`
@@ -12,8 +15,8 @@ export const Row = styled.div`
 export const Col = styled.div``; 
 
 export const Phone = styled.div`
-    flex-basis: 800px;
-    margin: 0 20px 0 0;
+    flex-basis: 700px;
+    margin: 0 70px 0 30px;
 `; 
 
 export const VideoWrapper = styled.div`
