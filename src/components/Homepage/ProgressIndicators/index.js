@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 const Table = styled.table`
     position: absolute; 
     top: 100px; 
-    left: 0;
+    left: 10px;
     z-index: 10;
 
     tr{

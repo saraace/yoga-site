@@ -29,6 +29,8 @@ const Scene10 = forwardRef(({ active, startPos }, ref) => {
    useEffect(() => {
         if(active && play){
             ref.current.play();
+        } else if(!active){
+            ref.current.pause();
         }
     }, [active, ref, play]);
 
