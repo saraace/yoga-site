@@ -11,6 +11,18 @@ export const FullScreen = styled.div`
     align-items: flex-end;
 `; 
 
+export const VideoWrapper = styled.div`
+    position: absolute;
+    top: 0; 
+    bottom: 0;
+    left: 50%; 
+    transform: translateX(-50%);
+
+    video{
+        height: 100%;
+    }
+`; 
+
 export const ContentContainer = styled.div`
     display: flex; 
     justify-content: space-between;
