@@ -5,6 +5,8 @@ import smoothscroll from 'smoothscroll-polyfill';
 import { SceneWrapper } from "./styles";
 import ProgressIndicators from "./ProgressIndicators";
 
+// Shift Animation 
+import Scene01 from "./Scene01"; 
 // Disciplines
 import Scene08 from "./Scene08"; 
 // Yoga
@@ -21,14 +23,17 @@ const Homepage = () => {
     const indicators = true;
 
     const scenes = useRef([
+        React.createRef(),
         React.createRef(), 
         React.createRef(), 
         React.createRef(),
         React.createRef(), 
         React.createRef()
     ]);
-    const sceneDurations = [1000, 2500, 2500, 2500, 1000];
-    const [sceneHeights, setSceneHeights] = useState([ 0, 0, 0, 0, 0 ]);
+    const sceneDurations = [1000, 1000, 2500, 2500, 2500, 1000];
+    const [sceneHeights, setSceneHeights] = useState([ 0, 0, 0, 0, 0, 0 ]);
+
+    const scene8VideoRef = useRef(null);
 
     useEffect(() => {
         smoothscroll.polyfill();
@@ -48,29 +53,29 @@ const Homepage = () => {
                     {(progress, event) => {
                         if(event.state === "AFTER"){
                             window.scroll({ top: sceneHeights[1], left: 0, behavior: 'smooth' }); 
-                        }
-                        return (
+                        } 
+                        return(
                             <SceneWrapper ref={scenes.current[0]}>
                                 {indicators && <ProgressIndicators {...{progress, startPos: sceneHeights[0], duration: sceneDurations[0]}} />}
-                                <Scene08 />
+                                <Scene01 />
                             </SceneWrapper>
                         )
                     }}
                 </Scene>
                 <Scene {...{indicators}} triggerHook="onLeave" duration={sceneDurations[1]} pin>
-                        {(progress, event) => {
-                            if(event.state === "AFTER"){
-                                window.scroll({ top: sceneHeights[2], left: 0, behavior: 'smooth' }); 
-                            } else if(event.state === "BEFORE"){
-                                window.scroll({ top: sceneHeights[0] + sceneDurations[0], left: 0, behavior: 'smooth' }); 
-                            }
-                            return (
-                                <SceneWrapper ref={scenes.current[1]}>
-                                    {indicators && <ProgressIndicators {...{progress, startPos: sceneHeights[1], duration: sceneDurations[1]}} />}
-                                    <Scene09 {...{ startPos: sceneHeights[1] }} />
-                                </SceneWrapper>
-                            )
-                        }}
+                    {(progress, event) => {
+                        if(event.state === "AFTER"){
+                            window.scroll({ top: sceneHeights[2], left: 0, behavior: 'smooth' }); 
+                        } else if(event.state === "BEFORE"){
+                            window.scroll({ top: sceneHeights[0] + sceneDurations[0], left: 0, behavior: 'smooth' }); 
+                        }
+                        return (
+                            <SceneWrapper ref={scenes.current[1]}>
+                                {indicators && <ProgressIndicators {...{progress, startPos: sceneHeights[1], duration: sceneDurations[1]}} />}
+                                <Scene08 ref={scene8VideoRef} {...{ active: event.state === "DURING" }} />
+                            </SceneWrapper>
+                        )
+                    }}
                 </Scene>
                 <Scene {...{indicators}} triggerHook="onLeave" duration={sceneDurations[2]} pin>
                         {(progress, event) => {
@@ -81,8 +86,8 @@ const Homepage = () => {
                             }
                             return (
                                 <SceneWrapper ref={scenes.current[2]}>
-                                    {indicators && <ProgressIndicators {...{progress, startPos: sceneHeights[0], duration: sceneDurations[0]}} />}
-                                    <Scene10 {...{ startPos: sceneHeights[2] }} />
+                                    {indicators && <ProgressIndicators {...{progress, startPos: sceneHeights[2], duration: sceneDurations[2]}} />}
+                                    <Scene09 {...{ startPos: sceneHeights[2] }} />
                                 </SceneWrapper>
                             )
                         }}
@@ -96,21 +101,36 @@ const Homepage = () => {
                             }
                             return (
                                 <SceneWrapper ref={scenes.current[3]}>
-                                    {indicators && <ProgressIndicators {...{progress, startPos: sceneHeights[0], duration: sceneDurations[0]}} />}
-                                    <Scene11 {...{ startPos: sceneHeights[3] }} />
+                                    {indicators && <ProgressIndicators {...{progress, startPos: sceneHeights[3], duration: sceneDurations[3]}} />}
+                                    <Scene10 {...{ startPos: sceneHeights[3] }} />
                                 </SceneWrapper>
                             )
                         }}
                 </Scene>
                 <Scene {...{indicators}} triggerHook="onLeave" duration={sceneDurations[4]} pin>
                         {(progress, event) => {
-                            if(event.state === "BEFORE"){
+                            if(event.state === "AFTER"){
+                                window.scroll({ top: sceneHeights[5], left: 0, behavior: 'smooth' }); 
+                            } else if(event.state === "BEFORE"){
                                 window.scroll({ top: sceneHeights[3] + sceneDurations[3], left: 0, behavior: 'smooth' }); 
                             }
                             return (
                                 <SceneWrapper ref={scenes.current[4]}>
-                                    {indicators && <ProgressIndicators {...{progress, startPos: sceneHeights[0], duration: sceneDurations[0]}} />}
-                                    <Scene12 {...{ startPos: sceneHeights[4] }} />
+                                    {indicators && <ProgressIndicators {...{progress, startPos: sceneHeights[4], duration: sceneDurations[4]}} />}
+                                    <Scene11 {...{ startPos: sceneHeights[4] }} />
+                                </SceneWrapper>
+                            )
+                        }}
+                </Scene>
+                <Scene {...{indicators}} triggerHook="onLeave" duration={sceneDurations[5]} pin>
+                        {(progress, event) => {
+                            if(event.state === "BEFORE"){
+                                window.scroll({ top: sceneHeights[4] + sceneDurations[4], left: 0, behavior: 'smooth' }); 
+                            }
+                            return (
+                                <SceneWrapper ref={scenes.current[5]}>
+                                    {indicators && <ProgressIndicators {...{progress, startPos: sceneHeights[5], duration: sceneDurations[5]}} />}
+                                    <Scene12 {...{ startPos: sceneHeights[5] }} />
                                 </SceneWrapper>
                             )
                         }}

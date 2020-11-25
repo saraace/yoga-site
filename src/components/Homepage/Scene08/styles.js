@@ -13,7 +13,7 @@ export const FullScreen = styled.div`
 export const VideoWrapper = styled.div`
     position: absolute;
     top: 0; 
-    bottom: 0; 
+    bottom: 0;
     left: 50%; 
     transform: translateX(-50%);
 

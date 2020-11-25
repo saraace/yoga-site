@@ -14,7 +14,6 @@ const Header = () => {
 
   const [ scrollingUp, setScrollingUp ] = useState(false);
   const [ scrollTop, setScrollTop ] = useState(0);
-  const { scrollY } = useViewportScroll();
 
   useEffect(() => {
       const onScroll = e => {
@@ -36,11 +35,19 @@ const Header = () => {
       position: 'fixed', 
       background: 'rgba(11, 21, 37, 1)', 
       boxShadow: '0 0 24px 0 rgba(0, 0, 0, 0.5)'
+    },
+    'homepage': {
+      position: 'fixed', 
+      background: 'rgba(11, 21, 37, 0)', 
     }
   }
 
   return (
-    <PageHeader className={scrollingUp? 'sticky' : 'static'} animate={scrollingUp? 'sticky' : 'static'} variants={headerVariants}>
+    <PageHeader 
+      className={router.pathname !== "/"? (scrollingUp? 'sticky' : 'static') : "homepage"} 
+      animate={router.pathname !== "/"? (scrollingUp? 'sticky' : 'static') : "homepage"} 
+      variants={headerVariants}
+    >
       <LogoCol>
         <Link href="/">
           <a>
