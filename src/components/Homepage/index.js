@@ -30,7 +30,7 @@ const Homepage = () => {
         React.createRef(), 
         React.createRef()
     ]);
-    const sceneDurations = [1000, 1000, 2500, 2500, 2500, 1000];
+    const sceneDurations = [1000, 1000, 2500, 2500, 2500, 10];
     const [sceneHeights, setSceneHeights] = useState([ 0, 0, 0, 0, 0, 0 ]);
 
     const scene8Ref = useRef(null);

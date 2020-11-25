@@ -1,19 +1,26 @@
 import styled from '@emotion/styled';
 
 export const FullScreen = styled.div`
-    padding: 150px 0 0;
+    padding: 200px 0 0;
 `;
 
 export const Row = styled.div`
     display: flex;
+    align-items: center;
 `; 
 
 export const Col = styled.div``; 
 
-export const Img = styled.div`
-    img{
-        width: 100%; 
-        width: 480px;
+export const Phone = styled.div`
+    flex-basis: 800px;
+    margin: 0 20px 0 0;
+`; 
+
+export const VideoWrapper = styled.div`
+    width: 100%; 
+
+    video{
+        width: 100%;
     }
 `; 
 

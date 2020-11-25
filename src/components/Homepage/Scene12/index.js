@@ -1,10 +1,11 @@
+import { forwardRef, useState, useEffect } from "react";
 import { useFormik } from "formik"; 
 import * as Yup from "yup"; 
 import Input from "../../Forms/Input";
 import { Container, Button } from "theme-ui";
-import { FullScreen, Row, Col, Img, Form, ButtonWrapper, Small } from "./styles"; 
+import { FullScreen, Row, Col, Phone, VideoWrapper, Form, ButtonWrapper, Small } from "./styles"; 
 
-const Scene12 = () => {
+const Scene12 = forwardRef(({ active }, ref) => {
 
     const signUp = () => {
         console.log('Sign up!');
@@ -26,13 +27,32 @@ const Scene12 = () => {
         onSubmit: signUp
     })
 
+    // video background
+    const [ play, setPlay ] = useState(false);
+
+    useEffect(() => {
+        if(ref){
+            ref.current.addEventListener("loadeddata", () => {
+                setPlay(true);
+            });
+        }
+    }, [ref]);
+
+   useEffect(() => {
+        if(active && play){
+            ref.current.play();
+        }
+    }, [active, ref, play]);
+
     return(
         <FullScreen>
             <Container>
                 <Row>
-                    <Img>
-                        <img src="/images/homepage/scene-12/phone.png" alt="" />
-                    </Img>
+                    <Phone>
+                        <VideoWrapper>
+                            <video ref={ref} src="/images/homepage/scene-12/phone-screen.mp4" muted loop/>  
+                        </VideoWrapper>
+                    </Phone>
                     <Col>
                         <Form onSubmit={handleSubmit}>
                             <h2><strong>SHIFT</strong>&nbsp;your&nbsp;routine, get&nbsp;started now!</h2>
@@ -76,6 +96,6 @@ const Scene12 = () => {
             </Container>
         </FullScreen>
     )
-}
+})
 
 export default Scene12;
