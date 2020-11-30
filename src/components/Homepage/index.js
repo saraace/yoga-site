@@ -8,6 +8,8 @@ import ProgressIndicators from "./ProgressIndicators";
 
 // Shift Animation 
 import Scene01 from "./Scene01"; 
+// Intro 
+import Scene02 from "./Scene02"; 
 // TV Animation 
 import Scene03 from "./Scene03";
 // Disciplines
@@ -31,15 +33,17 @@ const Homepage = () => {
     const scenes = useRef([
         React.createRef(),
         React.createRef(),
+        React.createRef(),
         React.createRef(), 
         React.createRef(), 
         React.createRef(),
         React.createRef(), 
         React.createRef()
     ]);
-    const sceneDurations = [1000, 1000, 1000, 2500, 2500, 2500, 1000];
-    const [sceneHeights, setSceneHeights] = useState([ 0, 0, 0, 0, 0, 0, 0 ]);
+    const sceneDurations = [1000, 1000, 1000, 1000, 2500, 2500, 2500, 1000];
+    const [sceneHeights, setSceneHeights] = useState([ 0, 0, 0, 0, 0, 0, 0, 0 ]);
 
+    const scene2Ref = useRef(null);
     const scene8Ref = useRef(null);
     const scene9Ref = useRef(null);
     const scene10Ref = useRef(null);
@@ -88,7 +92,7 @@ const Homepage = () => {
                         return(
                             <SceneWrapper ref={scenes.current[1]}>
                                 {indicators && <ProgressIndicators {...{progress, startPos: sceneHeights[1], duration: sceneDurations[1]}} />}
-                                <Scene03 {...{ progress, width, height, duration: sceneDurations[1] }} />
+                                <Scene02 ref={scene2Ref} {...{ active: event.state === "DURING" }} />
                             </SceneWrapper>
                         )
                     }}
@@ -103,7 +107,7 @@ const Homepage = () => {
                         return (
                             <SceneWrapper ref={scenes.current[2]}>
                                 {indicators && <ProgressIndicators {...{progress, startPos: sceneHeights[2], duration: sceneDurations[2]}} />}
-                                <Scene08 ref={scene8Ref} {...{ active: event.state === "DURING" }} />
+                                <Scene03 {...{ progress, width, height, duration: sceneDurations[1] }} />
                             </SceneWrapper>
                         )
                     }}
@@ -118,7 +122,7 @@ const Homepage = () => {
                             return (
                                 <SceneWrapper ref={scenes.current[3]}>
                                     {indicators && <ProgressIndicators {...{progress, startPos: sceneHeights[3], duration: sceneDurations[3]}} />}
-                                    <Scene09 ref={scene9Ref} {...{ active: event.state === "DURING", startPos: sceneHeights[3] }} />
+                                    <Scene08 ref={scene8Ref} {...{ active: event.state === "DURING" }} />
                                 </SceneWrapper>
                             )
                         }}
@@ -133,7 +137,7 @@ const Homepage = () => {
                             return (
                                 <SceneWrapper ref={scenes.current[4]}>
                                     {indicators && <ProgressIndicators {...{progress, startPos: sceneHeights[4], duration: sceneDurations[4]}} />}
-                                    <Scene10 ref={scene10Ref} {...{ active: event.state === "DURING", startPos: sceneHeights[4] }} />
+                                    <Scene09 ref={scene10Ref} {...{ active: event.state === "DURING", startPos: sceneHeights[4] }} />
                                 </SceneWrapper>
                             )
                         }}
@@ -148,20 +152,35 @@ const Homepage = () => {
                             return (
                                 <SceneWrapper ref={scenes.current[5]}>
                                     {indicators && <ProgressIndicators {...{progress, startPos: sceneHeights[5], duration: sceneDurations[5]}} />}
-                                    <Scene11 ref={scene11Ref} {...{ active: event.state === "DURING", startPos: sceneHeights[5] }} />
+                                    <Scene10 ref={scene11Ref} {...{ active: event.state === "DURING", startPos: sceneHeights[5] }} />
                                 </SceneWrapper>
                             )
                         }}
                 </Scene>
                 <Scene {...{indicators}} triggerHook="onLeave" duration={sceneDurations[6]} pin>
                         {(progress, event) => {
-                            if(event.state === "BEFORE"){
+                            if(event.state === "AFTER"){
+                                window.scroll({ top: sceneHeights[7], left: 0, behavior: 'smooth' }); 
+                            } else if(event.state === "BEFORE"){
                                 window.scroll({ top: sceneHeights[5] + sceneDurations[5], left: 0, behavior: 'smooth' }); 
                             }
                             return (
                                 <SceneWrapper ref={scenes.current[6]}>
                                     {indicators && <ProgressIndicators {...{progress, startPos: sceneHeights[6], duration: sceneDurations[6]}} />}
-                                    <Scene12 ref={scene12Ref} {...{ active: event.state === "DURING", startPos: sceneHeights[6] }} />
+                                    <Scene11 ref={scene12Ref} {...{ active: event.state === "DURING", startPos: sceneHeights[6] }} />
+                                </SceneWrapper>
+                            )
+                        }}
+                </Scene>
+                <Scene {...{indicators}} triggerHook="onLeave" duration={sceneDurations[7]} pin>
+                        {(progress, event) => {
+                            if(event.state === "BEFORE"){
+                                window.scroll({ top: sceneHeights[6] + sceneDurations[6], left: 0, behavior: 'smooth' }); 
+                            }
+                            return (
+                                <SceneWrapper ref={scenes.current[7]}>
+                                    {indicators && <ProgressIndicators {...{progress, startPos: sceneHeights[7], duration: sceneDurations[7]}} />}
+                                    <Scene12 ref={scene12Ref} {...{ active: event.state === "DURING", startPos: sceneHeights[7] }} />
                                 </SceneWrapper>
                             )
                         }}
