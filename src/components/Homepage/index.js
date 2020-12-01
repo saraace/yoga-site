@@ -27,17 +27,7 @@ const Homepage = () => {
 
     const [width, setWidth] = useState(0); 
     const [height, setHeight] = useState(0);
-
-    const scenes = useRef([
-        React.createRef(),
-        React.createRef(),
-        React.createRef(),
-        React.createRef(), 
-        React.createRef(), 
-        React.createRef(),
-        React.createRef(), 
-        React.createRef()
-    ]);
+    
     const sceneDurations = [1000, 3000, 1000, 2500, 2500, 2500, 1000];
     const [sceneHeights, setSceneHeights] = useState(null);
 
@@ -49,20 +39,22 @@ const Homepage = () => {
     const scene12Ref = useRef(null);
 
     useEffect(() => {
-        smoothscroll.polyfill();
-        const heights = [0];
-        scenes.current.map((ref, index) => {
-            if(ref.current){
-                heights.push(heights[index] + ref.current.clientHeight + sceneDurations[index]);
-            }
-        })
-        setSceneHeights(heights);
-    }, [scenes]);
-
-    useEffect(() => {
         setHeight(window.innerHeight);
         setWidth(window.innerWidth);
     }, [window]);
+
+    useEffect(() => {
+        smoothscroll.polyfill();
+        const heights = [0];
+        sceneDurations.map((duration, index) => {
+            if(index < 1){
+                heights.push(height + duration);
+            } else{
+                heights.push(height + duration + heights[index]);
+            }
+        })
+        setSceneHeights(heights);
+    }, [height]);
 
     const preventDefault = (e) => {
         e.preventDefault();
@@ -121,7 +113,7 @@ const Homepage = () => {
                                     enableScroll();
                                 }
                                 return (
-                                    <SceneWrapper ref={scenes.current[idx]}>
+                                    <SceneWrapper>
                                         {indicators && <ProgressIndicators {...{progress, duration, startPos: sceneHeights[idx] }} />}
                                         {idx === 0 && <Scene01 />}
                                         {idx === 1 && <LivingRoom {...{ progress, width, height, duration, active: event.state === "DURING" }} />}

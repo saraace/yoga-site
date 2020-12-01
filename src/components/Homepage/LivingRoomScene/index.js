@@ -4,7 +4,7 @@ import { useState, useEffect, forwardRef, useRef } from "react";
 import Link from "next/link"; 
 import { FullScreen, VideoWrapper, SeqWrapper, VideoLoopWrapper, Text, TextContainer, Col, ButtonRow } from "./styles"; 
 
-const Scene02 = ({ progress, width, height, duration, active }) => {
+const LivingRoomScene = ({ progress, width, height, duration, active }) => {
 
     // full screen video 
     const videoRef = useRef(null); 
@@ -167,4 +167,4 @@ const Scene02 = ({ progress, width, height, duration, active }) => {
     )
 }
 
-export default Scene02;
+export default LivingRoomScene;
