@@ -8,4 +8,12 @@ export const FullScreen = styled.div`
     display: flex;
     align-items: flex-end; 
     position: relative;
+
+    & > div{
+        opacity: 0; 
+
+        &.front{
+            opacity: 1;
+        }
+    }
 `; 

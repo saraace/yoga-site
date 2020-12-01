@@ -1,6 +1,14 @@
 import styled from '@emotion/styled';
 import { Container } from "theme-ui";
 
+export const TV = styled.div`
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    bottom: 0;
+`; 
+
 export const VideoWrapper = styled.div`
     position: absolute;
     top: 0; 

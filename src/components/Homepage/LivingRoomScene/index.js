@@ -1,6 +1,7 @@
 
 import { FullScreen } from "./styles"; 
 import TVSequence from "./TVSequence";
+import LaptopSequence from "./LaptopSequence"; 
 
 const LivingRoomScene = ({ progress, width, height, duration, active }) => {
     
@@ -12,7 +13,14 @@ const LivingRoomScene = ({ progress, width, height, duration, active }) => {
 
     return(
         <FullScreen>
-            <TVSequence {...{ active, progress, duration, x, y, sw, sh, width, height }}/>
+            <TVSequence 
+                className={progress <= 0.5? "front" : ""} 
+                {...{ active, progress, duration, x, y, sw, sh, width, height }}
+            />
+            <LaptopSequence 
+                className={progress > 0.5 && progress <=0.75? "front" : ""}
+                {...{ progress, duration, x, y, sw, sh, width, height }} 
+            />
         </FullScreen>
     )
 }

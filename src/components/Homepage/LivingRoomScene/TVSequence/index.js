@@ -3,9 +3,9 @@ import { jsx, Button } from "theme-ui";
 import { useState, useEffect, useRef } from "react"; 
 import { disableScroll, enableScroll } from "../../../../services/utils";
 import Link from "next/link"; 
-import {  VideoWrapper, SeqWrapper, VideoLoopWrapper, Text, TextContainer, Col, ButtonRow } from "./styles"; 
+import { TV, VideoWrapper, SeqWrapper, VideoLoopWrapper, Text, TextContainer, Col, ButtonRow } from "./styles"; 
 
-const TVSequence = ({ active, progress, duration, x, y, sw, sh, width, height }) => {
+const TVSequence = ({ active, progress, duration, x, y, sw, sh, width, height, ...rest }) => {
 
     // full screen video 
     const videoRef = useRef(null); 
@@ -104,6 +104,12 @@ const TVSequence = ({ active, progress, duration, x, y, sw, sh, width, height })
     }, [progress]);
 
     useEffect(() => {
+        if(canvasRef.current){ 
+            setContext(canvasRef.current.getContext('2d'));
+        }
+    }, [canvasRef]);
+
+    useEffect(() => {
 
         if(context){
             // image
@@ -118,13 +124,7 @@ const TVSequence = ({ active, progress, duration, x, y, sw, sh, width, height })
             img.src = getFrame(canvasImage);
         }
 
-    }, [canvasImage, context, x, y, sw, sh])
-
-    useEffect(() => {
-        if(canvasRef.current){ 
-            setContext(canvasRef.current.getContext('2d'));
-        }
-    }, [canvasRef]);
+    }, [canvasImage, context, x, y, sw, sh]);
 
     useEffect(() => {
         if(tvVideoReady && tvPlaying){
@@ -135,7 +135,7 @@ const TVSequence = ({ active, progress, duration, x, y, sw, sh, width, height })
     }, [tvVideoReady, tvPlaying])
 
     return(
-        <>
+        <TV {...rest}>
             <VideoWrapper className={videoPlaying ? "front" : ""}>
                 <video ref={videoRef} src="/images/homepage/tv-seq/bg.mp4" style={{ height: height, left: x}} muted />
             </VideoWrapper>
@@ -160,7 +160,7 @@ const TVSequence = ({ active, progress, duration, x, y, sw, sh, width, height })
                     </Col>
                 </TextContainer>
             </Text>
-        </>
+        </TV>
     )
 }
 
