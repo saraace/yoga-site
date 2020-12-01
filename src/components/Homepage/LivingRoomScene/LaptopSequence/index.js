@@ -64,14 +64,14 @@ const LaptopSequence = ({ width, height, progress, duration, x, y, sw, sh, ...re
             // current id
             const id = Math.round((progress-0.5) * duration);
 
-            if(id <= 119){    
+            if(id <= 59){    
                 setCanvasImage(id);
             } 
             // image sequence is complete
             else {
                 // play laptop video
                 setLaptopPlaying(true);
-                setCanvasImage(119);
+                setCanvasImage(59);
             }
 
         } 
