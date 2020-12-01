@@ -56,4 +56,9 @@ const Scene10 = forwardRef(({ active, startPos }, ref) => {
     )
 })
 
+Scene10.defaultProps = {
+    active: false, 
+    startPos: 0
+}
+
 export default Scene10;

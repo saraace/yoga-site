@@ -4,7 +4,7 @@ const Table = styled.table`
     position: absolute; 
     top: 100px; 
     left: 10px;
-    z-index: 10;
+    z-index: 100;
 
     tr{
         td:first-child{
@@ -42,5 +42,12 @@ const ProgressIndicators = ({ progress, startPos, duration}) => {
         </Table>
     )
 }
+
+ProgressIndicators.defaultProps = {
+    progress: 0, 
+    startPos: 0, 
+    duration: 0
+};
+
 
 export default ProgressIndicators;

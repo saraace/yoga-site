@@ -7,14 +7,14 @@ const Scene03 = ({ progress, width, height, duration }) => {
     const canvasRef = useRef(null); 
 
     // generate frame url based on index specified
-    const getFrame = index => (`/images/homepage/scene-03/shift_websiteAnim_v05_${index.toString().padStart(5, "0")}.jpg`);
+    const getFrame = index => (`/images/homepage/scene-03/shift_websiteAnim_v06_${index.toString().padStart(5, "0")}.jpg`);
     
     useEffect(() => {
 
         // current id
         const id = Math.round(progress * duration);
 
-         if(id <= 60){
+         if(id <= 120){
             // refs
             const canvas = canvasRef.current; 
             const context = canvas.getContext('2d');
