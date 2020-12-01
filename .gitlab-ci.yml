@@ -15,3 +15,18 @@ deploy-to-dev:
     name: develop
   only:
     - develop
+
+deploy-to-prod:
+  stage: deploy
+  image: daxter1987/ubuntu-deploy:1.0.11
+  script:
+    - cp $SSH_PRIVATE_KEY ~/$SSH_PRIVATE_KEY_NAME
+    - chmod 600 ~/$SSH_PRIVATE_KEY_NAME
+    - npm install
+    - cp $ENV_FILE .env
+    - npm run build
+    - rsync -rave "ssh -i ~/$SSH_PRIVATE_KEY_NAME -o StrictHostKeyChecking=no" out/ ubuntu@$AWS_SERVER_ADDRESS:/var/www/html -y --delete
+  environment:
+    name: production
+  only:
+    - master
