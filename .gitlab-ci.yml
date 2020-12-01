@@ -6,7 +6,7 @@ deploy-to-dev:
   image: daxter1987/ubuntu-deploy:1.0.11
   script:
     - cp $SSH_PRIVATE_KEY ~/$SSH_PRIVATE_KEY_NAME
-    - cat $SSH_PRIVATE_KEY_NAME
+    - cat ~/$SSH_PRIVATE_KEY_NAME
     - chmod 600 ~/$SSH_PRIVATE_KEY_NAME
     - npm install
     - cp $ENV_FILE .env
@@ -22,7 +22,7 @@ deploy-to-prod:
   image: daxter1987/ubuntu-deploy:1.0.11
   script:
     - cp $SSH_PRIVATE_KEY ~/$SSH_PRIVATE_KEY_NAME
-    - cat $SSH_PRIVATE_KEY_NAME
+    - cat ~/$SSH_PRIVATE_KEY_NAME
     - chmod 600 ~/$SSH_PRIVATE_KEY_NAME
     - npm install
     - cp $ENV_FILE .env
