@@ -5,7 +5,7 @@ import { disableScroll, enableScroll } from "../../../../services/utils";
 import Link from "next/link"; 
 import { TV, VideoWrapper, SeqWrapper, VideoLoopWrapper, Text, TextContainer, Col, ButtonRow } from "./styles"; 
 
-const TVSequence = ({ active, progress, duration, x, y, sw, sh, width, height, ...rest }) => {
+const TVSequence = ({ active, progress, duration, x, y, sw, sh, width, height, styles, ...rest }) => {
 
     // full screen video 
     const videoRef = useRef(null); 
@@ -137,14 +137,14 @@ const TVSequence = ({ active, progress, duration, x, y, sw, sh, width, height, .
     return(
         <TV {...rest}>
             <VideoWrapper className={videoPlaying ? "front" : ""}>
-                <video ref={videoRef} src="/images/homepage/tv-seq/bg.mp4" style={{ height: height, left: x}} muted />
+                <video ref={videoRef} src="/images/homepage/tv-seq/bg.mp4" style={styles} muted />
             </VideoWrapper>
             <SeqWrapper className={videoPlaying? "" : "front"}>
                 <canvas ref={canvasRef} {...{ width, height }} />
             </SeqWrapper>
             <VideoLoopWrapper className={tvPlaying? "front" : ""}>
-                <img src="/images/homepage/tv-seq/shift_websiteAnim_v06_00120.png" style={{ height: height, left: x}} />
-                <video ref={tvLoopRef} src="/images/homepage/tv-seq/tv-loop.mp4" style={{ height: height, left: x}} muted loop />
+                <img src="/images/homepage/tv-seq/shift_websiteAnim_v06_00120.png" style={styles} />
+                <video ref={tvLoopRef} src="/images/homepage/tv-seq/tv-loop.mp4" style={styles} muted loop />
             </VideoLoopWrapper>
             <Text>
                 <TextContainer>

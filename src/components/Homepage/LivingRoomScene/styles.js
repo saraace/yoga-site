@@ -8,6 +8,7 @@ export const FullScreen = styled.div`
     display: flex;
     align-items: flex-end; 
     position: relative;
+    overflow: hidden;
 
     & > div{
         opacity: 0; 
