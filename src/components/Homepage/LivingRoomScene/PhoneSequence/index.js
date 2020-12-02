@@ -1,14 +1,14 @@
 import { useRef, useState, useEffect } from "react";
 import { Laptop, SeqWrapper, VideoLoopWrapper} from "./styles"; 
 
-const LaptopSequence = ({ width, height, progress, duration, x, y, sw, sh, styles, ...rest }) => {
+const PhoneSequence = ({ width, height, progress, duration, x, y, sw, sh, styles, ...rest }) => {
 
-    // laptop loop 
-    const laptopLoopRef = useRef(null);
+    // phone loop 
+    const phoneLoopRef = useRef(null);
 
-    // laptop loop state
-    const [ laptopVideoReady, setLaptopVideoReady ] = useState(false);
-    const [ laptopPlaying, setLaptopPlaying ] = useState(false);
+    // phone loop state
+    const [ phoneVideoReady, setPhoneVideoReady ] = useState(false);
+    const [ phonePlaying, setPhonePlaying ] = useState(false);
     
     // canvas
     const canvasRef = useRef(null);
@@ -18,18 +18,18 @@ const LaptopSequence = ({ width, height, progress, duration, x, y, sw, sh, style
     const [ canvasImage, setCanvasImage ] = useState(0);
 
     // generate frame url based on index specified
-    const getFrame = index => (`/images/homepage/laptop-seq/shift_websiteAnim_v05_${index.toString().padStart(5, "0")}.jpg`);
+    const getFrame = index => (`/images/homepage/phone-seq/shift_websiteAnim_v05_${index.toString().padStart(5, "0")}.jpg`);
 
     useEffect(() => {
-        if(laptopLoopRef.current){
+        if(phoneLoopRef.current){
 
             // once ready set state
-            laptopLoopRef.current.addEventListener("loadeddata", () => {
-                setLaptopVideoReady(true);
+            phoneLoopRef.current.addEventListener("loadeddata", () => {
+                setPhoneVideoReady(true);
             });
 
         }
-    }, [laptopLoopRef]); 
+    }, [phoneLoopRef]); 
 
     useEffect(() => {
         if(canvasRef.current){ 
@@ -56,51 +56,51 @@ const LaptopSequence = ({ width, height, progress, duration, x, y, sw, sh, style
 
     useEffect(() => {
 
-        if(progress >= 0.5){ 
+        if(progress >= 0.75){ 
 
-            // pause laptop video
-            setLaptopPlaying(false);
+            // pause phone video
+            setPhonePlaying(false);
 
             // current id
-            const id = Math.round((progress-0.5) * duration);
+            const id = Math.round((progress-0.75) * duration);
 
             if(id <= 59){    
                 setCanvasImage(id);
             } 
             // image sequence is complete
             else {
-                // play laptop video
-                setLaptopPlaying(true);
+                // play phone video
+                setPhonePlaying(true);
                 setCanvasImage(59);
             }
 
         } 
         else{
-            setLaptopPlaying(false);
+            setPhonePlaying(false);
             setCanvasImage(0);
         }
 
     }, [progress]);
 
     useEffect(() => {
-        if(laptopVideoReady && laptopPlaying){
-            laptopLoopRef.current.play();
+        if(phoneVideoReady && phonePlaying){
+            phoneLoopRef.current.play();
         } else{
-            laptopLoopRef.current.pause();
+            phoneLoopRef.current.pause();
         }
-    }, [laptopVideoReady, laptopPlaying])
+    }, [phoneVideoReady, phonePlaying])
 
     return(
         <Laptop {...rest}>
-            <SeqWrapper className={laptopPlaying? "" : "front"}>
+            <SeqWrapper className={phonePlaying? "" : "front"}>
                 <canvas ref={canvasRef} {...{ width, height }} />
             </SeqWrapper>
-            <VideoLoopWrapper className={laptopPlaying? "front" : ""}>
-                <img src="/images/homepage/laptop-seq/shift_websiteAnim_v05_00060.png" style={styles} />
-                <video ref={laptopLoopRef} src="/images/homepage/laptop-seq/laptop-loop.mp4" style={styles} muted loop />
+            <VideoLoopWrapper className={phonePlaying? "front" : ""}>
+                <img src="/images/homepage/phone-seq/shift_websiteAnim_v05_00060.png" style={styles} />
+                <video ref={phoneLoopRef} src="/images/homepage/phone-seq/phone-loop.mp4" style={styles} muted loop />
             </VideoLoopWrapper>
         </Laptop>
     )
 }
 
-export default LaptopSequence;
+export default PhoneSequence;

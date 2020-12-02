@@ -72,6 +72,7 @@ export const Text = styled.div`
     left: 0;
     right: 0;
     z-index: 10;
+    display: none;
 `;
 
 export const TextContainer = styled(Container)`
