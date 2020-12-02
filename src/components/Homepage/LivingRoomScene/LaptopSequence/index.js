@@ -18,7 +18,7 @@ const LaptopSequence = ({ width, height, progress, duration, x, y, sw, sh, style
     const [ canvasImage, setCanvasImage ] = useState(0);
 
     // generate frame url based on index specified
-    const getFrame = index => (`/images/homepage/laptop-seq/shift_websiteAnim_v05_${index.toString().padStart(5, "0")}.jpg`);
+    const getFrame = index => (`/images/homepage/laptop-seq/laptop-seq-${index.toString().padStart(5, "0")}.jpg`);
 
     useEffect(() => {
         if(laptopLoopRef.current){
@@ -64,14 +64,14 @@ const LaptopSequence = ({ width, height, progress, duration, x, y, sw, sh, style
             // current id
             const id = Math.round((progress-0.5) * duration);
 
-            if(id <= 59){    
+            if(id <= 239){    
                 setCanvasImage(id);
             } 
             // image sequence is complete
             else {
                 // play laptop video
                 setLaptopPlaying(true);
-                setCanvasImage(59);
+                setCanvasImage(239);
             }
 
         } 
@@ -96,7 +96,7 @@ const LaptopSequence = ({ width, height, progress, duration, x, y, sw, sh, style
                 <canvas ref={canvasRef} {...{ width, height }} />
             </SeqWrapper>
             <VideoLoopWrapper className={laptopPlaying? "front" : ""}>
-                <img src="/images/homepage/laptop-seq/shift_websiteAnim_v05_00060.png" style={styles} />
+                <img src="/images/homepage/laptop-seq/laptop-seq-00239.png" style={styles} />
                 <video ref={laptopLoopRef} src="/images/homepage/laptop-seq/laptop-loop.mp4" style={styles} muted loop />
             </VideoLoopWrapper>
         </Laptop>

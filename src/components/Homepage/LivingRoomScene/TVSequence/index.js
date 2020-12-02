@@ -29,7 +29,7 @@ const TVSequence = ({ active, progress, duration, x, y, sw, sh, width, height, s
     const [ canvasImage, setCanvasImage ] = useState(0);
 
     // generate frame url based on index specified
-    const getFrame = index => (`/images/homepage/tv-seq/shift_websiteAnim_v06_${index.toString().padStart(5, "0")}.jpg`);
+    const getFrame = index => (`/images/homepage/tv-seq/tv-seq-${index.toString().padStart(5, "0")}.jpg`);
 
     useEffect(() => {
         if(videoRef.current){
@@ -85,14 +85,14 @@ const TVSequence = ({ active, progress, duration, x, y, sw, sh, width, height, s
             // current id
             const id = Math.round((progress-0.25) * duration);
 
-            if(id <= 119){    
+            if(id <= 239){    
                 setCanvasImage(id);
             } 
             // image sequence is complete
             else {
                 // play tv video
                 setTvPlaying(true);
-                setCanvasImage(119);
+                setCanvasImage(239);
             }
 
         } 
@@ -143,7 +143,7 @@ const TVSequence = ({ active, progress, duration, x, y, sw, sh, width, height, s
                 <canvas ref={canvasRef} {...{ width, height }} />
             </SeqWrapper>
             <VideoLoopWrapper className={tvPlaying? "front" : ""}>
-                <img src="/images/homepage/tv-seq/shift_websiteAnim_v06_00120.png" style={styles} />
+                <img src="/images/homepage/tv-seq/tv-seq-00240.png" style={styles} />
                 <video ref={tvLoopRef} src="/images/homepage/tv-seq/tv-loop.mp4" style={styles} muted loop />
             </VideoLoopWrapper>
             <Text>
