@@ -29,7 +29,7 @@ const Homepage = () => {
     const [width, setWidth] = useState(0); 
     const [height, setHeight] = useState(0);
     
-    const sceneDurations = [1000, 6000, 1000, 2500, 2500, 2500, 1000];
+    const sceneDurations = [1000, 4000, 1000, 2500, 2500, 2500, 1000];
     const [sceneHeights, setSceneHeights] = useState(null);
 
     //const scene2Ref = useRef(null);
