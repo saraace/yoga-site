@@ -4,13 +4,7 @@ import TVSequence from "./TVSequence";
 import LaptopSequence from "./LaptopSequence"; 
 import PhoneSequence from "./PhoneSequence";
 
-const LivingRoomScene = ({ progress, width, height, duration, active }) => {
-    
-    // coordinates and dimensions needed for draw image
-    const sh = (width < height)? height : (width * (1080/1920)); 
-    const sw = (width < height)? (height * (1920/1080)) : width; 
-    const x = (width < height) ? (((sw-width)/2)*-1) : 0; 
-    const y = (width < height) ? 0 : (((sh-height)/2)*-1); 
+const LivingRoomScene = ({ progress, duration, width, height, x, y, sw, sh, active }) => {
 
     const styles = (width < height)? { height, left: x} : { width, top: y };
 

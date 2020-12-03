@@ -30,9 +30,15 @@ const Homepage = () => {
     // dimensions of window
     const [width, setWidth] = useState(0); 
     const [height, setHeight] = useState(0);
+
+    // coordinates for image sequence canvas
+    const [ x, setX ] = useState(0);
+    const [ y, setY ] = useState(0);
+    const [ sw, setSw ] = useState(0);
+    const [ sh, setSh ] = useState(0);
     
     // duration is how many pixels scene will stick to top
-    const sceneDurations = [1000, 4000, 1000, 2500, 2500, 2500, 1000];
+    const sceneDurations = [240, 4000, 1000, 2500, 2500, 2500, 1000];
 
     // heights is duration + scene height
     const [ sceneHeights, setSceneHeights ] = useState(null);
@@ -47,9 +53,19 @@ const Homepage = () => {
 
     // get width and height of window
     useEffect(() => {
-        setHeight(window.innerHeight);
         setWidth(window.innerWidth);
+        setHeight(window.innerHeight);
     }, [window]);
+
+    useEffect(() => {
+        setSh((width < height)? height : (width * (1080/1920)));
+        setSw((width < height)? (height * (1920/1080)) : width);
+    }, [ width, height ]);
+
+    useEffect(() => {
+        setX((width < height) ? (((sw-width)/2)*-1) : 0); 
+        setY((width < height) ? 0 : (((sh-height)/2)*-1)); 
+    }, [width, height, sw, sh]);
 
     // calculate height of each scene. 
     // heights are used for "snap to scene" trasition.
@@ -71,7 +87,7 @@ const Homepage = () => {
             <Controller>
                 {sceneHeights && sceneDurations.map((duration, idx) => {
                     return (
-                        <Scene {...{indicators}} key={idx} triggerHook="onLeave" duration={duration} pin>
+                        <Scene {...{indicators}} key={idx} triggerHook="onLeave" duration={duration}>
                             {(progress, event) => {
                                 // prev scene
                                 if(event.state === "BEFORE"){
@@ -87,9 +103,9 @@ const Homepage = () => {
                                 }
                                 return (
                                     <SceneWrapper>
-                                        {indicators && <ProgressIndicators {...{progress, duration, startPos: sceneHeights[idx] }} />}
-                                        {idx === 0 && <ShiftSequence />}
-                                        {idx === 1 && <LivingRoom {...{ progress, width, height, duration, active: event.state === "DURING" }} />}
+                                        {indicators && <ProgressIndicators {...{ progress, duration, startPos: sceneHeights[idx] }} />}
+                                        {idx === 0 && <ShiftSequence {...{ progress, duration, width, height, x, y, sw, sh }} />}
+                                        {idx === 1 && <LivingRoom {...{ progress, duration, width, height, x, y, sw, sh, active: event.state === "DURING" }} />}
                                         {idx === 2 && <Scene08 ref={scene8Ref} {...{ active: event.state === "DURING" }} />}
                                         {idx === 3 && <Scene09 ref={scene9Ref} {...{ active: event.state === "DURING", startPos: sceneHeights[idx] }} />}
                                         {idx === 4 && <Scene10 ref={scene10Ref} {...{ active: event.state === "DURING", startPos: sceneHeights[idx] }} />}

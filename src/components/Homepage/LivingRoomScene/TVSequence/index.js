@@ -42,7 +42,7 @@ const TVSequence = ({ active, progress, duration, x, y, sw, sh, width, height, s
             // only play full screen video once
             videoRef.current.addEventListener("ended", () => {
                 setVideoPlaying(false);
-                enableScroll();
+                //enableScroll();
             })
         }
     }, [videoRef]); 
@@ -63,7 +63,7 @@ const TVSequence = ({ active, progress, duration, x, y, sw, sh, width, height, s
         // once scene is active and the video is ready - play
          if(active && videoReady){
 
-            disableScroll();
+            //disableScroll();
 
             // play full screen video
             videoRef.current.play();
@@ -74,6 +74,13 @@ const TVSequence = ({ active, progress, duration, x, y, sw, sh, width, height, s
          }
 
      }, [active, videoRef, videoReady]);
+
+     // set context from canvas
+     useEffect(() => {
+         if(canvasRef.current){ 
+             setContext(canvasRef.current.getContext('2d'));
+         }
+     }, [canvasRef]);
 
     useEffect(() => {
 
@@ -101,13 +108,7 @@ const TVSequence = ({ active, progress, duration, x, y, sw, sh, width, height, s
             setCanvasImage(0);
         }
 
-    }, [progress]);
-
-    useEffect(() => {
-        if(canvasRef.current){ 
-            setContext(canvasRef.current.getContext('2d'));
-        }
-    }, [canvasRef]);
+    }, [progress, duration]);
 
     useEffect(() => {
 
@@ -140,7 +141,7 @@ const TVSequence = ({ active, progress, duration, x, y, sw, sh, width, height, s
                 <video ref={videoRef} src="/images/homepage/tv-seq/bg.mp4" style={styles} muted />
             </VideoWrapper>
             <SeqWrapper className={videoPlaying? "" : "front"}>
-                <canvas ref={canvasRef} {...{ width, height }} style={{ border: '1px solid red' }} />
+                <canvas ref={canvasRef} {...{ width, height }} />
             </SeqWrapper>
             <VideoLoopWrapper className={tvPlaying? "front" : ""}>
                 <img src="/images/homepage/tv-seq/tv-seq-00240.png" style={styles} />
