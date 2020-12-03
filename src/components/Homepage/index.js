@@ -14,7 +14,7 @@ import LivingRoom from "./LivingRoomScene";
 // Categories
 import Categories from "./Categories"; 
 // Yoga
-import Scene09 from "./Scene09"; 
+import YogaScene from "./YogaScene"; 
 // FIIT
 import Scene10 from "./Scene10"; 
 // Restore
@@ -131,7 +131,7 @@ const Homepage = () => {
                                         {idx === 0 && <ShiftSequence {...{ progress, duration, width, height, x, y, sw, sh }} />}
                                         {idx === 1 && <LivingRoom {...{ active: event.state === "DURING", progress, duration, width, height, x, y, sw, sh, offsetStyles }} />}
                                         {idx === 2 && <Categories {...{ active: event.state === "DURING", offsetStyles }} />}
-                                        {idx === 3 && <Scene09 ref={scene9Ref} {...{ active: event.state === "DURING", startPos: sceneHeights[idx] }} />}
+                                        {idx === 3 && <YogaScene {...{ active: event.state === "DURING", startPos: sceneHeights[idx], offsetStyles }} />}
                                         {idx === 4 && <Scene10 ref={scene10Ref} {...{ active: event.state === "DURING", startPos: sceneHeights[idx] }} />}
                                         {idx === 5 && <Scene11 ref={scene11Ref} {...{ active: event.state === "DURING", startPos: sceneHeights[idx] }} />}
                                         {idx === 6 && <Scene12 ref={scene12Ref} {...{ active: event.state === "DURING", startPos: sceneHeights[idx] }} /> }
