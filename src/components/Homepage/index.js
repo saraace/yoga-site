@@ -36,6 +36,7 @@ const Homepage = () => {
     const [ y, setY ] = useState(0);
     const [ sw, setSw ] = useState(0);
     const [ sh, setSh ] = useState(0);
+    const [ offsetStyles, setOffsetStyles ] = useState({});
     
     // duration is how many pixels scene will stick to top
     const sceneDurations = [240, 4000, 1000, 2500, 2500, 2500, 1000];
@@ -51,21 +52,38 @@ const Homepage = () => {
     const scene11Ref = useRef(null);
     const scene12Ref = useRef(null);
 
-    // get width and height of window
     useEffect(() => {
-        setWidth(window.innerWidth);
-        setHeight(window.innerHeight);
+        
+        // get width and height of window
+        const w = window.innerWidth;
+        const h = window.innerHeight;
+
+        // calculate dimensions for image in order to cover window
+        const imageH = (w < h)? h : (w * (1080/1920)); 
+        const imageW = (w < h)? (h * (1920/1080)) : w;
+
+        // set 
+        setWidth(w);
+        setHeight(h);
+        setSh(imageH);
+        setSw(imageW);
+
+        // calculate x & y offsets
+        setX((w < h) ? (((imageW-w)/2)*-1) : 0); 
+        setY((w < h) ? 0 : (((imageH-h)/2)*-1));
+
+        // determine offset styles 
+        setOffsetStyles((width < height)? { height, left: x} : { width, top: y });
+
     }, [window]);
 
-    useEffect(() => {
-        setSh((width < height)? height : (width * (1080/1920)));
-        setSw((width < height)? (height * (1920/1080)) : width);
-    }, [ width, height ]);
-
-    useEffect(() => {
-        setX((width < height) ? (((sw-width)/2)*-1) : 0); 
-        setY((width < height) ? 0 : (((sh-height)/2)*-1)); 
-    }, [width, height, sw, sh]);
+    /* useEffect(() => {
+        console.log("x = ", x);
+        console.log("y = ", y);
+        console.log("sw = ", sw);
+        console.log("sh = ", sh);
+        console.log("--------");
+    }, [ x, y, sw, sh ]); */
 
     // calculate height of each scene. 
     // heights are used for "snap to scene" trasition.
@@ -88,7 +106,7 @@ const Homepage = () => {
     return(
         <div>
             <Controller>
-                {sceneHeights && sceneDurations.map((duration, idx) => {
+                { sceneHeights && sceneDurations.map((duration, idx) => {
                     return (
                         <Scene {...{indicators}} key={idx} triggerHook="onLeave" duration={duration} pin={idx !== 0? true : false}>
                             {(progress, event) => {
@@ -108,7 +126,7 @@ const Homepage = () => {
                                     <SceneWrapper>
                                         {indicators && <ProgressIndicators {...{ progress, duration, startPos: sceneHeights[idx] }} />}
                                         {idx === 0 && <ShiftSequence {...{ progress, duration, width, height, x, y, sw, sh }} />}
-                                        {idx === 1 && <LivingRoom {...{ progress, duration, width, height, x, y, sw, sh, active: event.state === "DURING" }} />}
+                                        {idx === 1 && <LivingRoom {...{ active: event.state === "DURING", progress, duration, width, height, x, y, sw, sh, offsetStyles }} />}
                                         {idx === 2 && <Scene08 ref={scene8Ref} {...{ active: event.state === "DURING" }} />}
                                         {idx === 3 && <Scene09 ref={scene9Ref} {...{ active: event.state === "DURING", startPos: sceneHeights[idx] }} />}
                                         {idx === 4 && <Scene10 ref={scene10Ref} {...{ active: event.state === "DURING", startPos: sceneHeights[idx] }} />}
@@ -119,7 +137,7 @@ const Homepage = () => {
                             }}
                         </Scene>
                     )
-                })}
+                }) }
             </Controller>
         </div>
     )

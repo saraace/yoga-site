@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import { Laptop, SeqWrapper, VideoLoopWrapper} from "./styles"; 
 
-const LaptopSequence = ({ width, height, progress, duration, x, y, sw, sh, styles, ...rest }) => {
+const LaptopSequence = ({ width, height, progress, duration, x, y, sw, sh, offsetStyles, ...rest }) => {
 
     // laptop loop 
     const laptopLoopRef = useRef(null);
@@ -96,8 +96,8 @@ const LaptopSequence = ({ width, height, progress, duration, x, y, sw, sh, style
                 <canvas ref={canvasRef} {...{ width, height }} />
             </SeqWrapper>
             <VideoLoopWrapper className={laptopPlaying? "front" : ""}>
-                <img src="/images/homepage/laptop-seq/laptop-seq-00239.png" style={styles} />
-                <video ref={laptopLoopRef} src="/images/homepage/laptop-seq/laptop-loop.mp4" style={styles} muted loop />
+                <img src="/images/homepage/laptop-seq/laptop-seq-00239.png" style={offsetStyles} />
+                <video ref={laptopLoopRef} src="/images/homepage/laptop-seq/laptop-loop.mp4" style={offsetStyles} muted loop />
             </VideoLoopWrapper>
         </Laptop>
     )

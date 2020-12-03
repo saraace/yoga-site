@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import { Laptop, SeqWrapper, VideoLoopWrapper} from "./styles"; 
 
-const PhoneSequence = ({ width, height, progress, duration, x, y, sw, sh, styles, ...rest }) => {
+const PhoneSequence = ({ width, height, progress, duration, x, y, sw, sh, offsetStyles, ...rest }) => {
 
     // phone loop 
     const phoneLoopRef = useRef(null);
@@ -96,8 +96,8 @@ const PhoneSequence = ({ width, height, progress, duration, x, y, sw, sh, styles
                 <canvas ref={canvasRef} {...{ width, height }} />
             </SeqWrapper>
             <VideoLoopWrapper className={phonePlaying? "front" : ""}>
-                <img src="/images/homepage/phone-seq/phone-seq-00239.png" style={styles} />
-                <video ref={phoneLoopRef} src="/images/homepage/phone-seq/phone-loop.mp4" style={styles} muted loop />
+                <img src="/images/homepage/phone-seq/phone-seq-00239.png" style={offsetStyles} />
+                <video ref={phoneLoopRef} src="/images/homepage/phone-seq/phone-loop.mp4" style={offsetStyles} muted loop />
             </VideoLoopWrapper>
         </Laptop>
     )
