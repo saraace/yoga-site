@@ -39,7 +39,7 @@ const YogaScene = ({ active, startPos, offsetStyles }) => {
     return(
         <FullScreen>
             <VideoWrapper>
-                <video ref={videoRef} src="/images/homepage/scene-09-yoga/bg-yoga.mp4" muted loop/>
+                <video ref={videoRef} src="/images/homepage/scene-09-yoga/bg-yoga.mp4" style={offsetStyles} muted loop/>
             </VideoWrapper>
             <ContentContainer>
                 <Intro style={{ y: introY, opacity: introOpacity }}>

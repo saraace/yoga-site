@@ -1,9 +1,11 @@
-import { forwardRef, useState, useEffect } from "react";
-import Icon from "../../../assets/svgs/restore-icon.svg";
+import { useRef, useState, useEffect } from "react";
+import Icon from "../../../assets/svgs/fiit-icon.svg";
 import { FullScreen, VideoWrapper, ContentContainer, Intro, Benefits, List, ListItem } from "./styles";
 import { useViewportScroll, useTransform } from "framer-motion";
 
-const Scene11 = forwardRef(({ active, startPos }, ref) => {
+const Scene10 = ({ active, startPos, offsetStyles }) => {
+
+    const videoRef = useRef(null);
 
     const { scrollY } = useViewportScroll();
 
@@ -19,46 +21,46 @@ const Scene11 = forwardRef(({ active, startPos }, ref) => {
     const [ play, setPlay ] = useState(false);
 
     useEffect(() => {
-        if(ref){
-            ref.current.addEventListener("loadeddata", () => {
+        if(videoRef){
+            videoRef.current.addEventListener("loadeddata", () => {
                 setPlay(true);
             });
         }
-    }, [ref]);
+    }, [videoRef]);
 
    useEffect(() => {
         if(active && play){
-            ref.current.play();
+            videoRef.current.play();
         } else if(!active){
-            ref.current.pause();
+            videoRef.current.pause();
         }
-    }, [active, ref, play]);
+    }, [active, videoRef, play]);
 
     return(
         <FullScreen>
             <VideoWrapper>
-                <video ref={ref} src="/images/homepage/scene-11-restore/bg-restore.mp4" muted loop/>
+                <video ref={videoRef} src="/images/homepage/scene-10-fiit/bg-fiit.mp4" style={offsetStyles} muted loop/>
             </VideoWrapper>
             <ContentContainer>
                 <Intro style={{ y: introY, opacity: introOpacity }}>
                     <Icon />
-                    <h2>Restore</h2>
-                    <p>Inspired by ancient yoga and meditation practices, our restore classes combine traditional meditation techniques with restorative postures that encourage total relaxation for both mind and body.</p>
+                    <h2>FIIT</h2>
+                    <p>High-intensity cardio meets strength-training in FIIT, our high-octane series of classes designed to torch calories while instilling you with greater discipline, self-confidence, and coordination.</p>
                 </Intro>
                 <Benefits style={{ y: benefitsY, opacity: benefitsOpacity }}>
                     <List>
-                        <ListItem>A moving meditation designed to facilitate physical recovery and create longer, leaner musculature, our restore class will help melt away tension, improve flexibility, and calm your mind.</ListItem>
-                        <ListItem>Allow your body to revive itself with this gentle approach to a guided, seated meditation routine.</ListItem>
+                        <ListItem>Test the limits of your endurance and see just how far you can push yourself in this high-intensity workout created to help you improve your focus for both inner and outer results.</ListItem>
+                        <ListItem>Increase your endurance without straining your joints in this low to medium-impact, full body workout.</ListItem>
                     </List>
                 </Benefits>
             </ContentContainer>
         </FullScreen>
     )
-})
+}
 
-Scene11.defaultProps = {
+Scene10.defaultProps = {
     active: false, 
     startPos: 0
 }
 
-export default Scene11;
+export default Scene10;

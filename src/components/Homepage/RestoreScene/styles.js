@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 export const FullScreen = styled.div`
     height: 100vh; 
-    background-image: url(/images/homepage/scene-10-fiit/bg-fiit.png); 
+    background-image: url(/images/homepage/scene-11-restore/bg-restore.png); 
     background-repeat: no-repeat; 
     background-size: cover; 
     background-position: center center;
@@ -15,11 +15,12 @@ export const VideoWrapper = styled.div`
     position: absolute;
     top: 0; 
     bottom: 0;
-    left: 50%; 
-    transform: translateX(-50%);
+    left: 0; 
+    right: 0; 
+    overflow: hidden;
 
     video{
-        height: 100%;
+        position: absolute;
     }
 `; 
 
@@ -61,7 +62,7 @@ export const Intro = styled(motion.div)`
             position: absolute; 
             width: 146px;
             height: 6px; 
-            background: ${({ theme }) => theme.colors.fiit};
+            background: ${({ theme }) => theme.colors.restore};
             left: 0; 
             top: 0px;
         }

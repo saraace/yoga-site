@@ -1,11 +1,13 @@
-import { forwardRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 import { useFormik } from "formik"; 
 import * as Yup from "yup"; 
 import Input from "../../Forms/Input";
 import { Container, Button } from "theme-ui";
 import { FullScreen, Row, Col, Phone, VideoWrapper, Form, ButtonWrapper, Small } from "./styles"; 
 
-const Scene12 = forwardRef(({ active }, ref) => {
+const SignUpForm = ({ active }) => {
+
+    const videoRef = useRef(null);
 
     const signUp = () => {
         console.log('Sign up!');
@@ -31,20 +33,20 @@ const Scene12 = forwardRef(({ active }, ref) => {
     const [ play, setPlay ] = useState(false);
 
     useEffect(() => {
-        if(ref){
-            ref.current.addEventListener("loadeddata", () => {
+        if(videoRef){
+            videoRef.current.addEventListener("loadeddata", () => {
                 setPlay(true);
             });
         }
-    }, [ref]);
+    }, [videoRef]);
 
    useEffect(() => {
         if(active && play){
-            ref.current.play();
+            videoRef.current.play();
         } else if(!active){
-            ref.current.pause();
+            videoRef.current.pause();
         }
-    }, [active, ref, play]);
+    }, [active, videoRef, play]);
 
     return(
         <FullScreen>
@@ -54,7 +56,7 @@ const Scene12 = forwardRef(({ active }, ref) => {
                         <Phone>
                             <img src="/images/homepage/scene-12/phone.png" alt="Shift" />
                             <VideoWrapper>
-                                <video ref={ref} src="/images/homepage/scene-12/phone-screen.mp4" muted loop/>  
+                                <video ref={videoRef} src="/images/homepage/scene-12/phone-screen.mp4" muted loop/>  
                             </VideoWrapper>
                         </Phone>
                     </Col>
@@ -101,6 +103,6 @@ const Scene12 = forwardRef(({ active }, ref) => {
             </Container>
         </FullScreen>
     )
-})
+}
 
-export default Scene12;
+export default SignUpForm;

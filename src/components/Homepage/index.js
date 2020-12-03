@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { Controller, Scene } from "react-scrollmagic";
 import smoothscroll from 'smoothscroll-polyfill';
 import window from "global";
-import { disableScroll, enableScroll } from "../../services/utils";
+//import { disableScroll, enableScroll } from "../../services/utils";
 
 import { SceneWrapper } from "./styles";
 import ProgressIndicators from "./ProgressIndicators";
@@ -16,16 +16,16 @@ import Categories from "./Categories";
 // Yoga
 import YogaScene from "./YogaScene"; 
 // FIIT
-import Scene10 from "./Scene10"; 
+import FiitScene from "./FiitScene"; 
 // Restore
-import Scene11 from "./Scene11"; 
+import RestoreScene from "./RestoreScene"; 
 // Sign Up Form
-import Scene12 from "./Scene12"; 
+import SignUpForm from "./SignUpForm"; 
 
 const Homepage = () => {
 
     // indicators used for development
-    const indicators = true;
+    const indicators = false;
 
     // dimensions of window
     const [width, setWidth] = useState(0); 
@@ -43,14 +43,6 @@ const Homepage = () => {
 
     // heights is duration + scene height
     const [ sceneHeights, setSceneHeights ] = useState(null);
-
-    // TODO: NOT SURE I NEED THESE REFS
-    //const scene2Ref = useRef(null);
-    const scene8Ref = useRef(null);
-    const scene9Ref = useRef(null);
-    const scene10Ref = useRef(null);
-    const scene11Ref = useRef(null);
-    const scene12Ref = useRef(null);
 
     useEffect(() => {
         
@@ -79,14 +71,14 @@ const Homepage = () => {
 
     }, [window]);
 
-    useEffect(() => {
+    /* useEffect(() => {
         console.log("x = ", x);
         console.log("y = ", y);
         console.log("sw = ", sw);
         console.log("sh = ", sh);
         console.log("offsetStyles = ", offsetStyles);
         console.log("--------");
-    }, [ x, y, sw, sh, offsetStyles ]);
+    }, [ x, y, sw, sh, offsetStyles ]); */
 
     // calculate height of each scene. 
     // heights are used for "snap to scene" trasition.
@@ -132,9 +124,9 @@ const Homepage = () => {
                                         {idx === 1 && <LivingRoom {...{ active: event.state === "DURING", progress, duration, width, height, x, y, sw, sh, offsetStyles }} />}
                                         {idx === 2 && <Categories {...{ active: event.state === "DURING", offsetStyles }} />}
                                         {idx === 3 && <YogaScene {...{ active: event.state === "DURING", startPos: sceneHeights[idx], offsetStyles }} />}
-                                        {idx === 4 && <Scene10 ref={scene10Ref} {...{ active: event.state === "DURING", startPos: sceneHeights[idx] }} />}
-                                        {idx === 5 && <Scene11 ref={scene11Ref} {...{ active: event.state === "DURING", startPos: sceneHeights[idx] }} />}
-                                        {idx === 6 && <Scene12 ref={scene12Ref} {...{ active: event.state === "DURING", startPos: sceneHeights[idx] }} /> }
+                                        {idx === 4 && <FiitScene {...{ active: event.state === "DURING", startPos: sceneHeights[idx], offsetStyles }} />}
+                                        {idx === 5 && <RestoreScene {...{ active: event.state === "DURING", startPos: sceneHeights[idx], offsetStyles }} />}
+                                        {idx === 6 && <SignUpForm {...{ active: event.state === "DURING", startPos: sceneHeights[idx] }} /> }
                                     </SceneWrapper>
                                 );
                             }}
