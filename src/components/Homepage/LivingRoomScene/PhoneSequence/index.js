@@ -18,7 +18,7 @@ const PhoneSequence = ({ width, height, progress, duration, x, y, sw, sh, styles
     const [ canvasImage, setCanvasImage ] = useState(0);
 
     // generate frame url based on index specified
-    const getFrame = index => (`/images/homepage/phone-seq/shift_websiteAnim_v05_${index.toString().padStart(5, "0")}.jpg`);
+    const getFrame = index => (`/images/homepage/phone-seq/phone-seq-${index.toString().padStart(5, "0")}.jpg`);
 
     useEffect(() => {
         if(phoneLoopRef.current){
@@ -64,14 +64,14 @@ const PhoneSequence = ({ width, height, progress, duration, x, y, sw, sh, styles
             // current id
             const id = Math.round((progress-0.75) * duration);
 
-            if(id <= 59){    
+            if(id <= 238){    
                 setCanvasImage(id);
             } 
             // image sequence is complete
             else {
                 // play phone video
                 setPhonePlaying(true);
-                setCanvasImage(59);
+                setCanvasImage(238);
             }
 
         } 
@@ -96,7 +96,7 @@ const PhoneSequence = ({ width, height, progress, duration, x, y, sw, sh, styles
                 <canvas ref={canvasRef} {...{ width, height }} />
             </SeqWrapper>
             <VideoLoopWrapper className={phonePlaying? "front" : ""}>
-                <img src="/images/homepage/phone-seq/shift_websiteAnim_v05_00060.png" style={styles} />
+                <img src="/images/homepage/phone-seq/phone-seq-00239.png" style={styles} />
                 <video ref={phoneLoopRef} src="/images/homepage/phone-seq/phone-loop.mp4" style={styles} muted loop />
             </VideoLoopWrapper>
         </Laptop>

@@ -31,7 +31,7 @@ export const SeqWrapper = styled.div`
     left: 0; 
     bottom: 0; 
     right: 0;
-    background-image: url(/images/homepage/tv-seq/shift_websiteAnim_v06_00000.jpg);
+    background-image: url(/images/homepage/tv-seq/tv-seq-00000.jpg);
     background-repeat: no-repeat; 
     background-position: center; 
     background-size: cover;
