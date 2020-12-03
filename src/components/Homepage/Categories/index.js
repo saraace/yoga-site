@@ -1,31 +1,33 @@
-import { useState, useEffect, forwardRef } from "react"; 
+import { useState, useEffect, useRef } from "react"; 
 import { Container } from "theme-ui";
 import { FullScreen, VideoWrapper, Content, Renew, Shift, Transform, Row, Yoga, Fiit, Restore } from "./styles"; 
 
-const Scene08 = forwardRef(({ active }, ref) => {
+const CategoriesScene = ({ active, offsetStyles }) => {
+
+    const videoRef = useRef(null);
 
     const [ play, setPlay ] = useState(false);
 
     useEffect(() => {
-        if(ref){
-            ref.current.addEventListener("loadeddata", () => {
+        if(videoRef){
+            videoRef.current.addEventListener("loadeddata", () => {
                 setPlay(true);
             });
         }
-    }, [ref]);
+    }, [videoRef]);
 
    useEffect(() => {
         if(active && play){
-            ref.current.play();
+            videoRef.current.play();
         } else if(!active){
-            ref.current.pause();
+            videoRef.current.pause();
         }
-    }, [active, ref, play]);
+    }, [active, videoRef, play]);
 
     return(
         <FullScreen>
             <VideoWrapper>
-                <video ref={ref} src="/images/homepage/scene-08/bg.mp4" muted />
+                <video ref={videoRef} src="/images/homepage/scene-08/bg.mp4" style={offsetStyles} muted />
             </VideoWrapper>
             <Container variant="small">
                 <Content>
@@ -41,6 +43,6 @@ const Scene08 = forwardRef(({ active }, ref) => {
             </Container>
         </FullScreen>
     )
-});
+}
 
-export default Scene08;
+export default CategoriesScene;

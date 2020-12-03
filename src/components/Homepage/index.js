@@ -11,8 +11,8 @@ import ProgressIndicators from "./ProgressIndicators";
 import ShiftSequence from "./ShiftSequence"; 
 // Living Room 
 import LivingRoom from "./LivingRoomScene"; 
-// Disciplines
-import Scene08 from "./Scene08"; 
+// Categories
+import Categories from "./Categories"; 
 // Yoga
 import Scene09 from "./Scene09"; 
 // FIIT
@@ -62,28 +62,31 @@ const Homepage = () => {
         const imageH = (w < h)? h : (w * (1080/1920)); 
         const imageW = (w < h)? (h * (1920/1080)) : w;
 
+        // calculate x & y offsets
+        const xOffset = (w < h) ? (((imageW-w)/2)*-1) : 0;
+        const yOffset = (w < h) ? 0 : (((imageH-h)/2)*-1);
+
         // set 
         setWidth(w);
         setHeight(h);
         setSh(imageH);
         setSw(imageW);
-
-        // calculate x & y offsets
-        setX((w < h) ? (((imageW-w)/2)*-1) : 0); 
-        setY((w < h) ? 0 : (((imageH-h)/2)*-1));
+        setX(xOffset); 
+        setY(yOffset);
 
         // determine offset styles 
-        setOffsetStyles((width < height)? { height, left: x} : { width, top: y });
+        setOffsetStyles((w < h)? { height: h, left: xOffset } : { width: w, top: yOffset });
 
     }, [window]);
 
-    /* useEffect(() => {
+    useEffect(() => {
         console.log("x = ", x);
         console.log("y = ", y);
         console.log("sw = ", sw);
         console.log("sh = ", sh);
+        console.log("offsetStyles = ", offsetStyles);
         console.log("--------");
-    }, [ x, y, sw, sh ]); */
+    }, [ x, y, sw, sh, offsetStyles ]);
 
     // calculate height of each scene. 
     // heights are used for "snap to scene" trasition.
@@ -127,7 +130,7 @@ const Homepage = () => {
                                         {indicators && <ProgressIndicators {...{ progress, duration, startPos: sceneHeights[idx] }} />}
                                         {idx === 0 && <ShiftSequence {...{ progress, duration, width, height, x, y, sw, sh }} />}
                                         {idx === 1 && <LivingRoom {...{ active: event.state === "DURING", progress, duration, width, height, x, y, sw, sh, offsetStyles }} />}
-                                        {idx === 2 && <Scene08 ref={scene8Ref} {...{ active: event.state === "DURING" }} />}
+                                        {idx === 2 && <Categories {...{ active: event.state === "DURING", offsetStyles }} />}
                                         {idx === 3 && <Scene09 ref={scene9Ref} {...{ active: event.state === "DURING", startPos: sceneHeights[idx] }} />}
                                         {idx === 4 && <Scene10 ref={scene10Ref} {...{ active: event.state === "DURING", startPos: sceneHeights[idx] }} />}
                                         {idx === 5 && <Scene11 ref={scene11Ref} {...{ active: event.state === "DURING", startPos: sceneHeights[idx] }} />}
