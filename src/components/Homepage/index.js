@@ -7,8 +7,8 @@ import { disableScroll, enableScroll } from "../../services/utils";
 import { SceneWrapper } from "./styles";
 import ProgressIndicators from "./ProgressIndicators";
 
-// Shift Animation 
-import Scene01 from "./Scene01"; 
+// Shift Sequence Animation 
+import ShiftSequence from "./ShiftSequence"; 
 // Living Room 
 import LivingRoom from "./LivingRoomScene"; 
 // Disciplines
@@ -24,14 +24,20 @@ import Scene12 from "./Scene12";
 
 const Homepage = () => {
 
+    // indicators used for development
     const indicators = true;
 
+    // dimensions of window
     const [width, setWidth] = useState(0); 
     const [height, setHeight] = useState(0);
     
+    // duration is how many pixels scene will stick to top
     const sceneDurations = [1000, 4000, 1000, 2500, 2500, 2500, 1000];
-    const [sceneHeights, setSceneHeights] = useState(null);
 
+    // heights is duration + scene height
+    const [ sceneHeights, setSceneHeights ] = useState(null);
+
+    // TODO: NOT SURE I NEED THESE REFS
     //const scene2Ref = useRef(null);
     const scene8Ref = useRef(null);
     const scene9Ref = useRef(null);
@@ -39,11 +45,14 @@ const Homepage = () => {
     const scene11Ref = useRef(null);
     const scene12Ref = useRef(null);
 
+    // get width and height of window
     useEffect(() => {
         setHeight(window.innerHeight);
         setWidth(window.innerWidth);
     }, [window]);
 
+    // calculate height of each scene. 
+    // heights are used for "snap to scene" trasition.
     useEffect(() => {
         smoothscroll.polyfill();
         const heights = [0];
@@ -64,13 +73,13 @@ const Homepage = () => {
                     return (
                         <Scene {...{indicators}} key={idx} triggerHook="onLeave" duration={duration} pin>
                             {(progress, event) => {
-                                // prev
+                                // prev scene
                                 if(event.state === "BEFORE"){
                                     disableScroll();
                                     window.scroll({ top: sceneHeights[idx-1] + sceneDurations[idx-1]-5, behavior: "smooth" });
                                     enableScroll();
                                 }
-                                // next
+                                // next scene
                                 if(event.state === "AFTER"){
                                     disableScroll();
                                     window.scroll({ top: sceneHeights[idx+1], behavior: "smooth" });
@@ -79,7 +88,7 @@ const Homepage = () => {
                                 return (
                                     <SceneWrapper>
                                         {indicators && <ProgressIndicators {...{progress, duration, startPos: sceneHeights[idx] }} />}
-                                        {idx === 0 && <Scene01 />}
+                                        {idx === 0 && <ShiftSequence />}
                                         {idx === 1 && <LivingRoom {...{ progress, width, height, duration, active: event.state === "DURING" }} />}
                                         {idx === 2 && <Scene08 ref={scene8Ref} {...{ active: event.state === "DURING" }} />}
                                         {idx === 3 && <Scene09 ref={scene9Ref} {...{ active: event.state === "DURING", startPos: sceneHeights[idx] }} />}
