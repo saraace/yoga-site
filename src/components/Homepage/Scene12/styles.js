@@ -15,15 +15,25 @@ export const Row = styled.div`
 export const Col = styled.div``; 
 
 export const Phone = styled.div`
-    flex-basis: 700px;
-    margin: 0 70px 0 30px;
+    position: relative;
+
+    img{
+        width: 520px;
+        margin: 0 0 0 -70px;
+    }
 `; 
 
 export const VideoWrapper = styled.div`
-    width: 100%; 
+    position: absolute;
+    top: 78px; 
+    bottom: 100px; 
+    left: 46px; 
+    right: 126px;
+    z-index: -1;
+    overflow: hidden;
 
     video{
-        width: 100%;
+        height: 100%;
     }
 `; 
 

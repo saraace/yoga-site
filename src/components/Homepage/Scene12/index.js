@@ -50,11 +50,14 @@ const Scene12 = forwardRef(({ active }, ref) => {
         <FullScreen>
             <Container>
                 <Row>
-                    <Phone>
-                        <VideoWrapper>
-                            <video ref={ref} src="/images/homepage/scene-12/phone-screen.mp4" muted loop/>  
-                        </VideoWrapper>
-                    </Phone>
+                    <Col>
+                        <Phone>
+                            <img src="/images/homepage/scene-12/phone.png" alt="Shift" />
+                            <VideoWrapper>
+                                <video ref={ref} src="/images/homepage/scene-12/phone-screen.mp4" muted loop/>  
+                            </VideoWrapper>
+                        </Phone>
+                    </Col>
                     <Col>
                         <Form onSubmit={handleSubmit}>
                             <h2><strong>SHIFT</strong>&nbsp;your&nbsp;routine, get&nbsp;started now!</h2>
