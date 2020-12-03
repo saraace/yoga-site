@@ -7,12 +7,12 @@ import PhoneSequence from "./PhoneSequence";
 const LivingRoomScene = ({ progress, width, height, duration, active }) => {
     
     // coordinates and dimensions needed for draw image
-    const sh = (width < height)? (width * (1080/1920)) : height; 
-    const sw = (width < height)? width : (height * (1920/1080)); 
-    const x = (width < height) ? 0 : (((sw-width)/2)*-1); 
-    const y = (width < height) ? (((sh-height)/2)*-1) : 0; 
+    const sh = (width < height)? height : (width * (1080/1920)); 
+    const sw = (width < height)? (height * (1920/1080)) : width; 
+    const x = (width < height) ? (((sw-width)/2)*-1) : 0; 
+    const y = (width < height) ? 0 : (((sh-height)/2)*-1); 
 
-    const styles = (width < height)? { width, top: y } : { height, left: x};
+    const styles = (width < height)? { height, left: x} : { width, top: y };
 
     return(
         <FullScreen>

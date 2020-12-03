@@ -140,7 +140,7 @@ const TVSequence = ({ active, progress, duration, x, y, sw, sh, width, height, s
                 <video ref={videoRef} src="/images/homepage/tv-seq/bg.mp4" style={styles} muted />
             </VideoWrapper>
             <SeqWrapper className={videoPlaying? "" : "front"}>
-                <canvas ref={canvasRef} {...{ width, height }} />
+                <canvas ref={canvasRef} {...{ width, height }} style={{ border: '1px solid red' }} />
             </SeqWrapper>
             <VideoLoopWrapper className={tvPlaying? "front" : ""}>
                 <img src="/images/homepage/tv-seq/tv-seq-00240.png" style={styles} />
