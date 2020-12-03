@@ -74,7 +74,10 @@ const Homepage = () => {
         const heights = [0];
         sceneDurations.map((duration, index) => {
             if(index < 1){
-                heights.push(height + duration);
+                // not pined
+                heights.push(height);
+                // pined 
+                //heights.push(height + duration);
             } else{
                 heights.push(height + duration + heights[index]);
             }
@@ -87,19 +90,19 @@ const Homepage = () => {
             <Controller>
                 {sceneHeights && sceneDurations.map((duration, idx) => {
                     return (
-                        <Scene {...{indicators}} key={idx} triggerHook="onLeave" duration={duration}>
+                        <Scene {...{indicators}} key={idx} triggerHook="onLeave" duration={duration} pin={idx !== 0? true : false}>
                             {(progress, event) => {
                                 // prev scene
-                                if(event.state === "BEFORE"){
-                                    disableScroll();
+                                if(event.state === "BEFORE" && idx !== 1){
+                                    //disableScroll();
                                     window.scroll({ top: sceneHeights[idx-1] + sceneDurations[idx-1]-5, behavior: "smooth" });
-                                    enableScroll();
+                                    //enableScroll();
                                 }
                                 // next scene
-                                if(event.state === "AFTER"){
-                                    disableScroll();
+                                if(event.state === "AFTER" && idx !== 0){
+                                    //disableScroll();
                                     window.scroll({ top: sceneHeights[idx+1], behavior: "smooth" });
-                                    enableScroll();
+                                    //enableScroll();
                                 }
                                 return (
                                     <SceneWrapper>
