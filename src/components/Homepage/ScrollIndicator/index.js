@@ -43,7 +43,11 @@ const ScrollIndicator = () => {
                     transition={{
                         delay: 1.4, 
                         ease: "easeInOut", 
-                        duration: 0.8
+                        duration: 0.8, 
+                        y: {
+                            yoyo: Infinity, 
+                            repeatDelay: 2,
+                        }
                     }}
                 >
                     <DownArrow />
