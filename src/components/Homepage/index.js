@@ -7,6 +7,8 @@ import window from "global";
 import { SceneWrapper } from "./styles";
 import ProgressIndicators from "./ProgressIndicators";
 
+// Scroll Indicator
+import ScrollIndicator from "./ScrollIndicator";
 // Shift Sequence Animation 
 import ShiftSequence from "./ShiftSequence"; 
 // Living Room 
@@ -88,9 +90,9 @@ const Homepage = () => {
         sceneDurations.map((duration, index) => {
             if(index < 1){
                 // not pined
-                heights.push(height);
+                //heights.push(height);
                 // pined 
-                //heights.push(height + duration);
+                heights.push(height + duration);
             } else{
                 heights.push(height + duration + heights[index]);
             }
@@ -100,19 +102,20 @@ const Homepage = () => {
 
     return(
         <div>
+            <ScrollIndicator />
             <Controller>
                 { sceneHeights && sceneDurations.map((duration, idx) => {
                     return (
-                        <Scene {...{indicators}} key={idx} triggerHook="onLeave" duration={duration} pin={idx !== 0? true : false}>
+                        <Scene {...{indicators}} key={idx} triggerHook="onLeave" duration={duration} pin>
                             {(progress, event) => {
                                 // prev scene
-                                if(event.state === "BEFORE" && idx !== 1){
+                                if(event.state === "BEFORE"){
                                     //disableScroll();
                                     window.scroll({ top: sceneHeights[idx-1] + sceneDurations[idx-1]-5, behavior: "smooth" });
                                     //enableScroll();
                                 }
                                 // next scene
-                                if(event.state === "AFTER" && idx !== 0){
+                                if(event.state === "AFTER"){
                                     //disableScroll();
                                     window.scroll({ top: sceneHeights[idx+1], behavior: "smooth" });
                                     //enableScroll();

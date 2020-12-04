@@ -19,6 +19,10 @@ const ProgressIndicators = ({ progress, startPos, duration}) => {
         <Table>
             <tbody>
                 <tr>
+                    <td>Progress</td>
+                    <td>{progress}</td>
+                </tr>
+                <tr>
                     <td>Page Progress</td>
                     <td>{Math.round(progress * duration) + startPos}</td>
                 </tr>
