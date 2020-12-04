@@ -52,13 +52,19 @@ const Homepage = () => {
         const w = window.innerWidth;
         const h = window.innerHeight;
 
+        // calculate window ratio
+        const ratio = h/w;
+
+        // if the window is tall, the assets heights must be 100% while the width is cropped
+        const orientation = (w < h && ratio <= 1920/1080)? 'TALL' : 'WIDE';
+
         // calculate dimensions for image in order to cover window
-        const imageH = (w < h)? h : (w * (1080/1920)); 
-        const imageW = (w < h)? (h * (1920/1080)) : w;
+        var imageH = (tall)? h : (w * (1080/1920)); 
+        var imageW = (tall)? (h * (1920/1080)) : w;
 
         // calculate x & y offsets
-        const xOffset = (w < h) ? (((imageW-w)/2)*-1) : 0;
-        const yOffset = (w < h) ? 0 : (((imageH-h)/2)*-1);
+        const xOffset = (tall) ? (((imageW-w)/2)*-1) : 0;
+        const yOffset = (tall) ? 0 : (((imageH-h)/2)*-1);
 
         // set 
         setWidth(w);
@@ -69,18 +75,20 @@ const Homepage = () => {
         setY(yOffset);
 
         // determine offset styles 
-        setOffsetStyles((w < h)? { height: h, left: xOffset } : { width: w, top: yOffset });
+        setOffsetStyles((tall)? { height: h, left: xOffset } : { width: w, top: yOffset });
 
     }, [window]);
 
-    /* useEffect(() => {
-        console.log("x = ", x);
-        console.log("y = ", y);
+    useEffect(() => {
+        console.log("width = ", width);
+        console.log("height = ", height);
         console.log("sw = ", sw);
         console.log("sh = ", sh);
+        console.log("x = ", x);
+        console.log("y = ", y);
         console.log("offsetStyles = ", offsetStyles);
         console.log("--------");
-    }, [ x, y, sw, sh, offsetStyles ]); */
+    }, [ width, height, x, y, sw, sh, offsetStyles ]);
 
     // calculate height of each scene. 
     // heights are used for "snap to scene" trasition.
