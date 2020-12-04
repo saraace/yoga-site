@@ -55,8 +55,9 @@ const Homepage = () => {
         // calculate window ratio
         const ratio = h/w;
 
-        // if the window is tall, the assets heights must be 100% while the width is cropped
-        const orientation = (w < h && ratio <= 1920/1080)? 'TALL' : 'WIDE';
+        // if the window is tall, the assets height must be 100% while the width is cropped
+        // if the window is wide, the assets width must be 100% while the height is cropped
+        const tall = ratio <= 1920/1080;
 
         // calculate dimensions for image in order to cover window
         var imageH = (tall)? h : (w * (1080/1920)); 
@@ -79,7 +80,7 @@ const Homepage = () => {
 
     }, [window]);
 
-    useEffect(() => {
+    /* useEffect(() => {
         console.log("width = ", width);
         console.log("height = ", height);
         console.log("sw = ", sw);
@@ -88,7 +89,7 @@ const Homepage = () => {
         console.log("y = ", y);
         console.log("offsetStyles = ", offsetStyles);
         console.log("--------");
-    }, [ width, height, x, y, sw, sh, offsetStyles ]);
+    }, [ width, height, x, y, sw, sh, offsetStyles ]); */
 
     // calculate height of each scene. 
     // heights are used for "snap to scene" trasition.
