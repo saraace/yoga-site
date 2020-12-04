@@ -27,7 +27,7 @@ import SignUpForm from "./SignUpForm";
 const Homepage = () => {
 
     // indicators used for development
-    const indicators = false;
+    const indicators = true;
 
     // dimensions of window
     const [width, setWidth] = useState(0); 
