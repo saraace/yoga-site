@@ -15,7 +15,7 @@ const ShiftSequence = ({ progress, duration, width, height, x, y, sw, sh, }) => 
     const [ canvasImage, setCanvasImage ] = useState(0);
 
     // generate frame url based on index specified
-    const getFrame = index => (`/images/homepage/shift-seq/General 120fps 2_${index.toString().padStart(5, "0")}.jpg`);
+    const getFrame = index => (`/images/homepage/shift-seq/shift_seq_${index.toString().padStart(5, "0")}.jpg`);
 
     // set context from canvas
     useEffect(() => {
