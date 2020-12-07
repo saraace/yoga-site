@@ -2,7 +2,10 @@ import React, { useState, useRef, useEffect } from "react";
 import { Controller, Scene } from "react-scrollmagic";
 import smoothscroll from 'smoothscroll-polyfill';
 import window from "global";
-//import { disableScroll, enableScroll } from "../../services/utils";
+import { disableScroll, enableScroll } from "../../services/utils";
+import { useViewportScroll, motion } from "framer-motion";
+import easyScroll from 'easy-scroll';
+
 
 import { SceneWrapper } from "./styles";
 import ProgressIndicators from "./ProgressIndicators";
@@ -27,7 +30,9 @@ import SignUpForm from "./SignUpForm";
 const Homepage = () => {
 
     // indicators used for development
-    const indicators = false;
+    const indicators = true;
+
+    const { scrollY } = useViewportScroll();
 
     // dimensions of window
     const [width, setWidth] = useState(0); 
@@ -41,10 +46,10 @@ const Homepage = () => {
     const [ offsetStyles, setOffsetStyles ] = useState({});
     
     // duration is how many pixels scene will stick to top
-    const sceneDurations = [240, 4000, 1000, 2500, 2500, 2500, 1000];
+    const sceneDurations = [50, 4000, 1000, 2500, 2500, 2500, 1000];
 
     // heights is duration + scene height
-    const [ sceneHeights, setSceneHeights ] = useState(null);
+    const [ sceneHeights, setSceneHeights ] = useState([0, 0, 0, 0, 0, 0, 0]);
 
     useEffect(() => {
         
@@ -54,10 +59,12 @@ const Homepage = () => {
 
         // calculate window ratio
         const ratio = h/w;
+        console.log('ratio = ', ratio);
 
         // if the window is tall, the assets height must be 100% while the width is cropped
         // if the window is wide, the assets width must be 100% while the height is cropped
-        const tall = ratio <= 1920/1080;
+        const tall = ratio > 1080/1920;
+        console.log(tall);
 
         // calculate dimensions for image in order to cover window
         var imageH = (tall)? h : (w * (1080/1920)); 
@@ -80,7 +87,7 @@ const Homepage = () => {
 
     }, [window]);
 
-    /* useEffect(() => {
+    useEffect(() => {
         console.log("width = ", width);
         console.log("height = ", height);
         console.log("sw = ", sw);
@@ -89,11 +96,11 @@ const Homepage = () => {
         console.log("y = ", y);
         console.log("offsetStyles = ", offsetStyles);
         console.log("--------");
-    }, [ width, height, x, y, sw, sh, offsetStyles ]); */
+    }, [ width, height, x, y, sw, sh, offsetStyles ]);
 
     // calculate height of each scene. 
     // heights are used for "snap to scene" trasition.
-    useEffect(() => {
+    /* useEffect(() => {
         smoothscroll.polyfill();
         const heights = [0];
         sceneDurations.map((duration, index) => {
@@ -107,32 +114,48 @@ const Homepage = () => {
             }
         })
         setSceneHeights(heights);
-    }, [height]);
+    }, [height]); */
 
     return(
         <div>
             <ScrollIndicator />
             <Controller>
-                { sceneHeights && sceneDurations.map((duration, idx) => {
+                { sceneDurations.map((duration, idx) => {
                     return (
                         <Scene {...{indicators}} key={idx} triggerHook="onLeave" duration={duration} pin>
                             {(progress, event) => {
                                 // prev scene
-                                if(event.state === "BEFORE"){
-                                    //disableScroll();
-                                    window.scroll({ top: sceneHeights[idx-1] + sceneDurations[idx-1]-5, behavior: "smooth" });
-                                    //enableScroll();
+                                if(event.state === "BEFORE" && idx !== 0){
+                                    disableScroll();
+                                    setTimeout(() => {
+                                        easyScroll({
+                                            'scrollableDomEle': window,
+                                            'direction': 'top',
+                                            'duration': 1000,
+                                            'easingPreset': 'easeInOutQuad',
+                                            'scrollAmount': height
+                                        });  
+                                    }, [100]);     
+                                    enableScroll();
                                 }
                                 // next scene
                                 if(event.state === "AFTER"){
-                                    //disableScroll();
-                                    window.scroll({ top: sceneHeights[idx+1], behavior: "smooth" });
-                                    //enableScroll();
-                                }
+                                    disableScroll();
+                                    setTimeout(() => {
+                                        easyScroll({
+                                            'scrollableDomEle': window,
+                                            'direction': 'bottom',
+                                            'duration': 1000,
+                                            'easingPreset': 'easeInOutQuad',
+                                            'scrollAmount': height
+                                        });        
+                                    }, [100]);                         
+                                    enableScroll();
+                                } 
                                 return (
                                     <SceneWrapper>
                                         {indicators && <ProgressIndicators {...{ progress, duration, startPos: sceneHeights[idx] }} />}
-                                        {idx === 0 && <ShiftSequence {...{ progress, duration, width, height, x, y, sw, sh }} />}
+                                        {idx === 0 && <ShiftSequence {...{ scrollY, width, height, x, y, sw, sh }} />}
                                         {idx === 1 && <LivingRoom {...{ active: event.state === "DURING", progress, duration, width, height, x, y, sw, sh, offsetStyles }} />}
                                         {idx === 2 && <Categories {...{ active: event.state === "DURING", offsetStyles }} />}
                                         {idx === 3 && <YogaScene {...{ active: event.state === "DURING", startPos: sceneHeights[idx], offsetStyles }} />}
