@@ -1,5 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import { Laptop, SeqWrapper, VideoLoopWrapper} from "./styles"; 
+import LaptopImages from "./images";
+import ImageSequence from "../../ImageSequence";
 
 const LaptopSequence = ({ width, height, progress, duration, x, y, sw, sh, offsetStyles, ...rest }) => {
 
@@ -9,10 +11,9 @@ const LaptopSequence = ({ width, height, progress, duration, x, y, sw, sh, offse
     // laptop loop state
     const [ laptopVideoReady, setLaptopVideoReady ] = useState(false);
     const [ laptopPlaying, setLaptopPlaying ] = useState(false);
-    
-    // canvas
-    const canvasRef = useRef(null);
-    const [ context, setContext ] = useState(null);
+
+    // sequence images
+    const imageSequence = LaptopImages();
 
     // last drawn image 
     const [ canvasImage, setCanvasImage ] = useState(0);
@@ -30,29 +31,6 @@ const LaptopSequence = ({ width, height, progress, duration, x, y, sw, sh, offse
 
         }
     }, [laptopLoopRef]); 
-
-    useEffect(() => {
-        if(canvasRef.current){ 
-            setContext(canvasRef.current.getContext('2d'));
-        }
-    }, [canvasRef]);
-
-    useEffect(() => {
-
-        if(context){
-            // image
-            const img = document.createElement("img");
-        
-            // image listener - when loaded
-            img.addEventListener("load", () => {
-                context.drawImage(img, x, y, sw, sh);
-            });
-
-            // trigger load
-            img.src = getFrame(canvasImage);
-        }
-
-    }, [canvasImage, context, x, y, sw, sh]);
 
     useEffect(() => {
 
@@ -93,7 +71,7 @@ const LaptopSequence = ({ width, height, progress, duration, x, y, sw, sh, offse
     return(
         <Laptop {...rest}>
             <SeqWrapper className={laptopPlaying? "" : "front"}>
-                <canvas ref={canvasRef} {...{ width, height }} />
+                <ImageSequence {...{ imageSequence, canvasImage, width, height, x, y, sw, sh }} />
             </SeqWrapper>
             <VideoLoopWrapper className={laptopPlaying? "front" : ""}>
                 <img src="/images/homepage/laptop-seq/laptop-seq-00239.png" style={offsetStyles} />

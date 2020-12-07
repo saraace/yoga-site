@@ -1,5 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import { Laptop, SeqWrapper, VideoLoopWrapper} from "./styles"; 
+import PhoneImages from "./images"; 
+import ImageSequence from "../../ImageSequence"; 
 
 const PhoneSequence = ({ width, height, progress, duration, x, y, sw, sh, offsetStyles, ...rest }) => {
 
@@ -9,10 +11,9 @@ const PhoneSequence = ({ width, height, progress, duration, x, y, sw, sh, offset
     // phone loop state
     const [ phoneVideoReady, setPhoneVideoReady ] = useState(false);
     const [ phonePlaying, setPhonePlaying ] = useState(false);
-    
-    // canvas
-    const canvasRef = useRef(null);
-    const [ context, setContext ] = useState(null);
+
+    // sequence images
+    const imageSequence = PhoneImages();
 
     // last drawn image 
     const [ canvasImage, setCanvasImage ] = useState(0);
@@ -30,29 +31,6 @@ const PhoneSequence = ({ width, height, progress, duration, x, y, sw, sh, offset
 
         }
     }, [phoneLoopRef]); 
-
-    useEffect(() => {
-        if(canvasRef.current){ 
-            setContext(canvasRef.current.getContext('2d'));
-        }
-    }, [canvasRef]);
-
-    useEffect(() => {
-
-        if(context){
-            // image
-            const img = document.createElement("img");
-        
-            // image listener - when loaded
-            img.addEventListener("load", () => {
-                context.drawImage(img, x, y, sw, sh);
-            });
-
-            // trigger load
-            img.src = getFrame(canvasImage);
-        }
-
-    }, [canvasImage, context, x, y, sw, sh]);
 
     useEffect(() => {
 
@@ -93,7 +71,7 @@ const PhoneSequence = ({ width, height, progress, duration, x, y, sw, sh, offset
     return(
         <Laptop {...rest}>
             <SeqWrapper className={phonePlaying? "" : "front"}>
-                <canvas ref={canvasRef} {...{ width, height }} />
+                <ImageSequence {...{ imageSequence, canvasImage, width, height, x, y, sw, sh }} />
             </SeqWrapper>
             <VideoLoopWrapper className={phonePlaying? "front" : ""}>
                 <img src="/images/homepage/phone-seq/phone-seq-00239.png" style={offsetStyles} />

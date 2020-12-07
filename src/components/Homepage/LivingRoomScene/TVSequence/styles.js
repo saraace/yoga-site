@@ -25,6 +25,7 @@ export const VideoWrapper = styled.div`
     }
 `; 
 
+
 export const SeqWrapper = styled.div`
     position: absolute; 
     top: 0; 

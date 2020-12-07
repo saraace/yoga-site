@@ -4,6 +4,8 @@ import { useState, useEffect, useRef } from "react";
 import { disableScroll, enableScroll } from "../../../../services/utils";
 import Link from "next/link"; 
 import { TV, VideoWrapper, SeqWrapper, VideoLoopWrapper, Text, TextContainer, Col, ButtonRow } from "./styles"; 
+import TVImages from "./images";
+import ImageSequence from "../../ImageSequence";
 
 const TVSequence = ({ active, progress, duration, x, y, sw, sh, width, height, offsetStyles, ...rest }) => {
 
@@ -21,15 +23,11 @@ const TVSequence = ({ active, progress, duration, x, y, sw, sh, width, height, o
     const [ tvVideoReady, setTvVideoReady ] = useState(false);
     const [ tvPlaying, setTvPlaying ] = useState(false);
 
-    // canvas
-    const canvasRef = useRef(null);
-    const [ context, setContext ] = useState(null);
+    // image sequence images
+    const imageSequence = TVImages();
 
     // last drawn image 
     const [ canvasImage, setCanvasImage ] = useState(0);
-
-    // generate frame url based on index specified
-    const getFrame = index => (`/images/homepage/tv-seq/tv-seq-${index.toString().padStart(5, "0")}.jpg`);
 
     useEffect(() => {
         if(videoRef.current){
@@ -61,31 +59,24 @@ const TVSequence = ({ active, progress, duration, x, y, sw, sh, width, height, o
     useEffect(() => {
 
         // once scene is active and the video is ready - play
-         if(active && videoReady){
+        if(active && videoReady){
 
-            //disableScroll();
+        //disableScroll();
 
-            // play full screen video
-            videoRef.current.play();
-            
-            setVideoPlaying(true);
-            setCanvasImage(0);
+        // play full screen video
+        videoRef.current.play();
+        
+        setVideoPlaying(true);
+        //setCanvasImage(0);
 
-         }
+        }
 
-     }, [active, videoRef, videoReady]);
-
-     // set context from canvas
-     useEffect(() => {
-         if(canvasRef.current){ 
-             setContext(canvasRef.current.getContext('2d'));
-         }
-     }, [canvasRef]);
+    }, [active, videoRef, videoReady]);
 
     useEffect(() => {
 
-        if(progress >= 0.25){ 
-
+        if(progress >= 0.25){
+            
             // pause tv video
             setTvPlaying(false);
 
@@ -101,31 +92,13 @@ const TVSequence = ({ active, progress, duration, x, y, sw, sh, width, height, o
                 setTvPlaying(true);
                 setCanvasImage(239);
             }
-
-        } 
+        }
         else{
             setTvPlaying(false);
             setCanvasImage(0);
         }
 
     }, [progress, duration]);
-
-    useEffect(() => {
-
-        if(context){
-            // image
-            const img = document.createElement("img");
-        
-            // image listener - when loaded
-            img.addEventListener("load", () => {
-                context.drawImage(img, x, y, sw, sh);
-            });
-
-            // trigger load
-            img.src = getFrame(canvasImage);
-        }
-
-    }, [canvasImage, context, x, y, sw, sh]);
 
     useEffect(() => {
         if(tvVideoReady && tvPlaying){
@@ -141,7 +114,7 @@ const TVSequence = ({ active, progress, duration, x, y, sw, sh, width, height, o
                 <video ref={videoRef} src="/images/homepage/tv-seq/bg.mp4" style={offsetStyles} muted />
             </VideoWrapper>
             <SeqWrapper className={videoPlaying? "" : "front"}>
-                <canvas ref={canvasRef} {...{ width, height }} />
+                <ImageSequence {...{ imageSequence, canvasImage, width, height, x, y, sw, sh }} />
             </SeqWrapper>
             <VideoLoopWrapper className={tvPlaying? "front" : ""}>
                 <img src="/images/homepage/tv-seq/tv-seq-00240.png" style={offsetStyles} />

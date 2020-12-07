@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"; 
 
 const defaultState = { image: undefined, status: "loading" }
-export const useImage = (url, crossOrigin) => {
+export const useImage = (url) => {
     const res = useState(defaultState)
     const image = res[0].image;
     const status = res[0].status;
@@ -22,7 +22,7 @@ export const useImage = (url, crossOrigin) => {
 
         img.addEventListener("load", onload);
         img.addEventListener("error", onerror);
-        crossOrigin && (img.crossOrigin = crossOrigin);
+        //crossOrigin && (img.crossOrigin = crossOrigin);
         img.src = url;
 
         return () => {
@@ -30,7 +30,7 @@ export const useImage = (url, crossOrigin) => {
             img.removeEventListener("error", onerror);
             setState(defaultState);
         };
-    }, [url, crossOrigin]);
+    }, [url]);
 
     return [image, status];
 }

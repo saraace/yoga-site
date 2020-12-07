@@ -8,18 +8,24 @@ const LivingRoomScene = ({ active, progress, duration, width, height, x, y, sw, 
 
     return(
         <FullScreen>
-            <TVSequence 
-                className={progress <= 0.5? "front" : ""} 
-                {...{ active, progress, duration, x, y, sw, sh, width, height, offsetStyles }}
-            />
-            <LaptopSequence 
-                className={progress > 0.5 && progress <=0.75? "front" : ""}
-                {...{ progress, duration, x, y, sw, sh, width, height, offsetStyles }} 
-            />
-            <PhoneSequence 
-                className={progress > 0.75? "front" : ""}
-                {...{ progress, duration, x, y, sw, sh, width, height, offsetStyles }} 
-            />
+            {progress >= 0 && (
+                <TVSequence 
+                    className={progress <= 0.5? "front" : ""} 
+                    {...{ active, progress, duration, x, y, sw, sh, width, height, offsetStyles }}
+                />
+            )}
+            {progress > 0.4 && (
+                <LaptopSequence 
+                    className={progress > 0.5 && progress <=0.75? "front" : ""}
+                    {...{ progress, duration, x, y, sw, sh, width, height, offsetStyles }} 
+                />
+            )}
+            {progress > 0.65 && (
+                <PhoneSequence 
+                    className={progress > 0.75? "front" : ""}
+                    {...{ progress, duration, x, y, sw, sh, width, height, offsetStyles }} 
+                />
+            )}
         </FullScreen>
     )
 }
