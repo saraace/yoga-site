@@ -27,6 +27,7 @@ const ImageSequence = ({ imageSequence, canvasImage, width, height, x, y, sw, sh
 
             if(image !== undefined){
                 if(image[0] !== undefined){
+                    console.log('painting');
                     context.drawImage(image[0], x, y, sw, sh);
                 }
             }

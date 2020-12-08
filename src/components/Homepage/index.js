@@ -1,10 +1,10 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Controller, Scene } from "react-scrollmagic";
-import smoothscroll from 'smoothscroll-polyfill';
+//import smoothscroll from 'smoothscroll-polyfill';
 import window from "global";
-import { disableScroll, enableScroll } from "../../services/utils";
+//import { disableScroll, enableScroll } from "../../services/utils";
 import { useViewportScroll, motion } from "framer-motion";
-import easyScroll from 'easy-scroll';
+//import easyScroll from 'easy-scroll';
 
 
 import { SceneWrapper } from "./styles";
@@ -30,7 +30,7 @@ import SignUpForm from "./SignUpForm";
 const Homepage = () => {
 
     // indicators used for development
-    const indicators = true;
+    const indicators = false;
 
     const { scrollY } = useViewportScroll();
 
@@ -46,7 +46,7 @@ const Homepage = () => {
     const [ offsetStyles, setOffsetStyles ] = useState({});
     
     // duration is how many pixels scene will stick to top
-    const sceneDurations = [50, 4000, 1000, 2500, 2500, 2500, 1000];
+    const sceneDurations = [400, 4000, 1000, 2500, 2500, 2500, 1000];
 
     // heights is duration + scene height
     const [ sceneHeights, setSceneHeights ] = useState([0, 0, 0, 0, 0, 0, 0]);
@@ -124,7 +124,7 @@ const Homepage = () => {
                     return (
                         <Scene {...{indicators}} key={idx} triggerHook="onLeave" duration={duration} pin>
                             {(progress, event) => {
-                                // prev scene
+                                /* // prev scene
                                 if(event.state === "BEFORE" && idx !== 0){
                                     disableScroll();
                                     setTimeout(() => {
@@ -151,7 +151,7 @@ const Homepage = () => {
                                         });        
                                     }, [100]);                         
                                     enableScroll();
-                                } 
+                                }  */
                                 return (
                                     <SceneWrapper>
                                         {indicators && <ProgressIndicators {...{ progress, duration, startPos: sceneHeights[idx] }} />}

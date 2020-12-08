@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useTransform } from "framer-motion";
+import { useTransform, useSpring, motion } from "framer-motion";
 import ImageArray from "./images";
 import ImageSequence from "../ImageSequence";
 import { FullScreen } from "./styles"; 
@@ -8,7 +8,11 @@ const ShiftSequence = ({ scrollY, width, height, x, y, sw, sh, }) => {
 
     const imageSequence = ImageArray();
 
-    const scale = useTransform(scrollY, [0, 300], ["1", "1.15"]);
+    const scale = useTransform(scrollY, [0, 1000], ["1", "1.15"]);
+
+    const transformY = useTransform(scrollY, [400, height+600], ["0", "-200px"], [{ease: "easeInOut"}]);
+
+    //const test = useSpring(transformY, { stiffness: 300 });
 
     // last drawn image 
     const [ canvasImage, setCanvasImage ] = useState(0);
@@ -17,13 +21,17 @@ const ShiftSequence = ({ scrollY, width, height, x, y, sw, sh, }) => {
 
         const unsubscribeY = scrollY.onChange(() => {
 
+            console.log(scrollY.getVelocity());
+
+            const frameId = Math.round(scrollY.current*0.35);
+
             // within image sequence frames
-            if(scrollY.current <= imageSequence.length) {
-                setCanvasImage(scrollY.current); 
+            if(frameId < imageSequence.length) {
+                setCanvasImage(frameId); 
             }
             // image sequence is complete
             else {
-                setCanvasImage(imageSequence.length);
+                setCanvasImage(imageSequence.length-1);
             }
 
         });
@@ -34,8 +42,10 @@ const ShiftSequence = ({ scrollY, width, height, x, y, sw, sh, }) => {
     }, [scrollY]);
 
     return(
-        <FullScreen style={{ scale }}>
-            <ImageSequence {...{ imageSequence, canvasImage, startPos: 0, width, height, x, y, sw, sh }} />
+        <FullScreen>
+            <motion.div style={{ scale, y: transformY }}>
+                <ImageSequence {...{ imageSequence, canvasImage, startPos: 0, width, height, x, y, sw, sh }} />
+            </motion.div>
         </FullScreen>
     )
 }

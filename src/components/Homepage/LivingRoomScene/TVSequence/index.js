@@ -6,6 +6,7 @@ import Link from "next/link";
 import { TV, VideoWrapper, SeqWrapper, VideoLoopWrapper, Text, TextContainer, Col, ButtonRow } from "./styles"; 
 import TVImages from "./images";
 import ImageSequence from "../../ImageSequence";
+import { motion } from "framer-motion";
 
 const TVSequence = ({ active, progress, duration, x, y, sw, sh, width, height, offsetStyles, ...rest }) => {
 
@@ -106,7 +107,45 @@ const TVSequence = ({ active, progress, duration, x, y, sw, sh, width, height, o
         } else{
             tvLoopRef.current.pause();
         }
-    }, [tvVideoReady, tvPlaying])
+    }, [tvVideoReady, tvPlaying]);
+
+    /* const transition = {
+        duration: 0.6, 
+        ease: [0.43, 0.13, 0.23, 0.96]
+    }; */
+
+    const transition = {
+        duration: 1.4, 
+        delay: 6,
+        ease: [0.6, 0.01, -0.05, 0.9]
+    };
+
+    const heading = {
+        initial: {
+            y: 0
+        }, 
+        animate: {
+            y: 0, 
+            transition: {
+                delayChildren: .6, 
+                staggerChildren: .04,
+                staggerDirection: -1
+            }
+        }
+    }
+
+    const letter = {
+        initial: {
+            y: 400
+        }, 
+        animate: {
+            y: 0,
+            transition: {
+                duration: 1, 
+                ...transition
+            }
+        }
+    }
 
     return(
         <TV {...rest}>
@@ -123,7 +162,25 @@ const TVSequence = ({ active, progress, duration, x, y, sw, sh, width, height, o
             <Text>
                 <TextContainer>
                     <Col>
-                        <h1>We Are More Than Fitness</h1>
+                        {/* <h1>We Are More Than Fitness</h1> */}
+                        <h1>
+                            <motion.div style={{ overflow: 'hidden' }}>
+                                <motion.span variants={heading}>
+                                    <motion.span variants={letter}>W</motion.span>
+                                    <motion.span variants={letter}>e</motion.span>
+                                    <motion.span variants={letter}>&nbsp;</motion.span>
+                                    <motion.span variants={letter}>A</motion.span>
+                                    <motion.span variants={letter}>r</motion.span>
+                                    <motion.span variants={letter}>e</motion.span>
+                                    <motion.span variants={letter}>&nbsp;</motion.span>
+                                    <motion.span variants={letter}>M</motion.span>
+                                    <motion.span variants={letter}>o</motion.span>
+                                    <motion.span variants={letter}>r</motion.span>
+                                    <motion.span variants={letter}>e</motion.span>
+                                </motion.span>
+                            </motion.div>
+                            <div><span>Than Fitness</span></div>
+                        </h1>
                         <p>Experience our yoga, FIIT &amp; restore classes, in-studio or online.</p>
                         <ButtonRow>
                             <Button variant="secondary-outline">Watch Video</Button>
