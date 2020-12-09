@@ -17,7 +17,7 @@ const ShiftSequence = ({ scrollY, width, height, x, y, sw, sh, }) => {
 
     useEffect(() => {
 
-        const unsubscribeY = scrollY.onChange(() => {
+        function updateCanvasImage() {
 
             const frameId = Math.round(scrollY.current*0.35);
 
@@ -30,11 +30,14 @@ const ShiftSequence = ({ scrollY, width, height, x, y, sw, sh, }) => {
                 setCanvasImage(imageSequence.length-1);
             }
 
-        });
+        }
+
+        const unsubscribeY = scrollY.onChange(updateCanvasImage);
 
         return () => {
             unsubscribeY();
         }
+
     }, [scrollY]);
 
     return(

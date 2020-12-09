@@ -1,13 +1,19 @@
 /** @jsx jsx */
-import { jsx, Button } from "theme-ui";
+import { jsx } from "theme-ui";
 import { useState, useEffect, useRef } from "react"; 
-import Link from "next/link"; 
-import { TV, Background, SeqWrapper, VideoLoopWrapper, Text, TextContainer, Col, ButtonRow, SlideOverTextContainer } from "./styles"; 
-import TVImages from "./images";
-import ImageSequence from "../../ImageSequence";
 import { motion, useTransform, AnimatePresence } from "framer-motion";
+import Link from "next/link"; 
 
-const TVSequence = ({ active, scrollY, progress, duration, x, y, sw, sh, width, height, offsetStyles, coverStyles, ...rest }) => {
+/* STYLES */
+import { TV, Background, SeqWrapper, VideoLoopWrapper, Text, TextContainer, Col, ButtonRow, SlideOverTextContainer } from "./styles"; 
+
+/* COMPONENTS */
+import ImageSequence from "../../ImageSequence";
+
+// Image sequence images
+import TVImages from "./images";
+
+const TVSequence = ({ scrollY, progress, duration, x, y, sw, sh, width, height, offsetStyles, coverStyles, ...rest }) => {
 
     // tv loop 
     const tvLoopRef = useRef(null);

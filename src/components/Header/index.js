@@ -36,15 +36,23 @@ const Header = () => {
       background: 'rgba(11, 21, 37, 1)', 
       boxShadow: '0 0 24px 0 rgba(0, 0, 0, 0.5)'
     },
+    'initialHomepage': {
+      opacity: 0, 
+      position: 'fixed',
+      background: 'rgba(11, 21, 37, 0)'
+    },
     'homepage': {
-      position: 'fixed', 
-      background: 'rgba(11, 21, 37, 0)', 
+      opacity: 1, 
+      transition: {
+        delay: 2.5
+      }
     }
   }
 
   return (
     <PageHeader 
       className={router.pathname !== "/"? (scrollingUp? 'sticky' : 'static') : "homepage"} 
+      initial={router.pathname !== "/"? "": "initialHomepage"}
       animate={router.pathname !== "/"? (scrollingUp? 'sticky' : 'static') : "homepage"} 
       variants={headerVariants}
     >

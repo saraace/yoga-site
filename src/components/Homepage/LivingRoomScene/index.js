@@ -1,17 +1,40 @@
+import { useEffect, useState } from "react";
 
+/* STYLES */
 import { FullScreen } from "./styles"; 
+
+/* COMPONENTS */
 import TVSequence from "./TVSequence";
 import LaptopSequence from "./LaptopSequence"; 
 import PhoneSequence from "./PhoneSequence";
 
-const LivingRoomScene = ({ active, scrollY, progress, duration, width, height, x, y, sw, sh, offsetStyles, coverStyles }) => {
+const LivingRoomScene = ({ scrollY, progress, duration, width, height, x, y, sw, sh, offsetStyles, coverStyles }) => {
+
+    const [ tvSequence, setTvSequence ] = useState(false);
+
+    useEffect(() => {
+
+        function loadImageSequences() {
+            if(scrollY.current >= 400 && !tvSequence){
+                setTvSequence(true);
+            }
+
+        }
+
+        const unsubscribeY = scrollY.onChange(loadImageSequences);
+
+        return () => {
+            unsubscribeY();
+        }
+
+    }, [scrollY]);
 
     return(
         <FullScreen>
-            {progress >= 0 && (
+            {tvSequence && (
                 <TVSequence 
                     className={progress <= 0.5? "front" : ""} 
-                    {...{ active, scrollY, progress, duration, x, y, sw, sh, width, height, offsetStyles, coverStyles }}
+                    {...{ scrollY, progress, duration, x, y, sw, sh, width, height, offsetStyles, coverStyles }}
                 />
             )}
             {progress > 0.5 && (
