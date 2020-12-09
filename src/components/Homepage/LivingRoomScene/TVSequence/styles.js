@@ -19,7 +19,11 @@ export const Background = styled(motion.div)`
 `; 
 
 export const SeqWrapper = styled.div`
-    position: absolute; 
+    position: absolute;
+    top: 0;
+    bottom: 0; 
+    left: 0; 
+    right: 0;
     background-image: url(/images/homepage/tv-seq/tv_seq_00000.jpg);
     background-repeat: no-repeat; 
     background-position: center; 

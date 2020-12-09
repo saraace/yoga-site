@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { motion } from "framer-motion"; 
 
 export const Laptop = styled.div`
     position: absolute; 
@@ -47,3 +48,26 @@ export const VideoLoopWrapper = styled.div`
         opacity: 1;
     }
 `;
+
+export const Text = styled(motion.div)`
+    position: absolute;
+    text-align: center;
+    width: 100%; 
+    top: 100px;
+    z-index: 10;
+
+    h1{
+        font-size: 48px; 
+        line-height: 1.5;
+        font-weight: 700; 
+        text-align: center; 
+
+        div{
+            overflow: hidden; 
+
+            span{
+                display: inline-block;
+            }
+        }
+    }
+`; 

@@ -127,9 +127,9 @@ const TVSequence = ({ scrollY, progress, duration, x, y, sw, sh, width, height, 
 
     /** SLIDE OVER TEXT **/
     const slideOverContainer = {
-        initial: { right: '-537px' }, 
-        animate: { right: '0px', transition: { ...slidingTransition } },
-        exit: { right: '-537px', transition: { ...slidingTransition } }
+        initial: { x: 537 }, 
+        animate: { x: 0, transition: { ...slidingTransition } },
+        exit: { x: 537, transition: { ...slidingTransition } }
     }
     const slideOverText = {
         initial: { y: 200, opacity: 0 },
@@ -140,7 +140,7 @@ const TVSequence = ({ scrollY, progress, duration, x, y, sw, sh, width, height, 
     return(
         <TV {...rest}>
             <Background 
-                animate={progress >= 0.25 && progress <= 0.45  ? { left: -537, right: 537} : { left: 0, right: 0}} 
+                animate={progress >= 0.18 && progress <= 0.3  ? { x: -537 } : { x: 0 }} 
                 transition={slidingTransition}
             >
                 <SeqWrapper className={tvPlaying? "" : "front"} style={coverStyles}>
@@ -155,13 +155,13 @@ const TVSequence = ({ scrollY, progress, duration, x, y, sw, sh, width, height, 
                 </VideoLoopWrapper>
             </Background>
             <AnimatePresence>
-            {progress > 0 && progress <= 0.1 && (
+            {progress > 0 && progress <= 0.13 && (
                 <Text initial="initial" animate="animate" exit="exit">
                     <TextContainer>
                         <Col>
                             {/* <h1>We Are More Than Fitness</h1> */}
                             <h1>
-                                <motion.div style={{ overflow: 'hidden' }}>
+                                <div style={{ overflow: 'hidden' }}>
                                     <motion.span variants={headingLine1} >
                                         <motion.span variants={letter} >W</motion.span>
                                         <motion.span variants={letter} >e</motion.span>
@@ -175,8 +175,8 @@ const TVSequence = ({ scrollY, progress, duration, x, y, sw, sh, width, height, 
                                         <motion.span variants={letter} >r</motion.span>
                                         <motion.span variants={letter} >e</motion.span>
                                     </motion.span>
-                                </motion.div>
-                                <motion.div style={{ overflow: 'hidden'}}>
+                                </div>
+                                <div style={{ overflow: 'hidden'}}>
                                     <motion.span variants={headingLine2}>
                                         <motion.span variants={letter}>T</motion.span>
                                         <motion.span variants={letter}>h</motion.span>
@@ -191,7 +191,7 @@ const TVSequence = ({ scrollY, progress, duration, x, y, sw, sh, width, height, 
                                         <motion.span variants={letter}>s</motion.span>
                                         <motion.span variants={letter}>s</motion.span>
                                     </motion.span>
-                                </motion.div>
+                                </div>
                             </h1>
                             <motion.p variants={paragraph}>Experience our yoga, FIIT &amp; restore classes, in-studio or online.</motion.p>
                             <ButtonRow>
@@ -206,7 +206,7 @@ const TVSequence = ({ scrollY, progress, duration, x, y, sw, sh, width, height, 
             )}
             </AnimatePresence>
             <AnimatePresence>
-                {progress >= 0.25 && progress <= 0.45 && (
+                {progress >= 0.18 && progress <= 0.3 && (
                     <motion.div initial="initial" animate="animate" exit="exit">
                         <SlideOverTextContainer variants={slideOverContainer}>
                             <motion.div variants={slideOverText}>

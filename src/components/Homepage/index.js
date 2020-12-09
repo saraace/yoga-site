@@ -28,7 +28,7 @@ import SignUpForm from "./SignUpForm";
 const Homepage = () => {
 
     // indicators used for development
-    const indicators = false;
+    const indicators = true;
 
     const { scrollY } = useViewportScroll();
 

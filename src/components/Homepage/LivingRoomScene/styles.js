@@ -11,10 +11,10 @@ export const FullScreen = styled.div`
     overflow: hidden;
 
     & > div{
-        opacity: 0; 
-
+        z-index: 1;
+        
         &.front{
-            opacity: 1;
+            z-index: 5;
         }
     }
 `; 
