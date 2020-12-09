@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Controller, Scene } from "react-scrollmagic";
-//import smoothscroll from 'smoothscroll-polyfill';
 import window from "global";
-//import { disableScroll, enableScroll } from "../../services/utils";
-import { useViewportScroll, motion } from "framer-motion";
-//import easyScroll from 'easy-scroll';
-
+import { useViewportScroll } from "framer-motion";
 
 import { SceneWrapper } from "./styles";
 import ProgressIndicators from "./ProgressIndicators";
@@ -60,12 +56,10 @@ const Homepage = () => {
 
         // calculate window ratio
         const ratio = h/w;
-        console.log('ratio = ', ratio);
 
         // if the window is tall, the assets height must be 100% while the width is cropped
         // if the window is wide, the assets width must be 100% while the height is cropped
         const tall = ratio > 1080/1920;
-        console.log(tall);
 
         // calculate dimensions for image in order to cover window
         var imageH = (tall)? h : (w * (1080/1920)); 
@@ -89,35 +83,6 @@ const Homepage = () => {
 
     }, [window]);
 
-    /* useEffect(() => {
-        console.log("width = ", width);
-        console.log("height = ", height);
-        console.log("sw = ", sw);
-        console.log("sh = ", sh);
-        console.log("x = ", x);
-        console.log("y = ", y);
-        console.log("offsetStyles = ", offsetStyles);
-        console.log("--------");
-    }, [ width, height, x, y, sw, sh, offsetStyles ]); */
-
-    // calculate height of each scene. 
-    // heights are used for "snap to scene" trasition.
-    /* useEffect(() => {
-        smoothscroll.polyfill();
-        const heights = [0];
-        sceneDurations.map((duration, index) => {
-            if(index < 1){
-                // not pined
-                //heights.push(height);
-                // pined 
-                heights.push(height + duration);
-            } else{
-                heights.push(height + duration + heights[index]);
-            }
-        })
-        setSceneHeights(heights);
-    }, [height]); */
-
     return(
         <div>
             <ScrollIndicator />
@@ -126,34 +91,6 @@ const Homepage = () => {
                     return (
                         <Scene {...{indicators}} key={idx} triggerHook="onLeave" duration={duration} pin>
                             {(progress, event) => {
-                                /* // prev scene
-                                if(event.state === "BEFORE" && idx !== 0){
-                                    disableScroll();
-                                    setTimeout(() => {
-                                        easyScroll({
-                                            'scrollableDomEle': window,
-                                            'direction': 'top',
-                                            'duration': 1000,
-                                            'easingPreset': 'easeInOutQuad',
-                                            'scrollAmount': height
-                                        });  
-                                    }, [100]);     
-                                    enableScroll();
-                                }
-                                // next scene
-                                if(event.state === "AFTER"){
-                                    disableScroll();
-                                    setTimeout(() => {
-                                        easyScroll({
-                                            'scrollableDomEle': window,
-                                            'direction': 'bottom',
-                                            'duration': 1000,
-                                            'easingPreset': 'easeInOutQuad',
-                                            'scrollAmount': height
-                                        });        
-                                    }, [100]);                         
-                                    enableScroll();
-                                }  */
                                 return (
                                     <SceneWrapper>
                                         {indicators && <ProgressIndicators {...{ progress, duration, startPos: sceneHeights[idx] }} />}
