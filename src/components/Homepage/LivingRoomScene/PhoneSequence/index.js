@@ -1,7 +1,15 @@
 import { useRef, useState, useEffect } from "react";
-import { Laptop, SeqWrapper, VideoLoopWrapper} from "./styles"; 
-import PhoneImages from "./images"; 
+import { Container } from "theme-ui";
+import { motion } from "framer-motion";
+
+/* STYLES */
+import { Laptop, SeqWrapper, VideoLoopWrapper, TextContainer, Text, LeftText, RightText } from "./styles"; 
+
+/* COMPONENTS */
 import ImageSequence from "../../ImageSequence"; 
+
+// Image sequence images
+import PhoneImages from "./images"; 
 
 const PhoneSequence = ({ width, height, progress, duration, x, y, sw, sh, offsetStyles, ...rest }) => {
 
@@ -34,13 +42,13 @@ const PhoneSequence = ({ width, height, progress, duration, x, y, sw, sh, offset
 
     useEffect(() => {
 
-        if(progress >= 0.75){ 
+        if(progress >= 0.61){ 
 
             // pause phone video
             setPhonePlaying(false);
 
             // current id
-            const id = Math.round((progress-0.75) * duration);
+            const id = Math.round(((progress-0.61) * duration) * 0.25);
 
             if(id <= 238){    
                 setCanvasImage(id);
@@ -77,6 +85,22 @@ const PhoneSequence = ({ width, height, progress, duration, x, y, sw, sh, offset
                 <img src="/images/homepage/phone-seq/phone-seq-00239.png" style={offsetStyles} />
                 <video ref={phoneLoopRef} src="/images/homepage/phone-seq/phone-loop.mp4" style={offsetStyles} muted loop />
             </VideoLoopWrapper>
+            {progress >= 0.66 && (
+                <TextContainer>
+                    <Container variant="large">
+                        <Text>
+                            <LeftText>
+                                <div>Live or on-demand.</div>
+                                <h2>Online classes featuring live instructor feedback.</h2>
+                            </LeftText>
+                            <RightText>
+                                <h2>Your virtual fitness studio.</h2>
+                                <p>You can also book classes to go to your local YogaJoint studio and workout together.</p>
+                            </RightText>
+                        </Text>
+                    </Container>
+                </TextContainer>
+            )}
         </Laptop>
     )
 }

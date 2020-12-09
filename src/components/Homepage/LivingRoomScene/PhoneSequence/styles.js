@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { Container } from "theme-ui";
 
 export const Laptop = styled.div`
     position: absolute; 
@@ -47,3 +48,49 @@ export const VideoLoopWrapper = styled.div`
         opacity: 1;
     }
 `;
+
+export const TextContainer = styled.div`
+    position: absolute; 
+    width: 100%;
+    top: 0; 
+    bottom: 0;
+    z-index: 10;
+
+    & > div{ 
+        height: 100%;
+    }
+`;
+
+export const Text = styled.div`
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+
+    h2{
+        font-size: ${({ theme }) => theme.fontSizes[4]+'px'}; 
+        line-height: 1.12; 
+        font-weight: 700; 
+    }
+`;
+
+export const LeftText = styled.div`
+    width: 430px;
+
+    div{
+        font-size: 32px; 
+        line-height: 1.315; 
+        font-weight: 400;
+    }
+`; 
+
+export const RightText = styled.div`
+    width: 310px;
+    align-self: flex-end;
+
+    p{
+        font-size: ${({ theme }) => theme.fontSizes[2]+'px'}; 
+        line-height: 1.5; 
+        font-weight: 400; 
+    }
+`; 

@@ -39,16 +39,16 @@ const LivingRoomScene = ({ scrollY, progress, duration, width, height, x, y, sw,
             )}
             {progress > 0.3 && (
                 <LaptopSequence 
-                    className={progress > 0.35 && progress <=0.75? "front" : ""}
+                    className={progress > 0.35 && progress <=0.6? "front" : ""}
                     {...{ progress, duration, x, y, sw, sh, width, height, offsetStyles }} 
                 />
             )}
-            {/* progress > 1.3 && (
+            {progress > 0.55 && (
                 <PhoneSequence 
-                    className={progress > 0.75? "front" : ""}
+                    className={progress > 0.6? "front" : ""}
                     {...{ progress, duration, x, y, sw, sh, width, height, offsetStyles }} 
                 />
-            ) */}
+            )}
         </FullScreen>
     )
 }
