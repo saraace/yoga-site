@@ -8,11 +8,9 @@ const ShiftSequence = ({ scrollY, width, height, x, y, sw, sh, }) => {
 
     const imageSequence = ImageArray();
 
-    const scale = useTransform(scrollY, [0, 1000], ["1", "1.15"]);
+    const scale = useTransform(scrollY, [0, 1000], ["1", "1.15"], [{ease: "easeInOut"}]);
 
     const transformY = useTransform(scrollY, [400, height+600], ["0", "-200px"], [{ease: "easeInOut"}]);
-
-    //const test = useSpring(transformY, { stiffness: 300 });
 
     // last drawn image 
     const [ canvasImage, setCanvasImage ] = useState(0);
@@ -20,8 +18,6 @@ const ShiftSequence = ({ scrollY, width, height, x, y, sw, sh, }) => {
     useEffect(() => {
 
         const unsubscribeY = scrollY.onChange(() => {
-
-            console.log(scrollY.getVelocity());
 
             const frameId = Math.round(scrollY.current*0.35);
 

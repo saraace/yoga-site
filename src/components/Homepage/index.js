@@ -30,7 +30,7 @@ import SignUpForm from "./SignUpForm";
 const Homepage = () => {
 
     // indicators used for development
-    const indicators = false;
+    const indicators = true;
 
     const { scrollY } = useViewportScroll();
 
@@ -44,9 +44,10 @@ const Homepage = () => {
     const [ sw, setSw ] = useState(0);
     const [ sh, setSh ] = useState(0);
     const [ offsetStyles, setOffsetStyles ] = useState({});
+    const [ coverStyles, setCoverStyles ] = useState({});
     
     // duration is how many pixels scene will stick to top
-    const sceneDurations = [400, 4000, 1000, 2500, 2500, 2500, 1000];
+    const sceneDurations = [400, 10000, 1000, 2500, 2500, 2500, 1000];
 
     // heights is duration + scene height
     const [ sceneHeights, setSceneHeights ] = useState([0, 0, 0, 0, 0, 0, 0]);
@@ -83,11 +84,12 @@ const Homepage = () => {
         setY(yOffset);
 
         // determine offset styles 
-        setOffsetStyles((tall)? { height: h, left: xOffset } : { width: w, top: yOffset });
+        setOffsetStyles((tall)? { height: h, left: xOffset } : { width: w, top: yOffset, left: 0 });
+        setCoverStyles(tall? { height: '100%', left: 0 } : { width: '100%', top: 0 });
 
     }, [window]);
 
-    useEffect(() => {
+    /* useEffect(() => {
         console.log("width = ", width);
         console.log("height = ", height);
         console.log("sw = ", sw);
@@ -96,7 +98,7 @@ const Homepage = () => {
         console.log("y = ", y);
         console.log("offsetStyles = ", offsetStyles);
         console.log("--------");
-    }, [ width, height, x, y, sw, sh, offsetStyles ]);
+    }, [ width, height, x, y, sw, sh, offsetStyles ]); */
 
     // calculate height of each scene. 
     // heights are used for "snap to scene" trasition.
@@ -156,7 +158,7 @@ const Homepage = () => {
                                     <SceneWrapper>
                                         {indicators && <ProgressIndicators {...{ progress, duration, startPos: sceneHeights[idx] }} />}
                                         {idx === 0 && <ShiftSequence {...{ scrollY, width, height, x, y, sw, sh }} />}
-                                        {idx === 1 && <LivingRoom {...{ active: event.state === "DURING", progress, duration, width, height, x, y, sw, sh, offsetStyles }} />}
+                                        {idx === 1 && <LivingRoom {...{ active: event.state === "DURING", scrollY, progress, duration, width, height, x, y, sw, sh, offsetStyles, coverStyles }} />}
                                         {idx === 2 && <Categories {...{ active: event.state === "DURING", offsetStyles }} />}
                                         {idx === 3 && <YogaScene {...{ active: event.state === "DURING", startPos: sceneHeights[idx], offsetStyles }} />}
                                         {idx === 4 && <FiitScene {...{ active: event.state === "DURING", startPos: sceneHeights[idx], offsetStyles }} />}
