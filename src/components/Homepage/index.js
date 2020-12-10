@@ -105,7 +105,7 @@ const Homepage = () => {
                                         {idx === 0 && <ShiftSequence {...{ scrollY, width, height, x, y, sw, sh }} />}
                                         {idx === 1 && <LivingRoom {...{ scrollY, progress, startPos, nextStartPos, duration, width, height, x, y, sw, sh, offsetStyles, coverStyles }} />}
                                         {idx === 2 && <Instructors {...{ scrollY, progress, startPos, nextStartPos, duration, coverStyles }} />}
-                                        {idx === 3 && <Categories {...{ active: event.state === "DURING", scrollY, progress, startPos, height, offsetStyles }} />}
+                                        {idx === 3 && <Categories {...{ scrollY, progress, startPos, nextStartPos, height, offsetStyles }} />}
                                         {idx === 4 && <YogaScene {...{ active: event.state === "DURING", startPos, offsetStyles }} />}
                                         {idx === 5 && <FiitScene {...{ active: event.state === "DURING", startPos, offsetStyles }} />}
                                         {idx === 6 && <RestoreScene {...{ active: event.state === "DURING", startPos, offsetStyles }} />}

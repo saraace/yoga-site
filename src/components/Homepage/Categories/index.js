@@ -3,7 +3,7 @@ import { Container } from "theme-ui";
 import { useTransform, motion } from "framer-motion";
 import { FullScreen, VideoWrapper, Content, Renew, Shift, Transform, Row, Yoga, Fiit, Restore } from "./styles"; 
 
-const CategoriesScene = ({ active, scrollY, progress, startPos, height, offsetStyles }) => {
+const CategoriesScene = ({ scrollY, progress, startPos, nextStartPos, height, offsetStyles }) => {
 
     const videoRef = useRef(null);
 
@@ -31,8 +31,24 @@ const CategoriesScene = ({ active, scrollY, progress, startPos, height, offsetSt
         }
     }, [play, videoRef]);
 
-    const scale = useTransform(scrollY, [startPos-height, startPos], [1.25, 1], [{ ease: "easeInOut" }]);
-    const y = useTransform(scrollY, [startPos - height, startPos], [-300, 0]);
+    // background effects
+    const scale = useTransform(scrollY, [startPos-height, startPos, nextStartPos], [1.25, 1.1, 1], [{ ease: "easeInOut" }]);
+    const y = useTransform(scrollY, [startPos-height, startPos, nextStartPos-height, nextStartPos], [-300, 0, 0, 100]);
+
+    // text variants
+    const headings = {
+        animate: {
+            transition: {
+                staggerChildren: 0.3, 
+                staggerDirection: 1
+            }
+        }
+    }
+
+    const word = {
+        initial: { y: 50, opacity: 0 }, 
+        animate: { y: 0, opacity: 1, transition: { duration: "0.5", ease: "easeOut" } }
+    }
 
     return(
         <FullScreen>
@@ -40,18 +56,20 @@ const CategoriesScene = ({ active, scrollY, progress, startPos, height, offsetSt
                 <VideoWrapper>
                     <video ref={videoRef} src="/images/homepage/scene-08/bg.mp4" style={offsetStyles} muted />
                 </VideoWrapper>
-                <Container variant="small">
-                    <Content>
-                        <Renew>Renew</Renew>
-                        <Shift>Shift</Shift>
-                        <Transform>Transform</Transform>
-                        <Row>
-                            <Yoga>Yoga</Yoga>
-                            <Fiit>Fiit</Fiit>
-                            <Restore>Restore</Restore>
-                        </Row>
-                    </Content>
-                </Container>
+                {progress > 0.15 && (
+                    <Container variant="small">
+                        <Content initial="initial" animate="animate" variants={headings}>
+                            <Renew variants={word}>Renew</Renew>
+                            <Shift variants={word}>Shift</Shift>
+                            <Transform variants={word}>Transform</Transform>
+                            <Row variants={word}>
+                                <Yoga>Yoga</Yoga>
+                                <Fiit>Fiit</Fiit>
+                                <Restore>Restore</Restore>
+                            </Row>
+                        </Content>
+                    </Container>
+                )}
             </motion.div>
         </FullScreen>
     )

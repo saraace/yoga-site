@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { motion } from "framer-motion";
 
 export const FullScreen = styled.div`
     height: 100vh; 
@@ -28,21 +29,21 @@ export const VideoWrapper = styled.div`
     }
 `; 
 
-export const Content = styled.div`
+export const Content = styled(motion.div)`
     width: 100%; 
     padding: 0 0 120px;
     position: relative; 
     z-index: 1;
 `;
 
-export const Renew = styled.div`
+export const Renew = styled(motion.div)`
     font-weight: 700; 
     font-size: 64px; 
     line-height: 1.12;
     text-shadow: -1px 1px 0px rgba(0, 0, 0, 0.15);
 `;
 
-export const Shift = styled.div`
+export const Shift = styled(motion.div)`
     text-align: center;
     font-weight: 900;
     font-size: 200px; 
@@ -50,7 +51,7 @@ export const Shift = styled.div`
     text-shadow: -1px 1px 0px rgba(0, 0, 0, 0.15);
 `;
 
-export const Transform = styled.div`
+export const Transform = styled(motion.div)`
     text-align: right;
     font-weight: 700; 
     font-size: 64px; 
@@ -59,7 +60,7 @@ export const Transform = styled.div`
     margin-bottom: 166px;
 `;
 
-export const Row = styled.div`
+export const Row = styled(motion.div)`
     display: flex;
     justify-content: center; 
 `;
