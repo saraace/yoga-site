@@ -94,14 +94,14 @@ const TVSequence = ({ scrollY, progress, duration, x, y, sw, sh, width, height, 
     // "We Are More Than Fitness" 
     const heading = {
         initial: { opacity: 0 },
-        animate: { opacity: 1, transition: { duration: 0.5, ...introTransition } },
-        exit: { opacity: 0, transition: { duration: 0.5, ...introTransition } }
+        animate: { opacity: 1, transition: { duration: 0.5, ease: "easeIn"  } },
+        exit: { opacity: 0, transition: { duration: 0.5, ease: "easeIn"  } }
     }
 
     // intro paragraph
     const paragraph = {
         initial: { y: 75, opacity: 0 }, 
-        animate: { y: 0, opacity: 1, transition: { duration: 0.3, delay: 0.25, ...introTransition } },
+        animate: { y: 0, opacity: 1, transition: { duration: 0.3, delay: 0.15, ease: "easeIn" } },
         exit: { opacity: 0, transition: { duration: 0.5, ...introTransition } }
     }
 
