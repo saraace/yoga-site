@@ -19,6 +19,8 @@ const ShiftSequence = ({ scrollY, width, height, x, y, sw, sh, }) => {
 
         function updateCanvasImage() {
 
+            //console.log(scrollY.current);
+
             const frameId = Math.round(scrollY.current*0.35);
 
             // within image sequence frames

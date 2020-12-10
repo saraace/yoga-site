@@ -14,6 +14,8 @@ import ScrollIndicator from "./ScrollIndicator";
 import ShiftSequence from "./ShiftSequence"; 
 // Living Room 
 import LivingRoom from "./LivingRoomScene"; 
+// World Class Instructors 
+import Instructors from "./Instructors"; 
 // Categories
 import Categories from "./Categories"; 
 // Yoga
@@ -28,7 +30,7 @@ import SignUpForm from "./SignUpForm";
 const Homepage = () => {
 
     // indicators used for development
-    const indicators = false;
+    const indicators = true;
 
     const { scrollY } = useViewportScroll();
 
@@ -45,10 +47,10 @@ const Homepage = () => {
     const [ coverStyles, setCoverStyles ] = useState({});
     
     // duration is how many pixels scene will stick to top
-    const sceneDurations = [400, 8000, 1000, 2500, 2500, 2500, 1000];
+    const sceneDurations = [400, 8000, 2000, 1000, 2500, 2500, 2500, 1000];
 
     // heights is duration + scene height
-    const [ sceneHeights, setSceneHeights ] = useState([0, 0, 0, 0, 0, 0, 0]);
+    const [ sceneHeights, setSceneHeights ] = useState([0, 0, 0, 0, 0, 0, 0, 0]);
 
     useEffect(() => {
         
@@ -98,11 +100,12 @@ const Homepage = () => {
                                         {indicators && <ProgressIndicators {...{ progress, duration, startPos: sceneHeights[idx] }} />}
                                         {idx === 0 && <ShiftSequence {...{ scrollY, width, height, x, y, sw, sh }} />}
                                         {idx === 1 && <LivingRoom {...{ scrollY, progress, duration, width, height, x, y, sw, sh, offsetStyles, coverStyles }} />}
-                                        {/* idx === 2 && <Categories {...{ active: event.state === "DURING", offsetStyles }} />}
-                                        {idx === 3 && <YogaScene {...{ active: event.state === "DURING", startPos: sceneHeights[idx], offsetStyles }} />}
-                                        {idx === 4 && <FiitScene {...{ active: event.state === "DURING", startPos: sceneHeights[idx], offsetStyles }} />}
-                                        {idx === 5 && <RestoreScene {...{ active: event.state === "DURING", startPos: sceneHeights[idx], offsetStyles }} />}
-                                        {idx === 6 && <SignUpForm {...{ active: event.state === "DURING", startPos: sceneHeights[idx] }} />  */}
+                                        {idx === 2 && <Instructors {...{ scrollY, progress }} />}
+                                        {/* idx === 3 && <Categories {...{ active: event.state === "DURING", offsetStyles }} />}
+                                        {idx === 4 && <YogaScene {...{ active: event.state === "DURING", startPos: sceneHeights[idx], offsetStyles }} />}
+                                        {idx === 5 && <FiitScene {...{ active: event.state === "DURING", startPos: sceneHeights[idx], offsetStyles }} />}
+                                        {idx === 6 && <RestoreScene {...{ active: event.state === "DURING", startPos: sceneHeights[idx], offsetStyles }} />}
+                                        {idx === 7 && <SignUpForm {...{ active: event.state === "DURING", startPos: sceneHeights[idx] }} />  */}
                                     </SceneWrapper>
                                 );
                             }}
