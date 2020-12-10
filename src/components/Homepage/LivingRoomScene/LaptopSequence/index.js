@@ -44,13 +44,13 @@ const LaptopSequence = ({ width, height, progress, duration, x, y, sw, sh, offse
         // set motion value
         sceneProgress.set(progress);
 
-        if(progress >= 0.36){ 
+        if(progress >= 0.45){ 
 
             // pause laptop video
             setLaptopPlaying(false);
 
             // current id
-            const id = Math.round(((progress-0.36) * duration) * 0.25);
+            const id = Math.round(((progress-0.45) * duration) * 0.25);
 
             if(id <= 239){    
                 setCanvasImage(id);
@@ -90,11 +90,11 @@ const LaptopSequence = ({ width, height, progress, duration, x, y, sw, sh, offse
     // heading letters
     const letter = {
         initial: { y: 100 },
-        animate: { y: 0, transition: { duration: 0.5, ...transition } }
+        animate: { y: 0, transition: { duration: 0.3, ...transition } }
     };
 
-    const headingScrollOutY = useTransform(sceneProgress, [0.51, 0.6], [0, height*-1])
-    const headingScrollOutOp = useTransform(sceneProgress, [0.51, 0.55], [1, 0])
+    const headingScrollOutY = useTransform(sceneProgress, [0.6375, 0.75], [0, height*-1])
+    const headingScrollOutOp = useTransform(sceneProgress, [0.65, 0.6875], [1, 0])
 
 
     return(
@@ -107,7 +107,7 @@ const LaptopSequence = ({ width, height, progress, duration, x, y, sw, sh, offse
                 <video ref={laptopLoopRef} src="/images/homepage/laptop-seq/laptop-loop.mp4" style={offsetStyles} muted loop />
             </VideoLoopWrapper>
             <AnimatePresence> 
-            {progress > 0.46 && (
+            {progress > 0.575 && (
                 <Text initial="initial" animate="animate" exit="exit">
                     <motion.h1 style={{ y: headingScrollOutY, opacity: headingScrollOutOp }}>
                         <div>

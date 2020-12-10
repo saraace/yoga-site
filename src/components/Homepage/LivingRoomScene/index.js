@@ -32,19 +32,19 @@ const LivingRoomScene = ({ scrollY, progress, duration, width, height, x, y, sw,
         <FullScreen>
             {tvSequence && (
                 <TVSequence 
-                    className={progress <= 0.35? "front" : ""} 
+                    className={progress <= 0.4375? "front" : ""} 
                     {...{ scrollY, progress, duration, x, y, sw, sh, width, height, offsetStyles, coverStyles }}
                 />
             )}
-            {progress > 0.3 && (
+            {progress > 0.375 && (
                 <LaptopSequence 
-                    className={progress > 0.35 && progress <=0.6? "front" : ""}
+                    className={progress > 0.4375 && progress <=0.6875? "front" : ""}
                     {...{ progress, duration, x, y, sw, sh, width, height, offsetStyles }} 
                 />
             )}
-            {progress > 0.5 && (
+            {progress > 0.625 && (
                 <PhoneSequence 
-                    className={progress > 0.55? "front" : ""}
+                    className={progress > 0.6875? "front" : ""}
                     {...{ progress, duration, x, y, sw, sh, width, height, offsetStyles }} 
                 />
             )}

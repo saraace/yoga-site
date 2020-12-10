@@ -45,13 +45,13 @@ const PhoneSequence = ({ width, height, progress, duration, x, y, sw, sh, offset
         // set motion value
         sceneProgress.set(progress);
 
-        if(progress >= 0.56){ 
+        if(progress >= 0.7){ 
 
             // pause phone video
             setPhonePlaying(false);
 
             // current id
-            const id = Math.round(((progress-0.56) * duration) * 0.25);
+            const id = Math.round(((progress-0.7) * duration) * 0.25);
 
             if(id <= 238){    
                 setCanvasImage(id);
@@ -89,10 +89,12 @@ const PhoneSequence = ({ width, height, progress, duration, x, y, sw, sh, offset
         exit: { y: 100, opacity: 0 }
     };
     // left
-    const leftTextScroll = useTransform(sceneProgress, [0.61, 0.7], [0, height*-1]);
+    const leftTextScroll = useTransform(sceneProgress, [0.78, 0.875], [0, height*-1]);
+    const leftTextOpacity = useTransform(sceneProgress, [0.795, 0.825], [1, 0]);
     
     //right
-    const rightTextScroll = useTransform(sceneProgress, [0.71, 0.8], [0, height*-1]);
+    const rightTextScroll = useTransform(sceneProgress, [0.905, 1], [0, height*-1]);
+    const rightTextOpacity = useTransform(sceneProgress, [0.9126, 0.945], [1, 0]);
 
     return(
         <Laptop {...rest}>
@@ -107,8 +109,8 @@ const PhoneSequence = ({ width, height, progress, duration, x, y, sw, sh, offset
                 <Container variant="large">
                     <Text>
                         <AnimatePresence>
-                            {progress >= 0.6 && (
-                                <LeftText initial="initial" animate="animate" exit="exit" style={{ y: leftTextScroll }}>
+                            {progress >= 0.75 && (
+                                <LeftText initial="initial" animate="animate" exit="exit" style={{ y: leftTextScroll, opacity: leftTextOpacity }}>
                                     <motion.div variants={text}>
                                         <p>Live or on-demand.</p>
                                         <h2>Online classes featuring live instructor feedback.</h2>
@@ -117,8 +119,8 @@ const PhoneSequence = ({ width, height, progress, duration, x, y, sw, sh, offset
                             )}
                         </AnimatePresence>
                         <AnimatePresence>
-                            {progress >= 0.7 && (
-                                <RightText initial="initial" animate="animate" exit="exit" style={{ y: rightTextScroll }}>
+                            {progress >= 0.875 && (
+                                <RightText initial="initial" animate="animate" exit="exit" style={{ y: rightTextScroll, opacity: rightTextOpacity }}>
                                     <motion.div variants={text}>
                                         <h2>Your virtual fitness studio.</h2>
                                         <p>You can also book classes to go to your local YogaJoint studio and workout together.</p>
