@@ -28,7 +28,7 @@ import SignUpForm from "./SignUpForm";
 const Homepage = () => {
 
     // indicators used for development
-    const indicators = false;
+    const indicators = true;
 
     const { scrollY } = useViewportScroll();
 
@@ -45,7 +45,7 @@ const Homepage = () => {
     const [ coverStyles, setCoverStyles ] = useState({});
     
     // duration is how many pixels scene will stick to top
-    const sceneDurations = [400, 8000, 1000, 2500, 2500, 2500, 1000];
+    const sceneDurations = [900, 8000, 1000, 2500, 2500, 2500, 1000];
 
     // heights is duration + scene height
     const [ sceneHeights, setSceneHeights ] = useState([0, 0, 0, 0, 0, 0, 0]);

@@ -10,7 +10,7 @@ const ShiftSequence = ({ scrollY, width, height, x, y, sw, sh, }) => {
 
     const scale = useTransform(scrollY, [0, 1000], ["1", "1.15"], [{ease: "easeInOut"}]);
 
-    const transformY = useTransform(scrollY, [400, height+600], ["0", "-200px"], [{ease: "easeInOut"}]);
+    const transformY = useTransform(scrollY, [900, height+600], ["0", "-100px"], [{ease: "easeInOut"}]);
 
     // last drawn image 
     const [ canvasImage, setCanvasImage ] = useState(0);
@@ -19,7 +19,7 @@ const ShiftSequence = ({ scrollY, width, height, x, y, sw, sh, }) => {
 
         function updateCanvasImage() {
 
-            const frameId = Math.round(scrollY.current*0.35);
+            const frameId = Math.round(scrollY.current*0.25);
 
             // within image sequence frames
             if(frameId < imageSequence.length) {
