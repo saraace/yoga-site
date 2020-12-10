@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Container } from "theme-ui";
+import { motion } from "framer-motion";
 
 export const Laptop = styled.div`
     position: absolute; 
@@ -49,7 +49,7 @@ export const VideoLoopWrapper = styled.div`
     }
 `;
 
-export const TextContainer = styled.div`
+export const TextContainer = styled(motion.div)`
     position: absolute; 
     width: 100%;
     top: 0; 
@@ -74,17 +74,19 @@ export const Text = styled.div`
     }
 `;
 
-export const LeftText = styled.div`
+export const LeftText = styled(motion.div)`
     width: 430px;
+    margin-bottom: -200px;
 
-    div{
+    p{
         font-size: 32px; 
         line-height: 1.315; 
         font-weight: 400;
+        margin: 0 0 20px 0;
     }
 `; 
 
-export const RightText = styled.div`
+export const RightText = styled(motion.div)`
     width: 310px;
     align-self: flex-end;
 

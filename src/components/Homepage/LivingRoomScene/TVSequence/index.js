@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
 import { useState, useEffect, useRef } from "react"; 
-import { motion, useTransform, AnimatePresence } from "framer-motion";
+import { motion, useTransform, useMotionValue, AnimatePresence } from "framer-motion";
 import Link from "next/link"; 
 
 /* STYLES */
@@ -28,6 +28,9 @@ const TVSequence = ({ scrollY, progress, duration, x, y, sw, sh, width, height, 
     // last drawn image 
     const [ canvasImage, setCanvasImage ] = useState(0);
 
+    // framer motion value for scene progress
+    const sceneProgress = useMotionValue(0);
+
     // sets video status once it is loaded
     useEffect(() => {
         if(tvLoopRef.current){
@@ -51,6 +54,9 @@ const TVSequence = ({ scrollY, progress, duration, x, y, sw, sh, width, height, 
 
     // advances image sequence
     useEffect(() => {
+
+        // set motion value
+        sceneProgress.set(progress);
 
         if(progress > 0.05){
             
@@ -85,63 +91,49 @@ const TVSequence = ({ scrollY, progress, duration, x, y, sw, sh, width, height, 
     const slidingTransition = { duration: 0.9, ease: "easeInOut" };
 
     /** INTRO TEXT **/
-
-    // "We Are More" line
-    const headingLine1 = {
-        animate: { transition: { delayChildren: 0, staggerChildren: 0.04, staggerDirection: 1 } },
-        exit: { transition: { delayChildren: 0, staggerChildren: 0.04, staggerDirection: -1 } }
-    };
-
-    // "Than Fitness" line
-    const headingLine2 = {
-        animate: { transition: { delayChildren: 0.25, staggerChildren: 0.04, staggerDirection: 1 } },
-        exit: { transition: { delayChildren: 0.25, staggerChildren: 0.04, staggerDirection: -1 } }
-    };
-
-    // heading letters
-    const letter = {
-        initial: { y: 100 },
-        animate: { y: 0, transition: { duration: 0.5, ...introTransition } },
-        exit: { y: 100, transition: { duration: 0.5, ...introTransition } } 
-    };
+    // "We Are More Than Fitness" 
+    const heading = {
+        initial: { opacity: 0 },
+        animate: { opacity: 1, transition: { duration: 0.5, ...introTransition } },
+        exit: { opacity: 0, transition: { duration: 0.5, ...introTransition } }
+    }
 
     // intro paragraph
     const paragraph = {
-        initial: { opacity: 0 }, 
-        animate: { opacity: 1, transition: { duration: 0.3, delay: 1, ...introTransition } },
-        exit: { opacity: 0, transition: { duration: 0.3, delay: 1, ...introTransition }  }
+        initial: { y: 75, opacity: 0 }, 
+        animate: { y: 0, opacity: 1, transition: { duration: 0.3, delay: 0.25, ...introTransition } },
+        exit: { opacity: 0, transition: { duration: 0.5, ...introTransition } }
     }
 
     // watch & signup buttons
     const watchButton = {
         initial: { opacity: 0, y: 50 }, 
-        animate: { opacity: 1, y: 0, transition: { delay: 1, duration: 0.3 } },
-        exit: { opacity: 0, y: 50, transition: { delay: 1, duration: 0.3 } 
-    }
+        animate: { opacity: 1, y: 0, transition: { delay: 0.3, duration: 0.3 } },
+        exit: { opacity: 0, transition: { duration: 0.5, ...introTransition } }
     }
     const signUpButton = {
         initial: { opacity: 0, y: 50 }, 
-        animate: { opacity: 1, y: 0, transition: { delay: 1.2, duration: 0.3 } },
-        exit: { opacity: 0, y: 50, transition: { delay: 1.2, duration: 0.3 } }
+        animate: { opacity: 1, y: 0, transition: { delay: 0.35, duration: 0.3 } },
+        exit: { opacity: 0, transition: { duration: 0.5, ...introTransition } }
     }
 
+    const scrollOut = useTransform(sceneProgress, [0.05, 0.13], [0, height*-1]);
+
     /** SLIDE OVER TEXT **/
-    const slideOverContainer = {
-        initial: { x: 537 }, 
-        animate: { x: 0, transition: { ...slidingTransition } },
-        exit: { x: 537, transition: { ...slidingTransition } }
-    }
+    const slideOverBackground = useTransform(sceneProgress, [0.18, 0.21, 0.31, 0.34], [0, -537, -537, 0]);
+    const slideOverContainer = useTransform(sceneProgress, [0.18, 0.21, 0.31, 0.34], [537, 0, 0, 537]);
     const slideOverText = {
         initial: { y: 200, opacity: 0 },
-        animate: { y: 0, opacity: 1, transition : { delay: 0.5, duration: 0.7, ...introTransition }},
-        exit: { y: -200, opacity: 0, transition: { duration: 0.7, ...introTransition } }
+        animate: { y: 0, opacity: 1, transition : { duration: 0.5, ...introTransition }},
+        exit: { y: 200, opacity: 0, transition: { duration: 0.7, ...introTransition } }
     }
+    const slideOverTextOut = useTransform(sceneProgress, [0.24, 0.34], [0, height*-1]);
+    const slideOverTextOp = useTransform(sceneProgress, [0.24, 0.32], [1, 0]);
 
     return(
         <TV {...rest}>
             <Background 
-                animate={progress >= 0.18 && progress <= 0.3  ? { x: -537 } : { x: 0 }} 
-                transition={slidingTransition}
+                style={{ x: slideOverBackground }}
             >
                 <SeqWrapper className={tvPlaying? "" : "front"} style={coverStyles}>
                     <motion.div style={{ scale }}>
@@ -155,44 +147,11 @@ const TVSequence = ({ scrollY, progress, duration, x, y, sw, sh, width, height, 
                 </VideoLoopWrapper>
             </Background>
             <AnimatePresence>
-            {progress > 0 && progress <= 0.13 && (
+            {progress > 0.01 && progress <= 0.13 && (
                 <Text initial="initial" animate="animate" exit="exit">
                     <TextContainer>
-                        <Col>
-                            {/* <h1>We Are More Than Fitness</h1> */}
-                            <h1>
-                                <div style={{ overflow: 'hidden' }}>
-                                    <motion.span variants={headingLine1} >
-                                        <motion.span variants={letter} >W</motion.span>
-                                        <motion.span variants={letter} >e</motion.span>
-                                        <motion.span variants={letter} >&nbsp;</motion.span>
-                                        <motion.span variants={letter} >A</motion.span>
-                                        <motion.span variants={letter} >r</motion.span>
-                                        <motion.span variants={letter} >e</motion.span>
-                                        <motion.span variants={letter} >&nbsp;</motion.span>
-                                        <motion.span variants={letter} >M</motion.span>
-                                        <motion.span variants={letter} >o</motion.span>
-                                        <motion.span variants={letter} >r</motion.span>
-                                        <motion.span variants={letter} >e</motion.span>
-                                    </motion.span>
-                                </div>
-                                <div style={{ overflow: 'hidden'}}>
-                                    <motion.span variants={headingLine2}>
-                                        <motion.span variants={letter}>T</motion.span>
-                                        <motion.span variants={letter}>h</motion.span>
-                                        <motion.span variants={letter}>a</motion.span>
-                                        <motion.span variants={letter}>n</motion.span>
-                                        <motion.span variants={letter}>&nbsp;</motion.span>                                         
-                                        <motion.span variants={letter}>F</motion.span>
-                                        <motion.span variants={letter}>i</motion.span>
-                                        <motion.span variants={letter}>t</motion.span>
-                                        <motion.span variants={letter}>n</motion.span>
-                                        <motion.span variants={letter}>e</motion.span>
-                                        <motion.span variants={letter}>s</motion.span>
-                                        <motion.span variants={letter}>s</motion.span>
-                                    </motion.span>
-                                </div>
-                            </h1>
+                        <Col style={{ y: scrollOut }}>
+                            <motion.h1 variants={heading}>We Are More Than Fitness</motion.h1>
                             <motion.p variants={paragraph}>Experience our yoga, FIIT &amp; restore classes, in-studio or online.</motion.p>
                             <ButtonRow>
                                 <motion.button variants={watchButton} sx={{ variant: "buttons.secondary-outline" }}>Watch Video</motion.button>
@@ -205,26 +164,32 @@ const TVSequence = ({ scrollY, progress, duration, x, y, sw, sh, width, height, 
                 </Text>
             )}
             </AnimatePresence>
-            <AnimatePresence>
-                {progress >= 0.18 && progress <= 0.3 && (
-                    <motion.div initial="initial" animate="animate" exit="exit">
-                        <SlideOverTextContainer variants={slideOverContainer}>
-                            <motion.div variants={slideOverText}>
-                                <div>
-                                    <h2>
-                                        <div>Workout at </div>
-                                        <div>Home</div>
-                                    </h2>
-                                    <h3>Yoga &amp; fitness where you want, when you want. </h3>
-                                </div>
-                                <div>
-                                    <p>Forget about fighting traffic to get to the studio, or worrying about being late for your favorite class. Just download the SHIFT app and gain instant access to our suite of online, on-demand classes.</p>
-                                </div>
+            <motion.div initial="initial" animate="animate" exit="exit">
+                <SlideOverTextContainer style={{ x: slideOverContainer }}>
+                    <AnimatePresence>
+                        {progress >= 0.2 && (
+                            <motion.div 
+                            inital="initial" 
+                            animate="animate" 
+                            exit="exit" 
+                            style={{ y: slideOverTextOut, opacity: slideOverTextOp }}>
+                                <motion.div variants={slideOverText} >
+                                    <div>
+                                        <h2>
+                                            <div>Workout at </div>
+                                            <div>Home</div>
+                                        </h2>
+                                        <h3>Yoga &amp; fitness where you want, when you want. </h3>
+                                    </div>
+                                    <div>
+                                        <p>Forget about fighting traffic to get to the studio, or worrying about being late for your favorite class. Just download the SHIFT app and gain instant access to our suite of online, on-demand classes.</p>
+                                    </div>
+                                </motion.div>
                             </motion.div>
-                        </SlideOverTextContainer>
-                    </motion.div>
-                )}
-            </AnimatePresence>
+                        )}
+                    </AnimatePresence>
+                </SlideOverTextContainer>
+            </motion.div>
         </TV>
     )
 }

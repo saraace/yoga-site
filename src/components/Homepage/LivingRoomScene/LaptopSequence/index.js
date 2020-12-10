@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useMotionValue, useTransform } from "framer-motion";
 
 /* STYLES */
 import { Laptop, SeqWrapper, VideoLoopWrapper, Text } from "./styles"; 
@@ -25,8 +25,8 @@ const LaptopSequence = ({ width, height, progress, duration, x, y, sw, sh, offse
     // last drawn image 
     const [ canvasImage, setCanvasImage ] = useState(0);
 
-    // generate frame url based on index specified
-    const getFrame = index => (`/images/homepage/laptop-seq/laptop-seq-${index.toString().padStart(5, "0")}.jpg`);
+    // framer motion value for scene progress
+    const sceneProgress = useMotionValue(0);
 
     useEffect(() => {
         if(laptopLoopRef.current){
@@ -41,13 +41,16 @@ const LaptopSequence = ({ width, height, progress, duration, x, y, sw, sh, offse
 
     useEffect(() => {
 
-        if(progress >= 0.37){ 
+        // set motion value
+        sceneProgress.set(progress);
+
+        if(progress >= 0.36){ 
 
             // pause laptop video
             setLaptopPlaying(false);
 
             // current id
-            const id = Math.round(((progress-0.37) * duration) * 0.25);
+            const id = Math.round(((progress-0.36) * duration) * 0.25);
 
             if(id <= 239){    
                 setCanvasImage(id);
@@ -76,18 +79,22 @@ const LaptopSequence = ({ width, height, progress, duration, x, y, sw, sh, offse
     }, [laptopVideoReady, laptopPlaying]); 
 
     // ease
-    const introTransition = { duration: 1.4, ease: [0.6, 0.01, -0.05, 0.9] };
+    const transition = { duration: 1.4, ease: [0.6, 0.01, -0.05, 0.9] };
     
+    // "Enjoy classes from your laptop" heading
     const heading = {
         animate: { transition: { delayChildren: 0, staggerChildren: 0.04, staggerDirection: 1 } },
-        exit: { opacity: 0, y: -100, transition: { duration: 1, ease: "easeOut" } }
+        exit: { opacity: 0, y: 100, transition: { duration: 1, ease: "easeOut" } }
     };
 
     // heading letters
     const letter = {
         initial: { y: 100 },
-        animate: { y: 0, transition: { duration: 0.5, ...introTransition } }
+        animate: { y: 0, transition: { duration: 0.5, ...transition } }
     };
+
+    const headingScrollOutY = useTransform(sceneProgress, [0.51, 0.6], [0, height*-1])
+    const headingScrollOutOp = useTransform(sceneProgress, [0.51, 0.55], [1, 0])
 
 
     return(
@@ -100,9 +107,9 @@ const LaptopSequence = ({ width, height, progress, duration, x, y, sw, sh, offse
                 <video ref={laptopLoopRef} src="/images/homepage/laptop-seq/laptop-loop.mp4" style={offsetStyles} muted loop />
             </VideoLoopWrapper>
             <AnimatePresence> 
-            {progress > 0.42 && progress <= 0.55 && (
+            {progress > 0.46 && (
                 <Text initial="initial" animate="animate" exit="exit">
-                    <h1>
+                    <motion.h1 style={{ y: headingScrollOutY, opacity: headingScrollOutOp }}>
                         <div>
                             <motion.span variants={heading}>
                                 <motion.span variants={letter}>E</motion.span>
@@ -118,7 +125,7 @@ const LaptopSequence = ({ width, height, progress, duration, x, y, sw, sh, offse
                                 <motion.span variants={letter}>s</motion.span>
                                 <motion.span variants={letter}>e</motion.span>
                                 <motion.span variants={letter}>s</motion.span>
-                                <motion.span variants={letter}>-</motion.span>
+                                <motion.span variants={letter}>&nbsp;</motion.span>
                                 <motion.span variants={letter}>f</motion.span>
                                 <motion.span variants={letter}>r</motion.span>
                                 <motion.span variants={letter}>o</motion.span>
@@ -137,7 +144,7 @@ const LaptopSequence = ({ width, height, progress, duration, x, y, sw, sh, offse
                                 <motion.span variants={letter}>p</motion.span>
                             </motion.span>
                         </div>
-                    </h1>
+                    </motion.h1>
                 </Text>
             )}
             </AnimatePresence>

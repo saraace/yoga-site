@@ -18,7 +18,6 @@ const LivingRoomScene = ({ scrollY, progress, duration, width, height, x, y, sw,
             if(scrollY.current >= 400 && !tvSequence){
                 setTvSequence(true);
             }
-
         }
 
         const unsubscribeY = scrollY.onChange(loadImageSequences);
@@ -43,9 +42,9 @@ const LivingRoomScene = ({ scrollY, progress, duration, width, height, x, y, sw,
                     {...{ progress, duration, x, y, sw, sh, width, height, offsetStyles }} 
                 />
             )}
-            {progress > 0.55 && (
+            {progress > 0.5 && (
                 <PhoneSequence 
-                    className={progress > 0.6? "front" : ""}
+                    className={progress > 0.55? "front" : ""}
                     {...{ progress, duration, x, y, sw, sh, width, height, offsetStyles }} 
                 />
             )}

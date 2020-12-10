@@ -74,7 +74,7 @@ export const TextContainer = styled(Container)`
     align-items: center;
 `;
 
-export const Col = styled.div`
+export const Col = styled(motion.div)`
     color: ${({ theme }) => theme.colors.dark};
     width: 550px;
 
@@ -88,7 +88,7 @@ export const Col = styled.div`
     p{
         font-size: 32px; 
         line-height: 1.315; 
-        margin: 0 0 122px; 
+        margin: 0 0 100px; 
 
     }
 `; 

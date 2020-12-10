@@ -53,7 +53,8 @@ export const Text = styled(motion.div)`
     position: absolute;
     text-align: center;
     width: 100%; 
-    top: 100px;
+    top: 50%;
+    transform: translateY(-50%);
     z-index: 10;
 
     h1{
