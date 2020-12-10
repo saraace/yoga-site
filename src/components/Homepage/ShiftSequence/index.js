@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useTransform, useSpring, motion } from "framer-motion";
+import { useTransform, motion } from "framer-motion";
 import ImageArray from "./images";
 import ImageSequence from "../ImageSequence";
 import { FullScreen } from "./styles"; 
@@ -45,7 +45,7 @@ const ShiftSequence = ({ scrollY, width, height, x, y, sw, sh, }) => {
     return(
         <FullScreen>
             <motion.div style={{ scale, y: transformY }}>
-                <ImageSequence {...{ imageSequence, canvasImage, startPos: 0, width, height, x, y, sw, sh }} />
+                <ImageSequence {...{ imageSequence, canvasImage, width, height, x, y, sw, sh }} />
             </motion.div>
         </FullScreen>
     )

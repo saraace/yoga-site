@@ -3,12 +3,15 @@ import { motion } from "framer-motion";
 
 export const FullScreen = styled.div`
     height: 100vh; 
-    background-image: url(/images/homepage/scene-09-yoga/bg-yoga.png); 
-    background-repeat: no-repeat; 
-    background-size: cover; 
-    background-position: center center;
-    display: flex; 
-    align-items: flex-end;
+
+    & > div{
+        background-image: url(/images/homepage/scene-09-yoga/bg-yoga.png); 
+        background-repeat: no-repeat; 
+        background-size: cover; 
+        background-position: center center;
+        display: flex; 
+        align-items: flex-end;
+    }
 `; 
 
 export const VideoWrapper = styled.div`

@@ -8,7 +8,7 @@ import TVSequence from "./TVSequence";
 import LaptopSequence from "./LaptopSequence"; 
 import PhoneSequence from "./PhoneSequence";
 
-const LivingRoomScene = ({ scrollY, progress, duration, width, height, x, y, sw, sh, offsetStyles, coverStyles }) => {
+const LivingRoomScene = ({ scrollY, progress, duration, nextStartPos, width, height, x, y, sw, sh, offsetStyles, coverStyles }) => {
 
     const [ tvSequence, setTvSequence ] = useState(false);
 
@@ -45,7 +45,7 @@ const LivingRoomScene = ({ scrollY, progress, duration, width, height, x, y, sw,
             {progress > 0.625 && (
                 <PhoneSequence 
                     className={progress > 0.6875? "front" : ""}
-                    {...{ progress, duration, x, y, sw, sh, width, height, offsetStyles }} 
+                    {...{ scrollY, progress, duration, nextStartPos, x, y, sw, sh, width, height, offsetStyles }} 
                 />
             )}
         </FullScreen>

@@ -1,4 +1,5 @@
 import { useRef, useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import Icon from "../../../assets/svgs/yoga-icon.svg";
 import { FullScreen, VideoWrapper, ContentContainer, Intro, Benefits, List, ListItem } from "./styles";
 import { useViewportScroll, useTransform } from "framer-motion";
@@ -38,22 +39,24 @@ const YogaScene = ({ active, startPos, offsetStyles }) => {
 
     return(
         <FullScreen>
-            <VideoWrapper>
-                <video ref={videoRef} src="/images/homepage/scene-09-yoga/bg-yoga.mp4" style={offsetStyles} muted loop/>
-            </VideoWrapper>
-            <ContentContainer>
-                <Intro style={{ y: introY, opacity: introOpacity }}>
-                    <Icon />
-                    <h2>Yoga</h2>
-                    <p>Brought to you by the creators of Hot Fusion Flow™, our total-body yoga classes provide room for creativity while remaining rooted in traditional techniques and postures.</p>
-                </Intro>
-                <Benefits style={{ y: benefitsY, opacity: benefitsOpacity }}>
-                    <List>
-                        <ListItem>A strong musical component provides an organic catalyst for transitions while encouraging you to place a greater focus on your breathing and posture.</ListItem>
-                        <ListItem>Flow and follow along to a vinyasa-based practice that will help to open up your body, your mind, and your spirit.</ListItem>
-                    </List>
-                </Benefits>
-            </ContentContainer>
+            <motion.div>
+                <VideoWrapper>
+                    <video ref={videoRef} src="/images/homepage/scene-09-yoga/bg-yoga.mp4" style={offsetStyles} muted loop/>
+                </VideoWrapper>
+                <ContentContainer>
+                    <Intro style={{ y: introY, opacity: introOpacity }}>
+                        <Icon />
+                        <h2>Yoga</h2>
+                        <p>Brought to you by the creators of Hot Fusion Flow™, our total-body yoga classes provide room for creativity while remaining rooted in traditional techniques and postures.</p>
+                    </Intro>
+                    <Benefits style={{ y: benefitsY, opacity: benefitsOpacity }}>
+                        <List>
+                            <ListItem>A strong musical component provides an organic catalyst for transitions while encouraging you to place a greater focus on your breathing and posture.</ListItem>
+                            <ListItem>Flow and follow along to a vinyasa-based practice that will help to open up your body, your mind, and your spirit.</ListItem>
+                        </List>
+                    </Benefits>
+                </ContentContainer>
+            </motion.div>
         </FullScreen>
     )
 }

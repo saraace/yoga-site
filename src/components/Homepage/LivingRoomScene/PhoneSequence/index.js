@@ -11,7 +11,7 @@ import ImageSequence from "../../ImageSequence";
 // Image sequence images
 import PhoneImages from "./images"; 
 
-const PhoneSequence = ({ width, height, progress, duration, x, y, sw, sh, offsetStyles, ...rest }) => {
+const PhoneSequence = ({ width, height, nextStartPos, scrollY, progress, duration, x, y, sw, sh, offsetStyles, ...rest }) => {
 
     // phone loop 
     const phoneLoopRef = useRef(null);
@@ -96,14 +96,20 @@ const PhoneSequence = ({ width, height, progress, duration, x, y, sw, sh, offset
     const rightTextScroll = useTransform(sceneProgress, [0.905, 1], [0, height*-1]);
     const rightTextOpacity = useTransform(sceneProgress, [0.9126, 0.945], [1, 0]);
 
+    // scroll out parallax 
+    const transformY = useTransform(scrollY, [nextStartPos-(height-300), nextStartPos], [0, 200], [{ease: "easeInOut"}]);
+    const scale = useTransform(scrollY, [nextStartPos-(height+300), nextStartPos], [1, 1.15], [{ease: "easeInOut"}])
+
     return(
         <Laptop {...rest}>
             <SeqWrapper className={phonePlaying? "" : "front"}>
                 <ImageSequence {...{ imageSequence, canvasImage, width, height, x, y, sw, sh }} />
             </SeqWrapper>
             <VideoLoopWrapper className={phonePlaying? "front" : ""}>
-                <img src="/images/homepage/phone-seq/phone-seq-00239.png" style={offsetStyles} />
-                <video ref={phoneLoopRef} src="/images/homepage/phone-seq/phone-loop.mp4" style={offsetStyles} muted loop />
+                <motion.div style={{ y: transformY, scale }}>
+                    <img src="/images/homepage/phone-seq/phone-seq-00239.png" style={offsetStyles} />
+                    <video ref={phoneLoopRef} src="/images/homepage/phone-seq/phone-loop.mp4" style={offsetStyles} muted loop />
+                </motion.div>
             </VideoLoopWrapper>
             <TextContainer>
                 <Container variant="large">

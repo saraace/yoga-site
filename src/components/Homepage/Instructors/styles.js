@@ -6,11 +6,11 @@ export const Scene = styled.div`
     height: 100vh;
     position: relative;
     background: linear-gradient(107.13deg, #0E4942 -55.32%, #0E2649 58.62%), #FFFFFF;
+    overflow: hidden;
 `;
 
-export const Bg = styled.img`
+export const Bg = styled(motion.img)`
     position: absolute; 
-    height: 100%;
     top: 0;
     opacity: 0.7;
 `;
@@ -62,16 +62,15 @@ export const Video = styled.div`
     }
 `;
 
-export const PlayButton = styled.div`
+export const PlayButton = styled(motion.div)`
     width: 96px; 
     height: 96px; 
     border: 4px solid #FFEFA9;
     background: #FFD524;
     position: absolute; 
     right: 35px;
-    top: 50%;
     border-radius: 50%;
-    transform: translateY(-50%);
+    top: 50%;
 
     svg{
         fill: #fff;

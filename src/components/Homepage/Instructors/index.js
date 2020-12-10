@@ -1,10 +1,10 @@
 import { useEffect } from "react";
-import { useMotionValue } from "framer-motion";
+import { motion, useMotionValue, useTransform } from "framer-motion";
 
 import { Scene, SceneContainer, Col, Video, PlayButton, Instructor, Bg } from "./styles";
 import PlayIcon from "../../../assets/svgs/play-icon.svg";
 
-const Instructors = ({ scrollY, progress }) => {
+const Instructors = ({ scrollY, progress, startPos, nextStartPos, duration, coverStyles }) => {
 
     const sceneProgress = useMotionValue(0);
 
@@ -13,6 +13,10 @@ const Instructors = ({ scrollY, progress }) => {
         sceneProgress.set(progress);
 
     }, [progress]);
+
+    // Background effects
+    const bgScale = useTransform(scrollY, [startPos, startPos+duration, nextStartPos], [1.15, 1.1, 1.2]);
+    const bgY = useTransform(scrollY, [startPos, startPos+duration, nextStartPos], [0, 80, -50])
 
     return(
         <Scene>
@@ -25,12 +29,25 @@ const Instructors = ({ scrollY, progress }) => {
             </SceneContainer>
             <Video>
                 <img src="/images/homepage/instructors/video.png" />
-                <PlayButton>
+                <PlayButton
+                    initial={{ scale: 1, y: '-50%' }}
+                    animate={{ scale: 1.15, y: '-50%' }}
+                    transition={{
+                        scale: {
+                            duration: 0.9,
+                            yoyo: Infinity, 
+                            repeatDelay: 0, 
+                            ease: "easeOut"
+                        }
+                    }}
+                >
                     <PlayIcon />
                 </PlayButton>
             </Video>
             <Instructor src="/images/homepage/instructors/paige.png" />
-            <Bg src="/images/homepage/instructors/bg.png" />
+            <motion.div>
+                <Bg style={{scale: bgScale, y: bgY, ...coverStyles}} src="/images/homepage/instructors/bg.png" />
+            </motion.div>
         </Scene>
     )
 }

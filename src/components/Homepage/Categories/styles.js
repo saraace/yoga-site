@@ -2,12 +2,17 @@ import styled from '@emotion/styled';
 
 export const FullScreen = styled.div`
     height: 100vh; 
-    background-image: url(/images/homepage/scene-08/bg.png); 
-    background-size: cover; 
-    background-position: center; 
-    display: flex;
-    align-items: flex-end; 
-    position: relative;
+    overflow: hidden;
+
+    & > div{
+        height: 100%;
+        background-image: url(/images/homepage/scene-08/bg.png); 
+        background-size: cover; 
+        background-position: center; 
+        display: flex;
+        align-items: flex-end; 
+        position: relative;
+    }
 `; 
 
 export const VideoWrapper = styled.div`
