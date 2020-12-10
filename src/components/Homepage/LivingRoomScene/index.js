@@ -36,13 +36,13 @@ const LivingRoomScene = ({ scrollY, progress, duration, nextStartPos, width, hei
                     {...{ scrollY, progress, duration, x, y, sw, sh, width, height, offsetStyles, coverStyles }}
                 />
             )}
-            {progress > 0.375 && (
+            {progress > 0.2 && (
                 <LaptopSequence 
                     className={progress > 0.4375 && progress <=0.6875? "front" : ""}
                     {...{ progress, duration, x, y, sw, sh, width, height, offsetStyles }} 
                 />
             )}
-            {progress > 0.625 && (
+            {progress > 0.5 && (
                 <PhoneSequence 
                     className={progress > 0.6875? "front" : ""}
                     {...{ scrollY, progress, duration, nextStartPos, x, y, sw, sh, width, height, offsetStyles }} 
