@@ -5,6 +5,7 @@ const Table = styled.table`
     top: 100px; 
     left: 10px;
     z-index: 100;
+    display: none;
 
     tr{
         td:first-child{

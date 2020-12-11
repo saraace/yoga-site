@@ -83,7 +83,7 @@ const Homepage = () => {
 
         // determine offset styles 
         setOffsetStyles((tall)? { height: h, left: xOffset } : { width: w, top: yOffset, left: 0 });
-        setCoverStyles(tall? { height: '100%', left: 0, top: 0 } : { width: '100%', top: 0, left:0 });
+        setCoverStyles(tall? { height: '100%', left: 0 } : { width: '100%', top: 0 });
 
     }, [window]);
 
@@ -104,7 +104,7 @@ const Homepage = () => {
                                         {indicators && <ProgressIndicators {...{ progress, duration, startPos }} />}
                                         {idx === 0 && <ShiftSequence {...{ scrollY, width, height, x, y, sw, sh }} />}
                                         {idx === 1 && <LivingRoom {...{ scrollY, progress, startPos, nextStartPos, duration, width, height, x, y, sw, sh, offsetStyles, coverStyles }} />}
-                                        {idx === 2 && <Instructors {...{ scrollY, progress, startPos, nextStartPos, duration, coverStyles }} />}
+                                        {idx === 2 && <Instructors {...{ scrollY, progress, startPos, nextStartPos, duration, width, height }} />}
                                         {idx === 3 && <Categories {...{ scrollY, progress, startPos, nextStartPos, height, offsetStyles }} />}
                                         {idx === 4 && <YogaScene {...{ active: event.state === "DURING", startPos, offsetStyles }} />}
                                         {idx === 5 && <FiitScene {...{ active: event.state === "DURING", startPos, offsetStyles }} />}
