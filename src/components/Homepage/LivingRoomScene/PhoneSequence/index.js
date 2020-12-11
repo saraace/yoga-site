@@ -93,8 +93,8 @@ const PhoneSequence = ({ width, height, nextStartPos, scrollY, progress, duratio
     const leftTextOpacity = useTransform(sceneProgress, [0.795, 0.825], [1, 0]);
     
     //right
-    const rightTextScroll = useTransform(sceneProgress, [0.905, 1], [0, height*-1]);
-    const rightTextOpacity = useTransform(sceneProgress, [0.9126, 0.945], [1, 0]);
+    const rightTextScroll = useTransform(sceneProgress, [0.855, 1], [0, height*-1]);
+    const rightTextOpacity = useTransform(sceneProgress, [0.87, 0.9], [1, 0]);
 
     // scroll out parallax 
     const transformY = useTransform(scrollY, [nextStartPos-(height-300), nextStartPos], [0, 200], [{ease: "easeInOut"}]);
@@ -125,7 +125,7 @@ const PhoneSequence = ({ width, height, nextStartPos, scrollY, progress, duratio
                             )}
                         </AnimatePresence>
                         <AnimatePresence>
-                            {progress >= 0.875 && (
+                            {progress >= 0.825 && (
                                 <RightText initial="initial" animate="animate" exit="exit" style={{ y: rightTextScroll, opacity: rightTextOpacity }}>
                                     <motion.div variants={text}>
                                         <h2>Your virtual fitness studio.</h2>

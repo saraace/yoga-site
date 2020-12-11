@@ -5,6 +5,7 @@ export const FullScreen = styled.div`
     height: 100vh; 
 
     & > div{
+        height: 100%;
         background-image: url(/images/homepage/scene-09-yoga/bg-yoga.png); 
         background-repeat: no-repeat; 
         background-size: cover; 
