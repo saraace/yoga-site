@@ -1,12 +1,12 @@
 import { combineReducers } from "redux";
 
 import dataManager from "./app";
-import userReducer from "./user";
+import authReducer from "./auth";
 
 const reducer = combineReducers({
   // app reducers
   app: dataManager,
-  user: userReducer,
+  auth: authReducer,
 });
 
 export default reducer;
