@@ -1,11 +1,15 @@
 /** @jsx jsx */
 import { jsx, NavLink } from 'theme-ui';
 import Link from "next/link";
+import { login } from "../../../services/auth";
+import { useUser } from "../../../services/hooks";
 import ButtonRow, { RowItem } from "./styles";
 
 const Buttons = () => {
-
-    const authenticated = false;
+    const {
+      user: { isLoggedIn = false } = {},
+    } = useUser() || {};
+    const authenticated = isLoggedIn;
 
     return (
         <ButtonRow>
@@ -17,7 +21,7 @@ const Buttons = () => {
                         </Link>
                     </RowItem>
                     <RowItem>
-                        <Link href="/logout">
+                        <Link href="/api/logout">
                             <NavLink>logout</NavLink>
                         </Link>
                     </RowItem>
@@ -26,9 +30,7 @@ const Buttons = () => {
             {!authenticated && (
                 <>
                     <RowItem>
-                        <Link href="/login">
-                            <NavLink>Login</NavLink>
-                        </Link>
+                        <NavLink onClick={() => login()}>Login</NavLink>
                     </RowItem>
                     <RowItem>
                         <Link href="/sign-up">

@@ -7,7 +7,6 @@ import SlidingLayout from "../containers/CardLayouts/SlidingLayout";
 import ClassCard from "../components/Cards/ClassCard";
 
 const Classes = () => {
-
     const tabs = ["On-Demand", "Live", "Local"];
     const subTabs = {
         "On-Demand": ["Individual Classes", "Programs"], 

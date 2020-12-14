@@ -2,7 +2,9 @@ require("dotenv").config();
 
 module.exports = {
     env: {
-        GOOGLE_MAPS_API: process.env.GOOGLE_MAPS_API
+        ENVIRONMENT: process.env.ENVIRONMENT,
+        GOOGLE_MAPS_API: process.env.GOOGLE_MAPS_API,
+        SECRET_COOKIE_PASSWORD: process.env.SECRET_COOKIE_PASSWORD
     }, 
     webpack (config, options) {
         config.module.rules.push({
