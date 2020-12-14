@@ -12,9 +12,6 @@ const Instructors = ({ scrollY, progress, startPos, nextStartPos, width, height 
         sceneProgress.set(progress);
     }, [progress]);
 
-    // ease
-    const transition = { duration: 1.4, ease: [0.6, 0.01, -0.05, 0.9] };
-
     // background position
     const bgPos = width > height? { width: '100%', bottom: '0'} : { height: '100%', left: '50%', x: '-50%'}
 
@@ -25,8 +22,8 @@ const Instructors = ({ scrollY, progress, startPos, nextStartPos, width, height 
     // text animations 
     const textAnimateIn = {
         initial: { opacity: 0 }, 
-        animate: { opacity: 1, transition: { duration: 0.5, ...transition } },
-        exit: { opacity: 0, transition: { duration: 0.5, ...transition } }
+        animate: { opacity: 1, transition: { duration: 0.5, ease: "easeInOut" } },
+        exit: { opacity: 0, transition: { duration: 0.5, ease: "easeInOut" } }
     }
     
     const textScroll = useTransform(scrollY, [startPos, nextStartPos], [0, height*-1]);

@@ -1,11 +1,12 @@
 import { useRef, useState, useEffect } from "react";
+import { useTransform, motion } from "framer-motion";
 import { useFormik } from "formik"; 
 import * as Yup from "yup"; 
 import Input from "../../Forms/Input";
 import { Container, Button } from "theme-ui";
-import { FullScreen, Row, Col, Phone, VideoWrapper, Form, ButtonWrapper, Small } from "./styles"; 
+import { FullScreen, Row, Col, Phone, VideoWrapper, Form, ButtonWrapper, Small, Bg } from "./styles"; 
 
-const SignUpForm = ({ active }) => {
+const SignUpForm = ({ scrollY, active, startPos, width, height }) => {
 
     const videoRef = useRef(null);
 
@@ -30,23 +31,49 @@ const SignUpForm = ({ active }) => {
     })
 
     // video background
+    const [ videoReady, setVideoReady ] = useState(false);
     const [ play, setPlay ] = useState(false);
 
     useEffect(() => {
         if(videoRef){
             videoRef.current.addEventListener("loadeddata", () => {
-                setPlay(true);
+                setVideoReady(true);
             });
         }
     }, [videoRef]);
 
+    useEffect(() => {
+
+        function playVideo() {
+            if((scrollY.get() >= startPos-height)){
+                setPlay(true);
+            } else{
+                setPlay(false);
+            }
+        }
+
+        const unsubscribeY = scrollY.onChange(playVideo);
+
+        return () => {
+            unsubscribeY();
+        }
+    }, [scrollY]);
+
    useEffect(() => {
-        if(active && play){
+        if(play && videoReady){
             videoRef.current.play();
-        } else if(!active){
+        } else if(!play){
             videoRef.current.pause();
         }
-    }, [active, videoRef, play]);
+    }, [play, videoRef, videoReady]);
+
+    // background position
+    const bgPos = width > height? { width: '100%', left: '50%', bottom: '0', x: '-50%'} : { height: '100%', left: '50%', x: '-50%'}
+
+    // background effects
+    const bgScale = useTransform(scrollY, [startPos, startPos+height], [1.2, 1]);
+    const bgY = useTransform(scrollY, [startPos, startPos+height], ['-25%', '0%'])
+
 
     return(
         <FullScreen>
@@ -54,9 +81,9 @@ const SignUpForm = ({ active }) => {
                 <Row>
                     <Col>
                         <Phone>
-                            <img src="/images/homepage/scene-12/phone.png" alt="Shift" />
+                            <img src="/images/homepage/sign-up/phone.png" alt="Shift" />
                             <VideoWrapper>
-                                <video ref={videoRef} src="/images/homepage/scene-12/phone-screen.mp4" muted loop/>  
+                                <video ref={videoRef} src="/images/homepage/sign-up/phone-screen.mp4" muted loop/>  
                             </VideoWrapper>
                         </Phone>
                     </Col>
@@ -101,6 +128,9 @@ const SignUpForm = ({ active }) => {
                     </Col>
                 </Row>
             </Container>
+            <motion.div>
+                <Bg style={{ scale: bgScale, y: bgY, ...bgPos }} src="/images/homepage/sign-up/bg.png" />
+            </motion.div>
         </FullScreen>
     )
 }

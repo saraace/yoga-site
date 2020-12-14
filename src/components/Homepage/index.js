@@ -2,9 +2,10 @@ import { useState, useEffect } from "react";
 import { Controller, Scene } from "react-scrollmagic";
 import { useViewportScroll } from "framer-motion";
 import window from "global"; 
+import document from "global"; 
 
 /* STYLES */
-import { SceneWrapper } from "./styles";
+import { Home, SceneWrapper } from "./styles";
 
 /* COMPONENTS */
 import ProgressIndicators from "./ProgressIndicators";
@@ -88,7 +89,7 @@ const Homepage = () => {
     }, [window]);
 
     return(
-        <div>
+        <Home>
             <ScrollIndicator />
             <Controller>
                 { sceneDurations.map((duration, idx) => {
@@ -117,8 +118,8 @@ const Homepage = () => {
                     )
                 }) }
             </Controller>
-            <SignUpForm {...{ scrollY, active: true, startPos: sceneHeights[sceneHeights.length-1]+(height*7) }} /> 
-        </div>
+            <SignUpForm {...{ scrollY, active: true, width, height, startPos: sceneHeights[sceneHeights.length-1]+(height*6) }} /> 
+        </Home>
     )
 }
 
