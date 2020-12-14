@@ -50,6 +50,28 @@ export const Content = styled(motion.div)`
     justify-content: space-between;
 `;
 
+export const Text = styled.div`
+    height: 100%;
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+`; 
+
+export const Row = styled(motion.div)`
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+`;
+
+export const Categories = styled(motion.div)`
+    display: flex; 
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+`;
+
 export const Renew = styled(motion.div)`
     font-weight: 700; 
     font-size: 64px; 
@@ -71,17 +93,6 @@ export const Transform = styled(motion.div)`
     font-size: 64px; 
     line-height: 1.12;
     text-shadow: -1px 1px 0px rgba(0, 0, 0, 0.15);
-`;
-
-export const Row = styled(motion.div)`
-    display: flex;
-    flex-direction: column;
-    justify-content: center; 
-`;
-
-export const Categories = styled(motion.div)`
-    display: flex; 
-    justify-content: center;
 `;
 
 export const Disipline = styled.div`

@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react"; 
 import { useTransform, AnimatePresence } from "framer-motion";
-import { FullScreen, VideoWrapper, TextContainer, Content, Renew, Shift, Transform, Row, Categories, Yoga, Fiit, Restore } from "./styles"; 
+import { FullScreen, VideoWrapper, TextContainer, Content, Text, Renew, Shift, Transform, Row, Categories, Yoga, Fiit, Restore } from "./styles"; 
 
 const CategoriesScene = ({ scrollY, progress, startPos, nextStartPos, height, offsetStyles }) => {
 
@@ -66,16 +66,18 @@ const CategoriesScene = ({ scrollY, progress, startPos, nextStartPos, height, of
                     {progress > 0.15 && (
                         <TextContainer variant="small">
                             <Content initial="initial" animate="animate" exit="exit">
-                                <Row  variants={headings}>
-                                    <Renew variants={word}>Renew</Renew>
-                                    <Shift variants={word}>Shift</Shift>
-                                    <Transform variants={word}>Transform</Transform>
-                                </Row>
-                                <Categories variants={categories}>
-                                    <Yoga>Yoga</Yoga>
-                                    <Fiit>Fiit</Fiit>
-                                    <Restore>Restore</Restore>
-                                </Categories>
+                                <Text>
+                                    <Row  variants={headings}>
+                                        <Renew variants={word}>Renew</Renew>
+                                        <Shift variants={word}>Shift</Shift>
+                                        <Transform variants={word}>Transform</Transform>
+                                    </Row>
+                                    <Categories variants={categories}>
+                                        <Yoga>Yoga</Yoga>
+                                        <Fiit>Fiit</Fiit>
+                                        <Restore>Restore</Restore>
+                                    </Categories>
+                                </Text>
                             </Content>
                         </TextContainer>
                     )}
