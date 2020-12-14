@@ -1,18 +1,30 @@
-import App from "next/app";
+import { Provider } from "react-redux";
+import { SWRConfig } from "swr";
 import Theme from "../containers/Theme";
 import Layout from "../containers/Layout";
+import { useStore } from "../store";
+import rest from "../services/fetcher";
 
-class MyApp extends App {
-  render(){
-    const { Component, pageProps } = this.props;
-    return (
-      <Theme>
+export default function App({ Component, pageProps }) {
+  const store = useStore(pageProps.initialReduxState);
+
+  return (
+    <Theme>
+      <Provider {...{ store }}>
         <Layout>
-          <Component {...pageProps} />
+          <SWRConfig
+            value={{
+              fetcher: rest,
+              onError: (err) => {
+                // TODO: Catch 401/403s
+                console.error("this is an error ", err);
+              },
+            }}
+          >
+            <Component {...pageProps} />
+          </SWRConfig>
         </Layout>
-      </Theme>
-    )
-  }
+      </Provider>
+    </Theme>
+  );
 }
-
-export default MyApp

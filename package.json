@@ -12,21 +12,27 @@
     "@emotion/styled": "10.0.27",
     "@react-google-maps/api": "^1.13.0",
     "@types/theme-ui": "^0.3.7",
+    "axios": "^0.21.0",
     "dotenv": "^8.2.0",
     "formik": "^2.1.7",
     "framer-motion": "^2.7.7",
     "global": "^4.4.0",
     "next": "9.5.3",
-    "react": "^16.13.1",
+    "next-iron-session": "^4.1.10",
+    "react": "16.13.1",
     "react-dom": "16.13.1",
+    "react-redux": "^7.2.2",
     "react-scrollmagic": "^2.2.0",
+    "redux": "^4.0.5",
+    "swr": "^0.3.9",
     "theme-ui": "^0.3.1",
     "yup": "^0.29.3"
   },
   "devDependencies": {
-    "babel-plugin-inline-react-svg": "^1.1.1",
     "@emotion/babel-preset-css-prop": "10.0.27",
+    "babel-plugin-inline-react-svg": "^1.1.1",
     "file-loader": "^6.2.0",
+    "redux-devtools-extension": "^2.13.8",
     "url-loader": "^4.1.1"
   }
 }
