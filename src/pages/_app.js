@@ -6,7 +6,8 @@ import { useStore } from "../store";
 import rest from "../services/fetcher";
 
 export default function App({ Component, pageProps }) {
-  const store = useStore(pageProps.initialReduxState);
+  // const store = useStore(pageProps.initialReduxState);
+  const store = useStore();
 
   return (
     <Theme>

@@ -1,17 +1,5 @@
 import { get } from "./rest";
-// import withSession from "./session";
-
-// const authorize = (async (req, res) => {
-//   const code = req.query.code;
-//   const state = req.query.state;
-//   if (!code || !state) return res.status(403).send("Unauthorized");
-//   req.session.set("user", {
-//     code,
-//     state,
-//   });
-//   await req.session.save();
-//   return res.redirect("/");
-// });
+import { initOrGetStore } from "../store/index";
 
 export const login = async () => {
   window.wLoginReference = window.wLoginReference || null;
@@ -47,11 +35,14 @@ export const login = async () => {
 
 const catchAndClose = () => {
   try {
+    const dispatch = initOrGetStore().dispatch;
     const search = window.wLoginReference.location.search;
     if (search) {
-      const path = window.location.pathname;
+      const urlParams = new URLSearchParams(search);
+      const token = urlParams.get("code");
+      const state = urlParams.get("state");
       window.wLoginReference.close();
-      window.location.href = `/api/authorize${search}&redirect=${path}`;
+      dispatch({ type: "LOGIN", payload: { token, state } });
     } else {
       setTimeout(() => {
         catchAndClose();

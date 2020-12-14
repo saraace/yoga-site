@@ -1,7 +1,5 @@
 import { Container } from "theme-ui";
-import { useState, useEffect } from "react";
 import Profile from "../components/Profile";
-import { login } from "../services/auth";
 
 const Account = () => {
   const plan = {
@@ -50,16 +48,8 @@ const Account = () => {
     },
   ];
 
-  const onLogin = () => {
-    login();
-    return false;
-  };
-
   return (
     <Container>
-      <a target="popup" onClick={onLogin}>
-        Open Link in Popup
-      </a>
       <Profile {...{ plan, paymentDetails, stats, achievements }} />
     </Container>
   );

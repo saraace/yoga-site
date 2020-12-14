@@ -1,19 +1,16 @@
 /** @jsx jsx */
 import { jsx, NavLink } from 'theme-ui';
 import Link from "next/link";
+import { useSelector, useDispatch } from "react-redux";
 import { login } from "../../../services/auth";
-import { useUser } from "../../../services/hooks";
 import ButtonRow, { RowItem } from "./styles";
 
 const Buttons = () => {
-    const {
-      user: { isLoggedIn = false } = {},
-    } = useUser() || {};
-    const authenticated = isLoggedIn;
-
+    const { auth } = useSelector(({ auth }) => auth);
+    const dispatch = useDispatch();
     return (
         <ButtonRow>
-            {authenticated && (
+            {auth && (
                 <>
                     <RowItem>
                         <Link href="/account">
@@ -21,13 +18,11 @@ const Buttons = () => {
                         </Link>
                     </RowItem>
                     <RowItem>
-                        <Link href="/api/logout">
-                            <NavLink>logout</NavLink>
-                        </Link>
+                        <NavLink onClick={() => dispatch({ type: "LOGOUT" })}>logout</NavLink>
                     </RowItem>
                 </>
             )}
-            {!authenticated && (
+            {!auth && (
                 <>
                     <RowItem>
                         <NavLink onClick={() => login()}>Login</NavLink>

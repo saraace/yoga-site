@@ -1,11 +1,10 @@
 import { useMemo } from "react";
 import { applyMiddleware, createStore } from "redux";
-// import { createWrapper } from "next-redux-wrapper";
+import { loadState, saveState } from "../services/localstorage";
 
 import reducers from "./reducers";
 let store;
-const initialState = {};
-
+const persistentState = loadState();
 const bindMiddleware = (middleware) => {
   if (process.env.NODE_ENV !== "production") {
     const { composeWithDevTools } = require("redux-devtools-extension");
@@ -13,12 +12,17 @@ const bindMiddleware = (middleware) => {
   }
   return applyMiddleware(...middleware);
 };
-
-const initStore = (preloadedState = initialState) => {
-  return createStore(reducers, preloadedState, bindMiddleware([]));
+const initStore = (preloadedState = persistentState) => {
+  const _store = createStore(reducers, preloadedState, bindMiddleware([]));
+  _store.subscribe(() => {
+    saveState({
+      auth: _store.getState().auth,
+    });
+  });
+  return _store;
 };
 
-export const initializeStore = (preloadedState) => {
+export const initOrGetStore = (preloadedState) => {
   let _store = store ?? initStore(preloadedState);
 
   // After navigating to a page with an initial Redux state, merge that state
@@ -41,6 +45,6 @@ export const initializeStore = (preloadedState) => {
 };
 
 export function useStore(initialState) {
-  const store = useMemo(() => initializeStore(initialState), [initialState]);
+  const store = useMemo(() => initOrGetStore(initialState), [initialState]);
   return store;
 }
