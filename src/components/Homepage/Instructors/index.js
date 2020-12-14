@@ -24,13 +24,13 @@ const Instructors = ({ scrollY, progress, startPos, nextStartPos, width, height 
 
     // text animations 
     const textAnimateIn = {
-        initial: { opacity: 0, y: 100 }, 
-        animate: { opacity: 1, y: 0, transition: { duration: 0.5, ...transition } },
+        initial: { opacity: 0 }, 
+        animate: { opacity: 1, transition: { duration: 0.5, ...transition } },
         exit: { opacity: 0, transition: { duration: 0.5, ...transition } }
     }
     
-    const textScroll = useTransform(sceneProgress, [0.1, 0.9], [0, height*-1]);
-    const textOpacity = useTransform(sceneProgress, [0.5, 0.9], [1, 0])
+    const textScroll = useTransform(scrollY, [startPos, nextStartPos], [0, height*-1]);
+    //const textOpacity = useTransform(sceneProgress, [0.5, 0.9], [1, 0])
 
     return(
         <Scene>
@@ -38,7 +38,7 @@ const Instructors = ({ scrollY, progress, startPos, nextStartPos, width, height 
                 <Col>
                     <AnimatePresence>
                         {progress >= 0.05 && progress < 0.95 && (
-                            <motion.div initial="initial" animate="animate" exit="exit" style={{ y: textScroll, opacity: textOpacity }}>
+                            <motion.div initial="initial" animate="animate" exit="exit" style={{ y: textScroll }}>
                                 <motion.div variants={textAnimateIn}>
                                     <h3>World-class Instructors</h3>
                                     <h2>Introducing Paige Held</h2>
