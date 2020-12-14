@@ -1,4 +1,4 @@
-import { useImage } from "../../../../services/hooks";
+import useImage from "../../../../services/useImage";
 
 const LaptopArray = () => {
   const [AA0, AA0S] = useImage("/images/homepage/laptop-seq/laptop-seq-00000.jpg");

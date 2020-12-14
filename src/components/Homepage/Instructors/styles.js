@@ -11,7 +11,6 @@ export const Scene = styled.div`
 
 export const Bg = styled(motion.img)`
     position: absolute; 
-    top: 0;
 `;
 
 export const SceneContainer = styled(Container)`
@@ -25,6 +24,7 @@ export const SceneContainer = styled(Container)`
 
 export const Col = styled.div`
     width: 480px;
+    align-self: flex-end;
 
     h3{
         font-size: 48px; 
@@ -44,7 +44,7 @@ export const Col = styled.div`
         font-size: ${({ theme }) => theme.fontSizes[2]+'px'}; 
         line-height: 1.545;
         font-weight: 400;
-        margin-top: 20px;
+        margin-top: 40px;
     }
 `;
 

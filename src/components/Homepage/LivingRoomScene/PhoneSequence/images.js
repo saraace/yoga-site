@@ -1,4 +1,4 @@
-import { useImage } from "../../../../services/hooks";
+import useImage from "../../../../services/useImage";
 
 const PhoneArray = () => {
   const [AA0, AA0S] = useImage("/images/homepage/phone-seq/phone-seq-00000.jpg");

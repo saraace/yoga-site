@@ -5,7 +5,6 @@ const Table = styled.table`
     top: 100px; 
     left: 10px;
     z-index: 100;
-    display: none;
 
     tr{
         td:first-child{
@@ -15,7 +14,7 @@ const Table = styled.table`
     }
 `;
 
-const ProgressIndicators = ({ progress, startPos, duration}) => {
+const ProgressIndicators = ({ scrollY, progress, startPos, duration}) => {
     return(
         <Table>
             <tbody>
@@ -25,7 +24,7 @@ const ProgressIndicators = ({ progress, startPos, duration}) => {
                 </tr>
                 <tr>
                     <td>Page Progress</td>
-                    <td>{Math.round(progress * duration) + startPos}</td>
+                    <td>{scrollY.get()}</td>
                 </tr>
                 <tr>
                     <td>Scene Progress</td>

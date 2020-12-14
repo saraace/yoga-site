@@ -1,4 +1,4 @@
-import { useImage } from "../../../services/hooks";
+import useImage from "../../../services/useImage";
 
 const ShiftArray = () => {
   const [AA0, AA0S] = useImage("/images/homepage/shift-seq/shift_seq_00000.jpg");

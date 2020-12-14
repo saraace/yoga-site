@@ -92,19 +92,20 @@ const Homepage = () => {
             <ScrollIndicator />
             <Controller>
                 { sceneDurations.map((duration, idx) => {
+                                
+                    const startPos = (idx > 0)? sceneHeights[idx]+(height*idx) : 0;
+                    const endPos = startPos + duration;
+                    const nextStartPos = (idx+1 < 7)? sceneHeights[idx+1]+(height*(idx+1)) : 0;
+
                     return (
                         <Scene {...{indicators}} key={idx} triggerHook="onLeave" duration={duration} pin>
                             {(progress, event) => {
-                                
-                                const startPos = (idx > 0)? sceneHeights[idx]+(height*idx) : 0;
-                                const nextStartPos = (idx+1 < 7)? sceneHeights[idx+1]+(height*(idx+1)) : 0;
-
                                 return (
                                     <SceneWrapper initial={{ scale: 0.5, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ delay: 0.5, duration: 1 }} >
-                                        {indicators && <ProgressIndicators {...{ progress, duration, startPos }} />}
+                                        {indicators && <ProgressIndicators {...{ scrollY, progress, duration, startPos }} />}
                                         {idx === 0 && <ShiftSequence {...{ scrollY, width, height, x, y, sw, sh }} />}
                                         {idx === 1 && <LivingRoom {...{ scrollY, progress, startPos, nextStartPos, duration, width, height, x, y, sw, sh, offsetStyles, coverStyles }} />}
-                                        {idx === 2 && <Instructors {...{ scrollY, progress, startPos, nextStartPos, duration, width, height }} />}
+                                        {idx === 2 && <Instructors {...{ scrollY, progress, startPos, nextStartPos, width, height }} />}
                                         {idx === 3 && <Categories {...{ scrollY, progress, startPos, nextStartPos, height, offsetStyles }} />}
                                         {idx === 4 && <YogaScene {...{ active: event.state === "DURING", startPos, offsetStyles }} />}
                                         {idx === 5 && <FiitScene {...{ active: event.state === "DURING", startPos, offsetStyles }} />}
