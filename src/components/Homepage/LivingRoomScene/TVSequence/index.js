@@ -143,7 +143,7 @@ const TVSequence = ({ scrollY, progress, duration, x, y, sw, sh, width, height, 
                 </SeqWrapper>
                 <VideoLoopWrapper className={tvPlaying? "front" : ""} style={offsetStyles}>
                     <img src="/images/homepage/tv-seq/tv_seq_00344.png" style={coverStyles} />
-                    <video ref={tvLoopRef} src="/images/homepage/tv-seq/tv-loop.mp4" style={coverStyles} muted loop 
+                    <video ref={tvLoopRef} src="/images/homepage/tv-seq/tv_loop.mp4" style={coverStyles} muted loop 
                     />
                 </VideoLoopWrapper>
             </Background>
