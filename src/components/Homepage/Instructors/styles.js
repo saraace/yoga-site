@@ -24,7 +24,7 @@ export const SceneContainer = styled(Container)`
 
 export const Col = styled.div`
     width: 480px;
-    align-self: flex-end;
+    align-self: center;
 
     h3{
         font-size: 48px; 

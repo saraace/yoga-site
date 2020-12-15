@@ -12,9 +12,15 @@ export const FullScreen = styled.div`
 
     & > div{
         z-index: 1;
+        opacity: 0;
+
+        &.on{
+            opacity: 1;
+        }
         
         &.front{
             z-index: 5;
+            opacity: 1;
         }
     }
 `; 

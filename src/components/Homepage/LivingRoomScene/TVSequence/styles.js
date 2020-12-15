@@ -71,12 +71,15 @@ export const Text = styled(motion.div)`
 
 export const TextContainer = styled(Container)`
     display: flex; 
-    align-items: center;
+    align-items: end;
+    height: 100%;
 `;
 
 export const Col = styled(motion.div)`
     color: ${({ theme }) => theme.colors.dark};
     width: 550px;
+    position: absolute;
+    top: 100%;
 
     h1{
         font-size: 64px; 
@@ -102,7 +105,6 @@ export const ButtonRow = styled.div`
 `; 
 
 export const SlideOverTextContainer = styled(motion.div)`
-    background: #0d2344;
     width: 537px;
     padding: 0 60px 0 65px;
     display: flex;
@@ -113,6 +115,21 @@ export const SlideOverTextContainer = styled(motion.div)`
     top: 0; 
     bottom: 0;
     z-index: 10;
+
+    &::before{
+        content: ""; 
+        position: absolute; 
+        top: 0; left: 0; 
+        right: 0; bottom: 0;
+        background: rgba(10, 29, 58, 0.33);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+    }
+`; 
+
+export const SlideOverText = styled(motion.div)`
+    position: absolute;
+    top: 100%;
 
     h2{
         font-size: 48px; 

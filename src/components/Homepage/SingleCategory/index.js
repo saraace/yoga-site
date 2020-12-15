@@ -11,22 +11,21 @@ const SingleCategoryScene = ({ scrollY, progress, duration, startPos, nextStartP
     }, [progress]);
 
     // intro content
-    const introVar = {
+    /* const introVar = {
         initial: { opacity: 0 }, 
         animate: { opacity: 1, transition: { duration: 0.5, ease: "easeInOut" } }, 
         exit: { opacity: 0, transition: { duration: 0.5, ease: "easeInOut" }  }
-    }
-    const introY = useTransform(scrollY, [startPos, nextStartPos], [0, height*-1]); 
-    const introOpacity = useTransform(sceneProgress, [0.75, 1], [1, 0]);
+    } */
+    const introY = useTransform(scrollY, [startPos, startPos+(duration/2)], [0, -400]); 
 
     // benefits content
-    const benefitsVar = {
+    /* const benefitsVar = {
         initial: { opacity: 0 }, 
         animate: { opacity: 1, transition: { duration: 0.5, ease: "easeInOut" }  }, 
         exit: { opacity: 0, transition: { duration: 0.5, ease: "easeInOut" }  }
-    }
-    const benefitsY = useTransform(scrollY, [startPos+(duration/2), nextStartPos], [0, height*-1]);
-    const benefitsOpacity = useTransform(sceneProgress, [0.9, 1], [1, 0]);
+    } */
+    const benefitsY = useTransform(scrollY, [startPos+(duration/2), startPos+duration], [0, -200]);
+    const opacity = useTransform(scrollY, [startPos+duration, nextStartPos-(height/2)], [1, 0]);
 
     return(
         <FullScreen>
@@ -35,21 +34,17 @@ const SingleCategoryScene = ({ scrollY, progress, duration, startPos, nextStartP
                     {((scrollY.get() >= startPos-height) && (scrollY.get() <= nextStartPos)) && <video src={videoSrc} style={offsetStyles} autoPlay muted loop/>}
                 </VideoWrapper>
                 <ContentContainer>
-                    <AnimatePresence>
-                        {progress >= 0.05 && (
-                            <Intro initial="initial" animate="animate" exit="exit" style={{ y: introY, opacity: introOpacity }}>
-                                <motion.div variants={introVar}>
-                                    {icon}
-                                    <h2>{heading}</h2>
-                                    <p>{description}</p>
-                                </motion.div>
-                            </Intro>
-                        )}
-                    </AnimatePresence>
+                    <Intro>
+                        <motion.div style={{ y: introY, opacity }}>
+                            {icon}
+                            <h2>{heading}</h2>
+                            <p>{description}</p>
+                        </motion.div>
+                    </Intro>
                     <AnimatePresence>
                         {progress >= 0.5 && (
-                            <Benefits initial="initial" animate="animate" exit="exit" style={{ y: benefitsY, opacity: benefitsOpacity }}>
-                                <motion.div variants={benefitsVar}>
+                            <Benefits initial="initial" animate="animate" exit="exit">
+                                <motion.div style={{ y: benefitsY, opacity }}>
                                     <List>
                                         {listItems.map((item, i) => (
                                             <ListItem key={i}>{item}</ListItem>

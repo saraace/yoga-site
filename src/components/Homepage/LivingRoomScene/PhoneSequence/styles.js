@@ -64,8 +64,9 @@ export const TextContainer = styled(motion.div)`
 export const Text = styled.div`
     display: flex; 
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
     height: 100%;
+    position: relative;
 
     h2{
         font-size: ${({ theme }) => theme.fontSizes[4]+'px'}; 
@@ -76,7 +77,8 @@ export const Text = styled.div`
 
 export const LeftText = styled(motion.div)`
     width: 430px;
-    margin-bottom: -200px;
+    position: absolute;
+    top: 100%;
 
     p{
         font-size: 32px; 
@@ -89,6 +91,7 @@ export const LeftText = styled(motion.div)`
 export const RightText = styled(motion.div)`
     width: 310px;
     align-self: flex-end;
+    position: absolute; top: 100%;
 
     p{
         font-size: ${({ theme }) => theme.fontSizes[2]+'px'}; 

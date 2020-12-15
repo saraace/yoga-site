@@ -5,7 +5,7 @@ import { motion, useTransform, useMotionValue, AnimatePresence } from "framer-mo
 import Link from "next/link"; 
 
 /* STYLES */
-import { TV, Background, SeqWrapper, VideoLoopWrapper, Text, TextContainer, Col, ButtonRow, SlideOverTextContainer } from "./styles"; 
+import { TV, Background, SeqWrapper, VideoLoopWrapper, Text, TextContainer, Col, ButtonRow, SlideOverTextContainer, SlideOverText } from "./styles"; 
 
 /* COMPONENTS */
 import ImageSequence from "../../ImageSequence";
@@ -87,26 +87,30 @@ const TVSequence = ({ scrollY, progress, duration, x, y, sw, sh, width, height, 
     const scale = useTransform(scrollY, [height, height+600], ["1.15", "1"], [{ease: "easeInOut"}]);
 
     // ease
-    const introTransition = { duration: 1.4, ease: [0.6, 0.01, -0.05, 0.9] };
-    //const slidingTransition = { duration: 0.9, ease: "easeInOut" };
+    //const introTransition = { duration: 1.4, ease: [0.6, 0.01, -0.05, 0.9] };
 
     /** INTRO TEXT **/
+    const introText = {
+        initial: { opacity: 0 },
+        animate: { opacity: 1, transition: { duration: 0.5, ease: "easeOut" } },
+        exit: { opacity: 0, transition: { duration: 0.5, ease: "easeOut" } }
+    }
     // "We Are More Than Fitness" 
-    const heading = {
+    /* const heading = {
         initial: { opacity: 0 },
         animate: { opacity: 1, transition: { duration: 0.5, ease: "easeIn"  } },
         exit: { opacity: 0, transition: { duration: 0.5, ease: "easeIn"  } }
-    }
+    } */
 
     // intro paragraph
-    const paragraph = {
+    /* const paragraph = {
         initial: { y: 75, opacity: 0 }, 
         animate: { y: 0, opacity: 1, transition: { duration: 0.3, delay: 0.15, ease: "easeIn" } },
         exit: { opacity: 0, transition: { duration: 0.5, ...introTransition } }
-    }
+    } */
 
     // watch & signup buttons
-    const watchButton = {
+    /* const watchButton = {
         initial: { opacity: 0, y: 50 }, 
         animate: { opacity: 1, y: 0, transition: { delay: 0.3, duration: 0.3 } },
         exit: { opacity: 0, transition: { duration: 0.5, ...introTransition } }
@@ -115,21 +119,21 @@ const TVSequence = ({ scrollY, progress, duration, x, y, sw, sh, width, height, 
         initial: { opacity: 0, y: 50 }, 
         animate: { opacity: 1, y: 0, transition: { delay: 0.35, duration: 0.3 } },
         exit: { opacity: 0, transition: { duration: 0.5, ...introTransition } }
-    }
+    } */
 
-    const scrollOut = useTransform(sceneProgress, [0.0625, 0.1625], [0, height*-1]);
-    const opacityOut = useTransform(sceneProgress, [0.07, 0.103], [1, 0]);
+    const scrollOut = useTransform(sceneProgress, [0, 0.1625], [0, (height)*-1]);
+    const opacityOut = useTransform(sceneProgress, [0.12, 0.1625], [1, 0]);
 
     /** SLIDE OVER TEXT **/
-    const slideOverBackground = useTransform(sceneProgress, [0.225, 0.2625, 0.3875, 0.425], [0, -537, -537, 0]);
+    const slideOverBackground = useTransform(sceneProgress, [0.225, 0.2625, 0.3875, 0.425], [0, -268, -268, 0]);
     const slideOverContainer = useTransform(sceneProgress, [0.225, 0.2625, 0.3875, 0.425], [537, 0, 0, 537]);
     const slideOverText = {
-        initial: { y: 200, opacity: 0 },
-        animate: { y: 0, opacity: 1, transition : { duration: 0.5, ...introTransition }},
-        exit: { y: 200, opacity: 0, transition: { duration: 0.7, ...introTransition } }
+        initial: { opacity: 0 },
+        animate: { opacity: 1, transition : { duration: 0.5, ease: "easeOut"}},
+        exit: { opacity: 0, transition: { duration: 0.7, ease: "easeOut" } }
     }
-    const slideOverTextOut = useTransform(sceneProgress, [0.3, 0.425], [0, height*-1]);
-    const slideOverTextOp = useTransform(sceneProgress, [0.3, 0.4], [1, 0]);
+    const slideOverTextOut = useTransform(sceneProgress, [0.24, 0.425], [0, height*-1]);
+    const slideOverTextOp = useTransform(sceneProgress, [0.4, 0.425], [1, 0]);
 
     return(
         <TV {...rest}>
@@ -143,23 +147,24 @@ const TVSequence = ({ scrollY, progress, duration, x, y, sw, sh, width, height, 
                 </SeqWrapper>
                 <VideoLoopWrapper className={tvPlaying? "front" : ""} style={offsetStyles}>
                     <img src="/images/homepage/tv-seq/tv_seq_00344.png" style={coverStyles} />
-                    <video ref={tvLoopRef} src="/images/homepage/tv-seq/tv_loop.mp4" style={coverStyles} muted loop 
-                    />
+                    <video ref={tvLoopRef} src="/images/homepage/tv-seq/tv_loop.mp4" style={coverStyles} muted loop />
                 </VideoLoopWrapper>
             </Background>
             <AnimatePresence>
-            {progress > 0.0125 && progress <= 0.1625 && (
+            {progress > 0.005 && progress <= 0.1625 && (
                 <Text initial="initial" animate="animate" exit="exit">
                     <TextContainer>
                         <Col style={{ y: scrollOut, opacity: opacityOut }}>
-                            <motion.h1 variants={heading}>We Are More Than Fitness</motion.h1>
-                            <motion.p variants={paragraph}>Experience our yoga, FIIT &amp; restore classes, in-studio or online.</motion.p>
-                            <ButtonRow>
-                                <motion.button variants={watchButton} sx={{ variant: "buttons.secondary-outline" }}>Watch Video</motion.button>
-                                <Link href="/sign-up">
-                                    <motion.a variants={signUpButton} sx={{ variant: "buttons.primary" }}>Sign Up</motion.a>
-                                </Link>
-                            </ButtonRow> 
+                            <motion.div variants={introText}>
+                                <h1 >We Are More Than Fitness</h1>
+                                <p>Experience our yoga, FIIT &amp; restore classes, in-studio or online.</p>
+                                <ButtonRow>
+                                    <button sx={{ variant: "buttons.secondary-outline" }}>Watch Video</button>
+                                    <Link href="/sign-up">
+                                        <a sx={{ variant: "buttons.primary" }}>Sign Up</a>
+                                    </Link>
+                                </ButtonRow> 
+                            </motion.div>
                         </Col>
                     </TextContainer>
                 </Text>
@@ -169,7 +174,7 @@ const TVSequence = ({ scrollY, progress, duration, x, y, sw, sh, width, height, 
                 <SlideOverTextContainer style={{ x: slideOverContainer }}>
                     <AnimatePresence>
                         {progress >= 0.25 && (
-                            <motion.div 
+                            <SlideOverText 
                             inital="initial" 
                             animate="animate" 
                             exit="exit" 
@@ -186,7 +191,7 @@ const TVSequence = ({ scrollY, progress, duration, x, y, sw, sh, width, height, 
                                         <p>Forget about fighting traffic to get to the studio, or worrying about being late for your favorite class. Just download the SHIFT app and gain instant access to our suite of online, on-demand classes.</p>
                                     </div>
                                 </motion.div>
-                            </motion.div>
+                            </SlideOverText>
                         )}
                     </AnimatePresence>
                 </SlideOverTextContainer>

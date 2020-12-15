@@ -1,8 +1,10 @@
 import styled from "@emotion/styled";
+import { Container } from "theme-ui";
 import { motion } from "framer-motion";
 
 export const FullScreen = styled.div`
     height: 100vh; 
+    overflow: hidden;
 
     & > div{
         height: 100%;
@@ -27,16 +29,24 @@ export const VideoWrapper = styled.div`
     }
 `; 
 
-export const ContentContainer = styled.div`
+export const ContentContainer = styled(Container)`
     display: flex; 
+    height: 100%;
     justify-content: space-between;
-    padding: 85px 105px;
     width: 100%;
+    border: 1px solid red;
 `; 
 
 export const Intro = styled(motion.div)`
     width: 40%;
+    height: 100%;
     align-self: flex-end;
+    position: relative;
+
+    & > div{
+        position: absolute;
+        top: 100%;
+    }
 
     svg{
         width: 60px; 
@@ -75,7 +85,14 @@ export const Intro = styled(motion.div)`
 
 export const Benefits = styled(motion.div)`
     width: 40%;
+    height: 100%;
     align-self: flex-end;
+    position: relative;
+
+    & > div{
+        position: absolute;
+        top: 100%;
+    }
 `; 
 
 export const List = styled.ul`

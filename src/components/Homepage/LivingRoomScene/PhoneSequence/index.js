@@ -84,17 +84,17 @@ const PhoneSequence = ({ width, height, nextStartPos, scrollY, progress, duratio
 
     // text animations
     const text = {
-        initial: { y: 100, opacity: 0 },
-        animate: { y: 0, opacity: 1, transition: { duration: 0.5, ...transition } },
-        exit: { y: 100, opacity: 0 }
+        initial: { opacity: 0 },
+        animate: { opacity: 1, transition: { duration: 0.5, ...transition } },
+        exit: { opacity: 0 }
     };
     // left
-    const leftTextScroll = useTransform(sceneProgress, [0.78, 0.875], [0, height*-1]);
-    const leftTextOpacity = useTransform(sceneProgress, [0.795, 0.825], [1, 0]);
+    const leftTextScroll = useTransform(sceneProgress, [0.74, 0.875], [0, height*-1]);
+    const leftTextOpacity = useTransform(sceneProgress, [0.85, 0.862], [1, 0]);
     
     //right
     const rightTextScroll = useTransform(sceneProgress, [0.855, 1], [0, height*-1]);
-    const rightTextOpacity = useTransform(sceneProgress, [0.87, 0.9], [1, 0]);
+    const rightTextOpacity = useTransform(sceneProgress, [0.97, 0.99], [1, 0]);
 
     // scroll out parallax 
     const transformY = useTransform(scrollY, [nextStartPos-(height-300), nextStartPos], [0, 200], [{ease: "easeInOut"}]);
@@ -115,7 +115,7 @@ const PhoneSequence = ({ width, height, nextStartPos, scrollY, progress, duratio
                 <Container variant="large">
                     <Text>
                         <AnimatePresence>
-                            {progress >= 0.75 && (
+                            {progress >= 0.74 && (
                                 <LeftText initial="initial" animate="animate" exit="exit" style={{ y: leftTextScroll, opacity: leftTextOpacity }}>
                                     <motion.div variants={text}>
                                         <p>Live or on-demand.</p>
@@ -129,7 +129,7 @@ const PhoneSequence = ({ width, height, nextStartPos, scrollY, progress, duratio
                                 <RightText initial="initial" animate="animate" exit="exit" style={{ y: rightTextScroll, opacity: rightTextOpacity }}>
                                     <motion.div variants={text}>
                                         <h2>Your virtual fitness studio.</h2>
-                                        <p>You can also book classes to go to your local YogaJoint studio and workout together.</p>
+                                        <p>You can also book classes to go to your local Yoga Joint studio and workout together.</p>
                                     </motion.div>
                                 </RightText>
                             )}

@@ -93,8 +93,7 @@ const LaptopSequence = ({ width, height, progress, duration, x, y, sw, sh, offse
         animate: { y: 0, transition: { duration: 0.3, ...transition } }
     };
 
-    const headingScrollOutY = useTransform(sceneProgress, [0.6375, 0.75], [0, height*-1])
-    const headingScrollOutOp = useTransform(sceneProgress, [0.65, 0.6875], [1, 0])
+    const headingScrollOutY = useTransform(sceneProgress, [0.55, 0.6875], [0, height*-1]);
 
 
     return(
@@ -107,9 +106,9 @@ const LaptopSequence = ({ width, height, progress, duration, x, y, sw, sh, offse
                 <video ref={laptopLoopRef} src="/images/homepage/laptop-seq/laptop_loop.mp4" style={offsetStyles} muted loop />
             </VideoLoopWrapper>
             <AnimatePresence> 
-            {progress > 0.575 && (
+            {progress > 0.52 && (
                 <Text initial="initial" animate="animate" exit="exit">
-                    <motion.h1 style={{ y: headingScrollOutY, opacity: headingScrollOutOp }}>
+                    <motion.h1 style={{ y: headingScrollOutY }}>
                         <div>
                             <motion.span variants={heading}>
                                 <motion.span variants={letter}>E</motion.span>
