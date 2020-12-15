@@ -4,7 +4,7 @@ import { useViewportScroll } from "framer-motion";
 import window from "global"; 
 
 /* STYLES */
-import { SceneWrapper } from "./styles";
+import { Home, SceneWrapper } from "./styles";
 
 /* COMPONENTS */
 import ProgressIndicators from "./ProgressIndicators";
@@ -30,7 +30,7 @@ import SignUpForm from "./SignUpForm";
 const Homepage = () => {
 
     // indicators used for development
-    const indicators = true;
+    const indicators = false;
 
     const { scrollY } = useViewportScroll();
 
@@ -47,10 +47,10 @@ const Homepage = () => {
     const [ coverStyles, setCoverStyles ] = useState({});
     
     // duration is how many pixels scene will stick to top
-    const sceneDurations = [900, 8000, 1000, 1000, 2500, 2500, 2500, 1000];
+    const sceneDurations = [900, 8000, 1000, 1000, 1500, 1500, 1500];
 
     // heights is duration + scene height
-    const sceneHeights = [0, 900, 8900, 9900, 10900, 13400, 15900, 18400, 19400];
+    const sceneHeights = [0, 900, 8900, 9900, 10900, 12400, 13900, 15400];
 
     useEffect(() => {
         
@@ -83,33 +83,32 @@ const Homepage = () => {
 
         // determine offset styles 
         setOffsetStyles((tall)? { height: h, left: xOffset } : { width: w, top: yOffset, left: 0 });
-        setCoverStyles(tall? { height: '100%', left: 0, top: 0 } : { width: '100%', top: 0, left:0 });
+        setCoverStyles(tall? { height: '100%', left: 0 } : { width: '100%', top: 0 });
 
     }, [window]);
 
     return(
-        <div>
+        <Home>
             <ScrollIndicator />
             <Controller>
                 { sceneDurations.map((duration, idx) => {
+                                
+                    const startPos = (idx > 0)? sceneHeights[idx]+(height*idx) : 0;
+                    const nextStartPos = (idx+1 <= 7)? sceneHeights[idx+1]+(height*(idx+1)) : 0;
+
                     return (
                         <Scene {...{indicators}} key={idx} triggerHook="onLeave" duration={duration} pin>
-                            {(progress, event) => {
-                                
-                                const startPos = (idx > 0)? sceneHeights[idx]+(height*idx) : 0;
-                                const nextStartPos = (idx+1 < 7)? sceneHeights[idx+1]+(height*(idx+1)) : 0;
-
+                            {(progress) => {
                                 return (
                                     <SceneWrapper initial={{ scale: 0.5, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ delay: 0.5, duration: 1 }} >
-                                        {indicators && <ProgressIndicators {...{ progress, duration, startPos }} />}
+                                        {indicators && <ProgressIndicators {...{ scrollY, progress, duration, startPos }} />}
                                         {idx === 0 && <ShiftSequence {...{ scrollY, width, height, x, y, sw, sh }} />}
                                         {idx === 1 && <LivingRoom {...{ scrollY, progress, startPos, nextStartPos, duration, width, height, x, y, sw, sh, offsetStyles, coverStyles }} />}
-                                        {idx === 2 && <Instructors {...{ scrollY, progress, startPos, nextStartPos, duration, coverStyles }} />}
+                                        {idx === 2 && <Instructors {...{ scrollY, progress, startPos, nextStartPos, width, height }} />}
                                         {idx === 3 && <Categories {...{ scrollY, progress, startPos, nextStartPos, height, offsetStyles }} />}
-                                        {idx === 4 && <YogaScene {...{ active: event.state === "DURING", startPos, offsetStyles }} />}
-                                        {idx === 5 && <FiitScene {...{ active: event.state === "DURING", startPos, offsetStyles }} />}
-                                        {idx === 6 && <RestoreScene {...{ active: event.state === "DURING", startPos, offsetStyles }} />}
-                                        {idx === 7 && <SignUpForm {...{ active: event.state === "DURING", startPos }} /> }
+                                        {idx === 4 && <YogaScene {...{ scrollY, progress, duration, startPos, nextStartPos, offsetStyles, height }} />}
+                                        {idx === 5 && <FiitScene {...{ scrollY, progress, duration, startPos, nextStartPos, offsetStyles, height }} />}
+                                        {idx === 6 && <RestoreScene {...{ scrollY, progress, duration, startPos, nextStartPos, offsetStyles, height }} />}
                                     </SceneWrapper>
                                 );
                             }}
@@ -117,7 +116,8 @@ const Homepage = () => {
                     )
                 }) }
             </Controller>
-        </div>
+            <SignUpForm {...{ scrollY, active: true, width, height, startPos: sceneHeights[sceneHeights.length-1]+(height*6) }} /> 
+        </Home>
     )
 }
 

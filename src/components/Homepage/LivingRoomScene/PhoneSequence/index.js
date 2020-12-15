@@ -107,8 +107,8 @@ const PhoneSequence = ({ width, height, nextStartPos, scrollY, progress, duratio
             </SeqWrapper>
             <VideoLoopWrapper className={phonePlaying? "front" : ""}>
                 <motion.div style={{ y: transformY, scale }}>
-                    <img src="/images/homepage/phone-seq/phone-seq-00239.png" style={offsetStyles} />
-                    <video ref={phoneLoopRef} src="/images/homepage/phone-seq/phone-loop.mp4" style={offsetStyles} muted loop />
+                    <img src="/images/homepage/phone-seq/phone_seq_00239.png" style={offsetStyles} />
+                    <video ref={phoneLoopRef} src="/images/homepage/phone-seq/phone_loop.mp4" style={offsetStyles} muted loop />
                 </motion.div>
             </VideoLoopWrapper>
             <TextContainer>

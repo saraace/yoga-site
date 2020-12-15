@@ -1,8 +1,10 @@
 import styled from '@emotion/styled';
 import { motion } from "framer-motion";
+import { Container } from "theme-ui";
 
 export const FullScreen = styled.div`
     height: 100vh; 
+    min-height: 700px;
     overflow: hidden;
 
     & > div{
@@ -16,7 +18,7 @@ export const FullScreen = styled.div`
     }
 `; 
 
-export const VideoWrapper = styled.div`
+export const VideoWrapper = styled(motion.div)`
     position: absolute;
     top: 0; 
     bottom: 0;
@@ -29,11 +31,45 @@ export const VideoWrapper = styled.div`
     }
 `; 
 
-export const Content = styled(motion.div)`
-    width: 100%; 
-    padding: 0 0 120px;
+export const TextContainer = styled(Container)`
+    height: 100%; 
+    display: flex; 
+    align-items: center;
     position: relative; 
     z-index: 1;
+`;
+
+export const Content = styled(motion.div)`
+    height: 100%; 
+    width: 100%;
+    padding: 124px 0 90px;
+    position: relative; 
+    z-index: 1;
+    display: flex; 
+    flex-direction: column;
+    justify-content: space-between;
+`;
+
+export const Text = styled.div`
+    height: 100%;
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+`; 
+
+export const Row = styled(motion.div)`
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+`;
+
+export const Categories = styled(motion.div)`
+    display: flex; 
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
 `;
 
 export const Renew = styled(motion.div)`
@@ -57,12 +93,6 @@ export const Transform = styled(motion.div)`
     font-size: 64px; 
     line-height: 1.12;
     text-shadow: -1px 1px 0px rgba(0, 0, 0, 0.15);
-    margin-bottom: 166px;
-`;
-
-export const Row = styled(motion.div)`
-    display: flex;
-    justify-content: center; 
 `;
 
 export const Disipline = styled.div`

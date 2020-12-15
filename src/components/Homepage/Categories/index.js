@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from "react"; 
-import { Container } from "theme-ui";
-import { useTransform, motion } from "framer-motion";
-import { FullScreen, VideoWrapper, Content, Renew, Shift, Transform, Row, Yoga, Fiit, Restore } from "./styles"; 
+import { useTransform, AnimatePresence } from "framer-motion";
+import { FullScreen, VideoWrapper, TextContainer, Content, Text, Renew, Shift, Transform, Row, Categories, Yoga, Fiit, Restore } from "./styles"; 
 
 const CategoriesScene = ({ scrollY, progress, startPos, nextStartPos, height, offsetStyles }) => {
 
@@ -12,7 +11,7 @@ const CategoriesScene = ({ scrollY, progress, startPos, nextStartPos, height, of
     const [ play, setPlay ] = useState(false);
 
     useEffect(() => {
-        if(videoRef){
+        if(videoRef.current){
             videoRef.current.addEventListener("loadeddata", () => {
                 setVideoReady(true);
             });
@@ -32,7 +31,7 @@ const CategoriesScene = ({ scrollY, progress, startPos, nextStartPos, height, of
     }, [play, videoRef]);
 
     // background effects
-    const scale = useTransform(scrollY, [startPos-height, startPos, nextStartPos], [1.25, 1.1, 1], [{ ease: "easeInOut" }]);
+    const scale = useTransform(scrollY, [startPos-height, startPos, nextStartPos], [1.2, 1.1, 1], [{ ease: "easeInOut" }]);
     const y = useTransform(scrollY, [startPos-height, startPos, nextStartPos-height, nextStartPos], [-300, 0, 0, 100]);
 
     // text variants
@@ -47,30 +46,43 @@ const CategoriesScene = ({ scrollY, progress, startPos, nextStartPos, height, of
 
     const word = {
         initial: { y: 50, opacity: 0 }, 
-        animate: { y: 0, opacity: 1, transition: { duration: "0.5", ease: "easeOut" } }
+        animate: { y: 0, opacity: 1, transition: { duration: 0.5, ease: "easeOut" } }, 
+        exit: { opacity: 0, transition: { delay: 0.9, duration: 0.5, ease: "easeOut" }}
+    }
+
+    const categories = {
+        initial: { y: 50, opacity: 0 },
+        animate: { y: 0, opacity: 1, transition: { delay: 0.9, duration: 0.5, ease: "easeOut" } },
+        exit: { y: 0, opacity: 1, transition: { duration: 0.5, ease: "easeOut" } }
     }
 
     return(
         <FullScreen>
-            <motion.div style={{ scale, y }}>
-                <VideoWrapper>
-                    <video ref={videoRef} src="/images/homepage/scene-08/bg.mp4" style={offsetStyles} muted />
+            <div>
+                <VideoWrapper style={{ scale, y }}>
+                {((scrollY.get() >= startPos) && (scrollY.get() <= nextStartPos)) && <video src="/images/homepage/scene-08/bg.mp4" style={offsetStyles} autoPlay muted />}
                 </VideoWrapper>
-                {progress > 0.15 && (
-                    <Container variant="small">
-                        <Content initial="initial" animate="animate" variants={headings}>
-                            <Renew variants={word}>Renew</Renew>
-                            <Shift variants={word}>Shift</Shift>
-                            <Transform variants={word}>Transform</Transform>
-                            <Row variants={word}>
-                                <Yoga>Yoga</Yoga>
-                                <Fiit>Fiit</Fiit>
-                                <Restore>Restore</Restore>
-                            </Row>
-                        </Content>
-                    </Container>
-                )}
-            </motion.div>
+                <AnimatePresence>
+                    {progress > 0.15 && (
+                        <TextContainer variant="small">
+                            <Content initial="initial" animate="animate" exit="exit">
+                                <Text>
+                                    <Row  variants={headings}>
+                                        <Renew variants={word}>Renew</Renew>
+                                        <Shift variants={word}>Shift</Shift>
+                                        <Transform variants={word}>Transform</Transform>
+                                    </Row>
+                                    <Categories variants={categories}>
+                                        <Yoga>Yoga</Yoga>
+                                        <Fiit>Fiit</Fiit>
+                                        <Restore>Restore</Restore>
+                                    </Categories>
+                                </Text>
+                            </Content>
+                        </TextContainer>
+                    )}
+                </AnimatePresence>
+            </div>
         </FullScreen>
     )
 }

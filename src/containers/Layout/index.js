@@ -38,10 +38,10 @@ const Layout = ({ children }) => {
   return (
     <ContentWrapper>
       <AnimatePresence>
-        {background === 'gradient' && <BackgroundGradient {...{initial}} {...{animate}} {...{exit}} />}
+        {background === 'gradient' && <BackgroundGradient {...{ initial, animate, exit }} />}
       </AnimatePresence>
       <AnimatePresence>
-        {background !== 'gradient' && <BackgroundImage className={bgClass} {...{initial}} {...{animate}} {...{exit}} ><img src={background} /></BackgroundImage>}
+        {background !== 'gradient' && <BackgroundImage className={bgClass} {...{ initial, animate, exit }} ><img src={background} /></BackgroundImage>}
       </AnimatePresence>
       <Head>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />

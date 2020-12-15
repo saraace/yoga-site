@@ -11,8 +11,6 @@ export const Scene = styled.div`
 
 export const Bg = styled(motion.img)`
     position: absolute; 
-    top: 0;
-    opacity: 0.7;
 `;
 
 export const SceneContainer = styled(Container)`
@@ -21,10 +19,12 @@ export const SceneContainer = styled(Container)`
     align-items: center;
     position: relative; 
     z-index: 1;
+    padding: 124px 24px 0;
 `;
 
 export const Col = styled.div`
     width: 480px;
+    align-self: flex-end;
 
     h3{
         font-size: 48px; 
@@ -37,38 +37,41 @@ export const Col = styled.div`
         font-size: 26px; 
         line-height: 1.545; 
         font-weight: 400;
-        padding-bottom: 50px;
+        padding-bottom: 10px;
     }
 
     p{
         font-size: ${({ theme }) => theme.fontSizes[2]+'px'}; 
         line-height: 1.545;
         font-weight: 400;
-        margin-top: 400px;
+        margin-top: 40px;
     }
 `;
 
 export const Video = styled.div`   
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 50%;
+    position: relative;
+    height: 200px;
+    margin: 0 100px 0 -100px;
     z-index: 3;
 
     img{
-        width: auto;
-        max-width: 100%;
-        max-height: 300px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 12px;
     }
 `;
 
 export const PlayButton = styled(motion.div)`
-    width: 96px; 
-    height: 96px; 
+    width: 86px; 
+    height: 86px; 
     border: 4px solid #FFEFA9;
     background: #FFD524;
     position: absolute; 
-    right: 35px;
+    right: -43px;
     border-radius: 50%;
     top: 50%;
 
@@ -76,9 +79,15 @@ export const PlayButton = styled(motion.div)`
         fill: #fff;
         width: 26px;
         position: absolute; 
-        top: 27px; 
-        left: 35px; 
+        top: 24px; 
+        left: 30px; 
     }
+`;
+
+export const ImageCol = styled.div`
+    position: relative;
+    height: 100%;
+    flex: 1;
 `;
 
 export const Instructor = styled.img`
@@ -86,6 +95,6 @@ export const Instructor = styled.img`
     height: 100%;
     max-height: 900px; 
     bottom:0;
-    right: 0;
+    left: 100px;
     z-index: 2;
 `;

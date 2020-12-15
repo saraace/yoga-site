@@ -1,15 +1,19 @@
 import styled from '@emotion/styled';
+import { motion } from "framer-motion";
 
 export const FullScreen = styled.div`
-    height: 100vh;
     display: flex; 
     align-items:center;
-    padding: 50px 0 0;
+    padding: 150px 0;
+    position: relative;
+    z-index: -1;
 `;
 
 export const Row = styled.div`
     display: flex;
     align-items: center;
+    position: relative;
+    z-index: 1;
 `; 
 
 export const Col = styled.div``; 
@@ -66,4 +70,8 @@ export const Small = styled.div`
     font-size: ${({ theme }) => theme.fontSizes[0]+'px'};
     line-height: 1.315;
     margin-top: 16px;
+`;
+
+export const Bg = styled(motion.img)`
+    position: absolute; 
 `;
