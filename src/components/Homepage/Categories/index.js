@@ -11,7 +11,7 @@ const CategoriesScene = ({ scrollY, progress, startPos, nextStartPos, height, of
     const [ play, setPlay ] = useState(false);
 
     useEffect(() => {
-        if(videoRef){
+        if(videoRef.current){
             videoRef.current.addEventListener("loadeddata", () => {
                 setVideoReady(true);
             });
@@ -60,7 +60,7 @@ const CategoriesScene = ({ scrollY, progress, startPos, nextStartPos, height, of
         <FullScreen>
             <div>
                 <VideoWrapper style={{ scale, y }}>
-                    <video ref={videoRef} src="/images/homepage/scene-08/bg.mp4" style={offsetStyles} muted />
+                {((scrollY.get() >= startPos) && (scrollY.get() <= nextStartPos)) && <video src="/images/homepage/scene-08/bg.mp4" style={offsetStyles} autoPlay muted />}
                 </VideoWrapper>
                 <AnimatePresence>
                     {progress > 0.15 && (

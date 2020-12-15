@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { Controller, Scene } from "react-scrollmagic";
 import { useViewportScroll } from "framer-motion";
 import window from "global"; 
-import document from "global"; 
 
 /* STYLES */
 import { Home, SceneWrapper } from "./styles";
@@ -31,7 +30,7 @@ import SignUpForm from "./SignUpForm";
 const Homepage = () => {
 
     // indicators used for development
-    const indicators = true;
+    const indicators = false;
 
     const { scrollY } = useViewportScroll();
 
@@ -95,7 +94,6 @@ const Homepage = () => {
                 { sceneDurations.map((duration, idx) => {
                                 
                     const startPos = (idx > 0)? sceneHeights[idx]+(height*idx) : 0;
-                    //const endPos = startPos + duration;
                     const nextStartPos = (idx+1 <= 7)? sceneHeights[idx+1]+(height*(idx+1)) : 0;
 
                     return (

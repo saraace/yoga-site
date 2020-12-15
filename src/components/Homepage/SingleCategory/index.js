@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { motion, useTransform, useMotionValue, AnimatePresence } from "framer-motion";
 import { FullScreen, VideoWrapper, ContentContainer, Intro, Benefits, List, ListItem } from "./styles";
 
@@ -9,9 +9,6 @@ const SingleCategoryScene = ({ scrollY, progress, duration, startPos, nextStartP
     useEffect(() => {
         sceneProgress.set(progress);
     }, [progress]);
-
-    // video
-    const videoRef = useRef(null);
 
     // intro content
     const introVar = {
@@ -31,49 +28,11 @@ const SingleCategoryScene = ({ scrollY, progress, duration, startPos, nextStartP
     const benefitsY = useTransform(scrollY, [startPos+(duration/2), nextStartPos], [0, height*-1]);
     const benefitsOpacity = useTransform(sceneProgress, [0.9, 1], [1, 0]);
 
-    // video background
-    const [ videoReady, setVideoReady ] = useState(false);
-    const [ play, setPlay ] = useState(false);
-
-    useEffect(() => {
-        if(videoRef){
-            videoRef.current.addEventListener("loadeddata", () => {
-                setVideoReady(true);
-            });
-        }
-    }, [videoRef]);
-
-    useEffect(() => {
-
-        function playVideo() {
-            if((scrollY.get() >= startPos-height) && (scrollY.get() <= nextStartPos)){
-                setPlay(true);
-            } else{
-                setPlay(false);
-            }
-        }
-
-        const unsubscribeY = scrollY.onChange(playVideo);
-
-        return () => {
-            unsubscribeY();
-        }
-    }, [scrollY])
-
-   useEffect(() => {
-        if(play && videoReady){
-            videoRef.current.play();
-            setPlay(true);
-        } else if(!play){
-            videoRef.current.pause();
-        }
-    }, [play, videoRef, videoReady]);
-
     return(
         <FullScreen>
             <motion.div>
                 <VideoWrapper>
-                    <video ref={videoRef} src={videoSrc} style={offsetStyles} muted loop/>
+                    {((scrollY.get() >= startPos-height) && (scrollY.get() <= nextStartPos)) && <video src={videoSrc} style={offsetStyles} autoPlay muted loop/>}
                 </VideoWrapper>
                 <ContentContainer>
                     <AnimatePresence>
