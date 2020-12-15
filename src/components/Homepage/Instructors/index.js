@@ -34,7 +34,7 @@ const Instructors = ({ scrollY, progress, startPos, nextStartPos, width, height 
             <SceneContainer>
                 <Col>
                     <AnimatePresence>
-                        {progress >= 0.05 && progress < 0.95 && (
+                        {progress >= 0.05 && (
                             <motion.div initial="initial" animate="animate" exit="exit" style={{ y: textScroll }}>
                                 <motion.div variants={textAnimateIn}>
                                     <h3>World-class Instructors</h3>
