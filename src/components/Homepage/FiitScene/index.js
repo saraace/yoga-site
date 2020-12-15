@@ -3,7 +3,8 @@ import Icon from "../../../assets/svgs/fiit-icon.svg";
 
 const FiitScene = ({ scrollY, progress, duration, startPos, nextStartPos, offsetStyles, height }) => {
 
-    const videoSrc = "/images/homepage/scene-10-fiit/bg-fiit.mp4";
+    const posterSrc = "/images/homepage/fiit/bg-fiit.png"
+    const videoSrc = "/images/homepage/fiit/bg-fiit.mp4";
     const heading = "FIIT"; 
     const description = "High-intensity cardio meets strength-training in FIIT, our high-octane series of classes designed to torch calories while instilling greater discipline, confidence, and coordination.";
     const listItems = [
@@ -12,7 +13,7 @@ const FiitScene = ({ scrollY, progress, duration, startPos, nextStartPos, offset
     ]
 
     return(
-        <SingleCategory icon={<Icon />} {...{ scrollY, progress, duration, startPos, nextStartPos, offsetStyles, height, videoSrc, heading, description, listItems }} /> 
+        <SingleCategory icon={<Icon />} {...{ scrollY, progress, duration, startPos, nextStartPos, offsetStyles, height, posterSrc, videoSrc, heading, description, listItems }} /> 
     )
 }
 

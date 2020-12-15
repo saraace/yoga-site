@@ -3,7 +3,8 @@ import Icon from "../../../assets/svgs/yoga-icon.svg";
 
 const YogaScene = ({ scrollY, progress, duration, startPos, nextStartPos, offsetStyles, height }) => {
 
-    const videoSrc = "/images/homepage/scene-09-yoga/bg-yoga.mp4";
+    const posterSrc = "/images/homepage/yoga/bg-yoga.png"
+    const videoSrc = "/images/homepage/yoga/bg-yoga.mp4";
     const heading = "Yoga"; 
     const description = "Brought to you by the creators of Hot Fusion Flow™, our total-body yoga classes provide room for creativity while remaining rooted in traditional techniques and postures.";
     const listItems = [
@@ -12,7 +13,7 @@ const YogaScene = ({ scrollY, progress, duration, startPos, nextStartPos, offset
     ]
 
     return(
-        <SingleCategory icon={<Icon />} {...{ scrollY, progress, duration, startPos, nextStartPos, offsetStyles, height, videoSrc, heading, description, listItems }} /> 
+        <SingleCategory icon={<Icon />} {...{ scrollY, progress, duration, startPos, nextStartPos, offsetStyles, height, posterSrc, videoSrc, heading, description, listItems }} /> 
     )
 }
 

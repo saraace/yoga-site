@@ -3,7 +3,8 @@ import Icon from "../../../assets/svgs/restore-icon.svg";
 
 const RestoreScene = ({ scrollY, progress, duration, startPos, nextStartPos, offsetStyles, height }) => {
     
-    const videoSrc = "/images/homepage/scene-11-restore/bg-restore.mp4";
+    const posterSrc = "/images/homepage/restore/bg-restore.png";
+    const videoSrc = "/images/homepage/restore/bg-restore.mp4";
     const heading = "Restore"; 
     const description = "Inspired by ancient yoga and meditation practices, our restore classes combine traditional meditation techniques with restorative postures that encourage total relaxation for both mind and body.";
     const listItems = [
@@ -12,7 +13,7 @@ const RestoreScene = ({ scrollY, progress, duration, startPos, nextStartPos, off
     ]
 
     return(
-        <SingleCategory icon={<Icon />} {...{ scrollY, progress, duration, startPos, nextStartPos, offsetStyles, height, videoSrc, heading, description, listItems }} /> 
+        <SingleCategory icon={<Icon />} {...{ scrollY, progress, duration, startPos, nextStartPos, offsetStyles, height, posterSrc, videoSrc, heading, description, listItems }} /> 
     )
 }
 
