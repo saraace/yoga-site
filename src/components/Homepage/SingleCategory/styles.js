@@ -34,7 +34,6 @@ export const ContentContainer = styled(Container)`
     height: 100%;
     justify-content: space-between;
     width: 100%;
-    border: 1px solid red;
 `; 
 
 export const Intro = styled(motion.div)`

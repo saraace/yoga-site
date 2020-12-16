@@ -18,7 +18,7 @@ const ShiftSequence = ({ scrollY, width, height, x, y, sw, sh, }) => {
     useEffect(() => {
 
         function updateCanvasImage() {
-
+            console.log(scrollY.get());
             const frameId = Math.round(scrollY.get()*0.25);
 
             // within image sequence frames

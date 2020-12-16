@@ -38,7 +38,8 @@ const LivingRoomScene = ({ scrollY, progress, duration, nextStartPos, width, hei
             )}
             {progress > 0.2 && (
                 <LaptopSequence 
-                    className={(progress > 0.4375 && progress <=0.6875? "front" : "")+" "+(progress >= 0.42? "on" : "")}
+                    style={{ x: progress > 0.43? 0: -268 }}
+                    className={progress > 0.4375 && progress <=0.6875? "front" : ""}
                     {...{ progress, duration, x, y, sw, sh, width, height, offsetStyles }} 
                 />
             )}

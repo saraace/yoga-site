@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { motion } from "framer-motion"; 
 
-export const Laptop = styled.div`
+export const Laptop = styled(motion.div)`
     position: absolute; 
     top: 0; 
     left: 0; 
@@ -54,7 +54,6 @@ export const Text = styled(motion.div)`
     text-align: center;
     width: 100%; 
     top: 50%;
-    transform: translateY(-50%);
     z-index: 10;
 
     h1{

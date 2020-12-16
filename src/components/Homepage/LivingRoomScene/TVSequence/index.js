@@ -58,13 +58,13 @@ const TVSequence = ({ scrollY, progress, duration, x, y, sw, sh, width, height, 
         // set motion value
         sceneProgress.set(progress);
 
-        if(progress > 0.0625){
+        if(progress > 0.1405){
             
             // pause tv video
             setTvPlaying(false);
 
             // current id
-            const id = Math.round(((progress-0.0625) * duration) * 0.25);
+            const id = Math.round(((progress-0.1405) * duration) * 0.25);
 
             if(id < imageSequence.length){    
                 setCanvasImage(id);
@@ -125,8 +125,8 @@ const TVSequence = ({ scrollY, progress, duration, x, y, sw, sh, width, height, 
     const opacityOut = useTransform(sceneProgress, [0.12, 0.1625], [1, 0]);
 
     /** SLIDE OVER TEXT **/
-    const slideOverBackground = useTransform(sceneProgress, [0.225, 0.2625, 0.3875, 0.425], [0, -268, -268, 0]);
-    const slideOverContainer = useTransform(sceneProgress, [0.225, 0.2625, 0.3875, 0.425], [537, 0, 0, 537]);
+    const slideOverBackground = useTransform(sceneProgress, [0.225, 0.2625, 0.4042, 0.4417], [0, -268, -268, 0]);
+    const slideOverContainer = useTransform(sceneProgress, [0.225, 0.2625, 0.4042, 0.4417], [537, 0, 0, 537]);
     const slideOverText = {
         initial: { opacity: 0 },
         animate: { opacity: 1, transition : { duration: 0.5, ease: "easeOut"}},

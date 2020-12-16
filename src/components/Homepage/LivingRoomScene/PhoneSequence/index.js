@@ -79,21 +79,18 @@ const PhoneSequence = ({ width, height, nextStartPos, scrollY, progress, duratio
         }
     }, [phoneVideoReady, phonePlaying]); 
 
-    // ease
-    const transition = { duration: 1.4, ease: [0.6, 0.01, -0.05, 0.9] };
-
     // text animations
     const text = {
         initial: { opacity: 0 },
-        animate: { opacity: 1, transition: { duration: 0.5, ...transition } },
+        animate: { opacity: 1, transition: { duration: 0.5, ease: "easeOut" } },
         exit: { opacity: 0 }
     };
     // left
-    const leftTextScroll = useTransform(sceneProgress, [0.74, 0.875], [0, height*-1]);
+    const leftTextY = useTransform(sceneProgress, [0.74, 0.875], [0, height*-1]);
     const leftTextOpacity = useTransform(sceneProgress, [0.85, 0.862], [1, 0]);
     
     //right
-    const rightTextScroll = useTransform(sceneProgress, [0.855, 1], [0, height*-1]);
+    const rightTextY = useTransform(sceneProgress, [0.855, 1], [0, height*-1]);
     const rightTextOpacity = useTransform(sceneProgress, [0.97, 0.99], [1, 0]);
 
     // scroll out parallax 
@@ -116,7 +113,7 @@ const PhoneSequence = ({ width, height, nextStartPos, scrollY, progress, duratio
                     <Text>
                         <AnimatePresence>
                             {progress >= 0.74 && (
-                                <LeftText initial="initial" animate="animate" exit="exit" style={{ y: leftTextScroll, opacity: leftTextOpacity }}>
+                                <LeftText initial="initial" animate="animate" exit="exit" style={{ y: leftTextY, opacity: leftTextOpacity }}>
                                     <motion.div variants={text}>
                                         <p>Live or on-demand.</p>
                                         <h2>Online classes featuring live instructor feedback.</h2>
@@ -126,7 +123,7 @@ const PhoneSequence = ({ width, height, nextStartPos, scrollY, progress, duratio
                         </AnimatePresence>
                         <AnimatePresence>
                             {progress >= 0.825 && (
-                                <RightText initial="initial" animate="animate" exit="exit" style={{ y: rightTextScroll, opacity: rightTextOpacity }}>
+                                <RightText initial="initial" animate="animate" exit="exit" style={{ y: rightTextY, opacity: rightTextOpacity }}>
                                     <motion.div variants={text}>
                                         <h2>Your virtual fitness studio.</h2>
                                         <p>You can also book classes to go to your local Yoga Joint studio and workout together.</p>
