@@ -45,6 +45,7 @@ const Header = () => {
     },
     'homepage': {
       opacity: 1, 
+      position: 'fixed',
       transition: {
         delay: 2.5
       }
