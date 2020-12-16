@@ -85,6 +85,7 @@ const Homepage = () => {
         setCoverStyles(tall? { height: '100%', left: 0 } : { width: '100%', top: 0 });
     }
 
+    // recalculate dimensions on window resize
     useEffect(() => {
 
         calculateDimensions();
@@ -107,36 +108,38 @@ const Homepage = () => {
     }, [window]);
 
     return(
-        <Home>
-            <ScrollIndicator />
-            <Controller>
-                { sceneDurations.map((duration, idx) => {
-                                
-                    const startPos = (idx > 0)? sceneHeights[idx]+(height*idx) : 0;
-                    const nextStartPos = (idx+1 <= 7)? sceneHeights[idx+1]+(height*(idx+1)) : 0;
+        <>
+            <Home>
+                <ScrollIndicator {...{ scrollY, finalPos: (sceneHeights[6]+(height*6))+sceneDurations[6] }} />
+                <Controller>
+                    { sceneDurations.map((duration, idx) => {
+                                    
+                        const startPos = (idx > 0)? sceneHeights[idx]+(height*idx) : 0;
+                        const nextStartPos = (idx+1 <= 7)? sceneHeights[idx+1]+(height*(idx+1)) : 0;
 
-                    return (
-                        <Scene {...{indicators}} key={idx} triggerHook="onLeave" duration={duration} pin>
-                            {(progress) => {
-                                return (
-                                    <SceneWrapper initial={{ scale: 0.5, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ delay: 0.5, duration: 1 }} >
-                                        {indicators && <ProgressIndicators {...{ scrollY, progress, duration, startPos }} />}
-                                        {idx === 0 && <ShiftSequence {...{ scrollY, width, height, x, y, sw, sh }} />}
-                                        {idx === 1 && <LivingRoom {...{ scrollY, progress, startPos, nextStartPos, duration, width, height, x, y, sw, sh, offsetStyles, coverStyles }} />}
-                                        {idx === 2 && <Instructors {...{ scrollY, progress, startPos, nextStartPos, width, height }} />}
-                                        {idx === 3 && <Categories {...{ scrollY, progress, startPos, nextStartPos, height, offsetStyles }} />}
-                                        {idx === 4 && <YogaScene {...{ scrollY, progress, duration, startPos, nextStartPos, offsetStyles, height }} />}
-                                        {idx === 5 && <FiitScene {...{ scrollY, progress, duration, startPos, nextStartPos, offsetStyles, height }} />}
-                                        {idx === 6 && <RestoreScene {...{ scrollY, progress, duration, startPos, nextStartPos, offsetStyles, height }} />}
-                                    </SceneWrapper>
-                                );
-                            }}
-                        </Scene>
-                    )
-                }) }
-            </Controller>
+                        return (
+                            <Scene {...{indicators}} key={idx} triggerHook="onLeave" duration={duration} pin>
+                                {(progress) => {
+                                    return (
+                                        <SceneWrapper initial={{ scale: 0.5, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ delay: 0.5, duration: 1 }} >
+                                            {indicators && <ProgressIndicators {...{ scrollY, progress, duration, startPos }} />}
+                                            {idx === 0 && <ShiftSequence {...{ scrollY, width, height, x, y, sw, sh }} />}
+                                            {idx === 1 && <LivingRoom {...{ scrollY, progress, startPos, nextStartPos, duration, width, height, x, y, sw, sh, offsetStyles, coverStyles }} />}
+                                            {idx === 2 && <Instructors {...{ scrollY, progress, startPos, nextStartPos, width, height }} />}
+                                            {idx === 3 && <Categories {...{ scrollY, progress, startPos, nextStartPos, height, offsetStyles }} />}
+                                            {idx === 4 && <YogaScene {...{ scrollY, progress, duration, startPos, nextStartPos, offsetStyles, height }} />}
+                                            {idx === 5 && <FiitScene {...{ scrollY, progress, duration, startPos, nextStartPos, offsetStyles, height }} />}
+                                            {idx === 6 && <RestoreScene {...{ scrollY, progress, duration, startPos, nextStartPos, offsetStyles, height }} />}
+                                        </SceneWrapper>
+                                    );
+                                }}
+                            </Scene>
+                        )
+                    }) }
+                </Controller>
+            </Home>
             <SignUpForm {...{ scrollY, active: true, width, height, startPos: sceneHeights[sceneHeights.length-1]+(height*6) }} /> 
-        </Home>
+        </>
     )
 }
 
