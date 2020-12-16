@@ -1,33 +1,41 @@
+import { useSelector } from "react-redux";
 import Link from 'next/link'; 
 import { NavLink } from 'theme-ui';
-import NavMenu, { NavItem, Dropdown } from "./styles"; 
-import navigationLinks from "./nav-items";
+import { NavMenu, NavItem } from "./styles"; 
 
 const Navigation = () => {
+
+    const { auth } = useSelector(({ auth }) => auth);
+    
     return (
         <NavMenu>
-            {navigationLinks.map((navItem, i) => {
-                return (
-                    <NavItem key={i}>
-                        <Link href={navItem.link}>
-                            <NavLink>{navItem.text}</NavLink>
-                        </Link>
-                        {navItem.hasOwnProperty('children') && (
-                        <Dropdown>
-                            <ul>
-                                {navItem.children.map((childItem, idx) => {
-                                    return(
-                                        <NavItem key={idx}>
-                                            <NavLink href={childItem.link}>{childItem.text}</NavLink>
-                                        </NavItem>
-                                    )
-                                })}
-                            </ul>
-                        </Dropdown>
-                        )}
-                    </NavItem> 
-                );
-            })}
+            {!auth && (
+            <NavItem>
+                <Link href="/shift">
+                    <NavLink>Shift</NavLink>
+                </Link>
+            </NavItem>
+            )}
+            <NavItem>
+                <Link href="/classes">
+                    <NavLink>Classes</NavLink>
+                </Link>
+            </NavItem>
+            <NavItem>
+                <Link href="/locations">
+                    <NavLink>Locations</NavLink>
+                </Link>
+            </NavItem>
+            <NavItem>
+                <Link href="/teachers">
+                    <NavLink>Teachers</NavLink>
+                </Link>
+            </NavItem>
+            {/* <NavItem>
+                <Link href="/store">
+                    <NavLink>Store</NavLink>
+                </Link>
+            </NavItem> */}
         </NavMenu>
     )
   }

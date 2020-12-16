@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
 
-const MobileNavWrapper = styled(motion.div)`
+export const MobileNavWrapper = styled(motion.div)`
     position: fixed; 
     top: 0; 
     left: 0; 
@@ -56,10 +56,4 @@ export const NavLink = styled.a`
     font-size: ${({ theme }) => theme.fontSizes[0]+'px'};
     text-transform: uppercase;
     line-height: 1;
-`; 
-
-export const Dropdown = styled.div`
-    display: none;
 `;
-
-export default MobileNavWrapper;

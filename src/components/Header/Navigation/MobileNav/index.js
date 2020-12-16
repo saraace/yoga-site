@@ -1,9 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { useSelector } from "react-redux";
 import { motion, useAnimation } from "framer-motion"
-import MobileNavWrapper, { ToggleButton, NavMenu, NavItem, NavLink, Dropdown } from "./styles";
-import navigationLinks from "../nav-items";
+import { MobileNavWrapper, ToggleButton, NavMenu, NavItem, NavLink } from "./styles";
+
 
 const MobileNav = () => {
+
+    const { auth } = useSelector(({ auth }) => auth);
+
     const [ open, setOpen ] = useState(false);
 
     const toggleAnimation = useAnimation();
@@ -69,26 +73,23 @@ const MobileNav = () => {
             </ToggleButton>
             <MobileNavWrapper initial="closed" animate={ open? 'open' : 'closed' } variants={menuVariants}>
                 <NavMenu>
-                    {navigationLinks.map((navItem, i) => {
-                        return (
-                            <NavItem key={i}>
-                                <NavLink href={navItem.link}>{navItem.text}</NavLink>
-                                {navItem.hasOwnProperty('children') && (
-                                <Dropdown>
-                                    <ul>
-                                        {navItem.children.map((childItem, idx) => {
-                                            return(
-                                                <NavItem key={idx}>
-                                                    <NavLink href={childItem.link}>{childItem.text}</NavLink>
-                                                </NavItem>
-                                            )
-                                        })}
-                                    </ul>
-                                </Dropdown>
-                                )}
-                            </NavItem> 
-                        );
-                    })}
+                    {!auth && (
+                    <NavItem>
+                        <NavLink href="/shift">Shift</NavLink>
+                    </NavItem>
+                    )}
+                    <NavItem>
+                        <NavLink href="/classes">Classes</NavLink>
+                    </NavItem>
+                    <NavItem>
+                        <NavLink href="/locations">Locations</NavLink>
+                    </NavItem>
+                    <NavItem>
+                        <NavLink href="/teachers">Teachers</NavLink>
+                    </NavItem>
+                    {/* <NavItem>
+                        <NavLink href="/store">Store</NavLink>
+                    </NavItem> */}
                     <NavItem>
                         <NavLink href="#">Account</NavLink>
                     </NavItem>
