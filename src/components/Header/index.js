@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import { useSelector, useDispatch } from "react-redux";
 import Link from "next/link";
 import { AnimatePresence, useViewportScroll } from "framer-motion";
 import PageHeader, { LogoCol, LogoWrapper, NavCol, ButtonCol, MobileNavCol } from "./styles";
@@ -11,6 +12,7 @@ import MobileNav from "./Navigation/MobileNav";
 
 const Header = () => {
   const router = useRouter(); 
+  const { auth } = useSelector(({ auth }) => auth);
 
   const [ scrollingUp, setScrollingUp ] = useState(false);
   const [ scrollTop, setScrollTop ] = useState(0);
@@ -60,7 +62,7 @@ const Header = () => {
         <Link href="/">
           <a>
             <AnimatePresence>
-              {router.pathname === '/sign-up' && (
+              {!auth && (
                 <LogoWrapper
                   initial={{ opacity: 0, y: '-50%' }}
                   animate={{ opacity: 1, y: '-50%' }}
@@ -72,7 +74,7 @@ const Header = () => {
               )}
             </AnimatePresence>
             <AnimatePresence>
-              {router.pathname !== '/sign-up' && (
+              {auth && (
                 <LogoWrapper
                   initial={{ opacity: 0, x: '-100px', y: '-50%' }}
                   animate={{ opacity: 1, x: 0, y: '-50%' }}
