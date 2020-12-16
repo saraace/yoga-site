@@ -52,8 +52,7 @@ const Homepage = () => {
     // heights is duration + scene height
     const sceneHeights = [0, 900, 10900, 11900, 12900, 14400, 15900, 17400];
 
-    useEffect(() => {
-        
+    const calculateDimensions = () => {
         // get width and height of window
         const w = window.innerWidth;
         const h = window.innerHeight;
@@ -84,6 +83,26 @@ const Homepage = () => {
         // determine offset styles 
         setOffsetStyles((tall)? { height: h, left: xOffset } : { width: w, top: yOffset, left: 0 });
         setCoverStyles(tall? { height: '100%', left: 0 } : { width: '100%', top: 0 });
+    }
+
+    useEffect(() => {
+
+        calculateDimensions();
+        
+        let timeoutId = null;
+
+        const resizeListener = () => {
+            clearTimeout(timeoutId); 
+            timeoutId = setTimeout(() => {
+                calculateDimensions();
+            }, 250);
+        };
+
+        window.addEventListener('resize', resizeListener);
+
+        return () => {
+            window.removeEventListener('resize', resizeListener);
+        }
 
     }, [window]);
 
