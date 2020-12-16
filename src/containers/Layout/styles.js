@@ -45,7 +45,7 @@ export const Page = styled.div`
         padding: 200px 0 0;         
     } 
     
-    &.homepage{ 
+    &.shift{ 
         padding: 0 !important;
     }
 `; 

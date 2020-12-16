@@ -24,6 +24,9 @@ const PageHeader = styled(motion.header)`
 export const LogoCol = styled.div`
     z-index: 1;
     width: 250px;
+    display: flex;
+    align-items:center;
+    height: 100%;
 
     a{
         position: relative;
@@ -31,9 +34,8 @@ export const LogoCol = styled.div`
 `;
 
 export const LogoWrapper = styled(motion.div)`
-    position: absolute;
-    //top: 50%;
-    //transform: translateY(-50%);
+    display: flex; 
+    align-items: center;
 `; 
 
 export const NavCol = styled.div`

@@ -20,7 +20,7 @@ const Layout = ({ children }) => {
     if(router.pathname === "/sign-up"){
       setBgClass('');
       setBackground('/images/sign-up/bg.png');
-    } else if(router.pathname === '/dashboard') {
+    } else if(router.pathname === '/') {
       setBgClass('dashboard');
       setBackground('/images/dashboard/bg.png');
     } else if(router.pathname === '/instructors/[id]'){
@@ -47,7 +47,7 @@ const Layout = ({ children }) => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <Header />
-      <Page className={ router.pathname === "/" ? "homepage" : "" }>{children}</Page>
+      <Page className={ router.pathname === "/shift" ? "shift" : "" }>{children}</Page>
       <Footer />
     </ContentWrapper>
   )

@@ -53,40 +53,40 @@ const Header = () => {
 
   return (
     <PageHeader 
-      className={router.pathname !== "/"? (scrollingUp? 'sticky' : 'static') : "homepage"} 
-      initial={router.pathname !== "/"? "": "initialHomepage"}
-      animate={router.pathname !== "/"? (scrollingUp? 'sticky' : 'static') : "homepage"} 
+      className={router.pathname !== "/shift"? (scrollingUp? 'sticky' : 'static') : "homepage"} 
+      initial={router.pathname !== "/shift"? "": "initialHomepage"}
+      animate={router.pathname !== "/shift"? (scrollingUp? 'sticky' : 'static') : "homepage"} 
       variants={headerVariants}
     >
       <LogoCol>
-        <Link href="/">
-          <a>
-            <AnimatePresence>
-              {!auth && (
-                <LogoWrapper
-                  initial={{ opacity: 0, y: '-50%' }}
-                  animate={{ opacity: 1, y: '-50%' }}
-                  transition={{ ease: 'easeOut', duration: 0.3 }}
-                  exit={{ opacity: 0, y: '-50%' }}
-                >
-                  <YogaJointLogo />
-                </LogoWrapper>
-              )}
-            </AnimatePresence>
-            <AnimatePresence>
-              {auth && (
-                <LogoWrapper
-                  initial={{ opacity: 0, x: '-100px', y: '-50%' }}
-                  animate={{ opacity: 1, x: 0, y: '-50%' }}
-                  transition={{ ease: 'easeOut', duration: 0.3 }}
-                  exit={{ opacity: 0, x: '100px', y: '-50%' }}
-                >
-                  <ShiftLogo />
-                </LogoWrapper>
-              )}
-            </AnimatePresence>
-          </a>
-        </Link>
+        {!auth && (
+          <Link href="/shift">
+            <a>
+              <LogoWrapper
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ ease: 'easeOut', duration: 0.3 }}
+                exit={{ opacity: 0 }}
+              >
+                <YogaJointLogo />
+              </LogoWrapper>
+            </a>
+          </Link>
+        )}
+        {auth && (
+          <Link href="/">
+            <a>
+              <LogoWrapper
+                initial={{ opacity: 0, x: '-100px' }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ ease: 'easeOut', duration: 0.3 }}
+                exit={{ opacity: 0, x: '100px'  }}
+              >
+                <ShiftLogo />
+              </LogoWrapper>
+            </a>
+          </Link>
+        )}
       </LogoCol>
       <NavCol>
         <Navigation />
