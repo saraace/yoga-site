@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-//import { Controller, Scene } from "react-scrollmagic";
 import { useViewportScroll } from "framer-motion";
 import window from "global"; 
 
