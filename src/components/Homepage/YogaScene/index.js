@@ -1,7 +1,7 @@
 import SingleCategory from "../SingleCategory";
 import Icon from "../../../assets/svgs/yoga-icon.svg";
 
-const YogaScene = ({ scrollY, yVal, progress, duration, startPos, nextStartPos, offsetStyles, height }) => {
+const YogaScene = ({ scrollY, yVal, duration, startPos, nextStartPos, offsetStyles, height }) => {
 
     const posterSrc = "/images/homepage/yoga/bg-yoga.png"
     const videoSrc = "/images/homepage/yoga/bg-yoga.mp4";
@@ -13,7 +13,7 @@ const YogaScene = ({ scrollY, yVal, progress, duration, startPos, nextStartPos, 
     ]
 
     return(
-        <SingleCategory icon={<Icon />} {...{ scrollY, yVal, progress, duration, startPos, nextStartPos, offsetStyles, height, posterSrc, videoSrc, heading, description, listItems }} /> 
+        <SingleCategory icon={<Icon />} {...{ scrollY, yVal, duration, startPos, nextStartPos, offsetStyles, height, posterSrc, videoSrc, heading, description, listItems }} /> 
     )
 }
 

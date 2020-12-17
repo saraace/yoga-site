@@ -137,11 +137,11 @@ const Homepage = () => {
                             {indicators && <ProgressIndicators {...{ yVal, progress, duration, startPos, endPos }} />}
                             {idx === 0 && <ShiftSequence {...{ scrollY, yVal, width, height, x, y, sw, sh }} />}
                             {idx === 1 && <LivingRoom {...{ scrollY, progress, startPos, nextStartPos, duration, width, height, x, y, sw, sh, offsetStyles, coverStyles }} />}
-                            {idx === 2 && <Instructors {...{ scrollY, progress, startPos, nextStartPos, width, height }} />}
+                            {idx === 2 && <Instructors {...{ scrollY, startPos, nextStartPos, width, height }} />}
                             {idx === 3 && <Categories {...{ scrollY, yVal, progress, startPos, nextStartPos, height, offsetStyles }} />}
-                            {idx === 4 && <YogaScene {...{ scrollY, yVal, progress, duration, startPos, nextStartPos, offsetStyles, height }} />}
-                            {idx === 5 && <FiitScene {...{ scrollY, yVal, progress, duration, startPos, nextStartPos, offsetStyles, height }} />}
-                            {idx === 6 && <RestoreScene {...{ scrollY, yVal, progress, duration, startPos, nextStartPos, offsetStyles, height }} />}
+                            {idx === 4 && <YogaScene {...{ scrollY, yVal, duration, startPos, nextStartPos, offsetStyles, height }} />}
+                            {idx === 5 && <FiitScene {...{ scrollY, yVal, duration, startPos, nextStartPos, offsetStyles, height }} />}
+                            {idx === 6 && <RestoreScene {...{ scrollY, yVal, duration, startPos, nextStartPos, offsetStyles, height }} />}
                             </SceneWrapper>
                         </Scene>
                     )

@@ -5,7 +5,6 @@ export const Home = styled.div`
 
 export const Scene = styled.div`
     margin:0 auto; 
-    border:solid 10px green; 
 `; 
 
 export const SceneWrapper = styled.div`
