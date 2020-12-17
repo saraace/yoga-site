@@ -6,7 +6,7 @@ import Input from "../../Forms/Input";
 import { Container, Button } from "theme-ui";
 import { FullScreen, Row, Col, Phone, VideoWrapper, Form, ButtonWrapper, Small, Bg } from "./styles"; 
 
-const SignUpForm = ({ scrollY, active, startPos, width, height }) => {
+const SignUpForm = ({ scrollY, yVal, startPos, width, height }) => {
 
     const videoRef = useRef(null);
 
@@ -44,20 +44,13 @@ const SignUpForm = ({ scrollY, active, startPos, width, height }) => {
 
     useEffect(() => {
 
-        function playVideo() {
-            if((scrollY.get() >= startPos-height)){
-                setPlay(true);
-            } else{
-                setPlay(false);
-            }
+        if((yVal >= startPos-height)){
+            setPlay(true);
+        } else{
+            setPlay(false);
         }
-
-        const unsubscribeY = scrollY.onChange(playVideo);
-
-        return () => {
-            unsubscribeY();
-        }
-    }, [scrollY]);
+        
+    }, [yVal]);
 
    useEffect(() => {
         if(play && videoReady){

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, useTransform, useMotionValue, AnimatePresence } from "framer-motion";
 import { FullScreen, VideoWrapper, ContentContainer, Intro, Benefits, List, ListItem } from "./styles";
 
-const SingleCategoryScene = ({ scrollY, progress, duration, startPos, nextStartPos, offsetStyles, height, posterSrc, videoSrc, icon, heading, description, listItems }) => {
+const SingleCategoryScene = ({ scrollY, yVal, progress, duration, startPos, nextStartPos, offsetStyles, height, posterSrc, videoSrc, icon, heading, description, listItems }) => {
     
     const sceneProgress = useMotionValue(0);
 
@@ -31,7 +31,7 @@ const SingleCategoryScene = ({ scrollY, progress, duration, startPos, nextStartP
         <FullScreen>
             <motion.div style={{ backgroundImage: `url(${posterSrc})`}}>
                 <VideoWrapper>
-                    {((scrollY.get() >= startPos-height) && (scrollY.get() <= nextStartPos)) && <video src={videoSrc} style={offsetStyles} autoPlay muted loop/>}
+                    {((yVal >= startPos-height) && (yVal <= nextStartPos)) && <video src={videoSrc} style={offsetStyles} autoPlay muted loop/>}
                 </VideoWrapper>
                 <ContentContainer>
                     <Intro>

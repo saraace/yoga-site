@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import { Controller, Scene } from "react-scrollmagic";
+//import { Controller, Scene } from "react-scrollmagic";
 import { useViewportScroll } from "framer-motion";
 import window from "global"; 
 
 /* STYLES */
-import { Home, SceneWrapper } from "./styles";
+import { Home, SceneWrapper, Scene } from "./styles";
 
 /* COMPONENTS */
 import ProgressIndicators from "./ProgressIndicators";
@@ -33,10 +33,11 @@ const Homepage = () => {
     const indicators = true;
 
     const { scrollY } = useViewportScroll();
+    const [ yVal, setYVal ] = useState(0);
 
     // dimensions of window
-    const [width, setWidth] = useState(0); 
-    const [height, setHeight] = useState(0);
+    const [ width, setWidth ] = useState(0); 
+    const [ height, setHeight ] = useState(0);
 
     // coordinates for image sequence canvas
     const [ x, setX ] = useState(0);
@@ -107,38 +108,46 @@ const Homepage = () => {
 
     }, [window]);
 
+    useEffect(() => {
+        
+        const updateY = () => {
+            setYVal(scrollY.get());
+        }
+
+        const unsubscribe = scrollY.onChange(updateY)
+
+        return () => {
+            unsubscribe();
+        }
+    }, [scrollY]);
+
     return(
         <>
             <Home>
-                <ScrollIndicator {...{ scrollY, finalPos: (sceneHeights[6]+(height*6))+sceneDurations[6] }} />
-                <Controller>
-                    { sceneDurations.map((duration, idx) => {
-                                    
-                        const startPos = (idx > 0)? sceneHeights[idx]+(height*idx) : 0;
-                        const nextStartPos = (idx+1 <= 7)? sceneHeights[idx+1]+(height*(idx+1)) : 0;
+                {sceneDurations.map((duration, idx) => {         
 
-                        return (
-                            <Scene {...{indicators}} key={idx} triggerHook="onLeave" duration={duration} pin>
-                                {(progress) => {
-                                    return (
-                                        <SceneWrapper>
-                                            {indicators && <ProgressIndicators {...{ scrollY, progress, duration, startPos }} />}
-                                            {idx === 0 && <ShiftSequence {...{ scrollY, width, height, x, y, sw, sh }} />}
-                                            {idx === 1 && <LivingRoom {...{ scrollY, progress, startPos, nextStartPos, duration, width, height, x, y, sw, sh, offsetStyles, coverStyles }} />}
-                                            {idx === 2 && <Instructors {...{ scrollY, progress, startPos, nextStartPos, width, height }} />}
-                                            {idx === 3 && <Categories {...{ scrollY, progress, startPos, nextStartPos, height, offsetStyles }} />}
-                                            {idx === 4 && <YogaScene {...{ scrollY, progress, duration, startPos, nextStartPos, offsetStyles, height }} />}
-                                            {idx === 5 && <FiitScene {...{ scrollY, progress, duration, startPos, nextStartPos, offsetStyles, height }} />}
-                                            {idx === 6 && <RestoreScene {...{ scrollY, progress, duration, startPos, nextStartPos, offsetStyles, height }} />}
-                                        </SceneWrapper>
-                                    );
-                                }}
-                            </Scene>
-                        )
-                    }) }
-                </Controller>
+                    const startPos = (idx > 0)? sceneHeights[idx]+(height*idx) : 0;
+                    const endPos = startPos+duration;
+                    const nextStartPos = (idx+1 <= 7)? sceneHeights[idx+1]+(height*(idx+1)) : 0;
+
+                    const progress = yVal<=startPos? 0 : (yVal>=endPos? 1 : (yVal-startPos)/duration);
+
+                    return(
+                        <Scene key={idx} style={{ height: height+duration }}>
+                            <SceneWrapper>
+                            {indicators && <ProgressIndicators {...{ yVal, progress, duration, startPos, endPos }} />}
+                            {idx === 0 && <ShiftSequence {...{ scrollY, yVal, width, height, x, y, sw, sh }} />}
+                            {idx === 1 && <LivingRoom {...{ scrollY, progress, startPos, nextStartPos, duration, width, height, x, y, sw, sh, offsetStyles, coverStyles }} />}
+                            {idx === 2 && <Instructors {...{ scrollY, progress, startPos, nextStartPos, width, height }} />}
+                            {idx === 3 && <Categories {...{ scrollY, yVal, progress, startPos, nextStartPos, height, offsetStyles }} />}
+                            {idx === 4 && <YogaScene {...{ scrollY, yVal, progress, duration, startPos, nextStartPos, offsetStyles, height }} />}
+                            {idx === 5 && <FiitScene {...{ scrollY, yVal, progress, duration, startPos, nextStartPos, offsetStyles, height }} />}
+                            {idx === 6 && <RestoreScene {...{ scrollY, yVal, progress, duration, startPos, nextStartPos, offsetStyles, height }} />}
+                            </SceneWrapper>
+                        </Scene>
+                    )
+                })}
             </Home>
-            <SignUpForm {...{ scrollY, active: true, width, height, startPos: sceneHeights[sceneHeights.length-1]+(height*6) }} /> 
         </>
     )
 }

@@ -3,7 +3,7 @@ import DownArrow from "../../../assets/svgs/down.svg";
 import { LargeCircle, SmallCircle } from "./styles"; 
 import { motion } from "framer-motion";
 
-const ScrollIndicator = ({ scrollY, finalPos }) => {
+const ScrollIndicator = ({ yVal, finalPos }) => {
 
     const [ position, setPosition ] = useState("fixed");
 
@@ -11,7 +11,7 @@ const ScrollIndicator = ({ scrollY, finalPos }) => {
 
         function updateCanvasImage() {
             
-            if(scrollY.get() >= finalPos){
+            if(yVal >= finalPos){
                 setPosition("absolute");
             } else{
                 setPosition("fixed");

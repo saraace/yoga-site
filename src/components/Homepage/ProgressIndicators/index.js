@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import styled from "@emotion/styled"; 
 
 const Table = styled.table`
@@ -14,7 +15,8 @@ const Table = styled.table`
     }
 `;
 
-const ProgressIndicators = ({ scrollY, progress, startPos, duration}) => {
+const ProgressIndicators = ({ yVal, progress, duration, startPos, endPos}) => {
+
     return(
         <Table>
             <tbody>
@@ -24,7 +26,7 @@ const ProgressIndicators = ({ scrollY, progress, startPos, duration}) => {
                 </tr>
                 <tr>
                     <td>Page Progress</td>
-                    <td>{scrollY.get()}</td>
+                    <td>{yVal}</td>
                 </tr>
                 <tr>
                     <td>Scene Progress</td>
@@ -40,7 +42,7 @@ const ProgressIndicators = ({ scrollY, progress, startPos, duration}) => {
                 </tr>
                 <tr>
                     <td>End Pos</td>
-                    <td>{startPos + duration}</td>
+                    <td>{endPos}</td>
                 </tr>
             </tbody>
         </Table>

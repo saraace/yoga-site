@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { useTransform, AnimatePresence } from "framer-motion";
 import { FullScreen, VideoWrapper, TextContainer, Content, Text, Renew, Shift, Transform, Row, Categories, Yoga, Fiit, Restore } from "./styles"; 
 
-const CategoriesScene = ({ scrollY, progress, startPos, nextStartPos, height, offsetStyles }) => {
+const CategoriesScene = ({ scrollY, yVal, progress, startPos, nextStartPos, height, offsetStyles }) => {
 
     const videoRef = useRef(null);
 
@@ -60,7 +60,7 @@ const CategoriesScene = ({ scrollY, progress, startPos, nextStartPos, height, of
         <FullScreen>
             <div>
                 <VideoWrapper style={{ scale, y }}>
-                {((scrollY.get() >= startPos) && (scrollY.get() <= nextStartPos)) && <video src="/images/homepage/scene-08/bg.mp4" style={offsetStyles} autoPlay muted />}
+                {((yVal >= startPos) && (yVal <= nextStartPos)) && <video src="/images/homepage/scene-08/bg.mp4" style={offsetStyles} autoPlay muted />}
                 </VideoWrapper>
                 <AnimatePresence>
                     {progress > 0.15 && (

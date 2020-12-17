@@ -4,7 +4,7 @@ import ImageArray from "./images";
 import ImageSequence from "../ImageSequence";
 import { FullScreen } from "./styles"; 
 
-const ShiftSequence = ({ scrollY, width, height, x, y, sw, sh, }) => {
+const ShiftSequence = ({ scrollY, yVal, width, height, x, y, sw, sh, }) => {
 
     const imageSequence = ImageArray();
 
@@ -17,28 +17,18 @@ const ShiftSequence = ({ scrollY, width, height, x, y, sw, sh, }) => {
 
     useEffect(() => {
 
-        function updateCanvasImage() {
-            
-            const frameId = Math.round(scrollY.get()*0.25);
+        const frameId = Math.round(yVal*0.25);
 
-            // within image sequence frames
-            if(frameId < imageSequence.length) {
-                setCanvasImage(frameId); 
-            }
-            // image sequence is complete
-            else {
-                setCanvasImage(imageSequence.length-1);
-            }
-
+        // within image sequence frames
+        if(frameId < imageSequence.length) {
+            setCanvasImage(frameId); 
+        }
+        // image sequence is complete
+        else {
+            setCanvasImage(imageSequence.length-1);
         }
 
-        const unsubscribeY = scrollY.onChange(updateCanvasImage);
-
-        return () => {
-            unsubscribeY();
-        }
-
-    }, [scrollY]);
+    }, [yVal]);
 
     return(
         <FullScreen>

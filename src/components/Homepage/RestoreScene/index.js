@@ -1,7 +1,7 @@
 import SingleCategory from "../SingleCategory";
 import Icon from "../../../assets/svgs/restore-icon.svg";
 
-const RestoreScene = ({ scrollY, progress, duration, startPos, nextStartPos, offsetStyles, height }) => {
+const RestoreScene = ({ scrollY, yVal, progress, duration, startPos, nextStartPos, offsetStyles, height }) => {
     
     const posterSrc = "/images/homepage/restore/bg-restore.png";
     const videoSrc = "/images/homepage/restore/bg-restore.mp4";
@@ -13,7 +13,7 @@ const RestoreScene = ({ scrollY, progress, duration, startPos, nextStartPos, off
     ]
 
     return(
-        <SingleCategory icon={<Icon />} {...{ scrollY, progress, duration, startPos, nextStartPos, offsetStyles, height, posterSrc, videoSrc, heading, description, listItems }} /> 
+        <SingleCategory icon={<Icon />} {...{ scrollY, yVal, progress, duration, startPos, nextStartPos, offsetStyles, height, posterSrc, videoSrc, heading, description, listItems }} /> 
     )
 }
 

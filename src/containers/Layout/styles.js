@@ -38,7 +38,7 @@ export const Page = styled.div`
     width: 100%;
     position: relative;
     z-index: 1;
-    overflow: hidden;
+    //overflow: hidden;
     padding: 104px 0 0; 
 
     @media (min-width: ${({ theme }) => theme.breakpoints[2]}){

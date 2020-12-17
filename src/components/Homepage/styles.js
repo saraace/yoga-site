@@ -1,10 +1,15 @@
 import styled from "@emotion/styled";
 
 export const Home = styled.div`
-    position: relative;
-    overflow: hidden;
 `;
 
+export const Scene = styled.div`
+    margin:0 auto; 
+    border:solid 10px green; 
+`; 
+
 export const SceneWrapper = styled.div`
-    position: relative;
+    position: -webkit-sticky; 
+    position: sticky; 
+    top: 0px;
 `;
