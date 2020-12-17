@@ -146,6 +146,7 @@ const Homepage = () => {
                         </Scene>
                     )
                 })}
+                <SignUpForm {...{ scrollY, yVal, startPos: sceneHeights[7]+(height*7), width, height }} />
             </Home>
         </>
     )

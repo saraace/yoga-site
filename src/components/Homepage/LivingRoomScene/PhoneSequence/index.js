@@ -94,8 +94,8 @@ const PhoneSequence = ({ width, height, nextStartPos, scrollY, progress, duratio
     const rightTextOpacity = useTransform(sceneProgress, [0.97, 0.99], [1, 0]);
 
     // scroll out parallax 
-    const transformY = useTransform(scrollY, [nextStartPos-(height-300), nextStartPos], [0, 200], [{ease: "easeInOut"}]);
-    const scale = useTransform(scrollY, [nextStartPos-(height+300), nextStartPos], [1, 1.15], [{ease: "easeInOut"}])
+    const transformY = useTransform(scrollY, [nextStartPos-(height-300), nextStartPos], [0, 200]);
+    const scale = useTransform(scrollY, [nextStartPos-(height+300), nextStartPos], [1, 1.15])
 
     return(
         <Laptop {...rest}>
@@ -103,7 +103,7 @@ const PhoneSequence = ({ width, height, nextStartPos, scrollY, progress, duratio
                 <ImageSequence {...{ imageSequence, canvasImage, width, height, x, y, sw, sh }} />
             </SeqWrapper>
             <VideoLoopWrapper className={phonePlaying? "front" : ""}>
-                <motion.div style={{ y: transformY, scale }}>
+                <motion.div>
                     <img src="/images/homepage/phone-seq/phone_seq_00239.png" style={offsetStyles} />
                     <video ref={phoneLoopRef} src="/images/homepage/phone-seq/phone_loop.mp4" style={offsetStyles} muted loop />
                 </motion.div>

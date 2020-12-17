@@ -7,6 +7,7 @@ export const FullScreen = styled.div`
     padding: 150px 0;
     position: relative;
     z-index: -1;
+    overflow: hidden;
 `;
 
 export const Row = styled.div`

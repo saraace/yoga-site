@@ -10,7 +10,7 @@ const Instructors = ({ scrollY, startPos, nextStartPos, width, height }) => {
 
     // background effects
     const bgScale = useTransform(scrollY, [startPos, nextStartPos], [1, 1.2]);
-    const bgY = useTransform(scrollY, [startPos-height, startPos, nextStartPos-height, nextStartPos], ['-25%', '0%', '0%', '25%']);
+    const bgY = useTransform(scrollY, [startPos-height, startPos, nextStartPos-height, nextStartPos], [(height*0.25)*-1, 0, 0, height*0.25]);
 
     return(
         <Scene>

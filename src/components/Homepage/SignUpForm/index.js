@@ -35,14 +35,6 @@ const SignUpForm = ({ scrollY, yVal, startPos, width, height }) => {
     const [ play, setPlay ] = useState(false);
 
     useEffect(() => {
-        if(videoRef){
-            videoRef.current.addEventListener("loadeddata", () => {
-                setVideoReady(true);
-            });
-        }
-    }, [videoRef]);
-
-    useEffect(() => {
 
         if((yVal >= startPos-height)){
             setPlay(true);
@@ -52,20 +44,12 @@ const SignUpForm = ({ scrollY, yVal, startPos, width, height }) => {
         
     }, [yVal]);
 
-   useEffect(() => {
-        if(play && videoReady){
-            videoRef.current.play();
-        } else if(!play){
-            videoRef.current.pause();
-        }
-    }, [play, videoRef, videoReady]);
-
     // background position
     const bgPos = width > height? { width: '100%', left: '50%', bottom: '0', x: '-50%'} : { height: '100%', left: '50%', x: '-50%'}
 
     // background effects
     const bgScale = useTransform(scrollY, [startPos, startPos+height], [1.2, 1]);
-    const bgY = useTransform(scrollY, [startPos, startPos+height], ['-25%', '0%'])
+    const bgY = useTransform(scrollY, [startPos-(height/2), startPos+(height/2)], [(height*0.25)*-1, 0])
 
 
     return(
@@ -76,7 +60,7 @@ const SignUpForm = ({ scrollY, yVal, startPos, width, height }) => {
                         <Phone>
                             <img src="/images/homepage/sign-up/phone.png" alt="Shift" />
                             <VideoWrapper>
-                                <video ref={videoRef} src="/images/homepage/sign-up/phone-screen.mp4" muted loop/>  
+                                {((yVal >= startPos-height) && <video src="/images/homepage/sign-up/phone-screen.mp4" autoPlay muted loop/>)}
                             </VideoWrapper>
                         </Phone>
                     </Col>
