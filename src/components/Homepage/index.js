@@ -3,7 +3,7 @@ import { useViewportScroll } from "framer-motion";
 import window from "global"; 
 
 /* STYLES */
-import { Home, SceneWrapper, Scene } from "./styles";
+import { Scene } from "./styles";
 
 /* COMPONENTS */
 import ProgressIndicators from "./ProgressIndicators";
@@ -122,7 +122,7 @@ const Homepage = () => {
 
     return(
         <>
-            <Home>
+            <div>
                 {sceneDurations.map((duration, idx) => {         
 
                     const startPos = (idx > 0)? sceneHeights[idx]+(height*idx) : 0;
@@ -132,8 +132,8 @@ const Homepage = () => {
                     const progress = yVal<=startPos? 0 : (yVal>=endPos? 1 : (yVal-startPos)/duration);
 
                     return(
-                        <Scene key={idx} style={{ height: height+duration }}>
-                            <SceneWrapper>
+                        <div key={idx} style={{ height: height+duration }}>
+                            <Scene>
                             {indicators && <ProgressIndicators {...{ yVal, progress, duration, startPos, endPos }} />}
                             {idx === 0 && <ShiftSequence {...{ scrollY, yVal, width, height, x, y, sw, sh }} />}
                             {idx === 1 && <LivingRoom {...{ scrollY, progress, startPos, nextStartPos, duration, width, height, x, y, sw, sh, offsetStyles, coverStyles }} />}
@@ -142,12 +142,12 @@ const Homepage = () => {
                             {idx === 4 && <YogaScene {...{ scrollY, yVal, duration, startPos, nextStartPos, offsetStyles, height }} />}
                             {idx === 5 && <FiitScene {...{ scrollY, yVal, duration, startPos, nextStartPos, offsetStyles, height }} />}
                             {idx === 6 && <RestoreScene {...{ scrollY, yVal, duration, startPos, nextStartPos, offsetStyles, height }} />}
-                            </SceneWrapper>
-                        </Scene>
+                            </Scene>
+                        </div>
                     )
                 })}
                 <SignUpForm {...{ scrollY, yVal, startPos: sceneHeights[7]+(height*7), width, height }} />
-            </Home>
+            </div>
         </>
     )
 }

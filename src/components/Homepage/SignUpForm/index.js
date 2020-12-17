@@ -67,7 +67,7 @@ const SignUpForm = ({ scrollY, yVal, startPos, width, height }) => {
                     <Col>
                         <Form onSubmit={handleSubmit}>
                             <h2><strong>SHIFT</strong>&nbsp;your&nbsp;routine, get&nbsp;started now!</h2>
-                            <p>Lectus sed sit purus donec nunc, malesuada posuere in. Quis ut fringilla ut nec. Malesuada iaculis quis ultricies est lorem tellus ac. Arcu eu porta eu fermentum lorem amet malesuada.</p>
+                            <p>Fill out your name and phone number below to sign up for our online classes and experience the benefits of a real SHIFT!</p>
                             <form>
                                 <Input 
                                     type="text"
