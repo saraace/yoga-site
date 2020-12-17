@@ -121,7 +121,7 @@ const Homepage = () => {
                             <Scene {...{indicators}} key={idx} triggerHook="onLeave" duration={duration} pin>
                                 {(progress) => {
                                     return (
-                                        <SceneWrapper initial={{ scale: 0.5, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ delay: 0.5, duration: 1 }} >
+                                        <SceneWrapper>
                                             {indicators && <ProgressIndicators {...{ scrollY, progress, duration, startPos }} />}
                                             {idx === 0 && <ShiftSequence {...{ scrollY, width, height, x, y, sw, sh }} />}
                                             {idx === 1 && <LivingRoom {...{ scrollY, progress, startPos, nextStartPos, duration, width, height, x, y, sw, sh, offsetStyles, coverStyles }} />}
