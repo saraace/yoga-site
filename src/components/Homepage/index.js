@@ -22,9 +22,9 @@ import YogaScene from "./YogaScene";
 // FIIT
 import FiitScene from "./FiitScene"; 
 // Restore
-import RestoreScene from "./RestoreScene"; 
-// Sign Up Form
-import SignUpForm from "./SignUpForm"; 
+import RestoreScene from "./RestoreScene";
+// Locations and Sign up form scenes
+import BottomScene from "./BottomScene";
 
 const Homepage = () => {
 
@@ -146,8 +146,10 @@ const Homepage = () => {
                         </div>
                     )
                 })}
-                <SignUpForm {...{ scrollY, yVal, startPos: sceneHeights[7]+(height*7), width, height }} />
             </div>
+            <BottomScene {...{ scrollY, yVal, startPos: sceneHeights[sceneHeights.length-1]+(height*(sceneHeights.length-1)), height }} />
+            {/* <LocationsScene />
+            <SignUpForm {...{ scrollY, yVal, startPos: sceneHeights[sceneHeights.length-1]+(height*(sceneHeights.length-1)), width, height }} /> */}
         </>
     )
 }

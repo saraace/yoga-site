@@ -1,14 +1,11 @@
-import { useRef, useState, useEffect } from "react";
 import { useTransform, motion } from "framer-motion";
 import { useFormik } from "formik"; 
 import * as Yup from "yup"; 
 import Input from "../../Forms/Input";
-import { Container, Button } from "theme-ui";
-import { FullScreen, Row, Col, Phone, VideoWrapper, Form, ButtonWrapper, Small, Bg } from "./styles"; 
+import { Button } from "theme-ui";
+import { FullScreen, SceneContainer, Row, Col, Phone, VideoWrapper, Form, ButtonWrapper, Small, Bg } from "./styles"; 
 
-const SignUpForm = ({ scrollY, yVal, startPos, width, height }) => {
-
-    const videoRef = useRef(null);
+const SignUpForm = ({ yVal, startPos }) => {
 
     const signUp = () => {
         console.log('Sign up!');
@@ -30,48 +27,25 @@ const SignUpForm = ({ scrollY, yVal, startPos, width, height }) => {
         onSubmit: signUp
     })
 
-    // video background
-    const [ videoReady, setVideoReady ] = useState(false);
-    const [ play, setPlay ] = useState(false);
-
-    useEffect(() => {
-
-        if((yVal >= startPos-height)){
-            setPlay(true);
-        } else{
-            setPlay(false);
-        }
-        
-    }, [yVal]);
-
-    // background position
-    const bgPos = width > height? { width: '100%', left: '50%', bottom: '0', x: '-50%'} : { height: '100%', left: '50%', x: '-50%'}
-
-    // background effects
-    const bgScale = useTransform(scrollY, [startPos, startPos+height], [1.2, 1]);
-    const bgY = useTransform(scrollY, [startPos-(height/2), startPos+(height/2)], [(height*0.25)*-1, 0])
-
-
     return(
         <FullScreen>
-            <Container>
+            <SceneContainer>
                 <Row>
                     <Col>
                         <Phone>
                             <img src="/images/homepage/sign-up/phone.png" alt="Shift" />
                             <VideoWrapper>
-                                {((yVal >= startPos-height) && <video src="/images/homepage/sign-up/phone-screen.mp4" autoPlay muted loop/>)}
+                                {((yVal >= startPos) && <video src="/images/homepage/sign-up/phone-screen.mp4" autoPlay muted loop/>)}
                             </VideoWrapper>
                         </Phone>
                     </Col>
                     <Col>
                         <Form onSubmit={handleSubmit}>
-                            <h2><strong>SHIFT</strong>&nbsp;your&nbsp;routine, get&nbsp;started now!</h2>
+                            <h2><strong>SHIFT</strong>&nbsp;Your&nbsp;Routine, Get&nbsp;Started Now!</h2>
                             <p>Fill out your name and phone number below to sign up for our online classes and experience the benefits of a real SHIFT!</p>
                             <form>
                                 <Input 
                                     type="text"
-                                    className="underline" 
                                     placeholder="Full Name"
                                     name="name"
                                     value={values.name}
@@ -80,7 +54,6 @@ const SignUpForm = ({ scrollY, yVal, startPos, width, height }) => {
                                 />
                                 <Input 
                                     type="text"
-                                    className="underline"
                                     placeholder="Email"
                                     name="email"
                                     values={values.email}
@@ -89,7 +62,6 @@ const SignUpForm = ({ scrollY, yVal, startPos, width, height }) => {
                                 />
                                 <Input 
                                     type="text"
-                                    className="underline"
                                     placeholder="Phone Number"
                                     name="phone_number"
                                     values={values.phone_number}
@@ -104,10 +76,7 @@ const SignUpForm = ({ scrollY, yVal, startPos, width, height }) => {
                         </Form>
                     </Col>
                 </Row>
-            </Container>
-            <motion.div>
-                <Bg style={{ scale: bgScale, y: bgY, ...bgPos }} src="/images/homepage/sign-up/bg.png" />
-            </motion.div>
+            </SceneContainer>
         </FullScreen>
     )
 }
