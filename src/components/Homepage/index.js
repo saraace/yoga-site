@@ -28,6 +28,8 @@ import BottomScene from "./BottomScene";
 
 const Homepage = () => {
 
+    const staticScenes = false;
+
     // indicators used for development
     const indicators = true;
 
@@ -132,16 +134,16 @@ const Homepage = () => {
                     const progress = yVal<=startPos? 0 : (yVal>=endPos? 1 : (yVal-startPos)/duration);
 
                     return(
-                        <div key={idx} style={{ height: height+duration }}>
-                            <Scene>
-                            {indicators && <ProgressIndicators {...{ yVal, progress, duration, startPos, endPos }} />}
-                            {idx === 0 && <ShiftSequence {...{ scrollY, yVal, width, height, x, y, sw, sh }} />}
-                            {idx === 1 && <LivingRoom {...{ scrollY, progress, startPos, nextStartPos, duration, width, height, x, y, sw, sh, offsetStyles, coverStyles }} />}
-                            {idx === 2 && <Instructors {...{ scrollY, startPos, nextStartPos, width, height }} />}
-                            {idx === 3 && <Categories {...{ scrollY, yVal, progress, startPos, nextStartPos, height, offsetStyles }} />}
-                            {idx === 4 && <YogaScene {...{ scrollY, yVal, duration, startPos, nextStartPos, offsetStyles, height }} />}
-                            {idx === 5 && <FiitScene {...{ scrollY, yVal, duration, startPos, nextStartPos, offsetStyles, height }} />}
-                            {idx === 6 && <RestoreScene {...{ scrollY, yVal, duration, startPos, nextStartPos, offsetStyles, height }} />}
+                        <div key={idx} style={staticScenes? {} : { height: height+duration }}>
+                            <Scene className={staticScenes? '' : 'sticky'} >
+                            {indicators && <ProgressIndicators {...{ staticScenes, yVal, progress, duration, startPos, endPos }} />}
+                            {idx === 0 && <ShiftSequence {...{ staticScenes, scrollY, yVal, width, height, x, y, sw, sh }} />}
+                            {idx === 1 && <LivingRoom {...{ staticScenes, scrollY, progress, startPos, nextStartPos, duration, width, height, x, y, sw, sh, offsetStyles, coverStyles }} />}
+                            {idx === 2 && <Instructors {...{ staticScenes, scrollY, startPos, nextStartPos, width, height }} />}
+                            {idx === 3 && <Categories {...{ staticScenes, scrollY, yVal, progress, startPos, nextStartPos, height, offsetStyles }} />}
+                            {idx === 4 && <YogaScene {...{ staticScenes, scrollY, yVal, duration, startPos, nextStartPos, offsetStyles, height }} />}
+                            {idx === 5 && <FiitScene {...{ staticScenes, scrollY, yVal, duration, startPos, nextStartPos, offsetStyles, height }} />}
+                            {idx === 6 && <RestoreScene {...{ staticScenes, scrollY, yVal, duration, startPos, nextStartPos, offsetStyles, height }} />}
                             </Scene>
                         </div>
                     )

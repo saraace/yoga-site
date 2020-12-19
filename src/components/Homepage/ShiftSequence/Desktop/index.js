@@ -1,5 +1,5 @@
-import AnimatedScene from "./Desktop/Animated";
-import StaticScene from "./Desktop/Static";
+import AnimatedScene from "./Animated";
+import StaticScene from "./Static";
 
 const DesktopScene = ({ staticScenes, ...rest }) => {
 
