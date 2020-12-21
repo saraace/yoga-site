@@ -62,6 +62,7 @@ export const Form = styled.div`
     p{
         font-size: ${({ theme }) => theme.fontSizes[2]+'px'};
         line-height: 1.315;
+        margin-bottom: 40px;
     }
 
     &::before{
@@ -83,6 +84,7 @@ export const ButtonWrapper = styled.div`
     
     button{
         width: 360px;
+        padding: 20px 0;
     }
 `; 
 

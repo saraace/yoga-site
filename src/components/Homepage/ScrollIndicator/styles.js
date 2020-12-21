@@ -1,15 +1,21 @@
 import styled from "@emotion/styled";
 import { motion } from "framer-motion";
 
+export const Indicator = styled.div`
+    position: -webkit-sticky; 
+    position: sticky; 
+    height: 0px;
+    line-height: 0;
+    z-index: 1;
+    display: flex; 
+    justify-content: center;
+`; 
+
 export const LargeCircle = styled(motion.div)`
     width: 122px; 
     height: 122px;  
-    position: fixed;
-    bottom: -61px;
-    left: 50%; 
-    transform: translateX(-50%);
-    z-index: 10;
     border-radius: 50%;
+    position: relative;
 `;
 
 export const SmallCircle = styled(motion.div)`

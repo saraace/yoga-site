@@ -3,7 +3,7 @@ import { useViewportScroll } from "framer-motion";
 import window from "global"; 
 
 /* STYLES */
-import { Scene } from "./styles";
+import { ScrollScenes, Scene } from "./styles";
 
 /* COMPONENTS */
 import ProgressIndicators from "./ProgressIndicators";
@@ -124,7 +124,8 @@ const Homepage = () => {
 
     return(
         <>
-            <div>
+            <ScrollScenes>
+                <ScrollIndicator {...{height}} />
                 {sceneDurations.map((duration, idx) => {         
 
                     const startPos = (idx > 0)? sceneHeights[idx]+(height*idx) : 0;
@@ -148,10 +149,8 @@ const Homepage = () => {
                         </div>
                     )
                 })}
-            </div>
+            </ScrollScenes>
             <BottomScene {...{ staticScenes, scrollY, yVal, startPos: sceneHeights[sceneHeights.length-1]+(height*(sceneHeights.length-1)), height }} />
-            {/* <LocationsScene />
-            <SignUpForm {...{ scrollY, yVal, startPos: sceneHeights[sceneHeights.length-1]+(height*(sceneHeights.length-1)), width, height }} /> */}
         </>
     )
 }

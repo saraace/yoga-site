@@ -28,7 +28,7 @@ const SignUpForm = ({ staticScenes, yVal, startPos }) => {
 
     return(
         <FullScreen>
-            <SceneContainer>
+            <SceneContainer variant="small">
                 <Row>
                     <Col>
                         <Phone>
