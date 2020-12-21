@@ -86,40 +86,12 @@ const TVSequence = ({ scrollY, progress, duration, x, y, sw, sh, width, height, 
     // background scale
     const scale = useTransform(scrollY, [height, height+600], ["1.15", "1"], [{ease: "easeInOut"}]);
 
-    // ease
-    //const introTransition = { duration: 1.4, ease: [0.6, 0.01, -0.05, 0.9] };
-
     /** INTRO TEXT **/
     const introText = {
         initial: { opacity: 0 },
         animate: { opacity: 1, transition: { duration: 0.5, ease: "easeOut" } },
         exit: { opacity: 0, transition: { duration: 0.5, ease: "easeOut" } }
     }
-    // "We Are More Than Fitness" 
-    /* const heading = {
-        initial: { opacity: 0 },
-        animate: { opacity: 1, transition: { duration: 0.5, ease: "easeIn"  } },
-        exit: { opacity: 0, transition: { duration: 0.5, ease: "easeIn"  } }
-    } */
-
-    // intro paragraph
-    /* const paragraph = {
-        initial: { y: 75, opacity: 0 }, 
-        animate: { y: 0, opacity: 1, transition: { duration: 0.3, delay: 0.15, ease: "easeIn" } },
-        exit: { opacity: 0, transition: { duration: 0.5, ...introTransition } }
-    } */
-
-    // watch & signup buttons
-    /* const watchButton = {
-        initial: { opacity: 0, y: 50 }, 
-        animate: { opacity: 1, y: 0, transition: { delay: 0.3, duration: 0.3 } },
-        exit: { opacity: 0, transition: { duration: 0.5, ...introTransition } }
-    }
-    const signUpButton = {
-        initial: { opacity: 0, y: 50 }, 
-        animate: { opacity: 1, y: 0, transition: { delay: 0.35, duration: 0.3 } },
-        exit: { opacity: 0, transition: { duration: 0.5, ...introTransition } }
-    } */
 
     const scrollOut = useTransform(sceneProgress, [0, 0.1625], [0, (height)*-1]);
     const opacityOut = useTransform(sceneProgress, [0.12, 0.1625], [1, 0]);

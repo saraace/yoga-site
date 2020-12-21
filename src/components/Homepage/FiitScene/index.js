@@ -1,7 +1,7 @@
 import SingleCategory from "../SingleCategory";
 import Icon from "../../../assets/svgs/fiit-icon.svg";
 
-const FiitScene = ({ scrollY, yVal, duration, startPos, nextStartPos, offsetStyles, height }) => {
+const FiitScene = ({ ...rest }) => {
 
     const posterSrc = "/images/homepage/fiit/bg-fiit.png"
     const videoSrc = "/images/homepage/fiit/bg-fiit.mp4";
@@ -13,7 +13,7 @@ const FiitScene = ({ scrollY, yVal, duration, startPos, nextStartPos, offsetStyl
     ]
 
     return(
-        <SingleCategory icon={<Icon />} {...{ scrollY, yVal, duration, startPos, nextStartPos, offsetStyles, height, posterSrc, videoSrc, heading, description, listItems }} /> 
+        <SingleCategory icon={<Icon />} {...{ posterSrc, videoSrc, heading, description, listItems }} {...rest} /> 
     )
 }
 

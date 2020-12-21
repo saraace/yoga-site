@@ -8,7 +8,7 @@ import TVSequence from "./TVSequence";
 import LaptopSequence from "./LaptopSequence"; 
 import PhoneSequence from "./PhoneSequence";
 
-const LivingRoomScene = ({ scrollY, progress, duration, nextStartPos, width, height, x, y, sw, sh, offsetStyles, coverStyles }) => {
+const LivingRoomScene = ({ staticScenes, scrollY, progress, duration, nextStartPos, width, height, x, y, sw, sh, offsetStyles, coverStyles }) => {
 
     const [ tvSequence, setTvSequence ] = useState(false);
 
@@ -29,25 +29,36 @@ const LivingRoomScene = ({ scrollY, progress, duration, nextStartPos, width, hei
     }, [scrollY]);
 
     return(
-        <FullScreen>
-            {tvSequence && (
-                <TVSequence 
-                    className={progress <= 0.4375? "front" : ""} 
-                    {...{ scrollY, progress, duration, x, y, sw, sh, width, height, offsetStyles, coverStyles }}
-                />
+        <FullScreen className={ staticScenes? "static" : "animated"}>
+            {!staticScenes&& (
+                <>
+                {tvSequence && (
+                    <TVSequence 
+                        className={progress <= 0.4375? "front" : ""} 
+                        {...{ staticScenes, scrollY, progress, duration, x, y, sw, sh, width, height, offsetStyles, coverStyles }}
+                    />
+                )}
+                {progress > 0.2 && (
+                    <LaptopSequence 
+                        style={{ x: progress > 0.43? 0: -268 }}
+                        className={progress > 0.4375 && progress <=0.6875? "front" : ""}
+                        {...{ staticScenes, progress, duration, x, y, sw, sh, width, height, offsetStyles }} 
+                    />
+                )}
+                {progress > 0.5 && (
+                    <PhoneSequence 
+                        className={progress > 0.6875? "front" : ""}
+                        {...{ staticScenes, scrollY, progress, duration, nextStartPos, x, y, sw, sh, width, height, offsetStyles }} 
+                    />
+                )}
+                </>
             )}
-            {progress > 0.2 && (
-                <LaptopSequence 
-                    style={{ x: progress > 0.43? 0: -268 }}
-                    className={progress > 0.4375 && progress <=0.6875? "front" : ""}
-                    {...{ progress, duration, x, y, sw, sh, width, height, offsetStyles }} 
-                />
-            )}
-            {progress > 0.5 && (
-                <PhoneSequence 
-                    className={progress > 0.6875? "front" : ""}
-                    {...{ scrollY, progress, duration, nextStartPos, x, y, sw, sh, width, height, offsetStyles }} 
-                />
+            {staticScenes && (
+                <>
+                    <TVSequence {...{ staticScenes }} />
+                    <LaptopSequence {...{ staticScenes }} />
+                    <PhoneSequence {...{ staticScenes }} />
+                </>
             )}
         </FullScreen>
     )

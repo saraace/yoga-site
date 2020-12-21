@@ -91,7 +91,8 @@ export const LeftText = styled(motion.div)`
 export const RightText = styled(motion.div)`
     width: 310px;
     align-self: flex-end;
-    position: absolute; top: 100%;
+    position: absolute; 
+    top: 100%;
 
     p{
         font-size: ${({ theme }) => theme.fontSizes[2]+'px'}; 

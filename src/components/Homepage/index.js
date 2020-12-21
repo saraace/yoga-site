@@ -136,7 +136,7 @@ const Homepage = () => {
                     return(
                         <div key={idx} style={staticScenes? {} : { height: height+duration }}>
                             <Scene className={staticScenes? '' : 'sticky'} >
-                            {indicators && <ProgressIndicators {...{ staticScenes, yVal, progress, duration, startPos, endPos }} />}
+                            {!staticScenes && indicators && <ProgressIndicators {...{ staticScenes, yVal, progress, duration, startPos, endPos }} />}
                             {idx === 0 && <ShiftSequence {...{ staticScenes, scrollY, yVal, width, height, x, y, sw, sh }} />}
                             {idx === 1 && <LivingRoom {...{ staticScenes, scrollY, progress, startPos, nextStartPos, duration, width, height, x, y, sw, sh, offsetStyles, coverStyles }} />}
                             {idx === 2 && <Instructors {...{ staticScenes, scrollY, startPos, nextStartPos, width, height }} />}
@@ -149,7 +149,7 @@ const Homepage = () => {
                     )
                 })}
             </div>
-            <BottomScene {...{ scrollY, yVal, startPos: sceneHeights[sceneHeights.length-1]+(height*(sceneHeights.length-1)), height }} />
+            <BottomScene {...{ staticScenes, scrollY, yVal, startPos: sceneHeights[sceneHeights.length-1]+(height*(sceneHeights.length-1)), height }} />
             {/* <LocationsScene />
             <SignUpForm {...{ scrollY, yVal, startPos: sceneHeights[sceneHeights.length-1]+(height*(sceneHeights.length-1)), width, height }} /> */}
         </>
