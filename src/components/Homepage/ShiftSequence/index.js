@@ -1,9 +1,13 @@
-import DesktopScene from "./Desktop";
+import AnimatedScene from "./Desktop/Animated";
+import StaticScene from "./Desktop/Static";
 
-const ShiftScene = ({ ...rest }) => {
+const ShiftScene = ({ staticScenes, ...rest }) => {
 
     return(
-        <DesktopScene {...rest} />
+        <> 
+            {!staticScenes && <AnimatedScene {...rest} />}
+            {staticScenes && <StaticScene />}
+        </>
     )
 }
 
