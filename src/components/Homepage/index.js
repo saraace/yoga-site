@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { useViewportScroll } from "framer-motion";
+import { isIOS, isIE, isEdge } from 'react-device-detect';
 import window from "global"; 
 
 /* STYLES */
-import { ScrollScenes, Scene } from "./styles";
+import { Scene } from "./styles";
 
 /* COMPONENTS */
 import ProgressIndicators from "./ProgressIndicators";
@@ -29,7 +30,7 @@ import BottomScene from "./BottomScene";
 const Homepage = () => {
 
     // set to true if fallback scenes are needed.
-    const staticScenes = false;
+    const staticScenes = isIE || isEdge;
 
     // indicators used for development
     const indicators = false;
@@ -43,6 +44,7 @@ const Homepage = () => {
     // dimensions of window
     const [ width, setWidth ] = useState(0); 
     const [ height, setHeight ] = useState(0);
+    const [ innerHeight, setInnerHeight ] = useState(0);
 
     // coordinates for image sequence canvas
     const [ x, setX ] = useState(0);
@@ -59,9 +61,10 @@ const Homepage = () => {
     const sceneHeights = [0, 900, 10900, 11900, 12900, 14400, 15900, 17400];
 
     const calculateDimensions = () => {
+        console.log(window);
         // get width and height of window
         const w = window.innerWidth;
-        const h = window.innerHeight;
+        const h = isIOS? window.screen.availHeight : window.innerHeight;
 
         // calculate window ratio
         const ratio = h/w;
@@ -81,6 +84,7 @@ const Homepage = () => {
         // set 
         setWidth(w);
         setHeight(h);
+        setInnerHeight(window.innerHeight);
         setSh(imageH);
         setSw(imageW);
         setX(xOffset); 
@@ -134,8 +138,8 @@ const Homepage = () => {
 
     return(
         <div style={{ opacity: refresh? 0 : 1 }}>
-            <ScrollScenes>
-                <ScrollIndicator {...{height}} />
+            <div>
+                <ScrollIndicator {...{ height: innerHeight }} />
                 {sceneDurations.map((duration, idx) => {         
 
                     const startPos = (idx > 0)? sceneHeights[idx]+(height*idx) : 0;
@@ -159,7 +163,7 @@ const Homepage = () => {
                         </div>
                     )
                 })}
-            </ScrollScenes>
+            </div>
             <BottomScene {...{ staticScenes, scrollY, yVal, startPos: sceneHeights[sceneHeights.length-1]+(height*(sceneHeights.length-1)), height }} />
         </div>
     )
