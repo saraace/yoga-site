@@ -28,10 +28,14 @@ import BottomScene from "./BottomScene";
 
 const Homepage = () => {
 
-    const staticScenes = true;
+    // set to true if fallback scenes are needed.
+    const staticScenes = false;
 
     // indicators used for development
-    const indicators = true;
+    const indicators = false;
+
+    // set to true when the user refreshes the page
+    const [ refresh, setRefresh ] = useState(false)
 
     const { scrollY } = useViewportScroll();
     const [ yVal, setYVal ] = useState(0);
@@ -103,6 +107,12 @@ const Homepage = () => {
 
         window.addEventListener('resize', resizeListener);
 
+        // jump to top of the page on refresh
+        window.onbeforeunload = () => {
+            setRefresh(true)
+            window.scrollTo(0, 0);
+        }
+
         return () => {
             window.removeEventListener('resize', resizeListener);
         }
@@ -123,7 +133,7 @@ const Homepage = () => {
     }, [scrollY]);
 
     return(
-        <>
+        <div style={{ opacity: refresh? 0 : 1 }}>
             <ScrollScenes>
                 <ScrollIndicator {...{height}} />
                 {sceneDurations.map((duration, idx) => {         
@@ -151,7 +161,7 @@ const Homepage = () => {
                 })}
             </ScrollScenes>
             <BottomScene {...{ staticScenes, scrollY, yVal, startPos: sceneHeights[sceneHeights.length-1]+(height*(sceneHeights.length-1)), height }} />
-        </>
+        </div>
     )
 }
 
