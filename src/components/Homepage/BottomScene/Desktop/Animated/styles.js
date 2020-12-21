@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 export const Scene = styled.div`
     position: relative;
     overflow: hidden;
-    z-index: 2;
+    z-index: 11;
 `; 
 
 export const LocationsContent = styled.div`

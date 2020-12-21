@@ -28,7 +28,7 @@ import BottomScene from "./BottomScene";
 
 const Homepage = () => {
 
-    const staticScenes = false;
+    const staticScenes = true;
 
     // indicators used for development
     const indicators = true;

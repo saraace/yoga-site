@@ -3,10 +3,7 @@ import styled from '@emotion/styled';
 export const Scene = styled.div`
     position: relative;
     overflow: hidden;
-    background-image: url(/images/homepage/sign-up/bg.png); 
-    background-repeat: no-repeat; 
-    background-size: cover; 
-    background-position: center bottom;
+    z-index: 11;
 `; 
 
 export const LocationsContent = styled.div`
@@ -44,5 +41,15 @@ export const SignUpContent = styled.div`
         background: -webkit-linear-gradient(180deg, rgba(12,37,72,1) 0%, rgba(11,21,37,1) 100%);
         background: linear-gradient(180deg, rgba(12,37,72,1) 0%, rgba(11,21,37,1) 100%);
         filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#0c2548",endColorstr="#0b1525",GradientType=1);
+    }
+`;
+
+export const ImageWrapper = styled.div`
+    position: absolute;
+    left: 150px;
+    right: 150px;
+
+    img{
+        width: 100%;
     }
 `;
