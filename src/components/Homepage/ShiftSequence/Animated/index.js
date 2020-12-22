@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useTransform, motion } from "framer-motion";
-import ImageArray from "../../images";
-import ImageSequence from "../../../ImageSequence";
+import ImageArray from "./images";
+import ImageSequence from "../../ImageSequence";
 import { FullScreen } from "./styles"; 
 
 const AnimatedScene = ({ scrollY, yVal, width, height, x, y, sw, sh, }) => {

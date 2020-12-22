@@ -1,7 +1,7 @@
 import { useTransform } from "framer-motion";
 
 import { Scene, SceneContainer, Col, ImageCol, Video, PlayButton, Instructor, Bg } from "./styles";
-import PlayIcon from "../../../../../assets/svgs/play-icon.svg";
+import PlayIcon from "../../../../assets/svgs/play-icon.svg";
 
 const Instructors = ({ scrollY, startPos, nextStartPos, width, height }) => {
 

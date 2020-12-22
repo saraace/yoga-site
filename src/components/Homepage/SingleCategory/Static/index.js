@@ -1,5 +1,5 @@
 
-import { FullScreen, Contain, ContentContainer, Intro, BenefitsContainer, Benefits, List, ListItem } from "./styles";
+import { FullScreen, Contain, ContentContainer, Intro, Heading, BenefitsContainer, Benefits, List, ListItem } from "./styles";
 
 const SingleCategoryScene = ({ posterSrc, icon, heading, description, listItems }) => {
 
@@ -8,8 +8,10 @@ const SingleCategoryScene = ({ posterSrc, icon, heading, description, listItems 
             <Contain>
                 <ContentContainer>
                     <Intro>
-                        {icon}
-                        <h2>{heading}</h2>
+                        <Heading>
+                            {icon}
+                            <h2>{heading}</h2>
+                        </Heading>
                         <p>{description}</p>
                     </Intro>
                 </ContentContainer>

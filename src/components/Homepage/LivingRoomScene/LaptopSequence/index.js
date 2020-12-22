@@ -1,14 +1,25 @@
-import AnimatedScene from "./Desktop/Animated";
-import StaticScene from "./Desktop/Static";
+/* COMPONENTS */
+import DesktopScene from "./Desktop";
+import StaticScene from "./Static";
 
-const DesktopScene = ({ staticScenes, ...rest }) => {
+const LaptopSequence = ({ staticScenes, isMobile, ...rest }) => {
+
+    const content = () => {
+        return (
+            <h1>Enjoy classes from your laptop</h1>
+        )
+    }
 
     return(
         <> 
-            {!staticScenes && <AnimatedScene {...rest} />}
-            {staticScenes && <StaticScene />}
+            {!staticScenes && (
+                <> 
+                    {!isMobile && <DesktopScene {...{ content: content() }} {...rest} />}
+                </>
+            )}
+            {staticScenes && <StaticScene {...{ content: content() }} />}
         </>
     )
 }
 
-export default DesktopScene;
+export default LaptopSequence;

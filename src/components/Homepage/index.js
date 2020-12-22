@@ -30,15 +30,22 @@ import BottomScene from "./BottomScene";
 const Homepage = () => {
 
     // set to true if fallback scenes are needed.
-    const staticScenes = isIE || isEdge;
+    //const staticScenes = isIE || isEdge;
+    const staticScenes = true;
 
     // indicators used for development
     const indicators = false;
 
     // set to true when the user refreshes the page
-    const [ refresh, setRefresh ] = useState(false)
+    const [ refresh, setRefresh ] = useState(false);
 
+    // set to true if mobile device
+    const [ isMobile, setIsMobile ] = useState(false);
+
+    // framer motion motion value for distance scrolled down page
     const { scrollY } = useViewportScroll();
+
+    // distance scrolled down page
     const [ yVal, setYVal ] = useState(0);
 
     // dimensions of window
@@ -61,7 +68,7 @@ const Homepage = () => {
     const sceneHeights = [0, 900, 10900, 11900, 12900, 14400, 15900, 17400];
 
     const calculateDimensions = () => {
-        console.log(window);
+        
         // get width and height of window
         const w = window.innerWidth;
         const h = isIOS? window.screen.availHeight : window.innerHeight;
@@ -89,6 +96,11 @@ const Homepage = () => {
         setSw(imageW);
         setX(xOffset); 
         setY(yOffset);
+
+        // determine if mobile layout should be used
+        if(w <= 768){
+            setIsMobile(true);
+        }
 
         // determine offset styles 
         setOffsetStyles((tall)? { height: h, left: xOffset } : { width: w, top: yOffset, left: 0 });
@@ -151,20 +163,20 @@ const Homepage = () => {
                     return(
                         <div key={idx} style={staticScenes? {} : { height: height+duration }}>
                             <Scene className={staticScenes? '' : 'sticky'} >
-                            {!staticScenes && indicators && <ProgressIndicators {...{ staticScenes, yVal, progress, duration, startPos, endPos }} />}
+                            {!staticScenes && indicators && <ProgressIndicators {...{ yVal, progress, duration, startPos, endPos }} />}
                             {idx === 0 && <ShiftSequence {...{ staticScenes, scrollY, yVal, width, height, x, y, sw, sh }} />}
-                            {idx === 1 && <LivingRoom {...{ staticScenes, scrollY, progress, startPos, nextStartPos, duration, width, height, x, y, sw, sh, offsetStyles, coverStyles }} />}
-                            {idx === 2 && <Instructors {...{ staticScenes, scrollY, startPos, nextStartPos, width, height }} />}
-                            {idx === 3 && <Categories {...{ staticScenes, scrollY, yVal, progress, startPos, nextStartPos, height, offsetStyles }} />}
-                            {idx === 4 && <YogaScene {...{ staticScenes, scrollY, yVal, duration, startPos, nextStartPos, offsetStyles, height }} />}
-                            {idx === 5 && <FiitScene {...{ staticScenes, scrollY, yVal, duration, startPos, nextStartPos, offsetStyles, height }} />}
-                            {idx === 6 && <RestoreScene {...{ staticScenes, scrollY, yVal, duration, startPos, nextStartPos, offsetStyles, height }} />}
+                            {idx === 1 && <LivingRoom {...{ staticScenes, isMobile, scrollY, progress, startPos, nextStartPos, duration, width, height, x, y, sw, sh, offsetStyles, coverStyles }} />}
+                            {idx === 2 && <Instructors {...{ staticScenes, isMobile, scrollY, startPos, nextStartPos, width, height }} />}
+                            {idx === 3 && <Categories {...{ staticScenes, isMobile, scrollY, yVal, progress, startPos, nextStartPos, height, offsetStyles }} />}
+                            {idx === 4 && <YogaScene {...{ staticScenes, isMobile, scrollY, yVal, duration, startPos, nextStartPos, offsetStyles, height }} />}
+                            {idx === 5 && <FiitScene {...{ staticScenes, isMobile, scrollY, yVal, duration, startPos, nextStartPos, offsetStyles, height }} />}
+                            {idx === 6 && <RestoreScene {...{ staticScenes, isMobile, scrollY, yVal, duration, startPos, nextStartPos, offsetStyles, height }} />}
                             </Scene>
                         </div>
                     )
                 })}
             </div>
-            <BottomScene {...{ staticScenes, scrollY, yVal, startPos: sceneHeights[sceneHeights.length-1]+(height*(sceneHeights.length-1)), height }} />
+            <BottomScene {...{ staticScenes, isMobile, scrollY, yVal, startPos: sceneHeights[sceneHeights.length-1]+(height*(sceneHeights.length-1)), height }} />
         </div>
     )
 }

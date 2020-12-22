@@ -4,7 +4,7 @@ import Link from "next/link";
 
 import { Scene, SceneContainer, Col, Video, ImageCol, Model } from "./styles";
 
-const LocationsScene = () => {
+const LocationsScene = ({ isMobile }) => {
     return(
         <Scene>
             <div>
@@ -17,7 +17,8 @@ const LocationsScene = () => {
                                 <a sx={{ variant: "buttons.primary" }}>Get Started</a>
                             </Link>
                             <Video>
-                                <img src="/images/homepage/locations/video.jpg" />
+                                {!isMobile && (<img src="/images/homepage/locations/video.jpg" />)}
+                                {isMobile && (<img src="/images/homepage/locations/mobile-video.jpg" />)}
                             </Video>
                             <p>Over the last 10 years, Yoga Joint has grown from a single studio location to one of the fastest-growing and most successful yoga &amp; fitness studio franchises in southern Florida.</p>
                         </div>

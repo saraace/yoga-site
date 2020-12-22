@@ -94,13 +94,13 @@ export const Col = styled(motion.div)`
         margin: 0 0 100px; 
 
     }
-`; 
 
-export const ButtonRow = styled.div`
-    display: flex; 
+    .button-row{
+        display: flex; 
 
-    button{
-        margin: 0 25px 0 0;
+        button{
+            margin: 0 25px 0 0;
+        }
     }
 `; 
 

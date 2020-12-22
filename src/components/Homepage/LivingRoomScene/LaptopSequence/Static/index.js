@@ -1,13 +1,13 @@
 import { Laptop, TextContainer } from "./styles";
 
-const StaticScene = () => {
+const LaptopSequenceStatic = ({ content }) => {
     return(
         <Laptop>
             <TextContainer>
-                <h1>Enjoy classes from your laptop</h1>
+                { content }
             </TextContainer>
         </Laptop>
     )
 }
 
-export default StaticScene;
+export default LaptopSequenceStatic;

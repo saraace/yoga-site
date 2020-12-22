@@ -5,12 +5,12 @@ import { motion, AnimatePresence, useMotionValue, useTransform } from "framer-mo
 import { Laptop, SeqWrapper, VideoLoopWrapper, Text } from "./styles"; 
 
 /* COMPONENTS */
-import ImageSequence from "../../../../ImageSequence";
+import ImageSequence from "../../../ImageSequence";
 
 // Image sequence images
-import LaptopImages from "../../images";
+import LaptopImages from "../images";
 
-const LaptopSequence = ({ width, height, progress, duration, x, y, sw, sh, offsetStyles, ...rest }) => {
+const LaptopSequenceDesktop = ({ width, height, progress, duration, x, y, sw, sh, offsetStyles, content, ...rest }) => {
 
     // laptop loop 
     const laptopLoopRef = useRef(null);
@@ -77,20 +77,12 @@ const LaptopSequence = ({ width, height, progress, duration, x, y, sw, sh, offse
             laptopLoopRef.current.pause();
         }
     }, [laptopVideoReady, laptopPlaying]); 
-
-    // ease
-    const transition = { duration: 1.4, ease: [0.6, 0.01, -0.05, 0.9] };
     
-    // "Enjoy classes from your laptop" heading
+    // heading
     const heading = {
-        animate: { transition: { delayChildren: 0, staggerChildren: 0.04, staggerDirection: 1 } },
+        initial: { opacity: 0, y: 100, transition: { duration: 1, ease: "easeOut" } },
+        animate: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } },
         exit: { opacity: 0, y: 100, transition: { duration: 1, ease: "easeOut" } }
-    };
-
-    // heading letters
-    const letter = {
-        initial: { y: 100 },
-        animate: { y: 0, transition: { duration: 0.3, ...transition } }
     };
 
     const headingY = useTransform(sceneProgress, [0.55, 0.6875], [0, (height/2)*-1]);
@@ -111,38 +103,7 @@ const LaptopSequence = ({ width, height, progress, duration, x, y, sw, sh, offse
                 <Text initial="initial" animate="animate" exit="exit">
                     <motion.h1 style={{ y: headingY, opacity: headingOpacity }}>
                         <div>
-                            <motion.span variants={heading}>
-                                <motion.span variants={letter}>E</motion.span>
-                                <motion.span variants={letter}>n</motion.span>
-                                <motion.span variants={letter}>j</motion.span>
-                                <motion.span variants={letter}>o</motion.span>
-                                <motion.span variants={letter}>y</motion.span>
-                                <motion.span variants={letter}>&nbsp;</motion.span>
-                                <motion.span variants={letter}>c</motion.span>
-                                <motion.span variants={letter}>l</motion.span>
-                                <motion.span variants={letter}>a</motion.span>
-                                <motion.span variants={letter}>s</motion.span>
-                                <motion.span variants={letter}>s</motion.span>
-                                <motion.span variants={letter}>e</motion.span>
-                                <motion.span variants={letter}>s</motion.span>
-                                <motion.span variants={letter}>&nbsp;</motion.span>
-                                <motion.span variants={letter}>f</motion.span>
-                                <motion.span variants={letter}>r</motion.span>
-                                <motion.span variants={letter}>o</motion.span>
-                                <motion.span variants={letter}>m</motion.span>
-                                <motion.span variants={letter}>&nbsp;</motion.span>
-                                <motion.span variants={letter}>y</motion.span>
-                                <motion.span variants={letter}>o</motion.span>
-                                <motion.span variants={letter}>u</motion.span>
-                                <motion.span variants={letter}>r</motion.span>
-                                <motion.span variants={letter}>&nbsp;</motion.span>
-                                <motion.span variants={letter}>l</motion.span>
-                                <motion.span variants={letter}>a</motion.span>
-                                <motion.span variants={letter}>p</motion.span>
-                                <motion.span variants={letter}>t</motion.span>
-                                <motion.span variants={letter}>o</motion.span>
-                                <motion.span variants={letter}>p</motion.span>
-                            </motion.span>
+                            <motion.span variants={heading}>{ content }</motion.span>
                         </div>
                     </motion.h1>
                 </Text>
@@ -152,4 +113,4 @@ const LaptopSequence = ({ width, height, progress, duration, x, y, sw, sh, offse
     )
 }
 
-export default LaptopSequence;
+export default LaptopSequenceDesktop;

@@ -1,10 +1,10 @@
 import StaticScene from "./Desktop/Static"; 
 import AnimatedScene from "./Desktop/Animated";
 
-const InstructorsScene = ({ staticScenes, ...rest }) => {
+const InstructorsScene = ({ staticScenes, isMobile, ...rest }) => {
     return(
         <>
-            {staticScenes && <StaticScene {...{staticScenes}} />}
+            {staticScenes && <StaticScene {...{ staticScenes, isMobile }} />}
             {!staticScenes && <AnimatedScene {...rest} />}
         </>
     )

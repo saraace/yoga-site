@@ -1,8 +1,8 @@
 import DesktopScene from "./Desktop";
 
-const LocationsScene = ({ staticScenes, ...rest }) => {
+const LocationsScene = ({ staticScenes, isMobile, ...rest }) => {
     return(
-        <DesktopScene {...rest} />
+        <DesktopScene {...{ isMobile }} {...rest} />
     )
 }
 

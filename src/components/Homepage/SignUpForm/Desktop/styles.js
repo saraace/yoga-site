@@ -15,10 +15,14 @@ export const SceneContainer = styled(Container)`
 `;
 
 export const Row = styled.div`
-    display: flex;
-    align-items: center;
+    
     position: relative;
     z-index: 1;
+
+    @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
+        display: flex;
+        align-items: center;
+    }
 `; 
 
 export const Col = styled.div``; 
@@ -27,17 +31,22 @@ export const Phone = styled.div`
     position: relative;
 
     img{
-        width: 500px;
-        margin: 0 0 0 -70px;
+        width: 100%;
+        margin: 0 auto;
+
+        @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
+            width: 500px;
+            margin: 0 0 0 -70px;
+        }
     }
 `; 
 
 export const VideoWrapper = styled.div`
     position: absolute;
-    top: 78px; 
-    bottom: 100px; 
-    left: 46px; 
-    right: 126px;
+    top: 50px; 
+    bottom: 65px; 
+    left: 70px; 
+    right: 76px;
     z-index: -1;
     overflow: hidden;
     background-image: url(/images/homepage/sign-up/phone-still.png);
@@ -47,22 +56,39 @@ export const VideoWrapper = styled.div`
     video{
         height: 100%;
     }
+
+    @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
+        top: 78px; 
+        bottom: 100px; 
+        left: 46px; 
+        right: 126px;
+    }
 `; 
 
 export const Form = styled.div`
     border: 1px solid ${({ theme }) => theme.colors.purple};
     border-radius: 16px;
-    padding: 40px;
+    padding: 24px;
     position: relative;
 
     h2{
-        font-size: 49.12px; 
-        line-height: 1.13;
+        font-size: 24px; 
+        line-height: 1.1;
+
+        @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
+            font-size: 49.12px; 
+            line-height: 1.13;
+        }
     }
     p{
-        font-size: ${({ theme }) => theme.fontSizes[2]+'px'};
-        line-height: 1.315;
+        font-size: ${({ theme }) => theme.fontSizes[1]+'px'};
+        line-height: 1.4;
         margin-bottom: 40px;
+
+        @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
+            font-size: ${({ theme }) => theme.fontSizes[2]+'px'};
+            line-height: 1.315;
+        }
     }
 
     &::before{
@@ -77,13 +103,18 @@ export const Form = styled.div`
         backdrop-filter: blur(8px);
         
     }
+
+    @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
+        padding: 40px;  
+    }
 `; 
 
 export const ButtonWrapper = styled.div`
     text-align: center;
     
     button{
-        width: 360px;
+        width: 100%;
+        max-width: 360px;
         padding: 20px 0;
     }
 `; 

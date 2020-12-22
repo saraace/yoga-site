@@ -6,12 +6,12 @@ import { motion, useMotionValue, useTransform, AnimatePresence } from "framer-mo
 import { Laptop, SeqWrapper, VideoLoopWrapper, TextContainer, Text, LeftText, RightText } from "./styles"; 
 
 /* COMPONENTS */
-import ImageSequence from "../../../../ImageSequence"; 
+import ImageSequence from "../../../ImageSequence"; 
 
 // Image sequence images
-import PhoneImages from "../../images"; 
+import PhoneImages from "../images"; 
 
-const PhoneSequence = ({ width, height, nextStartPos, scrollY, progress, duration, x, y, sw, sh, offsetStyles, ...rest }) => {
+const PhoneSequenceDesktop = ({ width, height, nextStartPos, scrollY, progress, duration, x, y, sw, sh, offsetStyles, leftContent, rightContent, ...rest }) => {
 
     // phone loop 
     const phoneLoopRef = useRef(null);
@@ -115,8 +115,7 @@ const PhoneSequence = ({ width, height, nextStartPos, scrollY, progress, duratio
                             {progress >= 0.74 && (
                                 <LeftText initial="initial" animate="animate" exit="exit" style={{ y: leftTextY, opacity: leftTextOpacity }}>
                                     <motion.div variants={text}>
-                                        <p>Live or on-demand.</p>
-                                        <h2>Online classes featuring live instructor feedback.</h2>
+                                        { leftContent }
                                     </motion.div>
                                 </LeftText>
                             )}
@@ -125,8 +124,7 @@ const PhoneSequence = ({ width, height, nextStartPos, scrollY, progress, duratio
                             {progress >= 0.825 && (
                                 <RightText initial="initial" animate="animate" exit="exit" style={{ y: rightTextY, opacity: rightTextOpacity }}>
                                     <motion.div variants={text}>
-                                        <h2>Your virtual fitness studio.</h2>
-                                        <p>You can also book classes to go to your local Yoga Joint studio and workout together.</p>
+                                        { rightContent }
                                     </motion.div>
                                 </RightText>
                             )}
@@ -138,4 +136,4 @@ const PhoneSequence = ({ width, height, nextStartPos, scrollY, progress, duratio
     )
 }
 
-export default PhoneSequence;
+export default PhoneSequenceDesktop;

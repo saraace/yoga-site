@@ -1,20 +1,18 @@
 import { FullScreen, TextContainer, Text, LeftText, RightText } from "./styles";
 
-const StaticScene = () => {
+const PhoneSequenceStatic = ({ leftContent, rightContent }) => {
     return(
         <FullScreen>
             <TextContainer>
                 <Text>
                     <LeftText>
                         <div>
-                            <p>Live or on-demand.</p>
-                            <h2>Online classes featuring live instructor feedback.</h2>
+                            { leftContent }
                         </div>
                     </LeftText>
                     <RightText>
                         <div>
-                            <h2>Your virtual fitness studio.</h2>
-                            <p>You can also book classes to go to your local Yoga Joint studio and workout together.</p>
+                            { rightContent }
                         </div>
                     </RightText>
                 </Text>
@@ -23,4 +21,4 @@ const StaticScene = () => {
     )
 }
 
-export default StaticScene;
+export default PhoneSequenceStatic;

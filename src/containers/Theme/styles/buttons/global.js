@@ -4,6 +4,7 @@ export const round = {
     fontFamily: 'body', 
     fontWeight: 700,
     textTransform: 'uppercase', 
+    textAlign: 'center',
     borderWidth: '2px', 
     borderStyle: 'solid', 
     borderRadius: 32, 

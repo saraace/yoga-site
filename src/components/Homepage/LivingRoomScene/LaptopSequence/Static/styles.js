@@ -16,9 +16,14 @@ export const TextContainer = styled(Container)`
     align-items: center;
 
     h1{
-        font-size: 48px; 
-        line-height: 1.5;
+        font-size: 32px; 
+        line-height: 1.33;
         font-weight: 700; 
         text-align: center; 
+
+        @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
+            font-size: 48px; 
+            line-height: 1.5;
+        }
     }
 `;

@@ -1,11 +1,16 @@
-import StaticScene from "./Desktop/Static"; 
-import AnimatedScene from "./Desktop/Animated";
+/* COMPONENTS */
+import DesktopScene from "./Desktop";
+import StaticScene from "./Static"; 
 
-const SingleCategoryScene = ({ staticScenes, ...rest }) => {
+const SingleCategoryScene = ({ staticScenes, isMobile, ...rest }) => {
     return(
         <>
+            {!staticScenes && (
+                <> 
+                    {!isMobile && <DesktopScene {...rest} />}
+                </>
+            )}
             {staticScenes && <StaticScene {...rest} />}
-            {!staticScenes && <AnimatedScene {...rest} />}
         </>
     )
 }

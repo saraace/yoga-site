@@ -5,14 +5,14 @@ import SignUpForm from "../../../SignUpForm";
 
 import { Scene, ImageWrapper, LocationsContent, SignUpContent } from "./styles";
 
-const BottomScene = ({ staticScenes }) => {
+const BottomScene = ({ staticScenes, isMobile }) => {
     return(
         <Scene>
             <ImageWrapper>
                 <img src="/images/homepage/sign-up/bg.png" />
             </ImageWrapper>
             <LocationsContent>
-                <LocationsScene />
+                <LocationsScene {...{ isMobile }} />
             </LocationsContent>
             <SignUpContent>
                 <SignUpForm {...{ staticScenes }} />
