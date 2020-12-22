@@ -30,8 +30,8 @@ import BottomScene from "./BottomScene";
 const Homepage = () => {
 
     // set to true if fallback scenes are needed.
-    //const staticScenes = isIE || isEdge;
-    const staticScenes = true;
+    const staticScenes = isIE || isEdge;
+    //const staticScenes = true;
 
     // indicators used for development
     const indicators = false;
