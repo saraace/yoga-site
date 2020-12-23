@@ -46,10 +46,20 @@ export const SignUpContent = styled.div`
 
 export const ImageWrapper = styled.div`
     position: absolute;
+    top: 0;
+    bottom: 0;
     right: 0;
+    left: 0;
+    text-align: right;
 
     img{
         width: 200%;
+        position: absolute; 
+        right: -100px;
+
+        @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
+            width: 100%;
+        }
     }
 
     @media (min-width: ${({ theme }) => theme.breakpoints[2]}){

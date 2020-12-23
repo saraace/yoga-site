@@ -1,7 +1,7 @@
 // Locations 
-import LocationsScene from "../../../LocationsScene";
+import LocationsScene from "../../LocationsScene";
 // Sign Up Form
-import SignUpForm from "../../../SignUpForm"; 
+import SignUpForm from "../../SignUpForm"; 
 
 import { Scene, ImageWrapper, LocationsContent, SignUpContent } from "./styles";
 
@@ -12,7 +12,7 @@ const BottomScene = ({ staticScenes, isMobile }) => {
                 <img src="/images/homepage/sign-up/bg.png" />
             </ImageWrapper>
             <LocationsContent>
-                <LocationsScene {...{ isMobile }} />
+                <LocationsScene {...{ staticScenes, isMobile }} />
             </LocationsContent>
             <SignUpContent>
                 <SignUpForm {...{ staticScenes }} />

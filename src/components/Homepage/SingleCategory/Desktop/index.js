@@ -1,7 +1,7 @@
 import { useTransform } from "framer-motion";
 import { FullScreen, VideoWrapper, Contain, ContentContainer, Intro, BenefitsContainer, Benefits, List, ListItem } from "./styles";
 
-const SingleCategoryScene = ({ scrollY, yVal, duration, startPos, nextStartPos, offsetStyles, height, posterSrc, videoSrc, icon, heading, description, listItems }) => {
+const SingleCategorySceneDesktop = ({ scrollY, yVal, duration, startPos, nextStartPos, offsetStyles, height, posterSrc, videoSrc, icon, heading, description, listItems }) => {
 
     // intro content
     const introY = useTransform(scrollY, [startPos, startPos+(duration*0.3), startPos+(duration*0.4), startPos+(duration*0.8)], [height*0.5, 0, 0, (height*0.5)*-1]); 
@@ -40,8 +40,8 @@ const SingleCategoryScene = ({ scrollY, yVal, duration, startPos, nextStartPos, 
     )
 }
 
-SingleCategoryScene.defaultProps = {
+SingleCategorySceneDesktop.defaultProps = {
     startPos: 0
 }
 
-export default SingleCategoryScene;
+export default SingleCategorySceneDesktop;
