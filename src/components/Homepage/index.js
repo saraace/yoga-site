@@ -161,8 +161,8 @@ const Homepage = () => {
                     const progress = yVal<=startPos? 0 : (yVal>=endPos? 1 : (yVal-startPos)/duration);
 
                     return(
-                        <div key={idx} style={staticScenes? {} : { height: height+duration }}>
-                            <Scene className={staticScenes? '' : 'sticky'} >
+                        <div key={idx} style={(staticScenes || (isMobile && idx === 2))? {} : { height: height+duration }}>
+                            <Scene className={(staticScenes || (isMobile && idx === 2))? '' : 'sticky'} >
                             {!staticScenes && indicators && <ProgressIndicators {...{ yVal, progress, duration, startPos, endPos }} />}
                             {idx === 0 && <ShiftSequence {...{ staticScenes, scrollY, yVal, width, height, x, y, sw, sh }} />}
                             {idx === 1 && <LivingRoom {...{ staticScenes, isMobile, scrollY, progress, startPos, nextStartPos, duration, width, height, x, y, sw, sh, offsetStyles, coverStyles }} />}
