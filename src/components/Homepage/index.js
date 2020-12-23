@@ -34,7 +34,7 @@ const Homepage = () => {
     //const staticScenes = true;
 
     // indicators used for development
-    const indicators = false;
+    const indicators = true;
 
     // set to true when the user refreshes the page
     const [ refresh, setRefresh ] = useState(false);
@@ -62,10 +62,10 @@ const Homepage = () => {
     const [ coverStyles, setCoverStyles ] = useState({});
     
     // duration is how many pixels scene will stick to top
-    const sceneDurations = [900, 10000, 1000, 1000, 1500, 1500, 1500];
+    const [ sceneDurations, setSceneDurations ] = useState([900, 10000, 1000, 1000, 1500, 1500, 1500]);
 
     // heights is duration + scene height
-    const sceneHeights = [0, 900, 10900, 11900, 12900, 14400, 15900, 17400];
+    const [ sceneHeights, setSceneHeights ] = useState([0, 900, 10900, 11900, 12900, 14400, 15900, 17400]);
 
     const calculateDimensions = () => {
         
@@ -100,7 +100,7 @@ const Homepage = () => {
         // determine if mobile layout should be used
         if(w <= 768){
             setIsMobile(true);
-        }
+        } 
 
         // determine offset styles 
         setOffsetStyles((tall)? { height: h, left: xOffset } : { width: w, top: yOffset, left: 0 });

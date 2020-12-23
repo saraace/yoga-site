@@ -69,27 +69,27 @@ export const Text = styled.div`
     position: relative;
 
     h2{
-        font-size: ${({ theme }) => theme.fontSizes[4]+'px'}; 
-        line-height: 1.12; 
+        font-size: 32px; 
+        line-height: 1.12;
         font-weight: 700; 
     }
 `;
 
 export const LeftText = styled(motion.div)`
-    width: 430px;
+    max-width: 430px;
     position: absolute;
     top: 100%;
 
     p{
-        font-size: 32px; 
-        line-height: 1.315; 
+        font-size: ${({ theme }) => theme.fontSizes[3]+'px'};
+        line-height: 1.315;
         font-weight: 400;
-        margin: 0 0 20px 0;
+        margin: 0 0 10px 0;
     }
 `; 
 
 export const RightText = styled(motion.div)`
-    width: 310px;
+    max-width: 310px;
     align-self: flex-end;
     position: absolute; 
     top: 100%;

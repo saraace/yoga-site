@@ -11,7 +11,7 @@ import ImageSequence from "../../../ImageSequence";
 // Image sequence images
 import PhoneImages from "../images"; 
 
-const PhoneSequenceDesktop = ({ width, height, nextStartPos, scrollY, progress, duration, x, y, sw, sh, offsetStyles, leftContent, rightContent, ...rest }) => {
+const PhoneSequenceMobile = ({ width, height, nextStartPos, scrollY, progress, duration, x, y, sw, sh, offsetStyles, leftContent, rightContent, ...rest }) => {
 
     // phone loop 
     const phoneLoopRef = useRef(null);
@@ -136,4 +136,4 @@ const PhoneSequenceDesktop = ({ width, height, nextStartPos, scrollY, progress, 
     )
 }
 
-export default PhoneSequenceDesktop;
+export default PhoneSequenceMobile;
