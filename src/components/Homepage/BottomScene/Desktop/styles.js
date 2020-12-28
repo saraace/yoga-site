@@ -4,7 +4,6 @@ export const Scene = styled.div`
     position: relative;
     overflow: hidden;
     z-index: 11;
-    border: 3px dashed white;
 `; 
 
 export const LocationsContent = styled.div`
@@ -52,7 +51,6 @@ export const ImageWrapper = styled.div`
     right: 0;
     left: 0;
     text-align: right;
-    border: 2px dashed red;
 
     img{
         width: 200%;

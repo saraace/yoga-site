@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useViewportScroll } from "framer-motion";
-import { isIOS, isIE, isEdge } from 'react-device-detect';
+import { isIPad13, isIE, isEdge } from 'react-device-detect';
 import window from "global"; 
 
 /* STYLES */
@@ -51,7 +51,6 @@ const Homepage = () => {
     // dimensions of window
     const [ width, setWidth ] = useState(0); 
     const [ height, setHeight ] = useState(0);
-    const [ innerHeight, setInnerHeight ] = useState(0);
 
     // coordinates for image sequence canvas
     const [ x, setX ] = useState(0);
@@ -71,7 +70,7 @@ const Homepage = () => {
         
         // get width and height of window
         const w = window.innerWidth;
-        const h = isIOS? window.screen.availHeight : window.innerHeight;
+        const h = window.innerHeight;
 
         // calculate window ratio
         const ratio = h/w;
@@ -91,7 +90,6 @@ const Homepage = () => {
         // set 
         setWidth(w);
         setHeight(h);
-        setInnerHeight(window.innerHeight);
         setSh(imageH);
         setSw(imageW);
         setX(xOffset); 
@@ -151,7 +149,7 @@ const Homepage = () => {
     return(
         <div style={{ opacity: refresh? 0 : 1 }}>
             <div>
-                <ScrollIndicator {...{ height: innerHeight }} />
+                <ScrollIndicator {...{ height }} />
                 {sceneDurations.map((duration, idx) => {         
 
                     const startPos = (idx > 0)? sceneHeights[idx]+(height*idx) : 0;
