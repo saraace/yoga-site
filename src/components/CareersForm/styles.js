@@ -1,22 +1,6 @@
 import styled from '@emotion/styled';
 
-export const Intro = styled.div`
-    text-align: center;
-    width: 712px;
-    margin: 0 auto;
-
-    h1{
-        font-size: 78.01px; 
-        line-height: 1.115;
-    }
-    p{
-        font-size: ${({ theme }) => theme.fontSizes[2]+'px'}; 
-        line-height: 1.4;
-        margin: 0 0 54px;
-    }
-`; 
-
-export const ContactForm = styled.div`
+export const Careers = styled.div`
     text-align: center;
     border-top: 1px solid rgba(255, 255, 255, 0.24);
 
@@ -32,6 +16,18 @@ export const Row = styled.div`
 export const Col = styled.div`
     width: 50%;
     padding: 0 10px;
+`; 
+
+export const Schedule = styled.div`
+    margin: 0 0 42px 0; 
+    
+    .wrapper{
+        display: flex;
+
+        label{
+            margin: 0 15px 0 0;
+        }
+    }
 `; 
 
 export const TextareaWrapper = styled.div`
