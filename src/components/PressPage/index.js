@@ -90,11 +90,11 @@ const PressPage = () => {
         }
     ]
     return(
-        <Container>
+        <Container variant="small">
             <PageHeader heading="Press &amp; Media "></PageHeader>
             {years.map((year, i) => {
                 return(
-                    <Section key={i}>
+                    <Section key={i} className={i === years.length-1? 'last': ''}>
                         {year.entries.map((entry, j) => {
                             return(
                                 <Entry key={j}>

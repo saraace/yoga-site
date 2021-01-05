@@ -2,6 +2,10 @@ import styled from '@emotion/styled';
 
 export const Section = styled.section`
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+
+    &.last{
+        border: 0px;
+    }
 `;
 
 export const Entry = styled.div`
