@@ -11,6 +11,10 @@ export const CardWrapper = styled(Card)`
         height: 460px;
         padding: 24px;
     }
+    
+    &.large{
+        width: 50%;
+    }
 `;
 
 export const Name = styled.h4`

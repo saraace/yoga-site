@@ -6,10 +6,29 @@ import PageHeader from "../PageHeader";
 import SlidingLayout from "../../containers/CardLayouts/SlidingLayout";
 import InstructorCard from "../Cards/InstructorCard";
 
-import { Headline, Row, Col, TextCol, ButtonRow } from "./styles";
+import { Headline, Row, Col, TextCol, ButtonRow, TeamLeadersSection, TeamLeaders, SectionTitle, CTA } from "./styles";
 
 const About = () => {
 
+    const teamLeaders = [
+        {
+            name: "Paige Held",
+            title: "Owner, Yoga Leader",
+            classes: "24",
+            image: "/images/instructors/image-01.png", 
+            link: "/instructors/1", 
+            variant: "large"
+        }, 
+        {
+            name: "Kelly Green",
+            title: "Creator of Fusion Flow & Teacher Training Leader",
+            classes: "9",
+            image: "/images/instructors/image-02.png", 
+            link: "/instructors/1", 
+            variant: "large"
+        }
+    ]; 
+    
     const instructors = [
         {
             name: "Paige Held",
@@ -54,11 +73,14 @@ const About = () => {
         <PageHeader heading="About Us"></PageHeader>
         
         <Container>
-            <Headline>The truth is that, from the very first studio location that opened back in 2010, Yoga Joint has relied on one simple ingredient: <strong>Passion</strong></Headline>
+            <Headline>
+                <img src="/images/about/banner.jpg" />
+                <h2>The truth is that, from the very first studio location that opened back in 2010, Yoga Joint has relied on one simple ingredient: <strong>Passion</strong></h2>
+            </Headline>
             <Row>
-                <Col><img src="http://via.placeholder.com/566x354" /></Col>
+                <Col><img src="/images/about/image_01.jpg" /></Col>
                 <TextCol className="right">
-                    <p>From choosing which teachers will lead our various studio locations to the development of our trademark SHIFT yoga & fitness program, passion is at the core of everything we do.</p>
+                    <p>From choosing which teachers will lead our various studio locations to the development of our trademark SHIFT yoga &amp; fitness program, passion is at the core of everything we do.</p>
                     <p>This heartfelt motivation has served us well as we expanded to include meditative retreats around the world, on-location boutiques filled with our favorite lines of healthy living products, and, more recently, our SHIFT-certified teacher training and ambassador program.</p>
                     <ButtonRow>
                         <Link href="#">
@@ -69,8 +91,8 @@ const About = () => {
             </Row>
             <Row>
                 <TextCol className="left">
-                    <h3>Embracing a body-positive philosophy that orbits around a healthy mind-body connection,</h3>
-                    <p>Joint continues to grow its community and encourage people everywhere to develop the tools they need to look good, feel good, and be mindful.</p>  
+                    <h3>We embrace a body-positive philosophy that orbits around a healthy mind-body connection.</h3>
+                    <p>As the Yoga Joint community continues to grow, we remain committed to giving our members the tools they need to look good, feel good, and be mindful each and every day.  </p>  
                     <ButtonRow>
                         <Link href="#">
                             <a sx={{ variant: "buttons.primary" }}>Schedule a Class</a>
@@ -80,15 +102,32 @@ const About = () => {
                         </Link>
                     </ButtonRow>
                 </TextCol>
-                <Col><img src="http://via.placeholder.com/566x354" /></Col>
+                <Col><img src="/images/about/image_02.jpg" /></Col>
             </Row>
-            <SlidingLayout title={`Team Leaders`} height={[300, null, null, 460]} stepWidth={296} >
+            <TeamLeadersSection>
+                <SectionTitle>Team Leaders</SectionTitle>
+                <TeamLeaders>
+                    {teamLeaders.map((instructor, i) => {
+                        return(
+                            <InstructorCard key={i} {...instructor}/>
+                        )
+                    })}
+                </TeamLeaders>
+            </TeamLeadersSection>
+            <SlidingLayout title={`Studio Leaders`} height={[300, null, null, 460]} stepWidth={296} >
                 {instructors.map((instructor, i) => {
                     return(
                         <InstructorCard key={i} {...instructor} />
                     )
                 })}
             </SlidingLayout>
+            <CTA>
+                <p>We are thankful for this tremendous gift every day.</p>
+                <h1>I’m Ready to Make the SHIFT!</h1>
+                <Link href="/contact">
+                    <a sx={{ variant: "buttons.primary" }}>Contact Us</a>
+                </Link>
+            </CTA>
         </Container>
         
         </>

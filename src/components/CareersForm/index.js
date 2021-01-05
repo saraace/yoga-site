@@ -5,7 +5,7 @@ import Input from "../Forms/Input";
 import Select from "../Forms/Select";
 import OptionGroup from "../Forms/OptionGroup";
 import Textarea from "../Forms/Textarea";
-import { Careers, Row, Col, Schedule, TextareaWrapper } from "./styles";
+import { Careers, Gallery, GalRow, GalCol1, GalCol2, GalCol3, GalCol4, Row, Col, Schedule, TextareaWrapper } from "./styles";
 
 const CareersForm = () => {
 
@@ -77,6 +77,20 @@ const CareersForm = () => {
 
     return(
         <Careers>
+            <Gallery>
+                <GalRow>
+                    <GalCol1>
+                        <img src="/images/careers/image_01.jpg" />
+                        <GalRow>
+                            <GalCol3><img src="/images/careers/image_03.jpg" /></GalCol3>
+                            <GalCol4><img src="/images/careers/image_04.jpg" /></GalCol4>
+                        </GalRow>
+                    </GalCol1>
+                    <GalCol2>
+                        <img src="/images/careers/image_02.jpg" />
+                    </GalCol2>
+                </GalRow>
+            </Gallery>
             <h2>I'm Ready to Make the SHIFT!</h2>
             <form onSubmit={handleSubmit}>
                 <Row>
