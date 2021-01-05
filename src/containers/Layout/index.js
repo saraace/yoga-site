@@ -25,6 +25,9 @@ const Layout = ({ children }) => {
     } else if(router.pathname === "/contact"){
       setBgClass('');
       setBackground('/images/contact/bg.jpg');
+    } else if(router.pathname === "/press"){
+      setBgClass('');
+      setBackground('/images/press/bg.jpg');
     } else if(router.pathname === "/about"){
       setBgClass('');
       setBackground('/images/about/bg.png');

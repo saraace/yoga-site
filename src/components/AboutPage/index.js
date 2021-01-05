@@ -69,9 +69,7 @@ const About = () => {
     
     return(
         <>
-        
         <PageHeader heading="About Us"></PageHeader>
-        
         <Container>
             <Headline>
                 <img src="/images/about/banner.jpg" />
