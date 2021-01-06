@@ -3,11 +3,11 @@ import { motion } from "framer-motion";
 
 export const CardContainer = styled(motion.a)`
     border-radius: 12px;
-    margin: 0 16px 0 0;
     padding: 20px 24px 24px;
     position: relative;
     cursor: pointer;
     display: block;
+    height: 100%;
     overflow: hidden;
 
     &:after{
@@ -43,5 +43,20 @@ export const CardContent = styled.div`
     height: 100%;
     display: flex; 
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-end;
+
+    h2{
+        margin: 0; 
+    }
 `; 
+
+export const Address = styled.div`
+    display: flex; 
+    align-items: center;
+    margin: 16px 0 0;
+
+    svg{
+        width: 12px;
+        margin: 0 10px 0 0;
+    }
+`;
