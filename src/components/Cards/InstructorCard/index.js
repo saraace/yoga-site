@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import { CardWrapper, Name, Title, Classes } from "./styles";
 
-const InstructorCard = ({ name, title, classes, image, link }) => {
+const InstructorCard = ({ name, title, classes, image, link, variant }) => {
     return(
-        <CardWrapper title={name} {...{image}} {...{link}} alt={title}>
+        <CardWrapper title={name} {...{image}} {...{link}} className={variant ? variant : 'default'} alt={title}>
             <div></div>
             <div>
                 <Name>{name}</Name>
@@ -19,7 +19,8 @@ InstructorCard.defaultProps = {
     title: "", 
     classes: "", 
     image: "", 
-    link: "/"
+    link: "/", 
+    variant: ""
 };
 
 InstructorCard.propTypes = {
@@ -27,7 +28,8 @@ InstructorCard.propTypes = {
     title: PropTypes.string,
     classes: PropTypes.string, 
     image: PropTypes.string.isRequired, 
-    link: PropTypes.string.isRequired
+    link: PropTypes.string.isRequired, 
+    variant: PropTypes.string
 }
 
 export default InstructorCard;

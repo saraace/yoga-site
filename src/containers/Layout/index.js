@@ -16,10 +16,24 @@ const Layout = ({ children }) => {
   const exit = { opacity: 0 };
 
   useEffect(() => {
-    //console.log(router);
     if(router.pathname === "/sign-up"){
       setBgClass('');
       setBackground('/images/sign-up/bg.png');
+    } else if(router.pathname === "/careers"){
+      setBgClass('');
+      setBackground('/images/careers/bg.png');
+    } else if(router.pathname === "/contact"){
+      setBgClass('');
+      setBackground('/images/contact/bg.jpg');
+    } else if(router.pathname === "/press"){
+      setBgClass('');
+      setBackground('/images/press/bg.jpg');
+    } else if(router.pathname === "/new-to-yoga"){
+      setBgClass('');
+      setBackground('/images/new-to-yoga/bg.png');
+    } else if(router.pathname === "/about"){
+      setBgClass('');
+      setBackground('/images/about/bg.png');
     } else if(router.pathname === '/') {
       setBgClass('dashboard');
       setBackground('/images/dashboard/bg.png');

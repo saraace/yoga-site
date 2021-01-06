@@ -14,7 +14,7 @@ const ValidationLabel = ({ children }) => {
     )
 }
 
-ValidationLabel.PropTypes = {
+ValidationLabel.propTypes = {
     children: PropTypes.node.isRequired
 }
 
