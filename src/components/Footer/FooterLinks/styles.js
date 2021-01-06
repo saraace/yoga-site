@@ -28,13 +28,14 @@ export const LinkItem = styled.li`
     }
 `;
 
-export const Link = styled.a`
+export const Anchor = styled.a`
     color: ${({ theme }) => theme.colors.text};
     text-transform: uppercase;
     text-decoration: none;
     line-height: 1;
     position: relative; 
     padding: 0 0 0 16px;
+    cursor: pointer;
 
     &:after{
         content: ""; 
