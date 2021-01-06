@@ -31,6 +31,9 @@ const Layout = ({ children }) => {
     } else if(router.pathname === "/new-to-yoga"){
       setBgClass('');
       setBackground('/images/new-to-yoga/bg.png');
+    } else if(router.pathname === "/health-and-safety"){
+      setBgClass('');
+      setBackground('/images/health-and-safety/bg.jpg');
     } else if(router.pathname === "/locations"){
       setBgClass('');
       setBackground('/images/locations/bg.jpg');
