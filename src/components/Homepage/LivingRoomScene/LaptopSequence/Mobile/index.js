@@ -95,7 +95,7 @@ const LaptopSequenceMobile = ({ width, height, progress, duration, x, y, sw, sh,
                 <ImageSequence {...{ imageSequence, canvasImage, width, height, x, y, sw, sh }} />
             </SeqWrapper>
             <VideoLoopWrapper className={laptopPlaying? "front" : ""}>
-                <img src="/images/homepage/laptop-seq/laptop_seq_00240.png" style={offsetStyles} />
+                <img src="/images/homepage/laptop-seq/laptop_seq_00239.png" style={offsetStyles} />
                 <video ref={laptopLoopRef} src="/images/homepage/laptop-seq/laptop_loop.mp4" style={offsetStyles} muted loop />
             </VideoLoopWrapper>
             <AnimatePresence> 

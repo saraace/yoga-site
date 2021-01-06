@@ -3,7 +3,7 @@ import { Container } from "theme-ui";
 
 export const Laptop = styled.div`
     height: 100vh;
-    background-image: url(/images/homepage/laptop-seq/laptop_seq_00239.jpg);
+    background-image: url(/images/homepage/laptop-seq/laptop_seq_00238.jpg);
     background-repeat: no-repeat; 
     background-position: center; 
     background-size: cover;

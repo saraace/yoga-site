@@ -105,7 +105,7 @@ const TVSequenceMobile = ({ scrollY, progress, duration, x, y, sw, sh, width, he
                     </motion.div>
                 </SeqWrapper>
                 <VideoLoopWrapper className={tvPlaying? "front" : ""} style={offsetStyles}>
-                    <img src="/images/homepage/tv-seq/tv_seq_00344.png" style={coverStyles} />
+                    <img src="/images/homepage/tv-seq/tv_seq_00240.png" style={coverStyles} />
                     <video ref={tvLoopRef} src="/images/homepage/tv-seq/tv_loop.mp4" style={coverStyles} muted loop />
                 </VideoLoopWrapper>
             </Background>

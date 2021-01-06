@@ -265,7 +265,7 @@ const TvArray = () => {
   const [AA238, AA238S] = useImage("/images/homepage/tv-seq/tv_seq_00238.jpg");
   const [AA239, AA239S] = useImage("/images/homepage/tv-seq/tv_seq_00239.jpg");
 
-  const [AA240, AA240S] = useImage("/images/homepage/tv-seq/tv_seq_00240.jpg");
+  /*const [AA240, AA240S] = useImage("/images/homepage/tv-seq/tv_seq_00240.jpg");
   const [AA241, AA241S] = useImage("/images/homepage/tv-seq/tv_seq_00241.jpg");
   const [AA242, AA242S] = useImage("/images/homepage/tv-seq/tv_seq_00242.jpg");
   const [AA243, AA243S] = useImage("/images/homepage/tv-seq/tv_seq_00243.jpg");
@@ -378,7 +378,7 @@ const TvArray = () => {
   const [AA340, AA340S] = useImage("/images/homepage/tv-seq/tv_seq_00340.jpg");
   const [AA341, AA341S] = useImage("/images/homepage/tv-seq/tv_seq_00341.jpg");
   const [AA342, AA342S] = useImage("/images/homepage/tv-seq/tv_seq_00342.jpg");
-  const [AA343, AA343S] = useImage("/images/homepage/tv-seq/tv_seq_00343.jpg");
+  const [AA343, AA343S] = useImage("/images/homepage/tv-seq/tv_seq_00343.jpg");*/
 
   const newImages = Array.of(
     [AA0, AA0S],
@@ -643,7 +643,7 @@ const TvArray = () => {
     [AA238, AA238S],
     [AA239, AA239S],
 
-    [AA240, AA240S],
+    /*[AA240, AA240S],
     [AA241, AA241S],
     [AA242, AA242S],
     [AA243, AA243S],
@@ -756,7 +756,7 @@ const TvArray = () => {
     [AA340, AA340S],
     [AA341, AA341S],
     [AA342, AA342S],
-    [AA343, AA343S],
+    [AA343, AA343S],*/
   );
   return newImages;
 };
