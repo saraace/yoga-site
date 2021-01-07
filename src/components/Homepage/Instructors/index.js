@@ -21,12 +21,8 @@ const InstructorsScene = ({ staticScenes, isMobile, ...rest }) => {
 
     return(
         <>
-            {!staticScenes && (
-                <> 
-                    {!isMobile && <DesktopScene {...{ heading: heading(), content: content() }} {...rest} />}
-                </>
-            )}
-            {staticScenes && <StaticScene {...{ isMobile, heading: heading(), content: content() }} />}
+            {!staticScenes && !isMobile && <DesktopScene {...{ heading: heading(), content: content() }} {...rest} />}
+            {(staticScenes || isMobile) && <StaticScene {...{ isMobile, heading: heading(), content: content() }} />}
         </>
     )
 }

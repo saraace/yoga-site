@@ -263,7 +263,7 @@ const LaptopArray = () => {
   const [AA236, AA236S] = useImage("/images/homepage/laptop-seq/laptop_seq_00236.jpg");
   const [AA237, AA237S] = useImage("/images/homepage/laptop-seq/laptop_seq_00237.jpg");
   const [AA238, AA238S] = useImage("/images/homepage/laptop-seq/laptop_seq_00238.jpg");
-  const [AA239, AA239S] = useImage("/images/homepage/laptop-seq/laptop_seq_00239.jpg");
+  //const [AA239, AA239S] = useImage("/images/homepage/laptop-seq/laptop_seq_00239.jpg");
 
   const newImages = Array.of(
     [AA0, AA0S],
@@ -526,7 +526,7 @@ const LaptopArray = () => {
     [AA236, AA236S],
     [AA237, AA237S],
     [AA238, AA238S],
-    [AA239, AA239S],
+    //[AA239, AA239S],
   );
   return newImages;
 };

@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 export const FullScreen = styled.div`
     height: 100vh; 
     overflow: hidden;
+    position: relative;
 
     & > div{
         height: 100%;
@@ -13,6 +14,30 @@ export const FullScreen = styled.div`
         background-position: center center;
         display: flex; 
         align-items: flex-end;
+    }
+
+    &:before{
+        content: ""; 
+        position: absolute; 
+        bottom: 0; 
+        left: 0; 
+        right: 0;
+        z-index: 10;
+        height: 20%;
+        background: linear-gradient(180deg, rgba(99, 126, 141, 0) 0%, #184058 100%);
+        opacity: 0.5;
+    }
+
+    &:after{
+        content: ""; 
+        position: absolute; 
+        top: 0; 
+        left: 0; 
+        right: 0;
+        z-index: 10;
+        height: 20%;
+        background: linear-gradient(180deg, #184058 0%, rgba(99, 126, 141, 0) 100%);
+        opacity: 0.5;
     }
 `; 
 

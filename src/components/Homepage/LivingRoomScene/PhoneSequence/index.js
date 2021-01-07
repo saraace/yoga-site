@@ -1,5 +1,6 @@
 /* COMPONENTS */
 import DesktopScene from "./Desktop";
+import MobileScene from "./Mobile";
 import StaticScene from "./Static";
 
 const PhoneSequence = ({ staticScenes, isMobile, ...rest }) => {
@@ -24,11 +25,8 @@ const PhoneSequence = ({ staticScenes, isMobile, ...rest }) => {
 
     return(
         <> 
-            {!staticScenes && (
-                <>
-                    {!isMobile && <DesktopScene {...{ leftContent: leftContent(), rightContent: rightContent() }} {...rest} />}
-                </>
-            )}
+            {!staticScenes && !isMobile && <DesktopScene {...{ leftContent: leftContent(), rightContent: rightContent() }} {...rest} />}
+            {!staticScenes && isMobile && <MobileScene {...{ leftContent: leftContent(), rightContent: rightContent() }} {...rest} />}
             {staticScenes && <StaticScene {...{ leftContent: leftContent(), rightContent: rightContent() }} />}
         </>
     )

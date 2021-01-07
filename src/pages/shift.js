@@ -1,9 +1,9 @@
 import Homepage from "../components/Homepage";
 
-const Home = () => {
+const Shift = () => {
     return(
         <Homepage />
     )
 }
 
-export default Home;
+export default Shift;

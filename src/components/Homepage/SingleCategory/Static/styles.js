@@ -54,7 +54,7 @@ export const Intro = styled.div`
             height: 6px; 
             background: ${({ theme }) => theme.colors.yoga};
             left: 0; 
-            top: 0px;
+            top: 0;
 
             @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
                 width: 146px;

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useViewportScroll } from "framer-motion";
-import { isIOS, isIE, isEdge } from 'react-device-detect';
+import { isIPad13, isIE, isEdge } from 'react-device-detect';
 import window from "global"; 
 
 /* STYLES */
@@ -34,7 +34,7 @@ const Homepage = () => {
     //const staticScenes = true;
 
     // indicators used for development
-    const indicators = false;
+    const indicators = true;
 
     // set to true when the user refreshes the page
     const [ refresh, setRefresh ] = useState(false);
@@ -51,7 +51,6 @@ const Homepage = () => {
     // dimensions of window
     const [ width, setWidth ] = useState(0); 
     const [ height, setHeight ] = useState(0);
-    const [ innerHeight, setInnerHeight ] = useState(0);
 
     // coordinates for image sequence canvas
     const [ x, setX ] = useState(0);
@@ -62,16 +61,16 @@ const Homepage = () => {
     const [ coverStyles, setCoverStyles ] = useState({});
     
     // duration is how many pixels scene will stick to top
-    const sceneDurations = [900, 10000, 1000, 1000, 1500, 1500, 1500];
+    const [ sceneDurations, setSceneDurations ] = useState([900, 10000, 1000, 1000, 1500, 1500, 1500]);
 
     // heights is duration + scene height
-    const sceneHeights = [0, 900, 10900, 11900, 12900, 14400, 15900, 17400];
+    const [ sceneHeights, setSceneHeights ] = useState([0, 900, 10900, 11900, 12900, 14400, 15900, 17400]);
 
     const calculateDimensions = () => {
         
         // get width and height of window
         const w = window.innerWidth;
-        const h = isIOS? window.screen.availHeight : window.innerHeight;
+        const h = window.innerHeight;
 
         // calculate window ratio
         const ratio = h/w;
@@ -91,7 +90,6 @@ const Homepage = () => {
         // set 
         setWidth(w);
         setHeight(h);
-        setInnerHeight(window.innerHeight);
         setSh(imageH);
         setSw(imageW);
         setX(xOffset); 
@@ -100,7 +98,7 @@ const Homepage = () => {
         // determine if mobile layout should be used
         if(w <= 768){
             setIsMobile(true);
-        }
+        } 
 
         // determine offset styles 
         setOffsetStyles((tall)? { height: h, left: xOffset } : { width: w, top: yOffset, left: 0 });
@@ -151,7 +149,7 @@ const Homepage = () => {
     return(
         <div style={{ opacity: refresh? 0 : 1 }}>
             <div>
-                <ScrollIndicator {...{ height: innerHeight }} />
+                <ScrollIndicator {...{ height }} />
                 {sceneDurations.map((duration, idx) => {         
 
                     const startPos = (idx > 0)? sceneHeights[idx]+(height*idx) : 0;
@@ -161,8 +159,8 @@ const Homepage = () => {
                     const progress = yVal<=startPos? 0 : (yVal>=endPos? 1 : (yVal-startPos)/duration);
 
                     return(
-                        <div key={idx} style={staticScenes? {} : { height: height+duration }}>
-                            <Scene className={staticScenes? '' : 'sticky'} >
+                        <div key={idx} style={(staticScenes || (isMobile && idx === 2))? {} : { height: height+duration }}>
+                            <Scene className={(staticScenes || (isMobile && idx === 2))? '' : 'sticky'} >
                             {!staticScenes && indicators && <ProgressIndicators {...{ yVal, progress, duration, startPos, endPos }} />}
                             {idx === 0 && <ShiftSequence {...{ staticScenes, scrollY, yVal, width, height, x, y, sw, sh }} />}
                             {idx === 1 && <LivingRoom {...{ staticScenes, isMobile, scrollY, progress, startPos, nextStartPos, duration, width, height, x, y, sw, sh, offsetStyles, coverStyles }} />}

@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { motion } from "framer-motion";
 
-export const Laptop = styled.div`
+export const Phone = styled.div`
     position: absolute; 
     top: 0; 
     left: 0; 

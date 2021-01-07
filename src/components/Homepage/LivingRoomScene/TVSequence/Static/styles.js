@@ -3,7 +3,7 @@ import { Container } from "theme-ui";
 
 export const Pose = styled.div`
     height: 100vh;
-    background-image: url(/images/homepage/tv-seq/tv_seq_00103.jpg);
+    background-image: url(/images/homepage/tv-seq/tv_seq_00000.jpg);
     background-repeat: no-repeat; 
     background-position: center; 
     background-size: cover;

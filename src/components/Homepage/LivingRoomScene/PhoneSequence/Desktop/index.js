@@ -3,7 +3,7 @@ import { Container } from "theme-ui";
 import { motion, useMotionValue, useTransform, AnimatePresence } from "framer-motion";
 
 /* STYLES */
-import { Laptop, SeqWrapper, VideoLoopWrapper, TextContainer, Text, LeftText, RightText } from "./styles"; 
+import { Phone, SeqWrapper, VideoLoopWrapper, TextContainer, Text, LeftText, RightText } from "./styles"; 
 
 /* COMPONENTS */
 import ImageSequence from "../../../ImageSequence"; 
@@ -98,7 +98,7 @@ const PhoneSequenceDesktop = ({ width, height, nextStartPos, scrollY, progress, 
     const scale = useTransform(scrollY, [nextStartPos-(height+300), nextStartPos], [1, 1.15])
 
     return(
-        <Laptop {...rest}>
+        <Phone {...rest}>
             <SeqWrapper className={phonePlaying? "" : "front"}>
                 <ImageSequence {...{ imageSequence, canvasImage, width, height, x, y, sw, sh }} />
             </SeqWrapper>
@@ -132,7 +132,7 @@ const PhoneSequenceDesktop = ({ width, height, nextStartPos, scrollY, progress, 
                     </Text>
                 </Container>
             </TextContainer>
-        </Laptop>
+        </Phone>
     )
 }
 

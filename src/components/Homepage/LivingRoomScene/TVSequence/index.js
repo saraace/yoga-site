@@ -4,6 +4,7 @@ import Link from "next/link";
 
 /* COMPONENTS */
 import DesktopScene from "./Desktop";
+import MobileScene from "./Mobile";
 import StaticScene from "./Static";
 
 const TVSequence = ({ staticScenes, isMobile, ...rest }) => {
@@ -42,11 +43,8 @@ const TVSequence = ({ staticScenes, isMobile, ...rest }) => {
 
     return(
         <>
-            {!staticScenes && (
-                <>
-                    {!isMobile && <DesktopScene {...{ poseContent: poseContent(), tvContent: tvContent() }} {...rest} />}
-                </>
-            )}
+            {!staticScenes && !isMobile && <DesktopScene {...{ poseContent: poseContent(), tvContent: tvContent() }} {...rest} />}
+            {!staticScenes && isMobile && <MobileScene {...{ poseContent: poseContent(), tvContent: tvContent() }} {...rest} />}
             {staticScenes && <StaticScene {...{ poseContent: poseContent(), tvContent: tvContent() }} />}
         </>
     )
