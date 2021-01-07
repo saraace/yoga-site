@@ -4,10 +4,11 @@ import Link from "next/link";
 import { Container } from "theme-ui";
 import PageHeader from "../PageHeader";
 import YogaJointEmblem from "../../assets/svgs/yoga-joint-emblem.svg";
-
-import { Intro, TextCol, Emblem, Section01, Section02, SingleImage, ButtonRow } from "./styles";
+import { Intro, TextCol, Emblem, Section01, Section02, SingleImage, ButtonRow, FormSection, FormIntro } from "./styles";
+import WorkplaceWellnessForm from './Form';
 
 const WorkplaceWellnessPage = () => {
+
     return(
         <>
             <PageHeader heading="Workplace Wellness"/>
@@ -52,6 +53,14 @@ const WorkplaceWellnessPage = () => {
                         </SingleImage>
                     </div>
                 </Section02>
+                <FormSection>
+                    <FormIntro>
+                        <h3>Yoga Joint offers a FREE group class to companies, groups, and organizations looking to promote better health &amp; wellness amongst their team.</h3>
+                        <p>Fill out the form below to try a FREE group class today!</p>
+                        <h2>Let’s SHIFT!</h2>
+                        <WorkplaceWellnessForm />
+                    </FormIntro>
+                </FormSection>
             </Container>
         </>
     )

@@ -81,3 +81,20 @@ export const ButtonRow = styled.div`
         margin: 0 20px 0 0;
     }
 `; 
+
+export const FormSection = styled.div``; 
+
+export const FormIntro = styled.div`
+    h3{
+        font-weight: 300;
+        font-size: ${({ theme }) => theme.fontSizes[4]+'px'}; 
+        line-height: 1.255;
+        width: 80%;
+    }
+    p{
+        margin: 0 0 100px;
+    }
+    h2{
+        margin: 0 0 50px;
+    }
+`; 
