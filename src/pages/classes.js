@@ -173,16 +173,7 @@ const Classes = () => {
 
     return (
         <>
-            <LibraryTopRow 
-                {...{tabs}} 
-                {...{activeTab}} 
-                {...{onTabClick}} 
-                {...{subTabs}} 
-                {...{activeSubTab}} 
-                {...{onSubTabClick}} 
-                {...{filters}}
-                {...{onApplyFilters}}
-            />
+            <LibraryTopRow {...{tabs, activeTab, onTabClick, subTabs, activeSubTab, onSubTabClick, filters, onApplyFilters}} />
             <Container variant="no-gutters">
                 {activeTab === tabs[0] && activeSubTab === subTabs[activeTab][0] && (
                     <>

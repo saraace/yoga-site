@@ -1,12 +1,23 @@
+import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import BackButton from '../BackButton';
+import ReserveButton from "../ReserveSpot/ReserveButton"; 
+import SpotSelector from "../ReserveSpot/SpotSelector";
 import { Video, ClassTitle, ClassDetails, Row, Col, Section, SectionTitle, SectionContent, Description } from './styles';
 import BoxIcon from '../../assets/svgs/box-icon.svg'; 
 import EquipIcon from '../../assets/svgs/equip-icon.svg'; 
 import MuscleIcon from '../../assets/svgs/muscle-icon.svg';
 import InstructorPreview from './InstructorPreview';
 
-const SingleClass = ({ title, difficulty, duration, description, equipment, muscleGroups, instructor }) => {
+const SingleClass = ({ title, difficulty, duration, description, equipment, muscleGroups, instructor, reserved }) => {
+
+    const [ spotSelectorOpen, setSpotSelectorOpen ] = useState(false);
+    
+    useEffect(() => {
+        console.log(spotSelectorOpen);
+        
+    }, [spotSelectorOpen])
+
     return(
         <>
             <BackButton />
@@ -17,6 +28,7 @@ const SingleClass = ({ title, difficulty, duration, description, equipment, musc
                 <span>{difficulty}</span>
                 <span>{duration}</span>
             </ClassDetails>
+            <ReserveButton {...{ reserved }} onClick={() => setSpotSelectorOpen(spotSelectorOpen => (!spotSelectorOpen))} />
             <Row>
                 <Col>
                     <Section>
@@ -44,6 +56,7 @@ const SingleClass = ({ title, difficulty, duration, description, equipment, musc
                 </Col>
             </Row>
             <InstructorPreview {...instructor} />
+            {spotSelectorOpen && <SpotSelector />}
         </>
     )
 }

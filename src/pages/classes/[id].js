@@ -9,7 +9,8 @@ const Class = () => {
         duration: '20 mins', 
         description: 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco. Est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.',
         equipment: ['Yoga mat', 'yoga block', 'towel', 'bottle of water'],
-        muscleGroups: ['Shoulders', 'legs', 'core', 'biceps']
+        muscleGroups: ['Shoulders', 'legs', 'core', 'biceps'], 
+        reserved: false
     };
 
     const instructor = {
