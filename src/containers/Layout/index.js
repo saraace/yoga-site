@@ -34,6 +34,9 @@ const Layout = ({ children }) => {
     } else if(router.pathname === "/health-and-safety"){
       setBgClass('');
       setBackground('/images/health-and-safety/bg.jpg');
+    } else if(router.pathname === "/workplace-wellness"){
+      setBgClass('');
+      setBackground('/images/workplace-wellness/bg.jpg');
     } else if(router.pathname === "/locations"){
       setBgClass('');
       setBackground('/images/locations/bg.jpg');

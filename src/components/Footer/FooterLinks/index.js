@@ -15,7 +15,7 @@ const FooterLinks = () => {
                 <LinkItem><Link href="/contact"><Anchor>Contact Us</Anchor></Link></LinkItem>
             </LinkList>
             <LinkList>
-                <LinkItem><Link href="#"><Anchor>Corporate / Group Wellness</Anchor></Link></LinkItem>
+                <LinkItem><Link href="/workplace-wellness"><Anchor>Corporate / Group Wellness</Anchor></Link></LinkItem>
                 <LinkItem><Link href="#"><Anchor>Ambassador Program</Anchor></Link></LinkItem>
                 <LinkItem><Link href="#"><Anchor>Teacher Training</Anchor></Link></LinkItem>
             </LinkList>
