@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Link from "next/link";
 import { useSelector } from "react-redux";
 import { motion, useAnimation } from "framer-motion"
 import { MobileNavWrapper, ToggleButton, NavMenu, NavItem, NavLink } from "./styles";
@@ -11,6 +12,14 @@ const MobileNav = () => {
     const [ open, setOpen ] = useState(false);
 
     const toggleAnimation = useAnimation();
+
+    useEffect(() => {
+        if(open){
+            toggleAnimation.start('open');
+        } else{
+            toggleAnimation.start('closed');
+        }
+    }, [open])
     
     const topLineVariants = {
         init: {
@@ -66,7 +75,7 @@ const MobileNav = () => {
             <ToggleButton 
                 onHoverStart={() => { if(!open){ toggleAnimation.start('hover') }}} 
                 onHoverEnd={() => { if(!open){ toggleAnimation.start('init') }}} 
-                onClick={() => { setOpen(!open); if(!open){ toggleAnimation.start('open'); } else{ toggleAnimation.start('closed'); } }}
+                onClick={() => { setOpen(open => !open) }}
             >
                 <motion.div animate={toggleAnimation} variants={topLineVariants}></motion.div>
                 <motion.div animate={toggleAnimation} variants={bottomLineVariants}></motion.div>
@@ -75,26 +84,26 @@ const MobileNav = () => {
                 <NavMenu>
                     {!auth && (
                     <NavItem>
-                        <NavLink href="/shift">Shift</NavLink>
+                        <Link href="/shift"><NavLink onClick={() => setOpen(false)}>Shift</NavLink></Link>
                     </NavItem>
                     )}
                     <NavItem>
-                        <NavLink href="/classes">Classes</NavLink>
+                        <Link href="/classes"><NavLink onClick={() => setOpen(false)}>Classes</NavLink></Link>
                     </NavItem>
                     <NavItem>
-                        <NavLink href="/locations">Locations</NavLink>
+                        <Link href="/locations"><NavLink onClick={() => setOpen(false)}>Locations</NavLink></Link>
                     </NavItem>
                     <NavItem>
-                        <NavLink href="/teachers">Teachers</NavLink>
+                        <Link href="/teachers"><NavLink onClick={() => setOpen(false)}>Teachers</NavLink></Link>
                     </NavItem>
                     {/* <NavItem>
-                        <NavLink href="/store">Store</NavLink>
+                        <Link href="/store"><NavLink onClick={() => setOpen(false)}>Store</NavLink></Link>
                     </NavItem> */}
                     <NavItem>
-                        <NavLink href="#">Account</NavLink>
+                        <Link href="/account"><NavLink onClick={() => setOpen(false)}>Account</NavLink></Link>
                     </NavItem>
                     <NavItem>
-                        <NavLink href="#">Logout</NavLink>
+                        <Link href="#"><NavLink onClick={() => setOpen(false)}>Logout</NavLink></Link>
                     </NavItem>
                 </NavMenu>
             </MobileNavWrapper>
