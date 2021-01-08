@@ -70,7 +70,7 @@ const SingleClass = ({ classType, title, difficulty, duration, description, equi
                             difficulty,
                             duration, 
                             reserved,
-                            selectedSpot: "A1",
+                            selectedSpot,
                             onReserve, 
                             onCancel
                         }} 
