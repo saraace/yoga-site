@@ -1,3 +1,4 @@
+import { useState } from "react";
 import PropTypes from "prop-types";
 import Link from "next/link"
 import { AnimatePresence } from "framer-motion";
@@ -9,9 +10,12 @@ import ValidationLabel from "../../Forms/Validation/ValidationLabel";
 import ValidationWrapper from "../../Forms/Validation/ValidationWrapper";
 import Spot from "./Spot";
 import LocationPin from "../../../assets/svgs/location-pin.svg";
+import CancelConfirmation from "../CancelConfirmation";
 import { Lightbox, LightboxControls, CloseButton, ResetButton, ClassroomLayout, Row, SubmitButton, CancelButton, ClassInfo, Location, ClassDetails, Title } from "./styles"; 
 
 const SpotSelector = ({ classType, location, instructor, difficulty, duration, reserved, selectedSpot, onToggle, onReserve, onCancel }) => {
+
+    const [ cancelConfirm, setCancelConfirm ] = useState(false);
 
     const layout = [
         {
@@ -64,14 +68,6 @@ const SpotSelector = ({ classType, location, instructor, difficulty, duration, r
         }
     ];
 
-    const reserve = () => {
-        onReserve();
-    }
-
-    const cancel = () => {
-        onCancel();
-    }
-
     const reserveSchema = Yup.object().shape({
         spot: Yup.mixed().required("Select Mat Location")
     });
@@ -81,56 +77,59 @@ const SpotSelector = ({ classType, location, instructor, difficulty, duration, r
             spot: selectedSpot
         },
         validationSchema: reserveSchema,
-        onSubmit: reserved? cancel : reserve
+        onSubmit: onReserve
     })
 
     return(
-        <Lightbox 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-        >
-            <LightboxControls>
-                <CloseButton onClick={onToggle}>Close</CloseButton>
-                <ResetButton onClick={handleReset}>Reset</ResetButton>
-            </LightboxControls>
-            <Container>
-                <ClassInfo>
-                    <ClassTypeBadge type={classType} />
-                    <Link href={location.link}>
-                        <Location><LocationPin />{location.title}</Location>
-                    </Link>
-                    <ClassDetails>
-                        <span>{instructor.name}</span>
-                        <span>{difficulty}</span>
-                        <span>{duration}</span>
-                    </ClassDetails>
-                </ClassInfo>
-                <Title>Select Mat Location</Title>
-                <ClassroomLayout onSubmit={handleSubmit}>
-                    <ValidationWrapper validate={touched.spot && errors.spot}>
-                        {layout.map((row, i) => {
-                            return(
-                                <Row key={i}>
-                                    {row.spots.map((spot, j) => {
-                                        return(
-                                            <div key={j} >
-                                                <Spot {...spot} name="spot" onChange={handleChange} value={values.spot} />
-                                            </div>
-                                        )
-                                    })}
-                                </Row>
-                            )
-                        })}
-                    </ValidationWrapper>
-                    <AnimatePresence>
-                        {(touched.spot && errors.spot) && <ValidationLabel>{errors.spot}</ValidationLabel>}
-                    </AnimatePresence>
-                    {!reserved && <SubmitButton type="submit" variant='primary-block'>Reserve</SubmitButton>}
-                    {reserved && <CancelButton type="submit" variant="secondary-outline-block">Cancel Reservation</CancelButton>}
-                </ClassroomLayout>
-            </Container>
-        </Lightbox>
+        <>
+            <Lightbox 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+            >
+                <LightboxControls>
+                    <CloseButton onClick={onToggle}>Close</CloseButton>
+                    <ResetButton onClick={handleReset}>Reset</ResetButton>
+                </LightboxControls>
+                <Container>
+                    <ClassInfo>
+                        <ClassTypeBadge type={classType} />
+                        <Link href={location.link}>
+                            <Location><LocationPin />{location.title}</Location>
+                        </Link>
+                        <ClassDetails>
+                            <span>{instructor.name}</span>
+                            <span>{difficulty}</span>
+                            <span>{duration}</span>
+                        </ClassDetails>
+                    </ClassInfo>
+                    <Title>Select Mat Location</Title>
+                    <ClassroomLayout onSubmit={handleSubmit}>
+                        <ValidationWrapper validate={touched.spot && errors.spot}>
+                            {layout.map((row, i) => {
+                                return(
+                                    <Row key={i}>
+                                        {row.spots.map((spot, j) => {
+                                            return(
+                                                <div key={j} >
+                                                    <Spot {...spot} name="spot" onChange={handleChange} value={values.spot} />
+                                                </div>
+                                            )
+                                        })}
+                                    </Row>
+                                )
+                            })}
+                        </ValidationWrapper>
+                        <AnimatePresence>
+                            {(touched.spot && errors.spot) && <ValidationLabel>{errors.spot}</ValidationLabel>}
+                        </AnimatePresence>
+                        {!reserved && <SubmitButton type="submit" variant='primary-block'>Reserve</SubmitButton>}
+                        {reserved && <CancelButton type="button" onClick={() => setCancelConfirm(true)} variant="secondary-outline-block">Cancel Reservation</CancelButton>}
+                    </ClassroomLayout>
+                </Container>
+            </Lightbox>
+            {cancelConfirm && <CancelConfirmation {...{ onCancel }} onClose={() => setCancelConfirm(false)} />}
+        </>
     )
 };
 
