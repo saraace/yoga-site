@@ -8,7 +8,7 @@ const ReserveButton = ({ reserved, location, onClick }) => {
     return(
         <ButtonWrapper>
         {!reserved && (<Button {...{onClick}} variant="primary">Reserve Spot</Button>)}
-        {reserved && (<Button {...{onClick}} variant="secondary"><Check /><span>Reserved — {location}</span></Button>)}
+        {reserved && (<Button {...{onClick}} variant="secondary"><Check /><span>Reserved — Mat {location}</span></Button>)}
         </ButtonWrapper>
     )
 }

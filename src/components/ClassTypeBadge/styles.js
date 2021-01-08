@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 
 export const Badge = styled.div`
+    display: inline-block;
     position: relative;
     text-transform: uppercase;
     font-weight: 700;

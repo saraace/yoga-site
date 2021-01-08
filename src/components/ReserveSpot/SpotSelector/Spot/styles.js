@@ -4,6 +4,12 @@ export const SpotOption = styled.label`
     text-align: center;
     cursor: pointer;
 
+    &.taken{
+        &:hover{
+            cursor: not-allowed;
+        }
+    }
+
     &:hover{
         .mat.available{
             background-color: #404957;
