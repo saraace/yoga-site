@@ -11,6 +11,7 @@ export const Section = styled.section`
 export const Entry = styled.div`
     padding: 55px 0;
     display: flex;
+    flex-direction: column;
     
     h2{
         font-size: ${({ theme }) => theme.fontSizes[4]+'px'};
@@ -28,19 +29,27 @@ export const Entry = styled.div`
         font-size: ${({ theme }) => theme.fontSizes[2]+'px'};
         line-height: 1.4;
     }
+
+    @media (min-width: ${({ theme }) => theme.breakpoints[1]}){
+        flex-direction: row;
+    }   
 `;
 
 export const ImageWrapper = styled.div`
-    margin: 0 21px 0 0;
+    margin: 0;
     flex: 0 0 282px;
     height: 158px;
 
     img{
-        object-fit: fill;
+        object-fit: cover;
         width: 100%; 
         height: 100%;
         border-radius: 12px;
     }
+
+    @media (min-width: ${({ theme }) => theme.breakpoints[1]}){
+        margin: 0 21px 0 0;
+    }   
 `; 
 
 export const CTA = styled.div`
