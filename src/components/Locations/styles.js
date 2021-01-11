@@ -2,16 +2,25 @@ import styled from '@emotion/styled';
 
 export const LocationsWrapper = styled.div`
     border-top: 1px solid rgba(255, 255, 255, 0.24);
-    display: flex;
     flex-wrap: wrap;
     padding: 85px 0;
+    display: flex;
+    flex-direction: column;
+
+    @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
+        flex-direction: row;
+    }
 `;
 
 export const CardWrapper = styled.div`
     padding: 0 10px;
     margin: 0 0 20px 0;
-    width: 50%; 
+    width: 100%; 
     height: 350px;
+
+    @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
+        width: 50%;
+    }
 
     h3{
         font-size: ${({ theme }) => theme.fontSizes[3]+'px'};
@@ -22,8 +31,13 @@ export const CardWrapper = styled.div`
 
 export const Safety = styled.div`
     display: flex;
+    flex-direction: column;
     align-items: center;
     padding: 0 0 100px;
+
+    @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
+        flex-direction: row;
+    }
 
     h3{
         font-size: ${({ theme }) => theme.fontSizes[4]+'px'};
