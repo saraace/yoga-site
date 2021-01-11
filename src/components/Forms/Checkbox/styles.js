@@ -19,33 +19,36 @@ const CheckboxWrapper = styled.label`
         &:checked{
             & + div{
                 opacity: 1;
-                &::after{
-                    background: #fff;
+                background: ${({ theme }) => theme.colors.success};
+                border-color: ${({ theme }) => theme.colors.success};
+
+                svg,path{
+                    opacity: 1;
                 }
+                
             }
         }
     }
 `; 
 
 export const CheckboxControl = styled.div`
-    width: 24px; 
-    height: 24px; 
+    width: 16px; 
+    height: 16px; 
+    border: 1px solid red;
     border: 2px solid #fff; 
-    border-radius: 50%; 
+    border-radius: 1px;
     position: relative; 
     opacity: 0.6;
     margin: 0 7px 0 0;
     transition: 0.3s all ease; 
 
-    &::after{ 
-        content: ""; 
-        width: 16px; 
-        height: 16px; 
-        background: transparent; 
-        border-radius: 50%; 
+    svg, path{
+        fill: #fff; 
+        width: 11px;
         position: absolute; 
-        top: 2px;
-        left: 2px;
+        top: 1px;
+        left: 1px;
+        opacity: 0;
         transition: 0.3s all ease;
     }
 `; 

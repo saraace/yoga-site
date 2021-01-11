@@ -44,21 +44,48 @@ export const GalCol4 = styled.div`
 
 export const Row = styled.div`
     display: flex;
+    flex-direction: column; 
+
+    @media (min-width: ${({ theme }) => theme.breakpoints[1]}){
+        flex-direction: row;
+    }
 `;
 
 export const Col = styled.div`
-    width: 50%;
+    width: 100%;
     padding: 0 10px;
+
+    @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
+        width: 50%;
+    }
+
+    & > div{
+        margin: 0 0 24px;
+    }
 `; 
 
 export const Schedule = styled.div`
-    margin: 0 0 42px 0; 
+    margin: 0 0 0 0; 
+
+    @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
+        margin: 0 0 42px 0; 
+    }
     
     .wrapper{
         display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+
+        @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
+            flex-direction: row;
+        }
 
         label{
-            margin: 0 15px 0 0;
+            margin: 0 0 15px 0;
+
+            @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
+                margin: 0 15px 0 0;
+            }
         }
     }
 `; 

@@ -21,7 +21,7 @@ const Layout = ({ children }) => {
       setBackground('/images/sign-up/bg.png');
     } else if(router.pathname === "/careers"){
       setBgClass('');
-      setBackground('/images/careers/bg.png');
+      setBackground('/images/careers/bg.jpg');
     } else if(router.pathname === "/contact"){
       setBgClass('');
       setBackground('/images/contact/bg.jpg');
