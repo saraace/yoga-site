@@ -14,7 +14,7 @@ const WorkplaceWellnessPage = () => {
             <PageHeader heading="Workplace Wellness"/>
             <Container>
                 <Intro>
-                    <div>
+                    <div className="emblem">
                         <Emblem><YogaJointEmblem /></Emblem>
                     </div>
                     <TextCol>
@@ -34,7 +34,7 @@ const WorkplaceWellnessPage = () => {
                         <p>With a boutique team of yoga &amp; fitness teachers, we offer a curated library of yoga, FIIT, and restore classes that you and your team members can enjoy from the comfort of home at a time most convenient to your schedule.</p>
                     </TextCol>
                 </Section01>
-                <Section02>
+                <Section02 className="mobile-reverse">
                     <TextCol>
                         <h2>Unique Options for Unique Team</h2>
                         <p>Yoga Joint encourages a body-positive environment where members of all shapes, sizes, and levels of fitness and ability are welcome with open arms. Our classes (like our teachers) are vibrant, inspiring, and encouraging. So leave that virtual desk behind you and enjoy us for a complimentary class today!</p>

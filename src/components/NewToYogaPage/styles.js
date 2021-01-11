@@ -2,8 +2,8 @@ import styled from '@emotion/styled';
 
 export const Section = styled.section`
     display: flex;
-    padding: 0 0 30px;
     flex-direction: column;
+    padding: 0 0 30px;
 
     @media (min-width: ${({ theme }) => theme.breakpoints[2]}){ 
         padding: 0 0 125px 0;
