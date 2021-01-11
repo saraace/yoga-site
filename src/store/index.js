@@ -1,8 +1,11 @@
 import { useMemo } from "react";
 import { applyMiddleware, createStore } from "redux";
+import createSagaMiddleware from 'redux-saga'
 import { loadState, saveState } from "../services/localstorage";
 
 import reducers from "./reducers";
+import sagas from './sagas';
+
 let store;
 const persistentState = loadState();
 const bindMiddleware = (middleware) => {
@@ -13,7 +16,9 @@ const bindMiddleware = (middleware) => {
   return applyMiddleware(...middleware);
 };
 const initStore = (preloadedState = persistentState) => {
-  const _store = createStore(reducers, preloadedState, bindMiddleware([]));
+  const sagaMiddleware = createSagaMiddleware()
+  const _store = createStore(reducers, preloadedState, bindMiddleware([sagaMiddleware]));
+  _store.sagaTask = sagaMiddleware.run(sagas)
   _store.subscribe(() => {
     saveState({
       auth: _store.getState().auth,

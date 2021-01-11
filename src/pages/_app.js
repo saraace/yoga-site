@@ -1,30 +1,23 @@
 import { Provider } from "react-redux";
-import { SWRConfig } from "swr";
+import { ApolloProvider } from "@apollo/client";
 import Theme from "../containers/Theme";
 import Layout from "../containers/Layout";
 import { useStore } from "../store";
-import rest from "../services/fetcher";
+import { useApollo } from "../apollo";
 
 export default function App({ Component, pageProps }) {
   // const store = useStore(pageProps.initialReduxState);
   const store = useStore();
+  const client = useApollo(pageProps.initialApolloState);
 
   return (
     <Theme>
       <Provider {...{ store }}>
-        <Layout>
-          <SWRConfig
-            value={{
-              fetcher: rest,
-              onError: (err) => {
-                // TODO: Catch 401/403s
-                console.error("this is an error ", err);
-              },
-            }}
-          >
+        <ApolloProvider {...{ client }}>
+          <Layout>
             <Component {...pageProps} />
-          </SWRConfig>
-        </Layout>
+          </Layout>
+        </ApolloProvider>
       </Provider>
     </Theme>
   );

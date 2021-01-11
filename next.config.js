@@ -4,7 +4,8 @@ module.exports = {
     env: {
         ENVIRONMENT: process.env.ENVIRONMENT,
         GOOGLE_MAPS_API: process.env.GOOGLE_MAPS_API,
-        SECRET_COOKIE_PASSWORD: process.env.SECRET_COOKIE_PASSWORD
+        SECRET_COOKIE_PASSWORD: process.env.SECRET_COOKIE_PASSWORD,
+        GRAPHQL_API: process.env.GRAPHQL_API
     }, 
     webpack (config, options) {
         config.module.rules.push({

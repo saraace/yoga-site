@@ -2,26 +2,36 @@ import { get } from "./rest";
 import { initOrGetStore } from "../store/index";
 
 export const login = async () => {
+  const dev = process.env.NODE_ENV === "development";
   window.wLoginReference = window.wLoginReference || null;
   if (window.wLoginReference == null || window.wLoginReference.closed) {
     /* if the pointer to the window object in memory does not exist
      or if such pointer exists but the window was closed */
     const {
       data: {
-        data: { getAuthenticationUrl: data },
+        data: {
+          getAuthenticationUrl: { code_verifier, url },
+        },
       },
     } = await get({
-      url: "https://gql.yogajoint.com/graphql?query={getAuthenticationUrl}",
+      url: `${process.env.GRAPHQL_API}/graphql?query={getAuthenticationUrl{code_verifier,url}}`,
     });
-    window.wLoginReference = window.open(
-      process.env.ENVIRONMENT === "production"
-        ? data
-        : `${window.location.origin}?code=Nz71IDZFWl8XRhp4hMUJfdzfPMCGbc&state=8c40004d2b0d4cb89e99341f63929a5d`,
-      "Login",
-      "toolbar=0,status=0,width=600,height=600"
-    );
-    catchAndClose();
 
+    const windowFeatures =
+      "width=600,height=600,menubar=0,location=0,resizable=1,scrollbars=0,status=0,toolbar=0";
+
+    window.wLoginReference = window.open(url, "Login", windowFeatures);
+    if (dev) {
+      const dispatch = initOrGetStore().dispatch;
+      dispatch({
+        type: "LOCAL_LOGIN",
+        payload: { code_verifier },
+      });
+    } else {
+      setTimeout(() => {
+        catchAndClose(code_verifier);
+      }, 500);
+    }
     /* then create it. The new window will be created and
        will be brought on top of any other window. */
   } else {
@@ -33,7 +43,7 @@ export const login = async () => {
   }
 };
 
-const catchAndClose = () => {
+const catchAndClose = (code_verifier) => {
   try {
     const dispatch = initOrGetStore().dispatch;
     const search = window.wLoginReference.location.search;
@@ -42,15 +52,18 @@ const catchAndClose = () => {
       const token = urlParams.get("code");
       const state = urlParams.get("state");
       window.wLoginReference.close();
-      dispatch({ type: "LOGIN", payload: { token, state } });
+      dispatch({
+        type: "AUTHENTICATE",
+        payload: { token, state, code_verifier },
+      });
     } else {
       setTimeout(() => {
-        catchAndClose();
+        catchAndClose(code_verifier);
       }, 500);
     }
   } catch (e) {
     setTimeout(() => {
-      catchAndClose();
+      catchAndClose(code_verifier);
     }, 500);
   }
 };
