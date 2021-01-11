@@ -11,18 +11,35 @@ export const Contact = styled.div`
 
 export const Row = styled.div`
     display: flex;
+    flex-direction: column;
+
+    @media (min-width: ${({ theme }) => theme.breakpoints[1]}){
+        flex-direction: row;
+    }
 `;
 
 export const Col = styled.div`
-    width: 50%;
-    padding: 0 10px;
+    width: 100%;
+    padding: 0;
+
+    @media (min-width: ${({ theme }) => theme.breakpoints[1]}){
+        width: 50%;
+        padding: 0 10px;
+    }
+
+    & > div{
+        margin: 0 0 24px;
+    }
 `; 
 
 export const TextareaWrapper = styled.div`
     width: 100%;
-    padding: 0 10px;
 
     textarea{
         height: 212px;
+    }
+
+    @media (min-width: ${({ theme }) => theme.breakpoints[1]}){
+        padding: 0 10px;
     }
 `;
