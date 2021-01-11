@@ -5,16 +5,16 @@ import MasonryLayout from "../containers/CardLayouts/MasonryLayout";
 import GridLayout from "../containers/CardLayouts/GridLayout";
 import SlidingLayout from "../containers/CardLayouts/SlidingLayout";
 import ClassCard from "../components/Cards/ClassCard";
-import { ALL_VIDEOS_QUERY } from "../apollo/queries/videos";
-import { useQuery } from "@apollo/client";
-import VideoCard from "../components/Cards/VideoCard";
+//import { ALL_VIDEOS_QUERY } from "../apollo/queries/videos";
+//import { useQuery } from "@apollo/client";
+//import VideoCard from "../components/Cards/VideoCard";
 
 const Classes = () => {
-  const {
+  /* const {
     loading: loadingVideos,
     error: errorVideos,
     data: allVideos,
-  } = useQuery(ALL_VIDEOS_QUERY);
+  } = useQuery(ALL_VIDEOS_QUERY); */
 
   const tabs = ["On-Demand", "Live", "Local"];
   const subTabs = {
@@ -204,6 +204,15 @@ const Classes = () => {
       />
       <Container variant="no-gutters">
         {activeTab === tabs[0] && activeSubTab === subTabs[activeTab][0] && (
+            <>
+                <MasonryLayout exit={{opacity: 0}}>
+                    {classes.map((c, i) => (
+                        <ClassCard key={i} {...c} className="tall" />
+                    ))}
+                </MasonryLayout>
+            </>   
+        )}
+        {/* activeTab === tabs[0] && activeSubTab === subTabs[activeTab][0] && (
           <>
             {loadingVideos ? (
               <div>Loading</div>
@@ -227,7 +236,7 @@ const Classes = () => {
               </MasonryLayout>
             )}
           </>
-        )}
+        ) */}
         {activeTab === tabs[0] && activeSubTab === subTabs[activeTab][1] && (
           <>
             <SlidingLayout title={`My programs`}>
