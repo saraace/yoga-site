@@ -3,6 +3,11 @@ import styled from '@emotion/styled';
 export const Section = styled.div`
     display: flex; 
     padding: 60px 0;
+    flex-direction: column;
+
+    @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
+        flex-direction: row;
+    }
 `;
 
 export const TextCol = styled.div`
@@ -28,6 +33,7 @@ export const Col = styled.div`
 
 export const Gallery = styled.div`
     display: flex; 
+    justify-content: center;
 
     & > div{
         width: 272px; 
@@ -48,12 +54,26 @@ export const Image = styled.div`
 `;
 
 export const SingleImage = styled(Image)`
-    width: 570px; 
-    height: 339px; 
+    height: 300px;
+
+    @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
+        width: 450px; 
+        height: 280px; 
+    }
+
+    @media (min-width: ${({ theme }) => theme.breakpoints[3]}){
+        width: 570px; 
+        height: 339px; 
+    }
 `; 
 
 export const Model = styled.div`
     width: 450px;
+    display: none;
+
+    @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
+        display: block;
+    }
     
     img{
         width: 100%;
@@ -81,17 +101,29 @@ export const Section01 = styled(Section)`
 `;
 
 export const Section02 = styled(Section)`
-
     .imageCol{
-        padding: 0 0 0 40px;
+        padding: 40px 0 0;
+
+        @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
+            padding: 0 0 0 40px;
+        }
     }
 `; 
 
 export const Section03 = styled(Section)`
     position: relative;
+    flex-direction: column-reverse; 
+
+    @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
+        flex-direction: row;
+    }
 
     .imageCol{
-        padding: 0 40px 0 0;
+        padding: 40px 0 0 0;
+
+        @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
+            padding: 0 40px 0 0;
+        }
     }
 
     &:before{
@@ -121,11 +153,19 @@ export const Section04 = styled(Section)`
         font-weight: 300;
         font-size: ${({ theme }) => theme.fontSizes[4]+'px'}; 
         line-height: 1.255;
-        width: 80%;
+
+        @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
+            width: 80%;
+        }
     }
 `;
 
 export const FlexSection = styled.div`
     display: flex;
     justify-content: space-between;
+    flex-direction: column; 
+
+    @media (min-width: ${({ theme }) => theme.breakpoints[3]}){
+        flex-direction: row;
+    }
 `;
