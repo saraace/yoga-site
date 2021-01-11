@@ -105,7 +105,7 @@ const NewToYogaPage = () => {
         <Container>
             <PageHeader heading="New to SHIFT?" />
             <Intro>
-                <Col>
+                <Col className="emblem">
                     <Emblem><YogaJointEmblem /></Emblem>
                 </Col>
                 <TextCol>
@@ -113,7 +113,7 @@ const NewToYogaPage = () => {
                     <p>Trying something new can be intimidating (especially when it involves spandex!), but rest assured that at Yoga Joint, we embrace a body-positive environment that is friendly to those at all levels of fitness. In other words, we are not "perfect," and we certainly don't expect you to be, either. What we do believe in, however, is creating a safe, encouraging class atmosphere that gives our members the chance to explore their minds and body.</p>
                 </TextCol>
             </Intro>
-            <Section>
+            <Section className="mobile-reverse">
                 <TextCol>
                     <h3>Before Class</h3>
                     <p>We recommend that you eat a light snack beforehand and hydrate properly before, during, and after class. If your class uses props, keeping them handy will ensure you can focus on being in the moment. And to save time, first-time members and drop-ins can fill out a personal profile and waiver via our convenient online form.</p>
@@ -136,7 +136,7 @@ const NewToYogaPage = () => {
                     </ButtonRow>
                 </TextCol>
             </Section>
-            <Section>
+            <Section className="mobile-reverse">
                 <TextCol>
                     <h3>Online Classes</h3>
                     <p>If you’re joining us online, we recommend that you sign in about 10 minutes before the start of class. This buffer will give you the time you need to set up your yoga mat and props, ask the teacher any questions you may have, and engage in a light warm-up.</p>
