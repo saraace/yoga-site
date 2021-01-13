@@ -3,8 +3,9 @@ import Schedule from '../../../components/SingleLocationSchedule';
 const LocationSchedulePage = () => {
 
     const location = {
-        title: 'North Fort Lauderdale', 
         address: '6131 N. Federal Hwy., Fort Lauderdale, FL 33308', 
+        title: 'North Fort Lauderdale', 
+        tagline: 'Where the Magic City Meets Down-to-Earth Charm',
         classes: [
             {
                 id: 1, 

@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { Intro, Tagline, Description, MapContainer, PhoneNumber } from "./styles";
 import PhoneIcon from "../../../assets/svgs/phone-icon.svg";
 import Map from "../../Map";
@@ -27,6 +28,17 @@ const LocationIntro = ({ name, tagline, description, phone, coordinates }) => {
             </div>
         </Intro>
     )
+}
+
+LocationIntro.propTypes = {
+    name: PropTypes.string.isRequired,
+    tagline: PropTypes.string,
+    description: PropTypes.string,
+    phone: PropTypes.string,
+    coordinates: PropTypes.shape({
+        lat: PropTypes.number.isRequired, 
+        lng: PropTypes.number.isRequired
+    }).isRequired
 }
 
 export default LocationIntro;

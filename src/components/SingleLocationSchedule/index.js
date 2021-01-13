@@ -3,11 +3,13 @@ import { jsx, Button, Container } from 'theme-ui';
 import { useState } from "react";
 import Link from "next/link";
 import PropTypes from "prop-types";
-import { Location, Title, Address, ButtonRow, Schedule, UpcomingClasses, Preview } from './styles';
+import { ButtonRow, Schedule, UpcomingClasses, Preview } from './styles';
+import PageBackground from "../PageBackground";
+import LocationHeader from "../SingleLocation/LocationHeader";
 import UpcomingClass from './UpcomingClass';
 import ClassPreview from './ClassPreview';
 
-const SingleLocationSchedule = ({ title, address, classes }) => {
+const SingleLocationSchedule = ({ address, title, tagline, classes }) => {
 
     const [ selectedClass, setSelectedClass ] = useState(null);
 
@@ -35,18 +37,15 @@ const SingleLocationSchedule = ({ title, address, classes }) => {
 
     return(
         <>
-            <Container variant="small">
-                <Location>
-                    <Title>{title}</Title>
-                    <Address>{address}</Address>
+            <PageBackground src="/images/single-location/bg.jpg" />
+            <Container variant="large">
+                <LocationHeader {...{ title, address, tagline }} >
                     <ButtonRow>
                         <Link href="/locations">
                             <a sx={{ variant:"buttons.secondary-outline" }}>Change Studio Location</a>
                         </Link>
                     </ButtonRow>
-                </Location>
-            </Container>
-            <Container variant="large">
+                </LocationHeader>
                 <Schedule>
                     <UpcomingClasses>
                         {classes.map((c, i) => (
@@ -63,8 +62,9 @@ const SingleLocationSchedule = ({ title, address, classes }) => {
 }
 
 SingleLocationSchedule.propTypes = {
-    title: PropTypes.string, 
     address: PropTypes.string,
+    title: PropTypes.string, 
+    tagline: PropTypes.string,
     classes: PropTypes.arrayOf(
         PropTypes.shape({
             id: PropTypes.string,

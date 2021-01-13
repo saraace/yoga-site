@@ -2,8 +2,9 @@
 import { jsx, Button, Container } from 'theme-ui';
 import PropTypes from "prop-types";
 import Link from 'next/link';
-import { Location, Pin, Address, Title, Tagline, ButtonRow, Body } from './styles';
+import { ButtonRow, Body } from './styles';
 import PageBackground from "../PageBackground";
+import LocationHeader from "./LocationHeader";
 import LocationIntro from "./LocationIntro";
 import LeadInstructor from './LeadInstructor';
 import PhotoWall from './PhotoWall'; 
@@ -13,18 +14,14 @@ const SingleLocation = ({ address, title, tagline, description, scheduleLink, si
         <>
             <PageBackground src="/images/single-location/bg.jpg" />
             <Container>
-                <Location>
-                    <Pin />
-                    <Address>{address}</Address>
-                    <Title>{title}</Title>
-                    {tagline && <Tagline>{tagline}</Tagline>}
+                <LocationHeader {...{ address, title, tagline, scheduleLink, signUpLink }} >
                     <ButtonRow>
                         <Link href={scheduleLink}>
                             <a sx={{ variant:"buttons.secondary-outline" }}>View Class Schedule</a>
                         </Link>
                         <Button variant="primary">Sign Up to this location</Button>
                     </ButtonRow>
-                </Location>
+                </LocationHeader>
             </Container>
             <Body variant="small">
                 <LocationIntro {...{ name: title, tagline, description, phone, coordinates }} />
