@@ -1,7 +1,32 @@
 import styled from '@emotion/styled';
+import { Container } from "theme-ui";
+import MapPin from "../../assets/svgs/location-pin.svg";
 
 export const Location = styled.div`
     padding: 0 0 56px 0;
+`;
+
+export const Pin = styled(MapPin)`
+    height: 24px;
+    margin: 0 auto;
+    display: block;
+
+    path{
+        fill: ${({ theme }) => theme.colors.text};  
+    }
+`; 
+
+export const Address = styled.div`
+    font-size: ${({ theme }) => theme.fontSizes[1]+'px'};   
+    line-height: 1.6em; 
+    text-align: center;
+    margin: 10px 0 32px;
+
+    @media (min-width: ${({ theme }) => theme.breakpoints[1]}){
+        font-size: ${({ theme }) => theme.fontSizes[2]+'px'};   
+        line-height: 1.15em; 
+        margin: 20px 0 64px;
+    }
 `;
 
 export const Title = styled.h1`
@@ -15,17 +40,13 @@ export const Title = styled.h1`
     }
 `;
 
-export const Address = styled.div`
-    font-size: ${({ theme }) => theme.fontSizes[1]+'px'};   
-    line-height: 1.6em; 
+export const Tagline = styled.p`
+    display: block; 
     text-align: center;
-    margin: 10px 0 32px;
-
-    @media (min-width: ${({ theme }) => theme.breakpoints[1]}){
-        font-size: 18px;
-        line-height: 1.15em; 
-        margin: 20px 0 64px;
-    }
+    font-size: ${({ theme }) => theme.fontSizes[3]+'px'};
+    line-height: 1.33;
+    font-weight: 600;
+    margin: 20px 0 45px;
 `;
 
 export const ButtonRow = styled.div`
@@ -34,28 +55,15 @@ export const ButtonRow = styled.div`
     justify-content: center; 
     align-items: center;
 
-    button{
+    button, a{
         margin: 0 11px 12px;
         display: block;
         width: 100%;
 
-        @media (min-width: ${({ theme }) => theme.breakpoints[0]}){
+        @media (min-width: ${({ theme }) => theme.breakpoints[1]}){
             margin: 0 11px;
             width: auto;
         }
-    }
-
-    @media (min-width: ${({ theme }) => theme.breakpoints[0]}){
-        flex-direction: row;
-    }
-`;
- 
-export const Row = styled.div`
-    display: flex;
-    flex-direction: column;
-
-    & > div{
-        margin: 56px 0 0;
     }
 
     @media (min-width: ${({ theme }) => theme.breakpoints[1]}){
@@ -63,75 +71,7 @@ export const Row = styled.div`
     }
 `;
 
-export const MapContainer = styled.div`
-    margin: 0 100px 0 0;
+export const Body = styled(Container)`
+    border-top: 1px solid rgba(255, 255, 255, 0.24);
+    padding: 60px 24px 0;
 `;
-
-export const Services = styled.div`
-    display: flex; 
-    flex-flow: row wrap;
-`;
-
-export const Service = styled.div`
-    display: flex; 
-    align-items: center;
-    margin: 0 64px 35px 0;
-
-    svg{
-        height: 40px; 
-        margin: 0 24px 0 0;
-    }
-
-    span{
-        text-transform: uppercase; 
-        font-weight: 700; 
-        font-size: ${({ theme }) => theme.fontSizes[2]+'px'}; 
-        line-height: 1.4;
-        position: relative; 
-        margin-top: -3px;
-
-        &:after{
-            content: "";
-            position: absolute; 
-            bottom: -3px; 
-            height: 4px; 
-            border-radius: 8px; 
-            left: 0; 
-            right: 0; 
-            background-color: ${({ theme }) => theme.colors.muted};
-        }
-    }
-
-    &.yoga{
-        span{
-            &:after{
-                background-color: ${({ theme }) => theme.colors.danger};
-            }
-        }
-        svg, path{
-            fill: ${({ theme }) => theme.colors.danger};
-        }
-    }
-
-    &.fiit{
-        span{
-            &:after{
-                background-color: ${({ theme }) => theme.colors.purple};
-            }
-        }
-        svg, path{
-            fill: ${({ theme }) => theme.colors.purple};
-        }
-    }
-
-    &.restore{
-        span{
-            &:after{
-                background-color: ${({ theme }) => theme.colors.highlight};
-            }
-        }
-        svg, path{
-            fill: ${({ theme }) => theme.colors.highlight};
-        }
-    }
-`; 

@@ -3,9 +3,11 @@ import styled from '@emotion/styled';
 export const MapContainer = styled.div`
     position: relative;
     line-height: 1;
+    max-width: 100%;
     
     img{
         border-radius: 8px;
+        max-width: 100%;
     }
 `;
 

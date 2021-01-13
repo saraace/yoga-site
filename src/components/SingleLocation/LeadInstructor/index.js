@@ -2,11 +2,11 @@
 import { jsx } from 'theme-ui';
 import PropTypes from "prop-types";
 import Link from 'next/link';
-import { Instructor, ImageContainer, Bio, Name, Title, ButtonRow } from './styles';
+import { Instructor, ImageContainer, Quote, Bio, Name, Title, ButtonRow } from './styles';
 import PlayIcon from '../../../assets/svgs/play-icon.svg';
 import HeartOutlineIcon from '../../../assets/svgs/heart-outline.svg';
 
-const LeadInstructor = ({ name, title, image, bio, link, followLink }) => {
+const LeadInstructor = ({ name, title, image, quote, bio, link, followLink }) => {
     return(
         <Instructor>
             <ImageContainer>
@@ -27,7 +27,8 @@ const LeadInstructor = ({ name, title, image, bio, link, followLink }) => {
             <div>
                 <Name>{name}</Name>
                 <Title>{title}</Title>
-                {bio && <Bio dangerouslySetInnerHTML={{ __html: bio }}></Bio>}
+                {quote && <Quote>&ldquo;{quote}&rdquo;</Quote>}
+                {bio && <Bio>{bio}</Bio>}
             </div>
         </Instructor>
     )
@@ -37,6 +38,7 @@ LeadInstructor.propTypes = {
     name: PropTypes.string.isRequired, 
     title: PropTypes.string.isRequired, 
     image: PropTypes.string.isRequired, 
+    quote: PropTypes.string,
     bio: PropTypes.string, 
     link: PropTypes.string, 
     followLink: PropTypes.string

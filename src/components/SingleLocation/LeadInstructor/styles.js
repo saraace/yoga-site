@@ -5,8 +5,6 @@ export const Instructor = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items:center;
-    border-top: 1px solid rgba(255, 255, 255, 0.24);
-    padding: 60px 0 0;
 
     @media (min-width: ${({ theme }) => theme.breakpoints[1]}){
         flex-direction: row;
@@ -30,12 +28,17 @@ export const ImageContainer = styled.div`
     }
 `; 
 
-export const Bio = styled.div`
-    p{
-        margin: 0 0 24px 0;
-        &:last-child{
-            margin: 0;
-        }
+export const Quote = styled.div`
+    font-weight: 600; 
+    font-size: ${({ theme }) => theme.fontSizes[3]+'px'};
+    line-height: 1.33;
+    margin: 0 0 20px;
+`; 
+
+export const Bio = styled.p`
+    margin: 0 0 24px 0;
+    &:last-child{
+        margin: 0;
     }
 `; 
 
@@ -43,7 +46,6 @@ export const Name = styled.h2`
     font-size: ${({ theme }) => theme.fontSizes[5]+'px'};
     line-height: 1em;
     margin: 20px 0 7px;
-    text-transform: uppercase; 
     font-weight: 600;
     text-align: center;
 
