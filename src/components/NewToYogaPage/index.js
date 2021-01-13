@@ -104,7 +104,7 @@ const NewToYogaPage = () => {
 
     return(
         <>
-            <PageBackground src="/images/new-to-yoga/bg.png" />
+            <PageBackground src="/images/new-to-yoga/bg.jpg" />
             <Container>
                 <PageHeader heading="New to SHIFT?" />
                 <Intro>

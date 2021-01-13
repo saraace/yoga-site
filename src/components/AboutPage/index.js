@@ -68,7 +68,7 @@ const About = () => {
     
     return(
         <>
-        <PageBackground src="/images/about/bg.png" />
+        <PageBackground src="/images/about/bg.jpg" />
         <PageHeader heading="About Us" />
         <Container>
             <Headline>

@@ -2,6 +2,7 @@ import { Container } from "theme-ui";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { AnimatePresence } from "framer-motion";
+import PageBackground from "../PageBackground";
 import PageHeader from "../PageHeader";
 import Select from "../Forms/Select"; 
 import Input from "../Forms/Input";
@@ -115,6 +116,7 @@ const TeacherTrainingPage = () => {
 
     return(
         <>
+            <PageBackground src="/images/teacher-training/bg.jpg" />
             <PageHeader heading="Teacher training enrollment application">
                 <p>Empower the movement SHIFT Series</p>
             </PageHeader>
