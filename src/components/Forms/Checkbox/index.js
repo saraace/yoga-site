@@ -6,7 +6,7 @@ import Checkmark from "../../../assets/svgs/checkmark-2.svg";
 const FormCheckbox = ({ label, required, className, value, ...rest }) => {
     return (
         <CheckboxWrapper>
-            {label && <Label>{label}</Label>}
+            {label && <Label className="label">{label}</Label>}
             <input type="checkbox" {...rest} {...{value}} />
             <CheckboxControl>
                 <Checkmark />

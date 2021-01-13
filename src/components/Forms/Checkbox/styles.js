@@ -32,7 +32,8 @@ const CheckboxWrapper = styled.label`
 `; 
 
 export const CheckboxControl = styled.div`
-    width: 16px; 
+    flex: 0 0 16px; 
+    width: 16px;
     height: 16px; 
     border: 1px solid red;
     border: 2px solid #fff; 
