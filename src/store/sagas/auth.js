@@ -9,13 +9,13 @@ function* authanticate({ payload: { state, token, code_verifier } }) {
     const {
       data: {
         data: {
-          getAuthenticationToken: { access_token, refresh_token },
+          getPKCEAuthenticationToken: { access_token, refresh_token },
         },
       },
     } = yield get({
       url: `${process.env.GRAPHQL_API}/graphql`,
       params: {
-        query: `{getAuthenticationToken(authorization_code:"${token}",code_verifier:"${code_verifier}"){access_token,refresh_token}}`,
+        query: `{getPKCEAuthenticationToken(authorization_code:"${token}",code_verifier:"${code_verifier}"){access_token,refresh_token}}`,
       },
     });
     yield put({ type: LOGIN, payload: { access_token, refresh_token } });

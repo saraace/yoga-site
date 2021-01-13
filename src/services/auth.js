@@ -10,11 +10,11 @@ export const login = async () => {
     const {
       data: {
         data: {
-          getAuthenticationUrl: { code_verifier, url },
+          getPKCEAuthenticationUrl: { code_verifier, url },
         },
       },
     } = await get({
-      url: `${process.env.GRAPHQL_API}/graphql?query={getAuthenticationUrl{code_verifier,url}}`,
+      url: `${process.env.GRAPHQL_API}/graphql?query={getPKCEAuthenticationUrl{code_verifier,url}}`,
     });
 
     const windowFeatures =
