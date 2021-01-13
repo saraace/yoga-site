@@ -228,10 +228,8 @@ const SingleProgram = () => {
 
     return(
         <>
-            <Container variant="small">
-                <LargeHeader {...program} />
-            </Container>
             <Container>
+                <LargeHeader {...program} />
                 <h2>Your Classes</h2>
                 {program.schedule.map((week, i) => (
                     <SlidingLayout key={i} title={week.title} subTitle={week.sub_title} height={[192, null, null, 436]} stepWidth={384} >
