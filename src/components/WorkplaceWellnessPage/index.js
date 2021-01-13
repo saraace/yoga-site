@@ -2,6 +2,7 @@
 import { jsx } from 'theme-ui';
 import Link from "next/link";
 import { Container } from "theme-ui";
+import PageBackground from "../PageBackground";
 import PageHeader from "../PageHeader";
 import YogaJointEmblem from "../../assets/svgs/yoga-joint-emblem.svg";
 import { Intro, TextCol, Emblem, Section01, Section02, SingleImage, ButtonRow, FormSection, FormIntro } from "./styles";
@@ -11,6 +12,7 @@ const WorkplaceWellnessPage = () => {
 
     return(
         <>
+            <PageBackground src="/images/workplace-wellness/bg.jpg" />
             <PageHeader heading="Workplace Wellness"/>
             <Container>
                 <Intro>

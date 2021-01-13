@@ -2,6 +2,7 @@
 import { jsx } from 'theme-ui';
 import Link from "next/link";
 import { Container } from "theme-ui";
+import PageBackground from "../PageBackground";
 import PageHeader from "../PageHeader";
 import { Section, Entry, ImageWrapper, CTA } from "./styles";
 
@@ -90,35 +91,38 @@ const PressPage = () => {
         }
     ]
     return(
-        <Container variant="small">
-            <PageHeader heading="Press &amp; Media "></PageHeader>
-            {years.map((year, i) => {
-                return(
-                    <Section key={i} className={i === years.length-1? 'last': ''}>
-                        {year.entries.map((entry, j) => {
-                            return(
-                                <Entry key={j}>
-                                    <ImageWrapper>
-                                        <img src={entry.image} />
-                                    </ImageWrapper>
-                                    <div>
-                                        {j=== 0 && <h2>{year.title}</h2>}
-                                        <h3>{entry.title}</h3>
-                                        <p>{entry.description}</p>
-                                    </div>
-                                </Entry>
-                            )
-                        })}
-                    </Section>
-                )
-            })}
-            <CTA>
-                <h1>I’m Ready to Make the SHIFT!</h1>
-                <Link href="/contact">
-                    <a sx={{ variant: "buttons.primary" }}>Contact Us</a>
-                </Link>
-            </CTA>
-        </Container>
+        <>
+            <PageBackground src="/images/press/bg.jpg" />
+            <Container variant="small">
+                <PageHeader heading="Press &amp; Media "></PageHeader>
+                {years.map((year, i) => {
+                    return(
+                        <Section key={i} className={i === years.length-1? 'last': ''}>
+                            {year.entries.map((entry, j) => {
+                                return(
+                                    <Entry key={j}>
+                                        <ImageWrapper>
+                                            <img src={entry.image} />
+                                        </ImageWrapper>
+                                        <div>
+                                            {j=== 0 && <h2>{year.title}</h2>}
+                                            <h3>{entry.title}</h3>
+                                            <p>{entry.description}</p>
+                                        </div>
+                                    </Entry>
+                                )
+                            })}
+                        </Section>
+                    )
+                })}
+                <CTA>
+                    <h1>I’m Ready to Make the SHIFT!</h1>
+                    <Link href="/contact">
+                        <a sx={{ variant: "buttons.primary" }}>Contact Us</a>
+                    </Link>
+                </CTA>
+            </Container>
+        </>
     )
 }
 

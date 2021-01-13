@@ -2,6 +2,7 @@
 import { jsx } from 'theme-ui';
 import Link from "next/link";
 import { Container } from "theme-ui";
+import PageBackground from "../PageBackground";
 import PageHeader from "../PageHeader";
 import SlidingLayout from "../../containers/CardLayouts/SlidingLayout";
 import InstructorCard from "../Cards/InstructorCard";
@@ -67,6 +68,7 @@ const About = () => {
     
     return(
         <>
+        <PageBackground src="/images/about/bg.png" />
         <PageHeader heading="About Us" />
         <Container>
             <Headline>

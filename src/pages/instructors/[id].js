@@ -1,4 +1,5 @@
 import { Container } from 'theme-ui';
+import PageBackground from "../../components/PageBackground";
 import SingleInstructor from '../../components/SingleInstructor';
 
 const Instructor = () => {
@@ -19,9 +20,12 @@ const Instructor = () => {
     }
 
     return(
-        <Container variant="small">
-            <SingleInstructor {...instructor} />
-        </Container>
+        <>
+            <PageBackground src="/images/instructors/bg-instructor.jpg" />
+            <Container variant="small">
+                <SingleInstructor {...instructor} />
+            </Container>
+        </>
     )
 }
 

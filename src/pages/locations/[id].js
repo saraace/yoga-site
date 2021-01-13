@@ -1,4 +1,5 @@
 import { Container } from 'theme-ui';
+import PageBackground from "../../components/PageBackground";
 import SingleLocation from '../../components/SingleLocation';
 
 const Location = () => {
@@ -93,9 +94,12 @@ const Location = () => {
     ]; 
 
     return(
-        <Container variant="small" >
-            <SingleLocation {...location} {...{instructor}} {...{photoWallImages}} {...{instructors}} />
-        </Container>
+        <>
+            <PageBackground src="/images/locations/bg-location.png" />
+            <Container variant="small" >
+                <SingleLocation {...location} {...{instructor}} {...{photoWallImages}} {...{instructors}} />
+            </Container>
+        </>
     )
 }
 

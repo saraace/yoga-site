@@ -1,12 +1,13 @@
 import { Button } from 'theme-ui';
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import Input from "../Forms/Input";
-import Select from "../Forms/Select";
-import Textarea from "../Forms/Textarea";
-import { Contact, Row, Col, TextareaWrapper } from "./styles";
+import Input from "../../Forms/Input";
+import Select from "../../Forms/Select";
+import OptionGroup from "../../Forms/OptionGroup";
+import Textarea from "../../Forms/Textarea";
+import { Careers, Gallery, GalRow, GalCol1, GalCol2, GalCol3, GalCol4, Row, Col, Schedule, TextareaWrapper } from "./styles";
 
-const ContactForm = () => {
+const CareersForm = () => {
 
     const locationOps = [
         {
@@ -23,28 +24,39 @@ const ContactForm = () => {
         }
     ];
 
-    const reasonOps = [
+    const positionOps = [
         {
             value: 0, 
-            displayValue: "How did you hear about us?"
+            displayValue: "Select a position"
         }, 
         {
             value: 1, 
-            displayValue: 'TEST'
+            displayValue: 'Instructor'
         }
-    ]
+    ]; 
 
-    const contact = () => {
-        console.log('Contact!');
-    }
+    const scheduleOps = [
+        { value: 'sunday', displayValue: 'Sunday' }, 
+        { value: 'monday', displayValue: 'Monday' }, 
+        { value: 'tuesday', displayValue: 'Tuesday' }, 
+        { value: 'wednesday', displayValue: 'Wednesday' }, 
+        { value: 'thursday', displayValue: 'Thursday' }, 
+        { value: 'friday', displayValue: 'Friday' }, 
+        { value: 'saturday', displayValue: 'Saturday' }
+    ];
 
-    const contactSchema = Yup.object().shape({
+    const submit = () => {
+        console.log('Careers Submit'); 
+    };
+
+    const careersSchema = Yup.object().shape({
         first_name: Yup.string().required("Required field"), 
         last_name: Yup.string().required("Required field"),
         email: Yup.string().email("Please enter a valid email").required("Required field"), 
         phone: Yup.string().required("Required field"),
-        reason: Yup.mixed().notOneOf([0, '0'], "Required field").required("Required field"),
+        position: Yup.mixed().notOneOf([0, '0'], "Required field").required("Required field"),
         location: Yup.mixed().notOneOf([0, '0'], "Required field").required("Required field"),
+        schedule: Yup.mixed().required("Required field"),
         message: Yup.string().required("Required field")
     });
 
@@ -54,17 +66,32 @@ const ContactForm = () => {
             last_name: "", 
             email: "", 
             phone: "", 
-            reason: "", 
+            position: "", 
             location: "", 
+            schedule: [],
             message: ""
         },
-        validationSchema: contactSchema,
-        onSubmit: contact
+        validationSchema: careersSchema,
+        onSubmit: submit
     });
-    
+
     return(
-        <Contact>
-            <h2>Sign Me Up!</h2>
+        <Careers>
+            <Gallery>
+                <GalRow>
+                    <GalCol1>
+                        <img src="/images/careers/image_01.jpg" />
+                        <GalRow>
+                            <GalCol3><img src="/images/careers/image_03.jpg" /></GalCol3>
+                            <GalCol4><img src="/images/careers/image_04.jpg" /></GalCol4>
+                        </GalRow>
+                    </GalCol1>
+                    <GalCol2>
+                        <img src="/images/careers/image_02.jpg" />
+                    </GalCol2>
+                </GalRow>
+            </Gallery>
+            <h2>I'm Ready to Make the SHIFT!</h2>
             <form onSubmit={handleSubmit}>
                 <Row>
                     <Col><Input name="first_name" placeholder="First Name" value={values.first_name} onChange={handleChange} validate={touched.first_name && errors.first_name} /></Col>
@@ -75,9 +102,12 @@ const ContactForm = () => {
                     <Col><Input name="phone" placeholder="Phone" value={values.phone} onChange={handleChange} validate={touched.phone && errors.phone} /></Col>
                 </Row>
                 <Row>
-                    <Col><Select options={reasonOps} name="reason" value={values.reason} onChange={handleChange} validate={touched.reason && errors.reason} /></Col>
+                    <Col><Select options={positionOps} name="position" value={values.position} onChange={handleChange} validate={touched.position && errors.position} /></Col>
                     <Col><Select locationIcon={true} options={locationOps} name="location" value={values.location} onChange={handleChange} validate={touched.location && errors.location} /></Col>
                 </Row>
+                <Schedule>
+                    <OptionGroup options={scheduleOps} multiple={true} className="schedule" name="schedule" value={values.schedule} onChange={handleChange} validate={touched.schedule && errors.schedule} />
+                </Schedule>
                 <Row>
                     <TextareaWrapper>
                         <Textarea name="message" placeholder="Message us here" value={values.message} onChange={handleChange} validate={touched.message && errors.message} />
@@ -89,8 +119,8 @@ const ContactForm = () => {
                     </Col>
                 </Row>
             </form>
-        </Contact>
+        </Careers>
     )
 }
 
-export default ContactForm;
+export default CareersForm;
