@@ -13,7 +13,11 @@ export const CardWrapper = styled(Card)`
     }
     
     &.large{
-        width: 50%;
+        width: 100%;
+
+        @media (min-width: ${({ theme }) => theme.breakpoints[2]}){
+            width: 50%;
+        }
     }
 `;
 

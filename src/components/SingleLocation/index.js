@@ -1,70 +1,49 @@
 /** @jsx jsx */
-import { jsx, Button } from 'theme-ui';
+import { jsx, Button, Container } from 'theme-ui';
 import PropTypes from "prop-types";
 import Link from 'next/link';
-import { Location, Title, Address, ButtonRow, Row, MapContainer, Services, Service } from './styles';
+import { ButtonRow, Body } from './styles';
+import PageBackground from "../PageBackground";
+import LocationHeader from "./LocationHeader";
+import LocationIntro from "./LocationIntro";
 import LeadInstructor from './LeadInstructor';
-import Map from '../Map';
 import PhotoWall from './PhotoWall'; 
-import InstructorsGrid from './InstructorsGrid';
-import YogaIcon from '../../assets/svgs/yoga-icon.svg';
-import FiitIcon from '../../assets/svgs/fiit-icon.svg'; 
-import RestoreIcon from '../../assets/svgs/restore-icon.svg'; 
 
-const SingleLocation = ({ title, address, scheduleLink, signUpLink, coordinates, services, instructor, photoWallImages, instructors }) => {
+const SingleLocation = ({ address, title, tagline, description, scheduleLink, signUpLink, phone, coordinates, instructor, photoWallImages }) => {
     return(
         <>
-            <Location>
-                <Title>{title}</Title>
-                <Address>{address}</Address>
-                <ButtonRow>
-                    <Link href={scheduleLink}>
-                        <a sx={{ variant:"buttons.secondary-outline" }}>View Class Schedule</a>
-                    </Link>
-                    <Button variant="primary">Sign Up to this location</Button>
-                </ButtonRow>
-            </Location>
-            <LeadInstructor {...instructor} />
-            <Row>
-                <div>
-                    <h3>Location</h3>
-                    <MapContainer>
-                        <Map 
-                        {...coordinates} 
-                        width={343} 
-                        height={192}
-                        directionsLink="#"
-                    />
-                    </MapContainer>
-                </div>
-                <div>
-                    <h3>Services</h3>
-                    <Services>
-                        {services.map((service, i) => (
-                            <Service key={i} className={service}>
-                                {service === 'yoga' && <YogaIcon />}
-                                {service === 'fiit' && <FiitIcon />}
-                                {service === 'restore' && <RestoreIcon />}
-                                <span>{service}</span>
-                            </Service>
-                        ))}
-                    </Services>
-                </div>
-            </Row>
-            {photoWallImages && <PhotoWall images={photoWallImages} />}
-            {instructors && <InstructorsGrid {...{instructors}} />}
+            <PageBackground src="/images/single-location/bg.jpg" />
+            <Container>
+                <LocationHeader {...{ address, title, tagline, scheduleLink, signUpLink }} >
+                    <ButtonRow>
+                        <Link href={scheduleLink}>
+                            <a sx={{ variant:"buttons.secondary-outline" }}>View Class Schedule</a>
+                        </Link>
+                        <Button variant="primary">Sign Up to this location</Button>
+                    </ButtonRow>
+                </LocationHeader>
+            </Container>
+            <Body variant="small">
+                <LocationIntro {...{ name: title, tagline, description, phone, coordinates }} />
+                <LeadInstructor {...instructor} />
+                {photoWallImages && <PhotoWall images={photoWallImages} />}
+            </Body>
         </>
     )
 }
 
 SingleLocation.propTypes = {
-    title: PropTypes.string.isRequired,
     address: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    tagline: PropTypes.string,
+    description: PropTypes.string,
+    scheduleLink: PropTypes.string,
+    signUpLink: PropTypes.string,
+    phone: PropTypes.string,
     coordinates: PropTypes.shape({
         lat: PropTypes.number.isRequired, 
         lng: PropTypes.number.isRequired
     }).isRequired,
-    services: PropTypes.arrayOf(PropTypes.string).isRequired,
     instructor: PropTypes.shape({
         name: PropTypes.string, 
         title: PropTypes.string, 
@@ -74,13 +53,6 @@ SingleLocation.propTypes = {
         followLink: PropTypes.string
     }).isRequired,
     photoWallImages: PropTypes.arrayOf(PropTypes.string),
-    instructors: PropTypes.arrayOf(
-        PropTypes.shape({
-            slug: PropTypes.string, 
-            name: PropTypes.string, 
-            image: PropTypes.string
-        })
-    )
 }
 
 export default SingleLocation;

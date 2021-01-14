@@ -16,6 +16,10 @@ export const SelectWrapper = styled.div`
         position:absolute; 
         top: 12px; 
         left: 28px;
+        
+        path{
+            fill: #fff;
+        }
     }
 
     select.icon-included{
@@ -27,6 +31,10 @@ export const SelectWrapper = styled.div`
         width: 10px; 
         top: 21px; 
         right: 20px; 
+        
+        path{
+            fill: #fff;
+        }
         
         &.disabled{
             display: none;

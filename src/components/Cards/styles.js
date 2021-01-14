@@ -8,6 +8,7 @@ export const CardContainer = styled(motion.a)`
     position: relative;
     cursor: pointer;
     display: block;
+    overflow: hidden;
 
     &:after{
         content: "";
@@ -20,6 +21,10 @@ export const CardContainer = styled(motion.a)`
         background: linear-gradient(0deg, rgba(12, 12, 54, 0.5) 47.42%, rgba(0, 0, 0, 0.2) 97.37%);
         z-index: -1;
     }
+
+    &:hover img{
+        transform: scale(1.05);
+    }
 `;    
 
 export const Image = styled.img`
@@ -31,6 +36,7 @@ export const Image = styled.img`
     height: 100%;
     object-fit: cover;
     border-radius: 12px;
+    transition: 0.5s all ease;
 `;
 
 export const CardContent = styled.div`

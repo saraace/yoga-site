@@ -1,12 +1,27 @@
+import { useState } from "react";
 import PropTypes from "prop-types";
+import { AnimatePresence } from "framer-motion";
 import BackButton from '../BackButton';
+import ReserveButton from "../ReserveSpot/ReserveButton"; 
+import SpotSelector from "../ReserveSpot/SpotSelector";
 import { Video, ClassTitle, ClassDetails, Row, Col, Section, SectionTitle, SectionContent, Description } from './styles';
 import BoxIcon from '../../assets/svgs/box-icon.svg'; 
 import EquipIcon from '../../assets/svgs/equip-icon.svg'; 
 import MuscleIcon from '../../assets/svgs/muscle-icon.svg';
 import InstructorPreview from './InstructorPreview';
 
-const SingleClass = ({ title, difficulty, duration, description, equipment, muscleGroups, instructor }) => {
+const SingleClass = ({ classType, title, difficulty, duration, description, equipment, muscleGroups, instructor, location, reserved, selectedSpot }) => {
+
+    const [ spotSelectorOpen, setSpotSelectorOpen ] = useState(false);
+
+    const onReserve = () => {
+        console.log('spot reserved!');
+    }
+
+    const onCancel = () => {
+        console.log('reservation canceled');
+    }
+
     return(
         <>
             <BackButton />
@@ -17,6 +32,7 @@ const SingleClass = ({ title, difficulty, duration, description, equipment, musc
                 <span>{difficulty}</span>
                 <span>{duration}</span>
             </ClassDetails>
+            <ReserveButton {...{ reserved, location: selectedSpot }} onClick={() => setSpotSelectorOpen(spotSelectorOpen => (!spotSelectorOpen))} />
             <Row>
                 <Col>
                     <Section>
@@ -44,12 +60,36 @@ const SingleClass = ({ title, difficulty, duration, description, equipment, musc
                 </Col>
             </Row>
             <InstructorPreview {...instructor} />
+            <AnimatePresence>
+                {spotSelectorOpen && 
+                    <SpotSelector 
+                        {...{ 
+                            classType, 
+                            location, 
+                            instructor, 
+                            difficulty,
+                            duration, 
+                            reserved,
+                            selectedSpot,
+                            onReserve, 
+                            onCancel
+                        }} 
+                        onToggle={() => setSpotSelectorOpen(spotSelectorOpen => (!spotSelectorOpen))}
+                    />
+                }
+            </AnimatePresence>
         </>
     )
-}
+};
+
+SingleClass.defaultProps = {
+    reserved: false,
+    selectedSpot: ""
+};
 
 SingleClass.propTypes = {
-    title: PropTypes.string.isRequired, 
+    classType: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
     difficulty: PropTypes.string, 
     duration: PropTypes.string, 
     description: PropTypes.string.isRequired, 
@@ -60,7 +100,13 @@ SingleClass.propTypes = {
         bio: PropTypes.string, 
         link: PropTypes.string, 
         image: PropTypes.string
-    }).isRequired
-}
+    }).isRequired, 
+    location: PropTypes.shape({
+        title: PropTypes.string, 
+        link: PropTypes.string
+    }),
+    reserved: PropTypes.bool.isRequired, 
+    selectedSpot: PropTypes.string.isRequired
+};
 
 export default SingleClass;

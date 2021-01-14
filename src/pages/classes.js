@@ -187,7 +187,7 @@ const Classes = () => {
       link: "/classes/1",
     },
   ];
-
+  
   return (
     <>
       <LibraryTopRow

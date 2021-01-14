@@ -2,6 +2,13 @@ import styled from '@emotion/styled';
 
 export const MapContainer = styled.div`
     position: relative;
+    line-height: 1;
+    max-width: 100%;
+    
+    img{
+        border-radius: 8px;
+        max-width: 100%;
+    }
 `;
 
 export const Buttons = styled.div`
@@ -16,7 +23,7 @@ export const Buttons = styled.div`
 
     a:last-of-type{
         margin: 0 0 0 8px;
-        border-bottom-right-radius: 6px;
+        border-bottom-right-radius: 8px;
     }
 `; 
 

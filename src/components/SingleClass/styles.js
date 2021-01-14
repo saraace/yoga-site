@@ -61,6 +61,7 @@ export const Row = styled.div`
     display: flex;
     justify-content: space-between;
     flex-direction: column;
+    margin: 80px 0 0;
 
     @media (min-width: ${({ theme }) => theme.breakpoints[1]}){
         flex-direction: row;         
