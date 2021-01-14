@@ -144,7 +144,7 @@ SpotSelector.propTypes = {
     location: PropTypes.shape({
         title: PropTypes.string, 
         link: PropTypes.string
-    }),
+    }).isRequired,
     instructor: PropTypes.shape({
         name: PropTypes.string, 
         bio: PropTypes.string, 

@@ -1,10 +1,11 @@
 import styled from '@emotion/styled';
 
 export const Preview = styled.div`
-    padding: 128px 48px;
+    padding: 46px 48px 0;
     background: #152339;
     border-radius: 12px;
     position: relative;
+    overflow: hidden;
 `;
 
 export const Image = styled.img`
@@ -21,8 +22,7 @@ export const Wrapper = styled.div`
 `; 
 
 export const Info = styled.div`
-    display: flex;
-    padding: 0 0 96px;
+    padding: 0 0 48px;
 `;
 
 export const Title = styled.div`
@@ -69,6 +69,16 @@ export const ClassDetails = styled.div`
     }
 `;
 
+export const ClassInformation = styled.div`
+    display: flex;
+    padding: 62px 0 0 45px;
+`; 
+
+export const Description = styled.div`
+    flex-basis: 300px;
+    margin: 0 100px 0 0;
+`;
+
 export const Section = styled.div`
     margin-bottom: 33px;
 `;
@@ -87,5 +97,3 @@ export const SectionTitle = styled.div`
         height: 22px;
     }
 `;
-
-export const SectionContent = styled.div``;

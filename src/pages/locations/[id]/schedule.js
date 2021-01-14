@@ -6,6 +6,7 @@ const LocationSchedulePage = () => {
         address: '6131 N. Federal Hwy., Fort Lauderdale, FL 33308', 
         title: 'North Fort Lauderdale', 
         tagline: 'Where the Magic City Meets Down-to-Earth Charm',
+        link: '/locations/1',
         classes: [
             {
                 id: 1, 
