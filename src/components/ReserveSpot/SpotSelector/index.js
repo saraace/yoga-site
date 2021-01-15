@@ -5,13 +5,14 @@ import { AnimatePresence } from "framer-motion";
 import { Container } from "theme-ui";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import FullScreenLightbox from "../FullScreenLightbox";
 import ClassTypeBadge from "../../ClassTypeBadge";
 import ValidationLabel from "../../Forms/Validation/ValidationLabel";
 import ValidationWrapper from "../../Forms/Validation/ValidationWrapper";
 import Spot from "./Spot";
 import LocationPin from "../../../assets/svgs/location-pin.svg";
 import CancelConfirmation from "../CancelConfirmation";
-import { Lightbox, LightboxControls, CloseButton, ResetButton, ClassroomLayout, Row, SubmitButton, CancelButton, ClassInfo, Location, ClassDetails, Title } from "./styles"; 
+import { ClassroomLayout, Row, SubmitButton, CancelButton, ClassInfo, Location, ClassDetails, Title } from "./styles"; 
 
 const SpotSelector = ({ classType, location, instructor, difficulty, duration, reserved, selectedSpot, onToggle, onReserve, onCancel }) => {
 
@@ -82,15 +83,7 @@ const SpotSelector = ({ classType, location, instructor, difficulty, duration, r
 
     return(
         <>
-            <Lightbox 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-            >
-                <LightboxControls>
-                    <CloseButton onClick={onToggle}>Close</CloseButton>
-                    <ResetButton onClick={handleReset}>Reset</ResetButton>
-                </LightboxControls>
+            <FullScreenLightbox onClose={onToggle} reset={true} onReset={handleReset}>
                 <Container>
                     <ClassInfo>
                         <ClassTypeBadge type={classType} />
@@ -127,7 +120,7 @@ const SpotSelector = ({ classType, location, instructor, difficulty, duration, r
                         {reserved && <CancelButton type="button" onClick={() => setCancelConfirm(true)} variant="secondary-outline-block">Cancel Reservation</CancelButton>}
                     </ClassroomLayout>
                 </Container>
-            </Lightbox>
+            </FullScreenLightbox>
             {cancelConfirm && <CancelConfirmation {...{ onCancel }} onClose={() => setCancelConfirm(false)} />}
         </>
     )

@@ -1,12 +1,5 @@
 import styled from '@emotion/styled';
 
-export const Video = styled.div`
-    width: 100%; 
-    padding-bottom: 56.25%;
-    background: #2c4263;
-    margin: 0 auto;
-`; 
-
 export const ClassTitle = styled.h1`
     font-size: 42px; 
     line-height: 1.14;
