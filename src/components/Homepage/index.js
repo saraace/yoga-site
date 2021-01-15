@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useViewportScroll } from "framer-motion";
-import { isIPad13, isIE, isEdge } from 'react-device-detect';
+import { isIE, isEdge } from 'react-device-detect';
 import window from "global"; 
 
 /* STYLES */
@@ -16,10 +16,8 @@ import ShiftSequence from "./ShiftSequence";
 import LivingRoom from "./LivingRoomScene"; 
 // World Class Instructors 
 import Instructors from "./Instructors"; 
-// Categories
-import Categories from "./Categories"; 
-// Yoga
-import YogaScene from "./YogaScene"; 
+// Yoga 
+import YogaScene from "./YogaScene";
 // FIIT
 import FiitScene from "./FiitScene"; 
 // Restore
@@ -61,10 +59,10 @@ const Homepage = () => {
     const [ coverStyles, setCoverStyles ] = useState({});
     
     // duration is how many pixels scene will stick to top
-    const [ sceneDurations, setSceneDurations ] = useState([900, 10000, 1000, 1000, 1500, 1500, 1500]);
+    const sceneDurations = [900, 10000, 1000, 4000, 1500, 1500];
 
     // heights is duration + scene height
-    const [ sceneHeights, setSceneHeights ] = useState([0, 900, 10900, 11900, 12900, 14400, 15900, 17400]);
+    const sceneHeights = [0, 900, 10900, 11900, 15900, 17400];
 
     const calculateDimensions = () => {
         
@@ -165,10 +163,9 @@ const Homepage = () => {
                             {idx === 0 && <ShiftSequence {...{ staticScenes, scrollY, yVal, width, height, x, y, sw, sh }} />}
                             {idx === 1 && <LivingRoom {...{ staticScenes, isMobile, scrollY, progress, startPos, nextStartPos, duration, width, height, x, y, sw, sh, offsetStyles, coverStyles }} />}
                             {idx === 2 && <Instructors {...{ staticScenes, isMobile, scrollY, startPos, nextStartPos, width, height }} />}
-                            {idx === 3 && <Categories {...{ staticScenes, isMobile, scrollY, yVal, progress, startPos, nextStartPos, height, offsetStyles }} />}
-                            {idx === 4 && <YogaScene {...{ staticScenes, isMobile, scrollY, yVal, duration, startPos, nextStartPos, offsetStyles, height }} />}
-                            {idx === 5 && <FiitScene {...{ staticScenes, isMobile, scrollY, yVal, duration, startPos, nextStartPos, offsetStyles, height }} />}
-                            {idx === 6 && <RestoreScene {...{ staticScenes, isMobile, scrollY, yVal, duration, startPos, nextStartPos, offsetStyles, height }} />}
+                            {idx === 3 && <YogaScene {...{ staticScenes, isMobile, scrollY, yVal, progress, startPos, nextStartPos, width, height, x, y, sw, sh, offsetStyles }} />}
+                            {idx === 4 && <FiitScene {...{ staticScenes, isMobile, scrollY, yVal, duration, startPos, nextStartPos, offsetStyles, height }} />}
+                            {idx === 5 && <RestoreScene {...{ staticScenes, isMobile, scrollY, yVal, duration, startPos, nextStartPos, offsetStyles, height }} />}
                             </Scene>
                         </div>
                     )

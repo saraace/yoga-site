@@ -1,7 +1,7 @@
 import { useTransform } from "framer-motion";
 import { FullScreen, VideoWrapper, Contain, ContentContainer, Intro, BenefitsContainer, Benefits, List, ListItem } from "./styles";
 
-const SingleCategorySceneDesktop = ({ scrollY, yVal, duration, startPos, nextStartPos, offsetStyles, height, posterSrc, videoSrc, icon, heading, description, listItems }) => {
+const SingleCategorySceneDesktop = ({ scrollY, yVal, duration, startPos, nextStartPos, offsetStyles, gradient, height, posterSrc, videoSrc, icon, heading, description, listItems }) => {
 
     // intro content
     const introY = useTransform(scrollY, [startPos, startPos+(duration*0.3), startPos+(duration*0.4), startPos+(duration*0.8)], [height*0.5, 0, 0, (height*0.5)*-1]); 
@@ -12,7 +12,7 @@ const SingleCategorySceneDesktop = ({ scrollY, yVal, duration, startPos, nextSta
     const benefitsOpacity = useTransform(scrollY, [startPos+(duration*0.6), startPos+duration], [1, 0]);
 
     return(
-        <FullScreen>
+        <FullScreen className={gradient? 'gradient': ''}>
             <div style={{ backgroundImage: `url(${posterSrc})`}}>
                 <VideoWrapper>
                     {((yVal >= startPos-height) && (yVal <= nextStartPos)) && <video src={videoSrc} style={offsetStyles} autoPlay muted loop/>}
@@ -41,7 +41,8 @@ const SingleCategorySceneDesktop = ({ scrollY, yVal, duration, startPos, nextSta
 }
 
 SingleCategorySceneDesktop.defaultProps = {
-    startPos: 0
+    startPos: 0, 
+    gradient: true
 }
 
 export default SingleCategorySceneDesktop;

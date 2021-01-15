@@ -1,38 +1,52 @@
 import { useState, useEffect, useRef } from "react"; 
-import { useTransform, AnimatePresence } from "framer-motion";
-import { FullScreen, VideoWrapper, TextContainer, Content, Text, Renew, Shift, Transform, Row, Categories, Yoga, Fiit, Restore } from "./styles"; 
+import { useMotionValue, useTransform, AnimatePresence } from "framer-motion";
+import { FullScreen, VideoWrapper, SeqWrapper, Gradient, TextContainer, Content, Text, Renew, Shift, Transform, Row, Categories, Yoga, Fiit, Restore } from "./styles"; 
 
-const CategoriesScene = ({ scrollY, yVal, progress, startPos, nextStartPos, height, offsetStyles }) => {
+/* COMPONENTS */ 
+import ImageSequence from "../../../ImageSequence";
+
+// Image sequence images 
+import YogaImages from "./images";
+
+const CategoriesScene = ({ duration, scrollY, yVal, progress, startPos, nextStartPos, width, height, x, y, sw, sh, offsetStyles }) => {
 
     const videoRef = useRef(null);
 
-    const [ videoReady, setVideoReady ] = useState(false);
-    
-    const [ play, setPlay ] = useState(false);
+    // image sequence images 
+    const imageSequence = YogaImages(); 
+
+    // last drawn image
+    const [ canvasImage, setCanvasImage ] = useState(0);
+
+    // framer motion value for sequence progress
+    const sceneProgress = useMotionValue(0);
 
     useEffect(() => {
         if(videoRef.current){
             videoRef.current.addEventListener("loadeddata", () => {
-                setVideoReady(true);
+                videoRef.current.play();
             });
         }
     }, [videoRef]);
 
-   useEffect(() => {
-        if(progress > 0.1 && videoReady){
-            setPlay(true)
-        }
-    }, [progress, videoReady]);
-
+    // advances image sequence
     useEffect(() => {
-        if(play){
-            videoRef.current.play();
-        }
-    }, [play, videoRef]);
+        sceneProgress.set(progress);
 
-    // background effects
-    const scale = useTransform(scrollY, [startPos-height, startPos, nextStartPos], [1.2, 1.1, 1], [{ ease: "easeInOut" }]);
-    const y = useTransform(scrollY, [startPos-height, startPos, nextStartPos-height, nextStartPos], [-300, 0, 0, 100]);
+        if(progress > 0.15){
+            
+            const id = Math.round(((progress-0.15) * duration) * 0.25); 
+
+            if(id < imageSequence.length){
+                setCanvasImage(id);
+            }
+
+            else{
+                setCanvasImage(imageSequence.length - 1);
+            }
+        }
+
+    }, [progress, duration]);
 
     // text variants
     const headings = {
@@ -41,33 +55,50 @@ const CategoriesScene = ({ scrollY, yVal, progress, startPos, nextStartPos, heig
                 staggerChildren: 0.3, 
                 staggerDirection: 1
             }
+        },
+        exit: {
+            transition: {
+                staggerChildren: 0.3,
+                staggerDirection: -1
+            }
         }
     }
 
     const word = {
         initial: { y: 50, opacity: 0 }, 
         animate: { y: 0, opacity: 1, transition: { duration: 0.5, ease: "easeOut" } }, 
-        exit: { opacity: 0, transition: { delay: 0.9, duration: 0.5, ease: "easeOut" }}
+        exit: { y: 50, opacity: 0, transition: { duration: 0.5, ease: "easeOut" }}
     }
 
     const categories = {
         initial: { y: 50, opacity: 0 },
         animate: { y: 0, opacity: 1, transition: { delay: 0.9, duration: 0.5, ease: "easeOut" } },
-        exit: { y: 0, opacity: 1, transition: { duration: 0.5, ease: "easeOut" } }
+        exit: { y: 50, opacity: 0, transition: { duration: 0.5, ease: "easeOut" } }
     }
+
+    // gradient transform
+    const opacity = useTransform(sceneProgress, [0.23, 0.31], [0, 1]);
 
     return(
         <FullScreen>
             <div>
-                <VideoWrapper style={{ scale, y }}>
-                {((yVal >= startPos) && (yVal <= nextStartPos)) && <video src="/images/homepage/scene-08/bg.mp4" style={offsetStyles} autoPlay muted />}
+                <VideoWrapper>
+                {(yVal >= startPos) && <video src="/images/homepage/scene-08/bg.mp4" style={offsetStyles} autoPlay muted />}
                 </VideoWrapper>
+                {progress >= 0.15 && 
+                <>
+                    <SeqWrapper>
+                        <ImageSequence {...{ imageSequence, canvasImage, width, height, x, y, sw, sh }} />
+                    </SeqWrapper>
+                    <Gradient style={{ opacity }} />
+                </>
+                }
                 <AnimatePresence>
-                    {progress > 0.15 && (
+                    {progress > 0.05 && progress < 0.31 && (
                         <TextContainer variant="small">
                             <Content initial="initial" animate="animate" exit="exit">
                                 <Text>
-                                    <Row  variants={headings}>
+                                    <Row variants={headings}>
                                         <Renew variants={word}>Renew</Renew>
                                         <Shift variants={word}>Shift</Shift>
                                         <Transform variants={word}>Transform</Transform>

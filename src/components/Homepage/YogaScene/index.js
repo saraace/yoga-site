@@ -1,7 +1,11 @@
-import SingleCategory from "../SingleCategory";
 import Icon from "../../../assets/svgs/yoga-icon.svg";
+import { Wrapper, CategoriesWrapper, SingleCategoryWrapper } from "./styles";
 
-const YogaScene = ({ ...rest }) => {
+/* COMPONENTS */ 
+import Categories from "../Categories";
+import SingleCategory from "../SingleCategory";
+
+const YogaScene = ({ progress, startPos, width, height, x, y, sw, sh, ...rest }) => {
 
     const posterSrc = "/images/homepage/yoga/bg-yoga.png"
     const videoSrc = "/images/homepage/yoga/bg-yoga.mp4";
@@ -13,7 +17,16 @@ const YogaScene = ({ ...rest }) => {
     ]
 
     return(
-        <SingleCategory icon={<Icon />} {...{ posterSrc, videoSrc, heading, description, listItems }} {...rest} /> 
+        <Wrapper>  
+            <CategoriesWrapper>
+                <Categories {...{ duration: 2500, progress, startPos, width, height, x, y, sw, sh }} {...rest} />
+            </CategoriesWrapper>
+            {progress > 0.625 &&
+            <SingleCategoryWrapper>
+                <SingleCategory icon={<Icon />} {...{ progress, posterSrc, videoSrc, heading, description, listItems, height, startPos: startPos+2500, duration: 1500, gradient: false }} {...rest} /> 
+            </SingleCategoryWrapper>
+            }
+        </Wrapper>
     )
 }
 
