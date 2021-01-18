@@ -21,7 +21,7 @@
     "global": "^4.4.0",
     "graphql": "^15.4.0",
     "lodash": "^4.17.20",
-    "next": "9.5.3",
+    "next": "10.0.5",
     "react": "16.13.1",
     "react-device-detect": "^1.14.0",
     "react-dom": "16.13.1",

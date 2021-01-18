@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import SignUpLightbox from "../../SignUpLightbox";
+//import UpdatePaymentLightbox from "../../UpdatePaymentLightbox"
 import { VideoWrapper, PlayButton } from "./styles";
 
 const Video = () => {
