@@ -5,7 +5,7 @@ import { AnimatePresence } from "framer-motion";
 import { Container } from "theme-ui";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import FullScreenLightbox from "../FullScreenLightbox";
+import Lightbox from "../../FullScreenLightbox";
 import ClassTypeBadge from "../../ClassTypeBadge";
 import ValidationLabel from "../../Forms/Validation/ValidationLabel";
 import ValidationWrapper from "../../Forms/Validation/ValidationWrapper";
@@ -83,7 +83,7 @@ const SpotSelector = ({ classType, location, instructor, difficulty, duration, r
 
     return(
         <>
-            <FullScreenLightbox onClose={onToggle} reset={true} onReset={handleReset}>
+            <Lightbox onClose={onToggle} reset={true} onReset={handleReset}>
                 <Container>
                     <ClassInfo>
                         <ClassTypeBadge type={classType} />
@@ -120,7 +120,7 @@ const SpotSelector = ({ classType, location, instructor, difficulty, duration, r
                         {reserved && <CancelButton type="button" onClick={() => setCancelConfirm(true)} variant="secondary-outline-block">Cancel Reservation</CancelButton>}
                     </ClassroomLayout>
                 </Container>
-            </FullScreenLightbox>
+            </Lightbox>
             {cancelConfirm && <CancelConfirmation {...{ onCancel }} onClose={() => setCancelConfirm(false)} />}
         </>
     )

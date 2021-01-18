@@ -36,12 +36,12 @@ export const LightboxControls = styled.div`
 
 export const CloseButton = styled.span`
     cursor: pointer; 
-    margin: 0 20px 0;
 `; 
 
 export const ResetButton = styled.span`
     cursor: pointer; 
     opacity: 0.8;
+    margin: 0 0 0 20px;
 
     &:hover{
         opacity: 1;

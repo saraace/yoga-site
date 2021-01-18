@@ -1,4 +1,4 @@
-import { Lightbox } from "./styles";
+import { Lightbox, LightboxControls, CloseButton, ResetButton } from "./styles";
 
 const FullScreenLightbox = ({ close, reset, onClose, onReset, children }) => {
     return(
