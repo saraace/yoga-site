@@ -5,6 +5,7 @@ import StepIndicator from "./StepIndicator";
 import Step1 from "./Step1"; 
 import Step2 from "./Step2"; 
 import Step3 from "./Step3";
+import SuccessMessage from "./SuccessMessage";
 import { BackButton, GetStarted, Steps } from "./styles";
 import LeftArrow from "../../assets/svgs/back-button.svg";
 
@@ -41,9 +42,12 @@ const SignUpLightbox = ({ onToggle }) => {
                             <Step2 onPrev={prev} onNext={next}/>
                         }
                         {step === 3 && 
-                            <Step3 onPrev={prev}/>
+                            <Step3 onPrev={prev} onNext={next}/>
                         }
                     </Steps>
+                }
+                {step >= 4 && 
+                    <SuccessMessage onStart={onToggle} />
                 }
             </Container>
         </Lightbox>

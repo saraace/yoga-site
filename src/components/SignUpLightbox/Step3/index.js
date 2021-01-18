@@ -6,7 +6,7 @@ import Input from "../../Forms/Input";
 import Select from "../../Forms/Select";
 import { PaymentInfo, Row, LeftCol, RightCol, Terms, Address1 } from "./styles";
 
-const Step3 = ({ onSuccess }) => {
+const Step3 = ({ onNext }) => {
 
     const stateOps = [
         {
@@ -21,7 +21,7 @@ const Step3 = ({ onSuccess }) => {
 
     const step3Submit = () => {
         console.log('Step 3 Submit');
-        onSuccess();
+        onNext();
     } 
 
     const step3Schema = Yup.object().shape({ 
