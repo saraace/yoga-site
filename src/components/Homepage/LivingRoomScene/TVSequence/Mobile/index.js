@@ -2,22 +2,18 @@ import { useState, useEffect, useRef } from "react";
 import { motion, useTransform, useMotionValue, AnimatePresence } from "framer-motion";
 
 /* STYLES */
-import { TV, Background, SeqWrapper, VideoLoopWrapper, Text, TextContainer, Col, SlideOverTextContainer, SlideOverText } from "./styles"; 
+import { TV, Background, SeqWrapper, Text, TextContainer, Col, SlideOverTextContainer, SlideOverText } from "./styles"; 
 
 /* COMPONENTS */
 import ImageSequence from  "../../../ImageSequence";
 
 // Image sequence images
-import TVImages from "../images";
+import TVImages from "./images";
 
 const TVSequenceMobile = ({ scrollY, progress, duration, x, y, sw, sh, width, height, offsetStyles, coverStyles, poseContent, tvContent, ...rest }) => {
 
-    // tv loop 
-    const tvLoopRef = useRef(null);
-
-    // tv loop state
-    const [ tvVideoReady, setTvVideoReady ] = useState(false);
-    const [ tvPlaying, setTvPlaying ] = useState(false);
+    // tv still
+    const [ tvStill, setTvStill ] = useState(false);
 
     // image sequence images
     const imageSequence = TVImages();
@@ -28,27 +24,6 @@ const TVSequenceMobile = ({ scrollY, progress, duration, x, y, sw, sh, width, he
     // framer motion value for scene progress
     const sceneProgress = useMotionValue(0);
 
-    // sets video status once it is loaded
-    useEffect(() => {
-        if(tvLoopRef.current){
-
-            // once ready set state
-            tvLoopRef.current.addEventListener("loadeddata", () => {
-                setTvVideoReady(true);
-            });
-
-        }
-    }, [tvLoopRef]); 
-
-    // plays video once triggered at the end of image seqence
-    useEffect(() => {
-        if(tvVideoReady && tvPlaying){
-            tvLoopRef.current.play();
-        } else{
-            tvLoopRef.current.pause();
-        }
-    }, [tvVideoReady, tvPlaying]);
-
     // advances image sequence
     useEffect(() => {
 
@@ -56,9 +31,6 @@ const TVSequenceMobile = ({ scrollY, progress, duration, x, y, sw, sh, width, he
         sceneProgress.set(progress);
 
         if(progress > 0.1405){
-            
-            // pause tv video
-            setTvPlaying(false);
 
             // current id
             const id = Math.round(((progress-0.1405) * duration) * 0.25);
@@ -68,13 +40,10 @@ const TVSequenceMobile = ({ scrollY, progress, duration, x, y, sw, sh, width, he
             } 
             // image sequence is complete
             else {
-                // play tv video
-                setTvPlaying(true);
                 setCanvasImage(imageSequence.length - 1);
             }
         }
         else{
-            setTvPlaying(false);
             setCanvasImage(0);
         }
 
@@ -99,15 +68,11 @@ const TVSequenceMobile = ({ scrollY, progress, duration, x, y, sw, sh, width, he
     return(
         <TV {...rest}>
             <Background>
-                <SeqWrapper className={tvPlaying? "" : "front"} style={coverStyles}>
+                <SeqWrapper style={coverStyles}>
                     <motion.div style={{ scale }}>
                         <ImageSequence {...{ imageSequence, canvasImage, width, height, x, y, sw, sh }} />
                     </motion.div>
                 </SeqWrapper>
-                <VideoLoopWrapper className={tvPlaying? "front" : ""} style={offsetStyles}>
-                    <img src="/images/homepage/tv-seq/tv_seq_00240.png" style={coverStyles} />
-                    <video ref={tvLoopRef} src="/images/homepage/tv-seq/tv_loop.mp4" style={coverStyles} muted loop />
-                </VideoLoopWrapper>
             </Background>
             <AnimatePresence>
             {progress > 0.005 && progress <= 0.1625 && (

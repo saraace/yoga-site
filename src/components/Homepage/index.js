@@ -75,11 +75,18 @@ const Homepage = () => {
 
         // if the window is tall, the assets height must be 100% while the width is cropped
         // if the window is wide, the assets width must be 100% while the height is cropped
-        const tall = ratio > 1080/1920;
+        const tall = ratio > 9/16;
 
         // calculate dimensions for image in order to cover window
-        var imageH = (tall)? h : (w * (1080/1920)); 
-        var imageW = (tall)? (h * (1920/1080)) : w;
+        var imageH = 0; 
+        var imageW = 0;
+        if(w <= 768){
+            imageH = (tall)? h : (w * (16/9));
+            imageW = (tall)? (h * (9/16)) : w;
+        } else{
+            imageH = (tall)? h : (w * (9/16)); 
+            imageW = (tall)? (h * (16/9)) : w;
+        }
 
         // calculate x & y offsets
         const xOffset = (tall) ? (((imageW-w)/2)*-1) : 0;
@@ -93,10 +100,15 @@ const Homepage = () => {
         setX(xOffset); 
         setY(yOffset);
 
+        /* console.log('w = ', w);
+        console.log('h = ', h);
+        console.log('sw = ', imageW);
+        console.log('sh = ', imageH);
+        console.log('x = ', xOffset);
+        console.log('y = ', yOffset); */
+
         // determine if mobile layout should be used
-        if(w <= 768){
-            setIsMobile(true);
-        } 
+        setIsMobile(tall);
 
         // determine offset styles 
         setOffsetStyles((tall)? { height: h, left: xOffset } : { width: w, top: yOffset, left: 0 });
@@ -176,4 +188,4 @@ const Homepage = () => {
     )
 }
 
-export default Homepage;
+export default Homepage;    

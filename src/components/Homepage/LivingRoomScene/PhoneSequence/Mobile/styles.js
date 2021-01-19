@@ -15,7 +15,7 @@ export const SeqWrapper = styled.div`
     left: 0; 
     bottom: 0; 
     right: 0;
-    background-image: url(/images/homepage/phone-seq/phone_seq_00000.jpg);
+    background-image: url(/images/homepage/phone-seq/mobile/phone_seq_00000.jpg);
     background-repeat: no-repeat; 
     background-position: center; 
     background-size: cover;
@@ -24,30 +24,6 @@ export const SeqWrapper = styled.div`
         z-index: 5;
     }
 `; 
-
-export const VideoLoopWrapper = styled.div`
-    position: absolute; 
-    top: 0; 
-    left: 0; 
-    bottom: 0; 
-    right: 0; 
-    opacity: 0;
-
-    img{
-        position: absolute; 
-        top: 0; 
-        z-index: 1;
-    }
-
-    video{
-        position: absolute; 
-    }
-
-    &.front{
-        z-index: 10;
-        opacity: 1;
-    }
-`;
 
 export const TextContainer = styled(motion.div)`
     position: absolute; 

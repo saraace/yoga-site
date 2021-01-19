@@ -24,33 +24,12 @@ export const SeqWrapper = styled.div`
     bottom: 0; 
     left: 0; 
     right: 0;
-    background-image: url(/images/homepage/tv-seq/tv_seq_00000.jpg);
+    background-image: url(/images/homepage/tv-seq/mobile/tv_seq_00000.jpg);
     background-repeat: no-repeat; 
     background-position: center; 
     background-size: cover;
-
-    &.front{
-        z-index: 5;
-    }
+    z-index: 5;
 `; 
-
-export const VideoLoopWrapper = styled.div`
-    position: absolute; 
-
-    img{
-        position: absolute; 
-        z-index: 1;
-    }
-
-    video{
-        position: absolute; 
-    }
-
-    &.front{
-        opacity: 1;
-        z-index: 10;
-    }
-`;
 
 export const Text = styled(motion.div)`
     display: flex; 

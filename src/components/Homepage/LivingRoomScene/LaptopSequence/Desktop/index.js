@@ -8,7 +8,7 @@ import { Laptop, SeqWrapper, VideoLoopWrapper, Text } from "./styles";
 import ImageSequence from "../../../ImageSequence";
 
 // Image sequence images
-import LaptopImages from "../images";
+import LaptopImages from "./images";
 
 const LaptopSequenceDesktop = ({ width, height, progress, duration, x, y, sw, sh, offsetStyles, content, ...rest }) => {
 

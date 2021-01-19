@@ -8,7 +8,7 @@ import { TV, Background, SeqWrapper, VideoLoopWrapper, Text, TextContainer, Col,
 import ImageSequence from  "../../../ImageSequence";
 
 // Image sequence images
-import TVImages from "../images";
+import TVImages from "./images";
 
 const TVSequenceDesktop = ({ scrollY, progress, duration, x, y, sw, sh, width, height, offsetStyles, coverStyles, poseContent, tvContent, ...rest }) => {
 
@@ -115,8 +115,8 @@ const TVSequenceDesktop = ({ scrollY, progress, duration, x, y, sw, sh, width, h
                     </motion.div>
                 </SeqWrapper>
                 <VideoLoopWrapper className={tvPlaying? "front" : ""} style={offsetStyles}>
-                    <img src="/images/homepage/tv-seq/tv_seq_00240.png" style={coverStyles} />
-                    <video ref={tvLoopRef} src="/images/homepage/tv-seq/tv_loop.mp4" style={coverStyles} muted loop />
+                    <img src="/images/homepage/tv-seq/desktop/tv_seq_00240.png" style={coverStyles} />
+                    <video ref={tvLoopRef} src="/images/homepage/tv-seq/desktop/tv_loop.mp4" style={coverStyles} muted loop />
                 </VideoLoopWrapper>
             </Background>
             <AnimatePresence>

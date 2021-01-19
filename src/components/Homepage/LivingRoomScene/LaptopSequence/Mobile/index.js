@@ -2,22 +2,15 @@ import { useRef, useState, useEffect } from "react";
 import { motion, AnimatePresence, useMotionValue, useTransform } from "framer-motion";
 
 /* STYLES */
-import { Laptop, SeqWrapper, VideoLoopWrapper, Text } from "./styles"; 
+import { Laptop, SeqWrapper, Text } from "./styles"; 
 
 /* COMPONENTS */
 import ImageSequence from "../../../ImageSequence";
 
 // Image sequence images
-import LaptopImages from "../images";
+import LaptopImages from "./images";
 
 const LaptopSequenceMobile = ({ width, height, progress, duration, x, y, sw, sh, offsetStyles, content, ...rest }) => {
-
-    // laptop loop 
-    const laptopLoopRef = useRef(null);
-
-    // laptop loop state
-    const [ laptopVideoReady, setLaptopVideoReady ] = useState(false);
-    const [ laptopPlaying, setLaptopPlaying ] = useState(false);
 
     // sequence images
     const imageSequence = LaptopImages();
@@ -29,54 +22,29 @@ const LaptopSequenceMobile = ({ width, height, progress, duration, x, y, sw, sh,
     const sceneProgress = useMotionValue(0);
 
     useEffect(() => {
-        if(laptopLoopRef.current){
-
-            // once ready set state
-            laptopLoopRef.current.addEventListener("loadeddata", () => {
-                setLaptopVideoReady(true);
-            });
-
-        }
-    }, [laptopLoopRef]); 
-
-    useEffect(() => {
 
         // set motion value
         sceneProgress.set(progress);
 
         if(progress >= 0.45){ 
 
-            // pause laptop video
-            setLaptopPlaying(false);
-
             // current id
             const id = Math.round(((progress-0.45) * duration) * 0.25);
 
-            if(id <= 239){    
+            if(id <= imageSequence.length){   
                 setCanvasImage(id);
             } 
             // image sequence is complete
             else {
-                // play laptop video
-                setLaptopPlaying(true);
-                setCanvasImage(239);
+                setCanvasImage(imageSequence.length);
             }
 
         } 
         else{
-            setLaptopPlaying(false);
             setCanvasImage(0);
         }
 
     }, [progress]);
-
-    useEffect(() => {
-        if(laptopVideoReady && laptopPlaying){
-            laptopLoopRef.current.play();
-        } else{
-            laptopLoopRef.current.pause();
-        }
-    }, [laptopVideoReady, laptopPlaying]); 
     
     // heading
     const heading = {
@@ -91,13 +59,9 @@ const LaptopSequenceMobile = ({ width, height, progress, duration, x, y, sw, sh,
 
     return(
         <Laptop {...rest}>
-            <SeqWrapper className={laptopPlaying? "" : "front"}>
+            <SeqWrapper>
                 <ImageSequence {...{ imageSequence, canvasImage, width, height, x, y, sw, sh }} />
             </SeqWrapper>
-            <VideoLoopWrapper className={laptopPlaying? "front" : ""}>
-                <img src="/images/homepage/laptop-seq/laptop_seq_00239.png" style={offsetStyles} />
-                <video ref={laptopLoopRef} src="/images/homepage/laptop-seq/laptop_loop.mp4" style={offsetStyles} muted loop />
-            </VideoLoopWrapper>
             <AnimatePresence> 
             {progress > 0.51 && (
                 <Text initial="initial" animate="animate" exit="exit">

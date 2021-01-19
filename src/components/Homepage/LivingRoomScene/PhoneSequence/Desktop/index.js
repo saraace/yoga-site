@@ -9,7 +9,7 @@ import { Phone, SeqWrapper, VideoLoopWrapper, TextContainer, Text, LeftText, Rig
 import ImageSequence from "../../../ImageSequence"; 
 
 // Image sequence images
-import PhoneImages from "../images"; 
+import PhoneImages from "./images"; 
 
 const PhoneSequenceDesktop = ({ width, height, nextStartPos, scrollY, progress, duration, x, y, sw, sh, offsetStyles, leftContent, rightContent, ...rest }) => {
 
@@ -53,14 +53,14 @@ const PhoneSequenceDesktop = ({ width, height, nextStartPos, scrollY, progress, 
             // current id
             const id = Math.round(((progress-0.7) * duration) * 0.25);
 
-            if(id <= 238){    
+            if(id <= imageSequence.length){    
                 setCanvasImage(id);
             } 
             // image sequence is complete
             else {
                 // play phone video
                 setPhonePlaying(true);
-                setCanvasImage(238);
+                setCanvasImage(imageSequence.length);
             }
 
         } 
@@ -93,10 +93,6 @@ const PhoneSequenceDesktop = ({ width, height, nextStartPos, scrollY, progress, 
     const rightTextY = useTransform(sceneProgress, [0.855, 1], [0, height*-1]);
     const rightTextOpacity = useTransform(sceneProgress, [0.97, 0.99], [1, 0]);
 
-    // scroll out parallax 
-    const transformY = useTransform(scrollY, [nextStartPos-(height-300), nextStartPos], [0, 200]);
-    const scale = useTransform(scrollY, [nextStartPos-(height+300), nextStartPos], [1, 1.15])
-
     return(
         <Phone {...rest}>
             <SeqWrapper className={phonePlaying? "" : "front"}>
@@ -104,8 +100,8 @@ const PhoneSequenceDesktop = ({ width, height, nextStartPos, scrollY, progress, 
             </SeqWrapper>
             <VideoLoopWrapper className={phonePlaying? "front" : ""}>
                 <motion.div>
-                    <img src="/images/homepage/phone-seq/phone_seq_00239.png" style={offsetStyles} />
-                    <video ref={phoneLoopRef} src="/images/homepage/phone-seq/phone_loop.mp4" style={offsetStyles} muted loop />
+                    <img src="/images/homepage/phone-seq/desktop/phone_seq_00239.png" style={offsetStyles} />
+                    <video ref={phoneLoopRef} src="/images/homepage/phone-seq/desktop/phone_loop.mp4" style={offsetStyles} muted loop />
                 </motion.div>
             </VideoLoopWrapper>
             <TextContainer>

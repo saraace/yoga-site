@@ -24,7 +24,7 @@ export const SeqWrapper = styled.div`
     bottom: 0; 
     left: 0; 
     right: 0;
-    background-image: url(/images/homepage/tv-seq/tv_seq_00000.jpg);
+    background-image: url(/images/homepage/tv-seq/desktop/tv_seq_00000.jpg);
     background-repeat: no-repeat; 
     background-position: center; 
     background-size: cover;
