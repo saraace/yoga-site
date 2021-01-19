@@ -52,14 +52,14 @@ const LaptopSequenceDesktop = ({ width, height, progress, duration, x, y, sw, sh
             // current id
             const id = Math.round(((progress-0.45) * duration) * 0.25);
 
-            if(id <= 239){    
+            if(id <= imageSequence.length){    
                 setCanvasImage(id);
             } 
             // image sequence is complete
             else {
                 // play laptop video
                 setLaptopPlaying(true);
-                setCanvasImage(239);
+                setCanvasImage(imageSequence.length);
             }
 
         } 
@@ -95,8 +95,8 @@ const LaptopSequenceDesktop = ({ width, height, progress, duration, x, y, sw, sh
                 <ImageSequence {...{ imageSequence, canvasImage, width, height, x, y, sw, sh }} />
             </SeqWrapper>
             <VideoLoopWrapper className={laptopPlaying? "front" : ""}>
-                <img src="/images/homepage/laptop-seq/laptop_seq_00239.png" style={offsetStyles} />
-                <video ref={laptopLoopRef} src="/images/homepage/laptop-seq/laptop_loop.mp4" style={offsetStyles} muted loop />
+                <img src="/images/homepage/laptop-seq/desktop/laptop_seq_00239.png" style={offsetStyles} />
+                <video ref={laptopLoopRef} src="/images/homepage/laptop-seq/desktop/laptop_loop.mp4" style={offsetStyles} muted loop />
             </VideoLoopWrapper>
             <AnimatePresence> 
             {progress > 0.51 && (

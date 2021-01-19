@@ -317,10 +317,10 @@ const LaptopArray = () => {
   const [AA285, AA285S] = useImage("/images/homepage/laptop-seq/mobile/laptop_seq_00285.jpg");
   const [AA286, AA286S] = useImage("/images/homepage/laptop-seq/mobile/laptop_seq_00286.jpg");
   const [AA287, AA287S] = useImage("/images/homepage/laptop-seq/mobile/laptop_seq_00287.jpg");
-  const [AA288, AA288S] = useImage("/images/homepage/laptop-seq/mobile/laptop_seq_00288.jpg");
+  /*const [AA288, AA288S] = useImage("/images/homepage/laptop-seq/mobile/laptop_seq_00288.jpg");
   const [AA289, AA289S] = useImage("/images/homepage/laptop-seq/mobile/laptop_seq_00289.jpg");
 
-  /*const [AA290, AA290S] = useImage("/images/homepage/laptop-seq/mobile/laptop_seq_00290.jpg");
+  const [AA290, AA290S] = useImage("/images/homepage/laptop-seq/mobile/laptop_seq_00290.jpg");
   const [AA291, AA291S] = useImage("/images/homepage/laptop-seq/mobile/laptop_seq_00291.jpg");
   const [AA292, AA292S] = useImage("/images/homepage/laptop-seq/mobile/laptop_seq_00292.jpg");
   const [AA293, AA293S] = useImage("/images/homepage/laptop-seq/mobile/laptop_seq_00293.jpg");
@@ -756,10 +756,10 @@ const LaptopArray = () => {
     [AA285, AA285S],
     [AA286, AA286S],
     [AA287, AA287S],
-    [AA288, AA288S],
+    /*[AA288, AA288S],
     [AA289, AA289S],
 
-    /*[AA290, AA290S],
+    [AA290, AA290S],
     [AA291, AA291S],
     [AA292, AA292S],
     [AA293, AA293S],

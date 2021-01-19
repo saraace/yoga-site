@@ -265,8 +265,8 @@ const TvArray = () => {
   const [AA238, AA238S] = useImage("/images/homepage/tv-seq/desktop/tv_seq_00238.jpg");
   const [AA239, AA239S] = useImage("/images/homepage/tv-seq/desktop/tv_seq_00239.jpg");
 
-  /*const [AA240, AA240S] = useImage("/images/homepage/tv-seq/desktop/tv_seq_00240.jpg");
-  const [AA241, AA241S] = useImage("/images/homepage/tv-seq/desktop/tv_seq_00241.jpg");
+  const [AA240, AA240S] = useImage("/images/homepage/tv-seq/desktop/tv_seq_00240.jpg");
+  /*const [AA241, AA241S] = useImage("/images/homepage/tv-seq/desktop/tv_seq_00241.jpg");
   const [AA242, AA242S] = useImage("/images/homepage/tv-seq/desktop/tv_seq_00242.jpg");
   const [AA243, AA243S] = useImage("/images/homepage/tv-seq/desktop/tv_seq_00243.jpg");
   const [AA244, AA244S] = useImage("/images/homepage/tv-seq/desktop/tv_seq_00244.jpg");
@@ -643,8 +643,8 @@ const TvArray = () => {
     [AA238, AA238S],
     [AA239, AA239S],
 
-    /*[AA240, AA240S],
-    [AA241, AA241S],
+    [AA240, AA240S],
+    /*[AA241, AA241S],
     [AA242, AA242S],
     [AA243, AA243S],
     [AA244, AA244S],

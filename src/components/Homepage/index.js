@@ -32,7 +32,7 @@ const Homepage = () => {
     //const staticScenes = true;
 
     // indicators used for development
-    const indicators = false;
+    const indicators = true;
 
     // set to true when the user refreshes the page
     const [ refresh, setRefresh ] = useState(false);
@@ -100,15 +100,15 @@ const Homepage = () => {
         setX(xOffset); 
         setY(yOffset);
 
-        /* console.log('w = ', w);
+        console.log('w = ', w);
         console.log('h = ', h);
         console.log('sw = ', imageW);
         console.log('sh = ', imageH);
         console.log('x = ', xOffset);
-        console.log('y = ', yOffset); */
+        console.log('y = ', yOffset);
 
         // determine if mobile layout should be used
-        setIsMobile(tall);
+        setIsMobile(w <= 768);
 
         // determine offset styles 
         setOffsetStyles((tall)? { height: h, left: xOffset } : { width: w, top: yOffset, left: 0 });
