@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
 import { useTransform, motion } from "framer-motion";
-import ImageArray from "./images";
+import DesktopImageArray from "./images";
+import MobileImageArray from "./mobile-images";
 import ImageSequence from "../../ImageSequence";
 import { FullScreen } from "./styles"; 
 
-const AnimatedScene = ({ scrollY, yVal, width, height, x, y, sw, sh, }) => {
+const AnimatedScene = ({ isMobile, scrollY, yVal, width, height, x, y, sw, sh, }) => {
 
-    const imageSequence = ImageArray();
+    const desktopImageSequence = DesktopImageArray();
+
+    const mobileImageSequence = MobileImageArray();
 
     const scale = useTransform(scrollY, [0, 1000], ["1", "1.15"], [{ease: "easeInOut"}]);
 
@@ -20,20 +23,20 @@ const AnimatedScene = ({ scrollY, yVal, width, height, x, y, sw, sh, }) => {
         const frameId = Math.round(yVal*0.25);
 
         // within image sequence frames
-        if(frameId < imageSequence.length) {
+        if(frameId < desktopImageSequence.length) {
             setCanvasImage(frameId); 
         }
         // image sequence is complete
         else {
-            setCanvasImage(imageSequence.length-1);
+            setCanvasImage(desktopImageSequence.length-1);
         }
 
     }, [yVal]);
 
     return(
-        <FullScreen>
+        <FullScreen className={isMobile ? 'mobile' : 'desktop'}>
             <motion.div style={{ scale, y: transformY }}>
-                <ImageSequence {...{ imageSequence, canvasImage, width, height, x, y, sw, sh }} />
+                <ImageSequence {...{ imageSequence: (isMobile? mobileImageSequence : desktopImageSequence), canvasImage, width, height, x, y, sw, sh }} />
             </motion.div>
         </FullScreen>
     )

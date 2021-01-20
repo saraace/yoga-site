@@ -32,7 +32,7 @@ const Homepage = () => {
     //const staticScenes = true;
 
     // indicators used for development
-    const indicators = true;
+    const indicators = false;
 
     // set to true when the user refreshes the page
     const [ refresh, setRefresh ] = useState(false);
@@ -172,7 +172,7 @@ const Homepage = () => {
                         <div key={idx} style={(staticScenes || (isMobile && idx === 2))? {} : { height: height+duration }}>
                             <Scene className={(staticScenes || (isMobile && idx === 2))? '' : 'sticky'} >
                             {!staticScenes && indicators && <ProgressIndicators {...{ yVal, progress, duration, startPos, endPos }} />}
-                            {idx === 0 && <ShiftSequence {...{ staticScenes, scrollY, yVal, width, height, x, y, sw, sh }} />}
+                            {idx === 0 && <ShiftSequence {...{ staticScenes, isMobile, scrollY, yVal, width, height, x, y, sw, sh }} />}
                             {idx === 1 && <LivingRoom {...{ staticScenes, isMobile, scrollY, progress, startPos, nextStartPos, duration, width, height, x, y, sw, sh, offsetStyles, coverStyles }} />}
                             {idx === 2 && <Instructors {...{ staticScenes, isMobile, scrollY, startPos, nextStartPos, width, height }} />}
                             {idx === 3 && <YogaScene {...{ staticScenes, isMobile, scrollY, yVal, progress, startPos, nextStartPos, width, height, x, y, sw, sh, offsetStyles }} />}
