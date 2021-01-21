@@ -53,14 +53,14 @@ const PhoneSequenceDesktop = ({ width, height, nextStartPos, scrollY, progress, 
             // current id
             const id = Math.round(((progress-0.7) * duration) * 0.25);
 
-            if(id <= imageSequence.length){    
+            if(id < imageSequence.length){    
                 setCanvasImage(id);
             } 
             // image sequence is complete
             else {
                 // play phone video
                 setPhonePlaying(true);
-                setCanvasImage(imageSequence.length);
+                setCanvasImage(imageSequence.length-1);
             }
 
         } 
