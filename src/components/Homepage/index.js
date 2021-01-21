@@ -80,9 +80,17 @@ const Homepage = () => {
         // calculate dimensions for image in order to cover window
         var imageH = 0; 
         var imageW = 0;
+
+
         if(w <= 768){
             imageH = (tall)? h : (w * (16/9));
             imageW = (tall)? (h * (9/16)) : w;
+
+            if(imageW < w){
+                imageW = w;
+                imageH = w * (16/9);
+            }
+
         } else{
             imageH = (tall)? h : (w * (9/16)); 
             imageW = (tall)? (h * (16/9)) : w;
@@ -100,12 +108,12 @@ const Homepage = () => {
         setX(xOffset); 
         setY(yOffset);
 
-        console.log('w = ', w);
+        /* console.log('w = ', w);
         console.log('h = ', h);
         console.log('sw = ', imageW);
         console.log('sh = ', imageH);
         console.log('x = ', xOffset);
-        console.log('y = ', yOffset);
+        console.log('y = ', yOffset); */
 
         // determine if mobile layout should be used
         setIsMobile(w <= 768);
