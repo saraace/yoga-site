@@ -16,19 +16,6 @@ export const FullScreen = styled.div`
     }
 `; 
 
-export const VideoWrapper = styled.div`
-    position: absolute;
-    top: 0; 
-    bottom: 0;
-    left: 0; 
-    right: 0; 
-    overflow: hidden;
-
-    video{
-        position: absolute;
-    }
-`; 
-
 export const Contain = styled(Container)`
     position: relative; 
     z-index: 10;
@@ -84,11 +71,6 @@ export const Heading = styled.div`
             fill: ${({ theme }) => theme.colors.text}
         }
     }
-`;
-
-
-export const BenefitsContainer = styled(ContentContainer)`
-    justify-content: flex-end;
 `;
 
 export const Benefits = styled(motion.div)`

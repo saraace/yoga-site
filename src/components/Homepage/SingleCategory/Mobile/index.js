@@ -1,17 +1,14 @@
 import { useTransform } from "framer-motion";
-import { FullScreen, VideoWrapper, Contain, ContentContainer, Intro, Heading, BenefitsContainer, Benefits, List, ListItem } from "./styles";
+import { FullScreen, Contain, ContentContainer, Intro, Heading, Benefits, List, ListItem } from "./styles";
 
-const SingleCategorySceneMobile = ({ scrollY, yVal, duration, startPos, nextStartPos, offsetStyles, height, posterSrc, videoSrc, icon, heading, description, listItems }) => {
+const SingleCategorySceneMobile = ({ scrollY, duration, startPos, height, posterSrc, icon, heading, description, listItems }) => {
 
     // intro content
-    const introY = useTransform(scrollY, [startPos, startPos+(duration*0.8)], [0, (height*2)*-1]); 
-    
+    const introY = useTransform(scrollY, [startPos, startPos+(duration*0.8)], [0, (height*2)*-1]);
+
     return(
         <FullScreen>
             <div style={{ backgroundImage: `url(${posterSrc})`}}>
-                <VideoWrapper>
-                    {((yVal >= startPos-height) && (yVal <= nextStartPos)) && <video src={videoSrc} style={offsetStyles} autoPlay muted loop/>}
-                </VideoWrapper>
                 <Contain>
                     <ContentContainer style={{ y: introY }}>
                         <Intro>

@@ -5,9 +5,10 @@ import { Wrapper, CategoriesWrapper, SingleCategoryWrapper } from "./styles";
 import Categories from "../Categories";
 import SingleCategory from "../SingleCategory";
 
-const YogaScene = ({ progress, startPos, width, height, x, y, sw, sh, ...rest }) => {
+const YogaScene = ({ isMobile, progress, startPos, width, height, x, y, sw, sh, ...rest }) => {
 
     const posterSrc = "/images/homepage/yoga/bg-yoga.png"
+    const mobilePosterSrc = "/images/homepage/yoga/bg-mobile.jpg";
     const videoSrc = "/images/homepage/yoga/bg-yoga.mp4";
     const heading = "Yoga"; 
     const description = "Brought to you by the creators of Hot Fusion Flow™, our total-body yoga classes provide room for creativity while remaining rooted in traditional techniques and postures.";
@@ -23,7 +24,7 @@ const YogaScene = ({ progress, startPos, width, height, x, y, sw, sh, ...rest })
             </CategoriesWrapper>
             {progress > 0.625 &&
             <SingleCategoryWrapper>
-                <SingleCategory icon={<Icon />} {...{ progress, posterSrc, videoSrc, heading, description, listItems, height, startPos: startPos+2500, duration: 1500, gradient: false }} {...rest} /> 
+                <SingleCategory icon={<Icon />} {...{ isMobile, progress, posterSrc: (isMobile? mobilePosterSrc : posterSrc), videoSrc, heading, description, listItems, height, startPos: startPos+2500, duration: 1500, gradient: false }} {...rest} /> 
             </SingleCategoryWrapper>
             }
         </Wrapper>

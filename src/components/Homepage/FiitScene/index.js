@@ -1,9 +1,10 @@
 import SingleCategory from "../SingleCategory";
 import Icon from "../../../assets/svgs/fiit-icon.svg";
 
-const FiitScene = ({ ...rest }) => {
+const FiitScene = ({ isMobile, ...rest }) => {
 
     const posterSrc = "/images/homepage/fiit/bg-fiit.png"
+    const mobilePosterSrc = "/images/homepage/fiit/bg-mobile.jpg";
     const videoSrc = "/images/homepage/fiit/bg-fiit.mp4";
     const heading = "FIIT"; 
     const description = "High-intensity cardio meets strength-training in FIIT, our high-octane series of classes designed to torch calories while instilling greater discipline, confidence, and coordination.";
@@ -13,7 +14,7 @@ const FiitScene = ({ ...rest }) => {
     ]
 
     return(
-        <SingleCategory icon={<Icon />} {...{ posterSrc, videoSrc, heading, description, listItems }} {...rest} /> 
+        <SingleCategory icon={<Icon />} {...{ isMobile, posterSrc: (isMobile? mobilePosterSrc : posterSrc), videoSrc, heading, description, listItems }} {...rest} /> 
     )
 }
 

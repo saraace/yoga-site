@@ -1,9 +1,10 @@
 import SingleCategory from "../SingleCategory";
 import Icon from "../../../assets/svgs/restore-icon.svg";
 
-const RestoreScene = ({ ...rest }) => {
+const RestoreScene = ({ isMobile, ...rest }) => {
     
     const posterSrc = "/images/homepage/restore/bg-restore.png";
+    const mobilePosterSrc = "/images/homepage/restore/bg-mobile.jpg";
     const videoSrc = "/images/homepage/restore/bg-restore.mp4";
     const heading = "Restore"; 
     const description = "Inspired by ancient yoga and meditation practices, our restore classes combine traditional meditation techniques with restorative postures that encourage total relaxation for both mind and body.";
@@ -13,7 +14,7 @@ const RestoreScene = ({ ...rest }) => {
     ]
 
     return(
-        <SingleCategory icon={<Icon />} {...{ posterSrc, videoSrc, heading, description, listItems }} {...rest} /> 
+        <SingleCategory icon={<Icon />} {...{ isMobile, posterSrc: (isMobile? mobilePosterSrc : posterSrc), videoSrc, heading, description, listItems }} {...rest} /> 
     )
 }
 
