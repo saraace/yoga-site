@@ -56,7 +56,7 @@ export const Title = styled.div`
     }
 `; 
 
-export const Classes = styled.div`
+export const Location = styled.div`
     font-size: ${({ theme }) => theme.fontSizes[0]+'px'};
     line-height: 1; 
     padding: 12px 0 0;
@@ -65,6 +65,6 @@ export const Classes = styled.div`
         font-weight: 400;
         font-size: ${({ theme }) => theme.fontSizes[1]+'px'};
         line-height: 1.4;
-        padding: 14px 0 0;
+        padding: 25px 0 0;
     }
 `; 

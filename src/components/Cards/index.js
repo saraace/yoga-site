@@ -2,21 +2,33 @@ import PropTypes from 'prop-types';
 import Link from "next/link";
 import { CardContainer, Image, CardContent } from "./styles";
 
-const Card = ({ link, title, image, width, height, children, ...rest }) => {
+const Card = ({ link, onClick, title, image, width, height, children, ...rest }) => {
+
+    const cardContainer = () => (
+        <CardContainer {...{ title, onClick }} {...rest} >
+            <Image src={image} alt={title} />
+            <CardContent>
+                {children}
+            </CardContent>
+        </CardContainer>
+    );
+
     return(
-        <Link href={link}>
-            <CardContainer {...{title}} {...rest}>
-                <Image src={image} alt={title} />
-                <CardContent>
-                    {children}
-                </CardContent>
-            </CardContainer>
-        </Link>
+        <>
+            {link ? (
+                <Link href={link}>
+                    {cardContainer()}
+                </Link>
+            ) : (
+                <>
+                    {cardContainer()}
+                </>
+            )}
+        </>
     ); 
 }
 
 Card.defaultProps = {
-    link: "/", 
     title: "",
     image: "", 
     width: "", 
@@ -24,7 +36,8 @@ Card.defaultProps = {
 };
 
 Card.propTypes = {
-    link: PropTypes.string.isRequired, 
+    link: PropTypes.string,
+    onClick: PropTypes.func, 
     title: PropTypes.string, 
     image: PropTypes.string.isRequired, 
     width: PropTypes.string.isRequired, 

@@ -1,14 +1,14 @@
 import PropTypes from 'prop-types';
-import { CardWrapper, Name, Title, Classes } from "./styles";
+import { CardWrapper, Name, Title, Location } from "./styles";
 
-const InstructorCard = ({ name, title, classes, image, link, variant }) => {
+const InstructorCard = ({ name, title, location, image, link, onClick, variant }) => {
     return(
-        <CardWrapper title={name} {...{image}} {...{link}} className={variant ? variant : 'default'} alt={title}>
+        <CardWrapper title={name} {...{ image, link, onClick}} className={variant ? variant : 'default'} alt={title}>
             <div></div>
             <div>
                 <Name>{name}</Name>
                 <Title>{title}</Title>
-                <Classes>{classes} Classes</Classes>
+                {location && <Location>{location}</Location>}
             </div>
         </CardWrapper>
     );
@@ -17,18 +17,18 @@ const InstructorCard = ({ name, title, classes, image, link, variant }) => {
 InstructorCard.defaultProps = {
     name: "", 
     title: "", 
-    classes: "", 
+    location: "",
     image: "", 
-    link: "/", 
     variant: ""
 };
 
 InstructorCard.propTypes = {
     name: PropTypes.string.isRequired, 
     title: PropTypes.string,
-    classes: PropTypes.string, 
+    location: PropTypes.string,
     image: PropTypes.string.isRequired, 
-    link: PropTypes.string.isRequired, 
+    link: PropTypes.string, 
+    onClick: PropTypes.func,
     variant: PropTypes.string
 }
 
