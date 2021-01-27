@@ -121,7 +121,7 @@ const TeachersPage = () => {
     return(
         <>
         <PageBackground src="/images/about/bg.jpg" />
-        <PageHeader heading="About Us" />
+        <PageHeader heading="Meet Our Lead&nbsp;Teachers" />
         <Container>
             <Headline>
                 <img src="/images/teachers/leaders.jpg" />
