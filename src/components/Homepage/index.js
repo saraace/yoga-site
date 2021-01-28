@@ -59,10 +59,10 @@ const Homepage = () => {
     const [ coverStyles, setCoverStyles ] = useState({});
     
     // duration is how many pixels scene will stick to top
-    const sceneDurations = [900, 10000, 1000, 4000, 1500, 1500];
+    const sceneDurations = [900, 10000, 0, 4000, 1500, 1500];
 
     // heights is duration + scene height
-    const sceneHeights = [0, 900, 10900, 11900, 15900, 17400];
+    const sceneHeights = [0, 900, 10900, 10900, 14900, 16400];
 
     const calculateDimensions = () => {
         

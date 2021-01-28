@@ -4,7 +4,7 @@ import { FullScreen, Contain, ContentContainer, Intro, Heading, Benefits, List, 
 const SingleCategorySceneMobile = ({ scrollY, duration, startPos, height, posterSrc, icon, heading, description, listItems }) => {
 
     // intro content
-    const introY = useTransform(scrollY, [startPos, startPos+(duration*0.8)], [0, (height*2)*-1]);
+    const introY = useTransform(scrollY, [startPos, startPos+(duration)], [0, (height*1.7)*-1]);
 
     return(
         <FullScreen>
