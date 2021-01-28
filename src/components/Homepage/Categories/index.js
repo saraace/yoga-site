@@ -1,11 +1,13 @@
-import StaticScene from "./Desktop/Static"; 
-import AnimatedScene from "./Desktop/Animated";
+import StaticScene from "./Static"; 
+import AnimatedScene from "./Desktop";
+import MobileScene from "./Mobile";
 
-const CategoriesScene = ({ staticScenes, ...rest }) => {
+const CategoriesScene = ({ staticScenes, isMobile, ...rest }) => {
     return(
         <>
             {staticScenes && <StaticScene />}
-            {!staticScenes && <AnimatedScene {...rest} />}
+            {!staticScenes && !isMobile && <AnimatedScene {...rest} />}
+            {!staticScenes && isMobile && <MobileScene {...rest} />}
         </>
     )
 }

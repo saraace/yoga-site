@@ -7,7 +7,7 @@ const LaptopSequence = ({ staticScenes, isMobile, ...rest }) => {
 
     const content = () => {
         return (
-            <h1>Enjoy classes from your laptop</h1>
+            <h1>Enjoy classes from your&nbsp;laptop</h1>
         )
     }
 

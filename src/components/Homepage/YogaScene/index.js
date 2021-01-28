@@ -20,7 +20,7 @@ const YogaScene = ({ isMobile, progress, startPos, width, height, x, y, sw, sh, 
     return(
         <Wrapper>  
             <CategoriesWrapper>
-                <Categories {...{ duration: 2500, progress, startPos, width, height, x, y, sw, sh }} {...rest} />
+                <Categories {...{ isMobile, duration: 2500, progress, startPos, width, height, x, y, sw, sh }} {...rest} />
             </CategoriesWrapper>
             {progress > 0.625 &&
             <SingleCategoryWrapper>

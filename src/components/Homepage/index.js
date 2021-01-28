@@ -32,7 +32,7 @@ const Homepage = () => {
     //const staticScenes = true;
 
     // indicators used for development
-    const indicators = false;
+    const indicators = true;
 
     // set to true when the user refreshes the page
     const [ refresh, setRefresh ] = useState(false);

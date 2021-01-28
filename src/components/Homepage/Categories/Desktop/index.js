@@ -3,7 +3,7 @@ import { useMotionValue, useTransform, AnimatePresence } from "framer-motion";
 import { FullScreen, VideoWrapper, SeqWrapper, Gradient, TextContainer, Content, Text, Renew, Shift, Transform, Row, Categories, Yoga, Fiit, Restore } from "./styles"; 
 
 /* COMPONENTS */ 
-import ImageSequence from "../../../ImageSequence";
+import ImageSequence from "../../ImageSequence";
 
 // Image sequence images 
 import YogaImages from "./images";
