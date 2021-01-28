@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useViewportScroll } from "framer-motion";
-import { isIE, isEdge } from 'react-device-detect';
+import { isIE, isEdge, isIOS } from 'react-device-detect';
 import window from "global"; 
 
 /* STYLES */
@@ -68,7 +68,7 @@ const Homepage = () => {
         
         // get width and height of window
         const w = window.innerWidth;
-        const h = window.innerHeight;
+        const h = window.innerHeight + (isIOS? 120 : 0);
 
         // calculate window ratio
         const ratio = h/w;
@@ -133,7 +133,9 @@ const Homepage = () => {
         const resizeListener = () => {
             clearTimeout(timeoutId); 
             timeoutId = setTimeout(() => {
-                calculateDimensions();
+                if(!isIOS){
+                    calculateDimensions();
+                }
             }, 250);
         };
 
@@ -172,7 +174,7 @@ const Homepage = () => {
 
                     const startPos = (idx > 0)? sceneHeights[idx]+(height*idx) : 0;
                     const endPos = startPos+duration;
-                    const nextStartPos = (idx+1 <= 7)? sceneHeights[idx+1]+(height*(idx+1)) : 0;
+                    const nextStartPos = (idx+1 <= 5)? sceneHeights[idx+1]+(height*(idx+1)) : 0;
 
                     const progress = yVal<=startPos? 0 : (yVal>=endPos? 1 : (yVal-startPos)/duration);
 
@@ -185,7 +187,7 @@ const Homepage = () => {
                             {idx === 2 && <Instructors {...{ staticScenes, isMobile, scrollY, startPos, nextStartPos, width, height }} />}
                             {idx === 3 && <YogaScene {...{ staticScenes, isMobile, scrollY, yVal, progress, startPos, nextStartPos, width, height, x, y, sw, sh, offsetStyles }} />}
                             {idx === 4 && <FiitScene {...{ staticScenes, isMobile, scrollY, yVal, duration, startPos, nextStartPos, offsetStyles, height }} />}
-                            {idx === 5 && <RestoreScene {...{ staticScenes, isMobile, scrollY, yVal, duration, startPos, nextStartPos, offsetStyles, height }} />}
+                            {idx === 5 && <RestoreScene {...{ staticScenes, isMobile, scrollY, yVal, duration, startPos, nextStartPos:startPos+duration+height, offsetStyles, height }} />}
                             </Scene>
                         </div>
                     )

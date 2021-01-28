@@ -45,13 +45,14 @@ export const VideoWrapper = styled.div`
     position: absolute;
     top: 50px; 
     bottom: 65px; 
-    left: 70px; 
-    right: 76px;
+    left: 74px; 
+    right: 79px;
     z-index: -1;
     overflow: hidden;
     background-image: url(/images/homepage/sign-up/phone-still.png);
     background-size: cover; 
     background-position: center;
+    border-radius: 30px;
 
     video{
         height: 100%;
