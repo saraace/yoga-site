@@ -169,7 +169,7 @@ const Homepage = () => {
     return(
         <div style={{ opacity: refresh? 0 : 1 }}>
             <div>
-                <ScrollIndicator {...{ height }} />
+                <ScrollIndicator {...{ isMobile, height }} />
                 {sceneDurations.map((duration, idx) => {         
 
                     const startPos = (idx > 0)? sceneHeights[idx]+(height*idx) : 0;

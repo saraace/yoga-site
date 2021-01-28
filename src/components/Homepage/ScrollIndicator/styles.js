@@ -10,6 +10,13 @@ export const Indicator = styled.div`
     z-index: 10;
     display: flex; 
     justify-content: center;
+
+    svg{
+        width: 13px;
+        padding: 14px 0 0 0;
+        position: absolute; 
+        top: 15px;
+    }
 `; 
 
 export const LargeCircle = styled(motion.div)`
@@ -18,28 +25,33 @@ export const LargeCircle = styled(motion.div)`
     border-radius: 50%;
     position: relative;
     z-index: 1;
+    mix-blend-mode: soft-light;
+    opacity: 0.5;
+    background: rgb(255,255,255);
+    background: -moz-linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 50%);
+    background: -webkit-linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 50%);
+    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 50%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#ffffff",GradientType=1);
 `;
 
 export const SmallCircle = styled(motion.div)`
     width: 84px; 
     height: 84px; 
-    background: rgba(255, 255, 255, 0.5); 
+    mix-blend-mode: soft-light;
+    opacity: 0.5;
     border-radius: 50%; 
     position: absolute;
     top: 19px;
-    left: 19px;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
     justify-content: center;
     align-items: flex-start;
-
-    .svg{
-        width: 17px;
-        padding: 14px 0 0 0;
-
-        svg{
-            width: 100%;
-        }
-    }
+    background: rgb(255,255,255);
+    background: -moz-linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 50%);
+    background: -webkit-linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 50%);
+    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 50%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#ffffff",GradientType=1);
 `;
 
 const m2 = keyframes`
@@ -67,7 +79,7 @@ export const Mouse = styled.div`
     opacity: 0.8;
     border: 2px solid ${({ theme }) => theme.colors.background};
     position: absolute;
-    top: 5px;
+    top: 25px;
 
     &:before, &:after{
         content: '';

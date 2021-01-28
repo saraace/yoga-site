@@ -82,7 +82,7 @@ export const TextContainer = styled(Container)`
 export const Content = styled(motion.div)`
     height: 100%; 
     width: 100%;
-    padding: 0px 0 90px;
+    padding: 0px 0 130px;
     position: relative; 
     z-index: 1;
     display: flex; 
