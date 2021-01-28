@@ -38,7 +38,6 @@ const PhoneSequenceDesktop = ({ width, height, nextStartPos, scrollY, progress, 
 
             // once ready set state
             phoneLoopRef.current.addEventListener("loadeddata", () => {
-                console.log('phone video loaded');
                 setPhoneVideoReady(true);
             });
 
@@ -48,7 +47,6 @@ const PhoneSequenceDesktop = ({ width, height, nextStartPos, scrollY, progress, 
 
             // once ready set state
             phoneFrameRef.current.addEventListener("load", () => {
-                console.log('phone tv frame loaded');
                 setPhoneFrameLoaded(true);
             });
 

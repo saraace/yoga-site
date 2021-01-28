@@ -38,7 +38,6 @@ const TVSequenceDesktop = ({ scrollY, progress, duration, x, y, sw, sh, width, h
 
             // once ready set state
             tvLoopRef.current.addEventListener("loadeddata", () => {
-                console.log('tv video loaded');
                 setTvVideoReady(true);
             });
 
@@ -48,7 +47,6 @@ const TVSequenceDesktop = ({ scrollY, progress, duration, x, y, sw, sh, width, h
 
             //once ready set state
             tvFrameRef.current.addEventListener("load", () => {
-                console.log('tv frame loaded');
                 setTvFrameLoaded(true);
             });
 

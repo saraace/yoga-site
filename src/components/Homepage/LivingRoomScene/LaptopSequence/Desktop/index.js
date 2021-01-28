@@ -37,7 +37,6 @@ const LaptopSequenceDesktop = ({ width, height, progress, duration, x, y, sw, sh
 
             // once ready set state
             laptopLoopRef.current.addEventListener("loadeddata", () => {
-                console.log('laptop video loaded');
                 setLaptopVideoReady(true);
             });
 
@@ -47,7 +46,6 @@ const LaptopSequenceDesktop = ({ width, height, progress, duration, x, y, sw, sh
 
             // once ready set state
             laptopFrameRef.current.addEventListener("load", () => {
-                console.log('laptop frame loaded');
                 setLaptopFrameLoaded(true);
             });
 
