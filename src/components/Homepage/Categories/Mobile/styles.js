@@ -9,7 +9,7 @@ export const FullScreen = styled.div`
 
     & > div{
         height: 100%;
-        background-image: url(/images/homepage/yoga-seq/mobile/Mobile_Pag9%2024fps000.jpg); 
+        background-image: url(/images/homepage/yoga-seq/mobile/yoga_seq_00000.jpg); 
         background-size: cover; 
         background-position: center; 
         display: flex;
