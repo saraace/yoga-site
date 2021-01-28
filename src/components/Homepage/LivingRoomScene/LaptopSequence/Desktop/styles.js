@@ -15,7 +15,7 @@ export const SeqWrapper = styled.div`
     left: 0; 
     bottom: 0; 
     right: 0;
-    background-image: url(/images/homepage/laptop-seq/laptop_seq_00000.jpg);
+    background-image: url(/images/homepage/laptop-seq/desktop/laptop_seq_00000.jpg);
     background-repeat: no-repeat; 
     background-position: center; 
     background-size: cover;
