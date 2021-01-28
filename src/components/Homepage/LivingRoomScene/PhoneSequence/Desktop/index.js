@@ -13,12 +13,16 @@ import PhoneImages from "./images";
 
 const PhoneSequenceDesktop = ({ width, height, nextStartPos, scrollY, progress, duration, x, y, sw, sh, offsetStyles, leftContent, rightContent, ...rest }) => {
 
-    // phone loop 
+    // phone video loop 
     const phoneLoopRef = useRef(null);
+
+    // phone png frame 
+    const phoneFrameRef = useRef(null);
 
     // phone loop state
     const [ phoneVideoReady, setPhoneVideoReady ] = useState(false);
     const [ phonePlaying, setPhonePlaying ] = useState(false);
+    const [ phoneFrameLoaded, setPhoneFrameLoaded ] = useState(false);
 
     // sequence images
     const imageSequence = PhoneImages();
@@ -34,11 +38,22 @@ const PhoneSequenceDesktop = ({ width, height, nextStartPos, scrollY, progress, 
 
             // once ready set state
             phoneLoopRef.current.addEventListener("loadeddata", () => {
+                console.log('phone video loaded');
                 setPhoneVideoReady(true);
             });
 
         }
-    }, [phoneLoopRef]); 
+
+        if(phoneFrameRef.current){
+
+            // once ready set state
+            phoneFrameRef.current.addEventListener("load", () => {
+                console.log('phone tv frame loaded');
+                setPhoneFrameLoaded(true);
+            });
+
+        }
+    }, [phoneLoopRef, phoneFrameRef]); 
 
     useEffect(() => {
 
@@ -72,12 +87,12 @@ const PhoneSequenceDesktop = ({ width, height, nextStartPos, scrollY, progress, 
     }, [progress]);
 
     useEffect(() => {
-        if(phoneVideoReady && phonePlaying){
+        if(phoneVideoReady && phoneFrameLoaded && phonePlaying){
             phoneLoopRef.current.play();
         } else{
             phoneLoopRef.current.pause();
         }
-    }, [phoneVideoReady, phonePlaying]); 
+    }, [phoneVideoReady, phonePlaying, phoneFrameLoaded]); 
 
     // text animations
     const text = {
@@ -95,12 +110,12 @@ const PhoneSequenceDesktop = ({ width, height, nextStartPos, scrollY, progress, 
 
     return(
         <Phone {...rest}>
-            <SeqWrapper className={phonePlaying? "" : "front"}>
+            <SeqWrapper className={(phoneVideoReady && phoneFrameLoaded && phonePlaying)? "" : "front"}>
                 <ImageSequence {...{ imageSequence, canvasImage, width, height, x, y, sw, sh }} />
             </SeqWrapper>
-            <VideoLoopWrapper className={phonePlaying? "front" : ""}>
+            <VideoLoopWrapper className={(phoneVideoReady && phoneFrameLoaded && phonePlaying)? "front" : ""}>
                 <motion.div>
-                    <img src="/images/homepage/phone-seq/desktop/phone_seq_00239.png" style={offsetStyles} />
+                    <img ref={phoneFrameRef} src="/images/homepage/phone-seq/desktop/phone_seq_00239.png" style={offsetStyles} />
                     <video ref={phoneLoopRef} src="/images/homepage/phone-seq/desktop/phone_loop.mp4" style={offsetStyles} muted loop />
                 </motion.div>
             </VideoLoopWrapper>

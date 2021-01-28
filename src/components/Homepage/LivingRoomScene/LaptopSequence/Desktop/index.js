@@ -12,12 +12,16 @@ import LaptopImages from "./images";
 
 const LaptopSequenceDesktop = ({ width, height, progress, duration, x, y, sw, sh, offsetStyles, content, ...rest }) => {
 
-    // laptop loop 
+    // laptop video loop 
     const laptopLoopRef = useRef(null);
+
+    // laptop png frame
+    const laptopFrameRef = useRef(null);
 
     // laptop loop state
     const [ laptopVideoReady, setLaptopVideoReady ] = useState(false);
     const [ laptopPlaying, setLaptopPlaying ] = useState(false);
+    const [ laptopFrameLoaded, setLaptopFrameLoaded ] = useState(false);
 
     // sequence images
     const imageSequence = LaptopImages();
@@ -33,11 +37,22 @@ const LaptopSequenceDesktop = ({ width, height, progress, duration, x, y, sw, sh
 
             // once ready set state
             laptopLoopRef.current.addEventListener("loadeddata", () => {
+                console.log('laptop video loaded');
                 setLaptopVideoReady(true);
             });
 
         }
-    }, [laptopLoopRef]); 
+
+        if(laptopFrameRef.current){
+
+            // once ready set state
+            laptopFrameRef.current.addEventListener("load", () => {
+                console.log('laptop frame loaded');
+                setLaptopFrameLoaded(true);
+            });
+
+        }
+    }, [laptopLoopRef, laptopFrameRef]); 
 
     useEffect(() => {
 
@@ -71,12 +86,12 @@ const LaptopSequenceDesktop = ({ width, height, progress, duration, x, y, sw, sh
     }, [progress]);
 
     useEffect(() => {
-        if(laptopVideoReady && laptopPlaying){
+        if(laptopVideoReady && laptopFrameLoaded && laptopPlaying){
             laptopLoopRef.current.play();
         } else{
             laptopLoopRef.current.pause();
         }
-    }, [laptopVideoReady, laptopPlaying]); 
+    }, [laptopVideoReady, laptopPlaying, laptopFrameLoaded]); 
     
     // heading
     const heading = {
@@ -91,11 +106,11 @@ const LaptopSequenceDesktop = ({ width, height, progress, duration, x, y, sw, sh
 
     return(
         <Laptop {...rest}>
-            <SeqWrapper className={laptopPlaying? "" : "front"}>
+            <SeqWrapper className={(laptopVideoReady && laptopFrameLoaded && laptopPlaying)? "" : "front"}>
                 <ImageSequence {...{ imageSequence, canvasImage, width, height, x, y, sw, sh }} />
             </SeqWrapper>
-            <VideoLoopWrapper className={laptopPlaying? "front" : ""}>
-                <img src="/images/homepage/laptop-seq/desktop/laptop_seq_00239.png" style={offsetStyles} />
+            <VideoLoopWrapper className={(laptopVideoReady && laptopFrameLoaded && laptopPlaying)? "front" : ""}>
+                <img  ref={laptopFrameRef} src="/images/homepage/laptop-seq/desktop/laptop_seq_00239.png" style={offsetStyles} />
                 <video ref={laptopLoopRef} src="/images/homepage/laptop-seq/desktop/laptop_loop.mp4" style={offsetStyles} muted loop />
             </VideoLoopWrapper>
             <AnimatePresence> 

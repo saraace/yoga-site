@@ -12,12 +12,16 @@ import TVImages from "./images";
 
 const TVSequenceDesktop = ({ scrollY, progress, duration, x, y, sw, sh, width, height, offsetStyles, coverStyles, poseContent, tvContent, ...rest }) => {
 
-    // tv loop 
+    // tv video loop 
     const tvLoopRef = useRef(null);
+
+    // tv png frame
+    const tvFrameRef = useRef(null);
 
     // tv loop state
     const [ tvVideoReady, setTvVideoReady ] = useState(false);
     const [ tvPlaying, setTvPlaying ] = useState(false);
+    const [ tvFrameLoaded, setTvFrameLoaded ] = useState(false);
 
     // image sequence images
     const imageSequence = TVImages();
@@ -34,21 +38,31 @@ const TVSequenceDesktop = ({ scrollY, progress, duration, x, y, sw, sh, width, h
 
             // once ready set state
             tvLoopRef.current.addEventListener("loadeddata", () => {
-                console.log('the video is loaded');
+                console.log('tv video loaded');
                 setTvVideoReady(true);
             });
 
         }
-    }, [tvLoopRef]); 
+
+        if(tvFrameRef.current){
+
+            //once ready set state
+            tvFrameRef.current.addEventListener("load", () => {
+                console.log('tv frame loaded');
+                setTvFrameLoaded(true);
+            });
+
+        }
+    }, [tvLoopRef, tvFrameRef]); 
 
     // plays video once triggered at the end of image seqence
     useEffect(() => {
-        if(tvVideoReady && tvPlaying){
+        if(tvVideoReady && tvFrameLoaded && tvPlaying){
             tvLoopRef.current.play();
         } else{
             tvLoopRef.current.pause();
         }
-    }, [tvVideoReady, tvPlaying]);
+    }, [tvVideoReady, tvPlaying, tvFrameLoaded]);
 
     // advances image sequence
     useEffect(() => {
@@ -110,13 +124,13 @@ const TVSequenceDesktop = ({ scrollY, progress, duration, x, y, sw, sh, width, h
             <Background 
                 style={{ x: slideOverBackground }}
             >
-                <SeqWrapper className={tvPlaying? "" : "front"} style={coverStyles}>
+                <SeqWrapper className={(tvVideoReady && tvFrameLoaded && tvPlaying)? "" : "front"} style={coverStyles}>
                     <motion.div style={{ scale }}>
                         <ImageSequence {...{ imageSequence, canvasImage, width, height, x, y, sw, sh }} />
                     </motion.div>
                 </SeqWrapper>
-                <VideoLoopWrapper className={tvPlaying? "front" : ""} style={offsetStyles}>
-                    <img src="/images/homepage/tv-seq/desktop/tv_seq_00241.png" style={coverStyles} />
+                <VideoLoopWrapper className={(tvVideoReady && tvFrameLoaded && tvPlaying)? "front" : ""} style={offsetStyles}>
+                    <img ref={tvFrameRef} src="/images/homepage/tv-seq/desktop/tv_seq_00241.png" style={coverStyles} />
                     <video ref={tvLoopRef} src="/images/homepage/tv-seq/desktop/tv_loop.mp4" style={coverStyles} muted loop />
                 </VideoLoopWrapper>
             </Background>
