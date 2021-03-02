@@ -225,7 +225,7 @@ const Dashboard = () => {
           link: "/instructors/1"
       }, 
       {
-          name: "Ana Vecchino",
+          name: "Ana Vecchio",
           title: "Studio Leader",
           classes: "10",
           image: "/images/instructors/image-04.png", 
