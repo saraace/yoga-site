@@ -3,7 +3,7 @@ import { jsx, NavLink } from "theme-ui";
 import Link from "next/link";
 // import dynamic from "next/dynamic";
 import { useSelector, useDispatch } from "react-redux";
-import { login } from "../../../services/auth";
+//import { login } from "../../../services/auth";
 import ButtonRow, { RowItem } from "./styles";
 import LocalLogin from "../../development/LocalLogin";
 
@@ -25,17 +25,15 @@ const Buttons = () => {
               </Link>
             </RowItem>
             <RowItem>
-              <NavLink onClick={() => dispatch({ type: "LOGOUT" })}>
-                logout
-              </NavLink>
+              <NavLink onClick={() => dispatch({ type: "LOGOUT" })}>logout</NavLink>
             </RowItem>
           </>
         )}
         {!auth && (
           <>
-            <RowItem>
+            {/* <RowItem>
               <NavLink onClick={() => login()}>Login</NavLink>
-            </RowItem>
+            </RowItem> */}
             <RowItem>
               <Link href="/sign-up">
                 <a sx={{ variant: "buttons.primary" }}>Sign Up</a>

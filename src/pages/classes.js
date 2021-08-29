@@ -20,12 +20,10 @@ const Classes = () => {
   const subTabs = {
     "On-Demand": ["Individual Classes", "Programs"],
     Local: [
-      "North Ft. Lauderdale",
-      "Downtown Ft. Lauderdale",
-      "West Boca Raton",
+      "Ft. Lauderdale",
+      "Boca Raton",
       "Davie",
-      "Deerfield",
-      "Central Boca Raton",
+      "South Miami",
       "Pembroke Pines",
     ],
   };
@@ -187,7 +185,7 @@ const Classes = () => {
       link: "/classes/1",
     },
   ];
-  
+
   return (
     <>
       <LibraryTopRow
@@ -204,13 +202,13 @@ const Classes = () => {
       />
       <Container variant="no-gutters">
         {activeTab === tabs[0] && activeSubTab === subTabs[activeTab][0] && (
-            <>
-                <MasonryLayout exit={{opacity: 0}}>
-                    {classes.map((c, i) => (
-                        <ClassCard key={i} {...c} className="tall" />
-                    ))}
-                </MasonryLayout>
-            </>   
+          <>
+            <MasonryLayout exit={{ opacity: 0 }}>
+              {classes.map((c, i) => (
+                <ClassCard key={i} {...c} className="tall" />
+              ))}
+            </MasonryLayout>
+          </>
         )}
         {/* activeTab === tabs[0] && activeSubTab === subTabs[activeTab][0] && (
           <>
@@ -239,7 +237,10 @@ const Classes = () => {
         ) */}
         {activeTab === tabs[0] && activeSubTab === subTabs[activeTab][1] && (
           <>
-            <SlidingLayout title={`My programs`}>
+            <SlidingLayout
+              title={`My programs`}
+              height={[192, null, null, 300]}
+            >
               {classes.map((c, i) => {
                 return <ClassCard key={"card" + i} {...c} className="large" />;
               })}
