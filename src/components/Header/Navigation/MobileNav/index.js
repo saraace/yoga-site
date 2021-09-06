@@ -1,12 +1,9 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { useSelector } from "react-redux";
 import { motion, useAnimation } from "framer-motion";
 import { MobileNavWrapper, ToggleButton, NavMenu, NavItem, NavLink } from "./styles";
 
 const MobileNav = () => {
-  const { auth } = useSelector(({ auth }) => auth);
-
   const [open, setOpen] = useState(false);
 
   const toggleAnimation = useAnimation();
@@ -90,13 +87,11 @@ const MobileNav = () => {
       </ToggleButton>
       <MobileNavWrapper initial="closed" animate={open ? "open" : "closed"} variants={menuVariants}>
         <NavMenu>
-          {!auth && (
-            <NavItem>
-              <Link href="/explore">
-                <NavLink onClick={() => setOpen(false)}>Explore</NavLink>
-              </Link>
-            </NavItem>
-          )}
+          <NavItem>
+            <Link href="/explore">
+              <NavLink onClick={() => setOpen(false)}>Explore</NavLink>
+            </Link>
+          </NavItem>
           <NavItem>
             <Link href="/classes">
               <NavLink onClick={() => setOpen(false)}>Classes</NavLink>
@@ -107,21 +102,6 @@ const MobileNav = () => {
               <NavLink onClick={() => setOpen(false)}>Locations</NavLink>
             </Link>
           </NavItem>
-          <NavItem>
-            <Link href="/teachers">
-              <NavLink onClick={() => setOpen(false)}>Teachers</NavLink>
-            </Link>
-          </NavItem>
-          {/* <NavItem>
-            <Link href="/account">
-              <NavLink onClick={() => setOpen(false)}>Account</NavLink>
-            </Link>
-          </NavItem>
-          <NavItem>
-            <Link href="#">
-              <NavLink onClick={() => setOpen(false)}>Logout</NavLink>
-            </Link>
-          </NavItem> */}
         </NavMenu>
       </MobileNavWrapper>
     </>

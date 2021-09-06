@@ -1,20 +1,15 @@
-import { useSelector } from "react-redux";
 import Link from "next/link";
 import { NavLink } from "theme-ui";
 import { NavMenu, NavItem } from "./styles";
 
 const Navigation = () => {
-  const { auth } = useSelector(({ auth }) => auth);
-
   return (
     <NavMenu>
-      {!auth && (
-        <NavItem>
-          <Link href="/explore">
-            <NavLink>Explore</NavLink>
-          </Link>
-        </NavItem>
-      )}
+      <NavItem>
+        <Link href="/explore">
+          <NavLink>Explore</NavLink>
+        </Link>
+      </NavItem>
       <NavItem>
         <Link href="/classes">
           <NavLink>Classes</NavLink>
