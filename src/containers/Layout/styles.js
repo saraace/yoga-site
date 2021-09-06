@@ -12,11 +12,7 @@ export const BackgroundGradient = styled(motion.div)`
   position: absolute;
   top: 0;
   left: 0;
-  background: radial-gradient(
-    170.46% 170.46% at 47.92% -70.46%,
-    #456696 0%,
-    #0b1525 100%
-  );
+  background: radial-gradient(170.46% 170.46% at 47.92% -70.46%, #456696 0%, #0b1525 100%);
 `;
 
 export const BackgroundImage = styled(motion.div)`

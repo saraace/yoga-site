@@ -1,17 +1,14 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import { useSelector } from "react-redux";
 import Link from "next/link";
 import PageHeader, { LogoCol, LogoWrapper, NavCol, ButtonCol, MobileNavCol } from "./styles";
-import YogaJointLogo from "../../assets/svgs/yoga-joint.svg";
-import ShiftLogo from "../../assets/svgs/shift.svg";
+import YogaLogo from "../../assets/svgs/yoga-site.svg";
 import Navigation from "./Navigation";
 import Buttons from "./Buttons";
 import MobileNav from "./Navigation/MobileNav";
 
 const Header = () => {
   const router = useRouter();
-  const { auth } = useSelector(({ auth }) => auth);
 
   const [scrollingUp, setScrollingUp] = useState(false);
   const [scrollTop, setScrollTop] = useState(0);
@@ -59,34 +56,18 @@ const Header = () => {
       variants={headerVariants}
     >
       <LogoCol>
-        {!auth && (
-          <Link href="/">
-            <a>
-              <LogoWrapper
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ ease: "easeOut", duration: 0.3 }}
-                exit={{ opacity: 0 }}
-              >
-                <YogaJointLogo />
-              </LogoWrapper>
-            </a>
-          </Link>
-        )}
-        {auth && (
-          <Link href="/">
-            <a>
-              <LogoWrapper
-                initial={{ opacity: 0, x: "-100px" }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ ease: "easeOut", duration: 0.3 }}
-                exit={{ opacity: 0, x: "100px" }}
-              >
-                <ShiftLogo />
-              </LogoWrapper>
-            </a>
-          </Link>
-        )}
+        <Link href="/">
+          <a>
+            <LogoWrapper
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ ease: "easeOut", duration: 0.3 }}
+              exit={{ opacity: 0 }}
+            >
+              <YogaLogo />
+            </LogoWrapper>
+          </a>
+        </Link>
       </LogoCol>
       <NavCol>
         <Navigation />

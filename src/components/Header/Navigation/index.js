@@ -25,11 +25,6 @@ const Navigation = () => {
           <NavLink>Locations</NavLink>
         </Link>
       </NavItem>
-      <NavItem>
-        <Link href="/teachers">
-          <NavLink>Teachers</NavLink>
-        </Link>
-      </NavItem>
     </NavMenu>
   );
 };
